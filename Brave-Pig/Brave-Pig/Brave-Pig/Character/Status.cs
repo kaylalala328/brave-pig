@@ -13,13 +13,13 @@ namespace Brave_Pig.Character
         public int defense;
         public int useSword;
         
-        public void Status()
+        /*public void Status()
         {
             healPoint = 50;
             manaPoint = 30;
             damage = 10;
             defense = 5;
             useSword = 0;
-        }
+        }*/
     }
 }
