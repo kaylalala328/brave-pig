@@ -11,33 +11,29 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Brave_Pig.UI
 {
-    class MainUI
+    class BottomUI
     {
-        BottomUI bottomUI;
-        Status status;
+        Texture2D bottomUI;
+        int width, height;
 
         public void Initialize(GraphicsDevice graphics)
         {
-            bottomUI = new BottomUI();
-            bottomUI.Initialize(graphics);
-
-            status = new Status();
-            status.Initialize(graphics);
+            width = graphics.Viewport.Width;
+            height = graphics.Viewport.Height;
         }
         public void LoadContent(ContentManager content)
         {
-            bottomUI.LoadContent(content);
-            status.LoadContent(content);
+            bottomUI = content.Load<Texture2D>("UI/BottomUI");
         }
         public void Update(GameTime gameTime)
         {
-            bottomUI.Update(gameTime);
-            status.Update(gameTime);
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            bottomUI.Draw(spriteBatch);
-            status.Draw(spriteBatch);
+            spriteBatch.Draw(bottomUI,
+                new Rectangle(0, height / 4 * 3, width, height / 4),
+                Color.White);
         }
     }
 }

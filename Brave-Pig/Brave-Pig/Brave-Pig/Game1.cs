@@ -12,6 +12,7 @@ using Brave_Pig.Sound;
 using Brave_Pig.UI;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Character;
+using Brave_Pig.UI;
 
 namespace Brave_Pig
 {
@@ -48,6 +49,7 @@ namespace Brave_Pig
         //객체
         Screen screen;
         SoundManager sound;
+        MainUI mainUI;
 
         public Game1()
         {
@@ -56,6 +58,7 @@ namespace Brave_Pig
 
             screen = new Screen();
             sound = new SoundManager();
+            mainUI = new MainUI();
         }
 
         /// <summary>
@@ -69,10 +72,12 @@ namespace Brave_Pig
             //화면 크기 설정
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
+            graphics.ApplyChanges();
 
             screen.Initialize(GraphicsDevice);
             sound.Initialize();
             sound.LoadContent(Content);
+            mainUI.Initialize(GraphicsDevice);
             
             base.Initialize();
         }
@@ -87,6 +92,7 @@ namespace Brave_Pig
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             screen.LoadContent(Content);
+            mainUI.LoadContent(Content);
             //테스트용
             background = Content.Load<Texture2D>("Backgrounds/Bg04");
             player = new Player(Content);
@@ -120,7 +126,10 @@ namespace Brave_Pig
             }
             else
             {
+                currentKeyState = Keyboard.GetState();
                 player.Update(gameTime);
+                mainUI.Update(gameTime);
+                previousKeyState = currentKeyState;
             }
 
             if ( gameState == GameStates.EXIT )
@@ -145,7 +154,8 @@ namespace Brave_Pig
             if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);
             if(gameState == GameStates.PLAY)
-            {// 테스트코드 배경화면
+            {
+                // 테스트코드 배경화면
                 spriteBatch.Draw(background,
                     new Rectangle(0, 0, 
                         GraphicsDevice.Viewport.Width, 
@@ -153,6 +163,8 @@ namespace Brave_Pig
                     Color.White);
                 
                 player.Draw(spriteBatch);
+
+                mainUI.Draw(spriteBatch);
             }
             spriteBatch.End();
 
