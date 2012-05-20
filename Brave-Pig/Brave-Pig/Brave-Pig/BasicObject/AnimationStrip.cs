@@ -25,7 +25,7 @@ namespace Brave_Pig.BasicObject
 
         //현재 애니메이션 frme
         private int currentFrame;
-
+        //public int CurrentFrame;
         //애니메이션을 반복할 것인가
         private bool loopAnimation = true;
         //애니메이션이 끝났는가?
@@ -88,6 +88,12 @@ namespace Brave_Pig.BasicObject
         {
             get { return frameDelay; }
             set { frameDelay = value; }
+        }
+
+        public int CurrentFrame
+        {
+            get { return currentFrame; }
+            set { CurrentFrame = currentFrame; }
         }
 
         public Rectangle FrameRectangle

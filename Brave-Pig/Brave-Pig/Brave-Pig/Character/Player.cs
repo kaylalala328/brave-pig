@@ -54,7 +54,8 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                PlayAnimation(newAnimation);
+                if(animations["attack"].CurrentFrame == 2)
+                    PlayAnimation(newAnimation);
             }
 
             velocity += fallSpeed;
