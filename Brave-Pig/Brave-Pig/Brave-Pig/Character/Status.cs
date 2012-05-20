@@ -14,12 +14,14 @@ namespace Brave_Pig.Character
 {
     public class Status
     {
+        //케릭터에 사용될 status
         public int healPoint;
         public int manaPoint;
         public int damage;
         public int defense;
         public int useSword;
 
+        //생성자 및 새터, 게터
         public int HealPoint
         {
             get { return healPoint; }
