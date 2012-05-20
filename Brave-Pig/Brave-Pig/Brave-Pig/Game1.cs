@@ -22,6 +22,8 @@ namespace Brave_Pig
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Player player;
+        
 
         Texture2D background;
 
@@ -87,6 +89,7 @@ namespace Brave_Pig
             screen.LoadContent(Content);
             //테스트용
             background = Content.Load<Texture2D>("Backgrounds/Bg04");
+            player = new Player(Content);
         }
 
         /// <summary>
@@ -117,13 +120,15 @@ namespace Brave_Pig
             }
             else
             {
-
+                player.Update(gameTime);
             }
 
             if ( gameState == GameStates.EXIT )
             {
                 this.Exit();
             }
+
+
             
             base.Update(gameTime);
         }
@@ -146,6 +151,8 @@ namespace Brave_Pig
                         GraphicsDevice.Viewport.Width, 
                         GraphicsDevice.Viewport.Height),
                     Color.White);
+                
+                player.Draw(spriteBatch);
             }
             spriteBatch.End();
 

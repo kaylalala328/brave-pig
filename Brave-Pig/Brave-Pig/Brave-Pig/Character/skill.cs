@@ -18,7 +18,7 @@ namespace Brave_Pig.Character
         {
             if(UseSword == 0)
             {
-                //기본 검에 대한 스킬        
+                //기본 검에 대한 스킬
             }
             else if(UseSword == 1)
             {

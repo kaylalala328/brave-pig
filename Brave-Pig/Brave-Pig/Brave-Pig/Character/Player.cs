@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
+using Tile_Engine;
+using Brave_Pig.BasicObject;
+
+namespace Brave_Pig.Character
+{
+    public class Player : GameObject
+    {
+        private Vector2 fallSpeed = new Vector2(0, 20);
+        private float moveScale = 180.0f;
+        
+        public Player(ContentManager content)
+        {
+            animations.Add("attack", new AnimationStrip(content.Load<Texture2D>("Player/attack"), 139, "attack"));
+            animations["attack"].LoopAnimation = true;
+
+            frameWidth = 139;
+            frameHeight = 77;
+            //CollisionRectangle = new Rectangle(9, 1, 30, 46);
+
+            drawDepth = 0f;
+
+            currentAnimation = "attack";
+            enabled = true;
+            codeBasedBlocks = false;
+            
+            PlayAnimation("attack");
+            worldLocation = Vector2.Zero;   //플레이어 위치
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            string newAnimation = "attack";
+            //xbox 패드용 변수
+            //GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
+            KeyboardState keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.Left))
+            {
+                flipped = false;
+                newAnimation = "attack";
+                velocity = new Vector2(-moveScale, velocity.Y);
+            }
+
+            if (newAnimation != currentAnimation)
+            {
+                PlayAnimation(newAnimation);
+            }
+
+            velocity += fallSpeed;
+
+            repositionCamera();
+            base.Update(gameTime);
+        }
+
+        private void repositionCamera()
+        {
+            int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
+
+            if (screenLocX > 500)
+            {
+                Camera.Move(new Vector2(screenLocX - 500, 0));
+            }
+
+            if (screenLocX < 200)
+            {
+                Camera.Move(new Vector2(screenLocX - 200, 0));
+            }
+        }
+    }
+}
