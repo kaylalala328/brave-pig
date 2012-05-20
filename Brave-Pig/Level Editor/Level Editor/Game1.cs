@@ -113,6 +113,7 @@ namespace Level_Editor
 
             Camera.ViewPortWidth = pictureBox.Width;
             Camera.ViewPortHeight = pictureBox.Height;
+
             Camera.WorldRectangle =
                 new Rectangle(
                     0,
@@ -122,7 +123,7 @@ namespace Level_Editor
                 );
 
             TileMap.Initialize(
-                Content.Load<Texture2D>(@"Textures\PlatformTiles"));
+                Content.Load<Texture2D>(@"Textures\snow"));
 
             TileMap.spriteFont =
                 Content.Load<SpriteFont>(@"Fonts\Pericles8");
@@ -131,7 +132,6 @@ namespace Level_Editor
 
             pictureBox_SizeChanged(null, null);
         }
-
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

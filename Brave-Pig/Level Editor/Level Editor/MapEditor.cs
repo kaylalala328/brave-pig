@@ -24,7 +24,7 @@ namespace Level_Editor
         private void LoadImageList()
         {
             string filepath = Application.StartupPath +
-                @"\Content\Textures\PlatformTiles.png";
+                @"\Content\Textures\snow.png";
             Bitmap tileSheet = new Bitmap(filepath);
             int tilecount = 0;
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
