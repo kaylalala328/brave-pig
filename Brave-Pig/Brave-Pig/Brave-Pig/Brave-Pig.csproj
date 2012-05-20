@@ -112,6 +112,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Screen.cs" />
+    <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="UI\MainUI.cs" />
   </ItemGroup>
   <ItemGroup>

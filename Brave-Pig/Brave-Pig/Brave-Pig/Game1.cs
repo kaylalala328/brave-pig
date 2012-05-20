@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Brave_Pig.Sound;
+using Brave_Pig.UI;
 
 namespace Brave_Pig
 {
@@ -19,10 +21,29 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public enum GameStates
+        {
+            Start,
+            Playing,
+            GameOver,
+            Loading,
+            Win
+        };
+        public static GameStates gameState = GameStates.Start;
+
+        public static KeyboardState previousKeyState;
+        public static KeyboardState currentKeyState;
+
+        Screen screen;
+        SoundManager sound;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            screen = new Screen();
+            sound = new SoundManager();
         }
 
         /// <summary>
@@ -33,8 +54,13 @@ namespace Brave_Pig
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
 
+            screen.Initialize(GraphicsDevice);
+            sound.Initialize();
+            sound.LoadContent(Content);
+            
             base.Initialize();
         }
 
@@ -46,8 +72,8 @@ namespace Brave_Pig
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            
+            screen.LoadContent(Content);
         }
 
         /// <summary>
@@ -70,8 +96,17 @@ namespace Brave_Pig
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            sound.PlayBackground();
 
+            if ( gameState == GameStates.Start )
+            {
+                screen.Update(gameTime);
+            }
+            else
+            {
+
+            }
+            
             base.Update(gameTime);
         }
 
@@ -83,7 +118,14 @@ namespace Brave_Pig
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            if ( gameState == GameStates.Start )
+                screen.Draw(spriteBatch);
+            else
+            {
+
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
