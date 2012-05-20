@@ -112,6 +112,7 @@
     <Compile Include="Character\skill.cs" />
     <Compile Include="Character\Status.cs" />
     <Compile Include="BasicObject\GameObject.cs" />
+    <Compile Include="LevelManager.cs" />
     <Compile Include="Monsters\Boss.cs" />
     <Compile Include="Monsters\Enemy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
