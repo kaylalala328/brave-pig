@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tile_Engine;
 
-namespace Gemstone_Hunter
+namespace Brave_Pig.BasicObject
 {
     public class GameObject
     {
