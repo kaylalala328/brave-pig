@@ -41,9 +41,8 @@ namespace Brave_Pig.Character
         {
             string newAnimation = "normal";
             velocity = new Vector2(0, velocity.Y);
-            //xbox 패드용 변수
-            //GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
-            KeyboardState keyState = Keyboard.GetState();
+            //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
+            KeyboardState keyState = Keyboard.GetState(); //키보드 입력값
 
             if (keyState.IsKeyDown(Keys.Space))
             {
@@ -54,13 +53,15 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-
-                if(animations[currentAnimation].LoopAnimation == true)
-
-                    PlayAnimation(newAnimation);
-                else if(animations[currentAnimation].FinishedPlaying == true)
+                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true)
                     PlayAnimation(newAnimation);
             }
+            else
+            {
+                if (animations[currentAnimation].FinishedPlaying == true)
+                    PlayAnimation(newAnimation);
+            }
+            
 
             velocity += fallSpeed;
 
