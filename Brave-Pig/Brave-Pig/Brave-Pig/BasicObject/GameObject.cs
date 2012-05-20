@@ -278,7 +278,7 @@ namespace Brave_Pig.BasicObject
                   Camera.WorldRectangle.Height - frameHeight));
 
             //newposition을 worldlocation에 저장함.
-            worldLocation = newPosition;
+            //worldLocation = newPosition;
         }
 
         /// <summary>

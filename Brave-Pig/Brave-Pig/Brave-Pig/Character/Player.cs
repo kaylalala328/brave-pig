@@ -13,11 +13,13 @@ namespace Brave_Pig.Character
 {
     public class Player : GameObject
     {
-        private Vector2 fallSpeed = new Vector2(0, 20);
-        private float moveScale = 180.0f;
+        private Vector2 fallSpeed = new Vector2(0,20);
         
         public Player(ContentManager content)
         {
+            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("Player/normal"), 139, "normal"));
+            animations["normal"].LoopAnimation = true;
+
             animations.Add("attack", new AnimationStrip(content.Load<Texture2D>("Player/attack"), 139, "attack"));
             animations["attack"].LoopAnimation = true;
 
@@ -37,7 +39,8 @@ namespace Brave_Pig.Character
 
         public override void Update(GameTime gameTime)
         {
-            string newAnimation = "attack";
+            string newAnimation = "normal";
+            velocity = new Vector2(0, velocity.Y);
             //xbox 패드용 변수
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
             KeyboardState keyState = Keyboard.GetState();
@@ -46,7 +49,7 @@ namespace Brave_Pig.Character
             {
                 flipped = false;
                 newAnimation = "attack";
-                velocity = new Vector2(-moveScale, velocity.Y);
+                velocity = new Vector2(0, velocity.Y);
             }
 
             if (newAnimation != currentAnimation)
@@ -56,11 +59,11 @@ namespace Brave_Pig.Character
 
             velocity += fallSpeed;
 
-            repositionCamera();
+            //repositionCamera();
             base.Update(gameTime);
         }
 
-        private void repositionCamera()
+        /*private void repositionCamera()
         {
             int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
 
@@ -73,6 +76,6 @@ namespace Brave_Pig.Character
             {
                 Camera.Move(new Vector2(screenLocX - 200, 0));
             }
-        }
+        }*/
     }
 }

@@ -21,7 +21,7 @@ namespace Brave_Pig.BasicObject
         //frame Timer
         private float frameTimer = 0f;
         //frame delay
-        private float frameDelay = 0.05f;
+        private float frameDelay = 0.1f;
 
         //현재 애니메이션 frme
         private int currentFrame;
