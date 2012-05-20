@@ -13,5 +13,21 @@ namespace Brave_Pig.UI
 {
     class MainUI
     {
+        public void Initialize()
+        {
+
+        }
+        public void LoadContent(ContentManager content)
+        {
+
+        }
+        public void Update(GameTime gameTime)
+        {
+
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
     }
 }

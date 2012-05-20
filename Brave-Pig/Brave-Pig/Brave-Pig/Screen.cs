@@ -19,9 +19,11 @@ namespace Brave_Pig
     {
         #region Declaration
         Texture2D screen;
-        Texture2D cursor;
         Texture2D menu;
-
+        Texture2D start;
+        Texture2D load;
+        Texture2D exit;
+        
         GraphicsDevice graphics;
 
         int width, height;
@@ -44,14 +46,16 @@ namespace Brave_Pig
             height = graphics.Viewport.Height;
             cursorX = width / 3;
             cursorY = height / 2;
-            cursorWidth = width / 14;
-            cursorHeight = height / 15;
+            cursorWidth = width / 3;
+            cursorHeight = height / 4;
         }
         public void LoadContent(ContentManager content)
         {
             screen = content.Load<Texture2D>("Screen/Screen");
-            cursor = content.Load<Texture2D>("Screen/cursor");
             menu = content.Load<Texture2D>("Screen/menu");
+            start = content.Load<Texture2D>("Screen/start");
+            load = content.Load<Texture2D>("Screen/load");
+            exit = content.Load<Texture2D>("Screen/exit");
         }
         public void Update(GameTime gameTime)
         {
@@ -65,15 +69,12 @@ namespace Brave_Pig
                 {
                     case SelectMode.START:
                         select = SelectMode.LOAD;
-                        cursorY = cursorY + cursorWidth;
                         break;
                     case SelectMode.LOAD:
                         select = SelectMode.EXIT;
-                        cursorY = cursorY + cursorWidth;
                         break;
                     case SelectMode.EXIT:
                         select = SelectMode.START;
-                        cursorY = cursorY - 2 * cursorWidth;
                         break;
                 }
             }
@@ -84,15 +85,12 @@ namespace Brave_Pig
                 {
                     case SelectMode.START:
                         select = SelectMode.EXIT;
-                        cursorY = cursorY + 2 * cursorWidth;
                         break;
                     case SelectMode.LOAD:
                         select = SelectMode.START;
-                        cursorY = cursorY - cursorWidth;
                         break;
                     case SelectMode.EXIT:
                         select = SelectMode.LOAD;
-                        cursorY = cursorY - cursorWidth;
                         break;
                 }
             }
@@ -122,28 +120,67 @@ namespace Brave_Pig
             spriteBatch.Draw(screen,
                 new Rectangle(0, 0, width, height),
                 Color.White);
-            spriteBatch.Draw(menu,
-                new Rectangle(width / 3 + cursorWidth, 
-                    height / 2, 
-                    width / 3, 
-                    height / 3),
-                Color.White);
 
             switch(select)
             {
                 case SelectMode.START:
-                    spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
+                    spriteBatch.Draw(start,
+                        new Rectangle(cursorX - 10, 
+                            cursorY - 10, 
+                            cursorWidth + 20, 
+                            cursorHeight / 3 + 20),
+                        Color.White);
+                    spriteBatch.Draw(load,
+                        new Rectangle(cursorX,
+                            cursorY + cursorHeight / 3,
+                            cursorWidth,
+                            cursorHeight / 3),
+                        Color.White);
+                    spriteBatch.Draw(exit,
+                        new Rectangle(cursorX,
+                            cursorY + (cursorHeight / 3)*2,
+                            cursorWidth,
+                            cursorHeight / 3),
                         Color.White);
                     break;
                 case SelectMode.LOAD:
-                    spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
+                    spriteBatch.Draw(start,
+                        new Rectangle(cursorX, 
+                            cursorY, 
+                            cursorWidth, 
+                            cursorHeight / 3),
+                        Color.White);
+                    spriteBatch.Draw(load,
+                        new Rectangle(cursorX - 10,
+                            cursorY + cursorHeight / 3 - 10,
+                            cursorWidth + 20,
+                            cursorHeight / 3 + 20),
+                        Color.White);
+                    spriteBatch.Draw(exit,
+                        new Rectangle(cursorX,
+                            cursorY + (cursorHeight / 3)*2,
+                            cursorWidth,
+                            cursorHeight / 3),
                         Color.White);
                     break;
                 case SelectMode.EXIT:
-                    spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
+                    spriteBatch.Draw(start,
+                        new Rectangle(cursorX, 
+                            cursorY, 
+                            cursorWidth, 
+                            cursorHeight / 3),
+                        Color.White);
+                    spriteBatch.Draw(load,
+                        new Rectangle(cursorX,
+                            cursorY + cursorHeight / 3,
+                            cursorWidth,
+                            cursorHeight / 3),
+                        Color.White);
+                    spriteBatch.Draw(exit,
+                        new Rectangle(cursorX - 10,
+                            cursorY + (cursorHeight / 3)*2 - 10,
+                            cursorWidth + 20,
+                            cursorHeight / 3 + 20),
                         Color.White);
                     break;
             }
