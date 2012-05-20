@@ -20,12 +20,14 @@ namespace Brave_Pig
         #region Declaration
         Texture2D screen;
         Texture2D cursor;
+        Texture2D menu;
 
         GraphicsDevice graphics;
 
         int width, height;
         int cursorX, cursorY;
-
+        int cursorWidth, cursorHeight;
+        //시작 화면 선택
         private enum SelectMode
         {
             START,
@@ -42,14 +44,18 @@ namespace Brave_Pig
             height = graphics.Viewport.Height;
             cursorX = width / 3;
             cursorY = height / 2;
+            cursorWidth = width / 14;
+            cursorHeight = height / 15;
         }
         public void LoadContent(ContentManager content)
         {
             screen = content.Load<Texture2D>("Screen/Screen");
             cursor = content.Load<Texture2D>("Screen/cursor");
+            menu = content.Load<Texture2D>("Screen/menu");
         }
         public void Update(GameTime gameTime)
         {
+            //키보드 입력
             Game1.currentKeyState = Keyboard.GetState();
 
             if ( Game1.previousKeyState.IsKeyDown(Keys.Down) &&
@@ -59,15 +65,15 @@ namespace Brave_Pig
                 {
                     case SelectMode.START:
                         select = SelectMode.LOAD;
-                        cursorY = cursorY + width / 15;
+                        cursorY = cursorY + cursorWidth;
                         break;
                     case SelectMode.LOAD:
                         select = SelectMode.EXIT;
-                        cursorY = cursorY + width / 15;
+                        cursorY = cursorY + cursorWidth;
                         break;
                     case SelectMode.EXIT:
                         select = SelectMode.START;
-                        cursorY = cursorY - 2 * (width / 15);
+                        cursorY = cursorY - 2 * cursorWidth;
                         break;
                 }
             }
@@ -78,15 +84,15 @@ namespace Brave_Pig
                 {
                     case SelectMode.START:
                         select = SelectMode.EXIT;
-                        cursorY = cursorY + 2 * ( width / 15 );
+                        cursorY = cursorY + 2 * cursorWidth;
                         break;
                     case SelectMode.LOAD:
                         select = SelectMode.START;
-                        cursorY = cursorY - width / 15;
+                        cursorY = cursorY - cursorWidth;
                         break;
                     case SelectMode.EXIT:
                         select = SelectMode.LOAD;
-                        cursorY = cursorY - width / 15;
+                        cursorY = cursorY - cursorWidth;
                         break;
                 }
             }
@@ -108,27 +114,36 @@ namespace Brave_Pig
             }
             Game1.previousKeyState = Game1.currentKeyState;
         }
+        /*
+         * 시작 화면 출력
+         */
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(screen,
                 new Rectangle(0, 0, width, height),
+                Color.White);
+            spriteBatch.Draw(menu,
+                new Rectangle(width / 3 + cursorWidth, 
+                    height / 2, 
+                    width / 3, 
+                    height / 3),
                 Color.White);
 
             switch(select)
             {
                 case SelectMode.START:
                     spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, width / 15, height / 15),
+                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
                         Color.White);
                     break;
                 case SelectMode.LOAD:
                     spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, width / 15, height / 15),
+                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
                         Color.White);
                     break;
                 case SelectMode.EXIT:
                     spriteBatch.Draw(cursor,
-                        new Rectangle(cursorX, cursorY, width / 15, height / 15),
+                        new Rectangle(cursorX, cursorY, cursorWidth, cursorHeight),
                         Color.White);
                     break;
             }

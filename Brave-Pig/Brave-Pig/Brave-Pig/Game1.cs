@@ -23,6 +23,9 @@ namespace Brave_Pig
 
         Texture2D background;
 
+        /*
+         * GameState를 나타냄
+         */
         public enum GameStates
         {
             START,
@@ -34,9 +37,11 @@ namespace Brave_Pig
         };
         public static GameStates gameState = GameStates.START;
 
+        // 키보드 입력
         public static KeyboardState previousKeyState;
         public static KeyboardState currentKeyState;
 
+        //객체
         Screen screen;
         SoundManager sound;
 
@@ -57,6 +62,7 @@ namespace Brave_Pig
         /// </summary>
         protected override void Initialize()
         {
+            //화면 크기 설정
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
 
@@ -77,7 +83,7 @@ namespace Brave_Pig
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             screen.LoadContent(Content);
-
+            //테스트용
             background = Content.Load<Texture2D>("Backgrounds/Bg04");
         }
 
@@ -132,7 +138,7 @@ namespace Brave_Pig
             if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);
             if(gameState == GameStates.PLAY)
-            {
+            {// 테스트코드 배경화면
                 spriteBatch.Draw(background,
                     new Rectangle(0, 0, 
                         GraphicsDevice.Viewport.Width, 
