@@ -7,5 +7,6 @@ namespace Brave_Pig.Character
 {
     class skill
     {
+    
     }
 }
