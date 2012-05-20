@@ -86,7 +86,7 @@ namespace Brave_Pig.BasicObject
 
         public Rectangle CollisionRectangle
         {
-            //사가곃ㅇ 위치
+            //사각형 위치
             get
             {
                 return new Rectangle(

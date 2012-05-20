@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Brave_Pig.Sound;
 using Brave_Pig.UI;
+using Brave_Pig.BasicObject;
+using Brave_Pig.Character;
 
 namespace Brave_Pig
 {
