@@ -21,7 +21,7 @@ namespace Brave_Pig.Character
             animations["normal"].LoopAnimation = true;
 
             animations.Add("attack", new AnimationStrip(content.Load<Texture2D>("Player/attack"), 139, "attack"));
-            animations["attack"].LoopAnimation = true;
+            animations["attack"].LoopAnimation = false;
 
             frameWidth = 139;
             frameHeight = 77;
@@ -29,11 +29,11 @@ namespace Brave_Pig.Character
 
             drawDepth = 0f;
 
-            currentAnimation = "attack";
+            currentAnimation = "normal";
             enabled = true;
             codeBasedBlocks = false;
             
-            PlayAnimation("attack");
+            PlayAnimation("normal");
             worldLocation = Vector2.Zero;   //플레이어 위치
         }
 
@@ -54,7 +54,9 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                if(animations["attack"].CurrentFrame == 2)
+                if(animations[currentAnimation].LoopAnimation == true)
+                    PlayAnimation(newAnimation);
+                else if(animations[currentAnimation].FinishedPlaying == true)
                     PlayAnimation(newAnimation);
             }
 
