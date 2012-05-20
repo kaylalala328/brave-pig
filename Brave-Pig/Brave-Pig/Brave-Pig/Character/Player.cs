@@ -45,7 +45,7 @@ namespace Brave_Pig.Character
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
             KeyboardState keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Left))
+            if (keyState.IsKeyDown(Keys.Space))
             {
                 flipped = false;
                 newAnimation = "attack";
@@ -54,7 +54,9 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
+
                 if(animations[currentAnimation].LoopAnimation == true)
+
                     PlayAnimation(newAnimation);
                 else if(animations[currentAnimation].FinishedPlaying == true)
                     PlayAnimation(newAnimation);

@@ -64,7 +64,7 @@ namespace Brave_Pig
         public static void LoadLevel(int levelNumber)
         {
             TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream(
-                @"Content\Maps\MAP" +
+                "Content/Maps/MAP" +
                 levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
 
             enemies.Clear();
@@ -85,21 +85,11 @@ namespace Brave_Pig
                     {
                         //enemies.Add(new Enemy(Content, x, y));
                     }
-
                 }
             }
 
             currentLevel = levelNumber;
             respawnLocation = player.WorldLocation;
-        }
-
-        public static void ReloadLevel()
-        {
-            Vector2 saveRespawn = respawnLocation;
-            LoadLevel(currentLevel);
-
-            respawnLocation = saveRespawn;
-            player.WorldLocation = respawnLocation;
         }
 
         public static void Update(GameTime gameTime)

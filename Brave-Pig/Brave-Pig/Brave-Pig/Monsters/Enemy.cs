@@ -19,9 +19,10 @@ namespace Brave_Pig.Monsters
         private Vector2 fallSpeed = new Vector2(0, 20);
         private float walkSpeed = 60.0f;
         private bool facingLeft = true;
+        private float HealthPoint;
         public bool Dead = false;
         #region Constructor
-        public Enemy(ContentManager content, string MonsterName, int cellX, int cellY)
+        public Enemy(ContentManager content, string MonsterName, int cellX, int cellY, int HP)
         {
             /*
             animations.Add("idle",
@@ -49,6 +50,7 @@ namespace Brave_Pig.Monsters
                     "die"));
             animations["die"].LoopAnimation = false;
             */
+            HealthPoint = HP;
             frameWidth = 48;
             frameHeight = 48;
             CollisionRectangle = new Rectangle(9, 1, 30, 46);
