@@ -140,7 +140,7 @@ namespace Brave_Pig
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             spriteBatch.Begin();
             if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);

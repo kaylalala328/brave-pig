@@ -129,7 +129,8 @@ namespace Brave_Pig
                             cursorY - 10, 
                             cursorWidth + 20, 
                             cursorHeight / 3 + 20),
-                        Color.White);
+                            null,
+                        Color.White, 0.07f, Vector2.Zero, SpriteEffects.None, 0f);
                     spriteBatch.Draw(load,
                         new Rectangle(cursorX,
                             cursorY + cursorHeight / 3,
@@ -155,7 +156,8 @@ namespace Brave_Pig
                             cursorY + cursorHeight / 3 - 10,
                             cursorWidth + 20,
                             cursorHeight / 3 + 20),
-                        Color.White);
+                            null,
+                        Color.White, 0.07f, Vector2.Zero, SpriteEffects.None, 0f);
                     spriteBatch.Draw(exit,
                         new Rectangle(cursorX,
                             cursorY + (cursorHeight / 3)*2,
@@ -181,7 +183,8 @@ namespace Brave_Pig
                             cursorY + (cursorHeight / 3)*2 - 10,
                             cursorWidth + 20,
                             cursorHeight / 3 + 20),
-                        Color.White);
+                            null,
+                        Color.White, 0.07f, Vector2.Zero, SpriteEffects.None, 0f);
                     break;
             }
         }
