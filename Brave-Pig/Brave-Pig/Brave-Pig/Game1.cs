@@ -21,15 +21,18 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D background;
+
         public enum GameStates
         {
-            Start,
-            Playing,
-            GameOver,
-            Loading,
-            Win
+            START,
+            PLAY,
+            GAMEOVER,
+            LOAD,
+            WIN,
+            EXIT
         };
-        public static GameStates gameState = GameStates.Start;
+        public static GameStates gameState = GameStates.START;
 
         public static KeyboardState previousKeyState;
         public static KeyboardState currentKeyState;
@@ -74,6 +77,8 @@ namespace Brave_Pig
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             screen.LoadContent(Content);
+
+            background = Content.Load<Texture2D>("Backgrounds/Bg04");
         }
 
         /// <summary>
@@ -98,13 +103,18 @@ namespace Brave_Pig
 
             sound.PlayBackground();
 
-            if ( gameState == GameStates.Start )
+            if ( gameState == GameStates.START )
             {
                 screen.Update(gameTime);
             }
             else
             {
 
+            }
+
+            if ( gameState == GameStates.EXIT )
+            {
+                this.Exit();
             }
             
             base.Update(gameTime);
@@ -119,11 +129,15 @@ namespace Brave_Pig
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            if ( gameState == GameStates.Start )
+            if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);
-            else
+            if(gameState == GameStates.PLAY)
             {
-
+                spriteBatch.Draw(background,
+                    new Rectangle(0, 0, 
+                        GraphicsDevice.Viewport.Width, 
+                        GraphicsDevice.Viewport.Height),
+                    Color.White);
             }
             spriteBatch.End();
 

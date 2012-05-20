@@ -93,7 +93,18 @@ namespace Brave_Pig
             else if ( Game1.previousKeyState.IsKeyDown(Keys.Enter) &&
                 Game1.currentKeyState.IsKeyUp(Keys.Enter))
             {
-                
+                switch ( select )
+                {
+                    case SelectMode.START:
+                        Game1.gameState = Game1.GameStates.PLAY;
+                        break;
+                    case SelectMode.LOAD:
+                        Game1.gameState = Game1.GameStates.LOAD;
+                        break;
+                    case SelectMode.EXIT:
+                        Game1.gameState = Game1.GameStates.EXIT;
+                        break;
+                }
             }
             Game1.previousKeyState = Game1.currentKeyState;
         }
