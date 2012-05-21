@@ -16,7 +16,7 @@ namespace Brave_Pig.Character
     {
         //케릭터에 사용될 status
         public int healPoint;
-        public int manaPoint;
+        public float manaPoint;
         public int damage;
         public int defense;
         public int useSword;
@@ -28,10 +28,10 @@ namespace Brave_Pig.Character
             set { healPoint = 50; }
         }
 
-        public int ManaPoint
+        public float ManaPoint
         {
             get { return manaPoint; }
-            set { healPoint = 30; }
+            set { manaPoint = 0; }
         }
 
         public int Damage
@@ -58,7 +58,7 @@ namespace Brave_Pig.Character
             this.defense = 0;
             this.useSword = 0;
         }
-        public Status(int heal, int mana, int damage, int defense, int use)
+        public Status(int heal, float mana, int damage, int defense, int use)
         {
             this.healPoint = heal;
             this.manaPoint = mana;
@@ -66,5 +66,6 @@ namespace Brave_Pig.Character
             this.defense = defense;
             this.useSword = use;
         }
+
     }
 }

@@ -24,7 +24,6 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
-        
 
         Texture2D background;
 
@@ -149,7 +148,7 @@ namespace Brave_Pig
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+          
             spriteBatch.Begin();
             if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);
@@ -163,7 +162,6 @@ namespace Brave_Pig
                     Color.White);
                 
                 player.Draw(spriteBatch);
-
                 mainUI.Draw(spriteBatch);
             }
             spriteBatch.End();

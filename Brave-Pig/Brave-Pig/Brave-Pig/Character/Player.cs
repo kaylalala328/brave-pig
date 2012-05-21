@@ -17,9 +17,11 @@ namespace Brave_Pig.Character
         //private float moveScale = 180.0f;
         Random num = new Random();
         private int direct = 0;
+        Status stat = new Status();
         
         public Player(ContentManager content)
         {
+
             animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("Player/normal"), 179, "normal"));
             animations["normal"].LoopAnimation = true;
 
@@ -31,6 +33,9 @@ namespace Brave_Pig.Character
 
             animations.Add("move", new AnimationStrip(content.Load<Texture2D>("Player/move"), 179, "move"));
             animations["move"].LoopAnimation = true;
+
+            animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
+            animations["charge"].LoopAnimation = false;
 
             /*animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
@@ -98,6 +103,29 @@ namespace Brave_Pig.Character
                 velocity = new Vector2(0, velocity.Y);
             }
 
+            if (keyState.IsKeyDown(Keys.Z))
+            {
+                if (stat.manaPoint < 3)
+                {
+                    stat.manaPoint = stat.manaPoint + 0.005f;
+                }
+                else
+                {
+                    stat.manaPoint = stat.manaPoint + 0.0f;
+                }
+
+                if (direct == 0)
+                {
+                    flipped = false;
+                }
+                else
+                {
+                    flipped = true;
+                }
+
+                newAnimation = "charge";
+                velocity = new Vector2(0, velocity.Y);
+            }
             /*if (keyState.IsKeyDown(Keys.Z))
             {
                 newAnimation = "jump";
@@ -146,5 +174,6 @@ namespace Brave_Pig.Character
                 Camera.Move(new Vector2(screenLocX - 200, 0));
             }
         }*/
+
     }
 }

@@ -39,7 +39,7 @@ namespace Brave_Pig.BasicObject
 
         //그림 depth?? 위치 위에서 아래로
         protected float drawDepth = 0.85f;
-        
+
         //Animation Dictionary
         protected Dictionary<string, AnimationStrip> animations =
             new Dictionary<string, AnimationStrip>();
