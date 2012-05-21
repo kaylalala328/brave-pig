@@ -101,20 +101,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player\attack.png">
-      <Name>attack</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Player\normal.png">
-      <Name>normal</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="UI\BottomUI.png">
       <Name>BottomUI</Name>
       <Importer>TextureImporter</Importer>
@@ -148,6 +134,30 @@
     </Compile>
     <Compile Include="UI\weapon3.png">
       <Name>weapon3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\normal1.png">
+      <Name>normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\attack1.png">
+      <Name>attack1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\attack2.png">
+      <Name>attack2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\move.png">
+      <Name>move</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
