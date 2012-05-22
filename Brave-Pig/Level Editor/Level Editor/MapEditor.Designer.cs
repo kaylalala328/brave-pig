@@ -33,16 +33,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tile1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tile2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tile3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tile4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tile5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pctSurface = new System.Windows.Forms.PictureBox();
             this.imgListTiles = new System.Windows.Forms.ImageList(this.components);
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
@@ -56,6 +48,14 @@
             this.lblMapNumber = new System.Windows.Forms.Label();
             this.cboMapNumber = new System.Windows.Forms.ComboBox();
             this.timerGameUpdate = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.BackGroundFileLocation = new System.Windows.Forms.TextBox();
+            this.ForeGroundFileLocation = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSurface)).BeginInit();
             this.groupBoxRightClick.SuspendLayout();
@@ -64,8 +64,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -78,7 +77,6 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadMapToolStripMenuItem,
             this.saveMapToolStripMenuItem,
-            this.loadTileToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -99,48 +97,6 @@
             this.saveMapToolStripMenuItem.Text = "&Save Map";
             this.saveMapToolStripMenuItem.Click += new System.EventHandler(this.saveMapToolStripMenuItem_Click);
             // 
-            // loadTileToolStripMenuItem
-            // 
-            this.loadTileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tile1ToolStripMenuItem,
-            this.tile2ToolStripMenuItem,
-            this.tile3ToolStripMenuItem,
-            this.tile4ToolStripMenuItem,
-            this.tile5ToolStripMenuItem});
-            this.loadTileToolStripMenuItem.Name = "loadTileToolStripMenuItem";
-            this.loadTileToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.loadTileToolStripMenuItem.Text = "Load Tile";
-            // 
-            // tile1ToolStripMenuItem
-            // 
-            this.tile1ToolStripMenuItem.Name = "tile1ToolStripMenuItem";
-            this.tile1ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.tile1ToolStripMenuItem.Text = "Tile1";
-            // 
-            // tile2ToolStripMenuItem
-            // 
-            this.tile2ToolStripMenuItem.Name = "tile2ToolStripMenuItem";
-            this.tile2ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.tile2ToolStripMenuItem.Text = "Tile2";
-            // 
-            // tile3ToolStripMenuItem
-            // 
-            this.tile3ToolStripMenuItem.Name = "tile3ToolStripMenuItem";
-            this.tile3ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.tile3ToolStripMenuItem.Text = "Tile3";
-            // 
-            // tile4ToolStripMenuItem
-            // 
-            this.tile4ToolStripMenuItem.Name = "tile4ToolStripMenuItem";
-            this.tile4ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.tile4ToolStripMenuItem.Text = "Tile4";
-            // 
-            // tile5ToolStripMenuItem
-            // 
-            this.tile5ToolStripMenuItem.Name = "tile5ToolStripMenuItem";
-            this.tile5ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.tile5ToolStripMenuItem.Text = "Tile5";
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -153,26 +109,11 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearMapToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // clearMapToolStripMenuItem
-            // 
-            this.clearMapToolStripMenuItem.Name = "clearMapToolStripMenuItem";
-            this.clearMapToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.clearMapToolStripMenuItem.Text = "&Clear Map";
-            this.clearMapToolStripMenuItem.Click += new System.EventHandler(this.clearMapToolStripMenuItem_Click);
-            // 
             // pctSurface
             // 
-            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSurface.Location = new System.Drawing.Point(23, 27);
             this.pctSurface.Name = "pctSurface";
             this.pctSurface.Size = new System.Drawing.Size(802, 532);
@@ -187,8 +128,8 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.vScrollBar1.LargeChange = 48;
             this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
             this.vScrollBar1.Name = "vScrollBar1";
@@ -197,8 +138,8 @@
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
             this.hScrollBar1.Location = new System.Drawing.Point(23, 562);
             this.hScrollBar1.Name = "hScrollBar1";
@@ -274,8 +215,8 @@
             // 
             // lblMapNumber
             // 
-            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMapNumber.AutoSize = true;
             this.lblMapNumber.Location = new System.Drawing.Point(835, 135);
             this.lblMapNumber.Name = "lblMapNumber";
@@ -285,8 +226,8 @@
             // 
             // cboMapNumber
             // 
-            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
             this.cboMapNumber.Location = new System.Drawing.Point(919, 130);
@@ -300,11 +241,85 @@
             this.timerGameUpdate.Interval = 20;
             this.timerGameUpdate.Tick += new System.EventHandler(this.timerGameUpdate_Tick);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "PNG";
+            this.openFileDialog1.FileName = "Default";
+            this.openFileDialog1.Filter = "Image Files|*.PNG";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(876, 190);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 41);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "맵 청소";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.clearMapToolStripMenuItem_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(913, 264);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 41);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "뒷 배경";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(913, 338);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 41);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "타일 맵";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // BackGroundFileLocation
+            // 
+            this.BackGroundFileLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackGroundFileLocation.Location = new System.Drawing.Point(831, 311);
+            this.BackGroundFileLocation.Name = "BackGroundFileLocation";
+            this.BackGroundFileLocation.Size = new System.Drawing.Size(208, 21);
+            this.BackGroundFileLocation.TabIndex = 5;
+            this.BackGroundFileLocation.Text = "BackTest";
+            // 
+            // ForeGroundFileLocation
+            // 
+            this.ForeGroundFileLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ForeGroundFileLocation.Location = new System.Drawing.Point(831, 385);
+            this.ForeGroundFileLocation.Name = "ForeGroundFileLocation";
+            this.ForeGroundFileLocation.Size = new System.Drawing.Size(208, 21);
+            this.ForeGroundFileLocation.TabIndex = 11;
+            this.ForeGroundFileLocation.Text = "TestMap";
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(876, 518);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(126, 41);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "적용";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // MapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 583);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.ForeGroundFileLocation);
+            this.Controls.Add(this.BackGroundFileLocation);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cboMapNumber);
             this.Controls.Add(this.lblMapNumber);
             this.Controls.Add(this.groupBoxRightClick);
@@ -337,8 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearMapToolStripMenuItem;
         private System.Windows.Forms.ImageList imgListTiles;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.HScrollBar hScrollBar1;
@@ -351,11 +364,13 @@
         private System.Windows.Forms.Label lblMapNumber;
         private System.Windows.Forms.ComboBox cboMapNumber;
         private System.Windows.Forms.Timer timerGameUpdate;
-        private System.Windows.Forms.ToolStripMenuItem loadTileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tile1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tile2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tile3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tile4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tile5ToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox BackGroundFileLocation;
+        private System.Windows.Forms.TextBox ForeGroundFileLocation;
+        private System.Windows.Forms.Button button4;
     }
 }

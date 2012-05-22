@@ -50,8 +50,17 @@ namespace Level_Editor
         public int DrawTile = 0;
 
         /// <summary>
-        /// 
+        /// Back 이미지 파일
         /// </summary>
+        Texture2D BackgroundImage;
+
+        /// <summary>
+        /// Fore 이미지 파일
+        /// </summary>
+        Texture2D ForegroundImage;
+
+        MapEditor MapEdit;
+
         public bool EditingCode = false;
         public string CurrentCodeValue = "";
         public string HoverCodeValue = "";
@@ -86,6 +95,8 @@ namespace Level_Editor
                 (System.Windows.Forms.VScrollBar)parentForm.Controls["vScrollBar1"];
             hscroll =
                 (System.Windows.Forms.HScrollBar)parentForm.Controls["hScrollBar1"];
+
+            MapEdit = parentForm as MapEditor;
 
         }
 
@@ -178,11 +189,25 @@ namespace Level_Editor
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (MapEdit.Click_Accept == true)
+            {
+                try
+                {
+                    BackgroundImage = Content.Load<Texture2D>(@"Textures\" + MapEdit.BackgroundFile());
+                    ForegroundImage = Content.Load<Texture2D>(@"Textures\" + MapEdit.ForegroundFile());
+                }
+                catch
+                {
+
+                }
+
+            }
             Camera.Position = new Vector2(hscroll.Value, vscroll.Value);
 
+            
             MouseState ms = Mouse.GetState();
 
-            //
+            
             if ((ms.X > 0) && (ms.Y > 0) &&
                 (ms.X < Camera.ViewPortWidth) &&
                 (ms.Y < Camera.ViewPortHeight))
@@ -198,7 +223,7 @@ namespace Level_Editor
                         TileMap.SetTileAtCell(
                           TileMap.GetCellByPixelX((int)mouseLoc.X),
                           TileMap.GetCellByPixelY((int)mouseLoc.Y),
-                          4);
+                          3);
                     }
                     
                     if ((ms.RightButton == ButtonState.Pressed) &&
@@ -245,9 +270,27 @@ namespace Level_Editor
             spriteBatch.Begin(
                 SpriteSortMode.BackToFront,
                 BlendState.AlphaBlend);
+
+            try
+            {
+
+                spriteBatch.Draw(BackgroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.9f);
+            }
+            catch
+            { 
+            }
+            try
+            {
+                spriteBatch.Draw(ForegroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White,0.0f,Vector2.Zero, SpriteEffects.None,0.3f);
+            }
+            catch
+            {
+
+            }
+
             TileMap.Draw(spriteBatch);
             spriteBatch.End();
-
+            
             base.Draw(gameTime);
         }
 

@@ -27,8 +27,8 @@ namespace Tile_Engine
         /// <summary>
         /// width * height 개수
         /// </summary>
-        public const int MapWidth = 160;
-        public const int MapHeight = 40;
+        public const int MapWidth = 32;
+        public const int MapHeight = 10;
         /// <summary>
         /// Layer 개수
         /// </summary>
@@ -268,16 +268,33 @@ namespace Tile_Engine
                 {
                     if ((x >= 0) && (y >= 0) && (x < MapWidth) && (y < MapHeight))
                     {
-                        //배경을 하얀색으로
-                        spriteBatch.Draw(
-                          tileSheet,
-                          CellScreenRectangle(x, y),
-                          TileSourceRectangle(mapCells[x, y].LayerTiles),
-                          Color.Aquamarine,
-                          0.0f,
-                          Vector2.Zero,
-                          SpriteEffects.None,
-                          1f - ((float)1 * 0.1f));
+                        if (mapCells[x, y].LayerTiles != 0)
+                        {
+                            //배경을 하얀색으로
+                            spriteBatch.Draw(
+                              tileSheet,
+                              CellScreenRectangle(x, y),
+                              TileSourceRectangle(mapCells[x, y].LayerTiles),
+                              Color.White,
+                              0.0f,
+                              Vector2.Zero,
+                              SpriteEffects.None,
+                              0.1f);
+                        }
+                        else
+                        {
+                            //배경을 하얀색으로
+                            spriteBatch.Draw(
+                              tileSheet,
+                              CellScreenRectangle(x, y),
+                              TileSourceRectangle(mapCells[x, y].LayerTiles),
+                              Color.Transparent,
+                              0.0f,
+                              Vector2.Zero,
+                              SpriteEffects.None,
+                              0.1f);
+                        }
+                        
                     }
 
 
@@ -299,7 +316,7 @@ namespace Tile_Engine
                 spriteBatch.Draw(
                                 tileSheet,
                                 CellScreenRectangle(x, y),
-                                TileSourceRectangle(1),
+                                TileSourceRectangle(0),
                                 new Color(255, 0, 0, 80),
                                 0.0f,
                                 Vector2.Zero,

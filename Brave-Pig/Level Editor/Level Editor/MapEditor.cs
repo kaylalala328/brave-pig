@@ -15,6 +15,7 @@ namespace Level_Editor
     public partial class MapEditor : Form
     {
         public Game1 game;
+        public bool Click_Accept = false;
 
         public MapEditor()
         {
@@ -269,6 +270,45 @@ namespace Level_Editor
         {
             game.Exit();
             Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                BackGroundFileLocation.Text = openFileDialog1.SafeFileName.Remove(openFileDialog1.SafeFileName.Length-4);
+                
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ForeGroundFileLocation.Text = openFileDialog1.SafeFileName.Remove(openFileDialog1.SafeFileName.Length - 4);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (Click_Accept == false)
+            {
+                Click_Accept = true;
+                button4.Text = "적용 취소";
+            }
+            else
+            {
+                button4.Text = "적용";
+                Click_Accept = false;
+            }
+        }
+        public string BackgroundFile()
+        {
+            return BackGroundFileLocation.Text;
+        }
+        public string ForegroundFile()
+        {
+            return ForeGroundFileLocation.Text;
         }
     }
 }
