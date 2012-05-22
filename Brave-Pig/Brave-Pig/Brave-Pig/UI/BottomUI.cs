@@ -25,7 +25,7 @@ namespace Brave_Pig.UI
         int manaLevel;
         int maxHeal;
 
-        SpriteFont UIfont;
+        
 
         WeaponUI weapon;
 
@@ -50,7 +50,7 @@ namespace Brave_Pig.UI
             HPbar = content.Load<Texture2D>("UI/HP");
             MPbar = content.Load<Texture2D>("UI/MP");
             chargeBar = content.Load<Texture2D>("UI/chargeBar");
-            UIfont = content.Load<SpriteFont>("Font/UI font");
+            
 
             weapon.LoadContent(content);
 
@@ -78,7 +78,7 @@ namespace Brave_Pig.UI
             else
                 manaLevel = 3;
         }
-        public void Draw ( SpriteBatch spriteBatch )
+        public void Draw ( SpriteBatch spriteBatch, SpriteFont UIfont )
         {
             int BottomUIWidth = width;
             int BottomUIHeight = height / 4;
@@ -145,8 +145,6 @@ namespace Brave_Pig.UI
             if ( animations.ContainsKey(currentAnimation) )
             {
                 //현재 spriteBatch를 그린다.
-                
-
                 if ( manaLevel >= 1 )
                 {
                     MPbarY = BottomY + ( BottomUIHeight / 180 ) * 118;

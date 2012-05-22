@@ -14,6 +14,8 @@ namespace Brave_Pig.UI
 {
     class MainUI
     {
+        SpriteFont UIfont;
+
         BottomUI bottomUI;
         Status status;
 
@@ -29,16 +31,18 @@ namespace Brave_Pig.UI
         {
             bottomUI.LoadContent(content);
             status.LoadContent(content);
+
+            UIfont = content.Load<SpriteFont>("Font/UI font");
         }
         public void Update(GameTime gameTime, Player player)
         {
             bottomUI.Update(gameTime, player);
-            status.Update(gameTime);
+            status.Update(gameTime, player);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            bottomUI.Draw(spriteBatch);
-            status.Draw(spriteBatch);
+            bottomUI.Draw(spriteBatch, UIfont);
+            status.Draw(spriteBatch, UIfont);
         }
     }
 }

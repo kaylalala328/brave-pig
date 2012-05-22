@@ -172,6 +172,14 @@ namespace Brave_Pig.Character
         {
             return stat.getMaxHeal();
         }
+        public int getAttack()
+        {
+            return stat.damage;
+        }
+        public int getDefense()
+        {
+            return stat.defense;
+        }
 
         /*private void repositionCamera()
         {
