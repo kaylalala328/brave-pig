@@ -123,7 +123,7 @@ namespace Level_Editor
                 );
 
             TileMap.Initialize(
-                Content.Load<Texture2D>(@"Textures\snow"));
+                Content.Load<Texture2D>(@"Textures\TileA5"));
 
             TileMap.spriteFont =
                 Content.Load<SpriteFont>(@"Fonts\Pericles8");

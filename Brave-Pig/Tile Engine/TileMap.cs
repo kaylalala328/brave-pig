@@ -18,8 +18,8 @@ namespace Tile_Engine
     public static class TileMap
     {
         #region Declarations
-        public const int TileWidth = 16;
-        public const int TileHeight = 16;
+        public const int TileWidth = 32;
+        public const int TileHeight = 32;
         public const int MapWidth = 160;
         public const int MapHeight = 12;
         public const int MapLayers = 3;

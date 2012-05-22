@@ -23,8 +23,8 @@ namespace Level_Editor
 
         private void LoadImageList()
         {
-            string filepath = Application.StartupPath +
-                @"\Content\Textures\snow.png";
+            //string filepath = Application.StartupPath +
+            string filepath = @"C:\Users\MINI\Documents\Visual Studio 2010\Projects\Brave-Pig\Brave-Pig\Level Editor\Level EditorContent\Textures\TileA5.png";
             Bitmap tileSheet = new Bitmap(filepath);
             int tilecount = 0;
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
