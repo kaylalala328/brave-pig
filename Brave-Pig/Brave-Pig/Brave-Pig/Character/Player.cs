@@ -93,6 +93,30 @@ namespace Brave_Pig.Character
                 flipped = false;
                 newAnimation = "move";
                 velocity = new Vector2(0, velocity.Y);
+
+                if (keyState.IsKeyDown(Keys.Space))
+                {
+                    int attack_num = num.Next(0, 10);
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    if (attack_num < 5)
+                    {
+                        newAnimation = "attack1";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        newAnimation = "attack2";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                }
             }
 
             if (keyState.IsKeyDown(Keys.Right))
@@ -101,6 +125,30 @@ namespace Brave_Pig.Character
                 flipped = true;
                 newAnimation = "move";
                 velocity = new Vector2(0, velocity.Y);
+
+                if (keyState.IsKeyDown(Keys.Space))
+                {
+                    int attack_num = num.Next(0, 10);
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    if (attack_num < 5)
+                    {
+                        newAnimation = "attack1";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        newAnimation = "attack2";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                }
             }
 
             if (keyState.IsKeyDown(Keys.Z))

@@ -179,13 +179,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Bottom.png">
-      <Name>Bottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="UI\chargeBar.png">
       <Name>chargeBar</Name>
       <Importer>TextureImporter</Importer>
@@ -202,6 +195,13 @@
   <ItemGroup>
     <Compile Include="UI\MPanimation.png">
       <Name>MPanimation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UI\Bottom1.png">
+      <Name>Bottom</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
