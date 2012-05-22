@@ -17,15 +17,41 @@ namespace Level_Editor
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        /// <summary>
+        /// GraphicsDevice
+        /// </summary>
         GraphicsDeviceManager graphics;
+
+        /// <summary>
+        /// Sprite Batch
+        /// </summary>
         SpriteBatch spriteBatch;
+
+        /// <summary>
+        /// Integer Pointer
+        /// </summary>
         IntPtr drawSurface;
+
+        /// <summary>
+        /// Windows Form Variable
+        /// </summary>
         System.Windows.Forms.Form parentForm;
         System.Windows.Forms.PictureBox pictureBox;
         System.Windows.Forms.Control gameForm;
 
+        /// <summary>
+        /// Layer 변수
+        /// </summary>
         public int DrawLayer = 0;
+        
+        /// <summary>
+        /// Layer 타일
+        /// </summary>
         public int DrawTile = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool EditingCode = false;
         public string CurrentCodeValue = "";
         public string HoverCodeValue = "";

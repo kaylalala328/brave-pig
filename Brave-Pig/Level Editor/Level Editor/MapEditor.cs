@@ -19,12 +19,14 @@ namespace Level_Editor
         public MapEditor()
         {
             InitializeComponent();
+            
         }
 
         public void LoadImageList()
         {
             string filepath = game.Content.RootDirectory;
             filepath += @"\Textures\TileA5.png";
+            
             Bitmap tileSheet = new Bitmap(filepath);
             int tilecount = 0;
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
@@ -100,16 +102,27 @@ namespace Level_Editor
 
         private void MapEditor_Load(object sender, EventArgs e)
         {
-            //LoadImageList();    //null
+
+            //LoadImageList();
+
 
             cboCodeValues.Items.Clear();
-            cboCodeValues.Items.Add("Gemstone");
-            cboCodeValues.Items.Add("Enemy");
-            cboCodeValues.Items.Add("Lethal");
+            cboCodeValues.Items.Add("Enemy1");
+            cboCodeValues.Items.Add("Enemy2");
+            cboCodeValues.Items.Add("Enemy3");
+            cboCodeValues.Items.Add("Enemy4");
+            cboCodeValues.Items.Add("Enemy5");
+            cboCodeValues.Items.Add("Enemy6");
+            cboCodeValues.Items.Add("Enemy7");
+
+            cboCodeValues.Items.Add("MiddleBoss1");
+            cboCodeValues.Items.Add("MiddleBoss2");
+            cboCodeValues.Items.Add("Boss");
+
             cboCodeValues.Items.Add("EnemyBlocking");
-            cboCodeValues.Items.Add("Start");
-            cboCodeValues.Items.Add("Clear");
-            cboCodeValues.Items.Add("Custom");
+            
+            cboCodeValues.Items.Add("RightStart");
+            cboCodeValues.Items.Add("LeftStart");
 
             for (int x = 0; x < 100; x++)
             {
@@ -133,33 +146,60 @@ namespace Level_Editor
             txtNewCode.Enabled = false;
             switch (cboCodeValues.Items[cboCodeValues.SelectedIndex].ToString())
             {
-                case "Gemstone":
-                    txtNewCode.Text = "GEM";
+                case "Enemy1":
+                    txtNewCode.Text = "ENEMY1";
                     break;
 
-                case "Enemy":
-                    txtNewCode.Text = "ENEMY";
+                case "Enemy2":
+                    txtNewCode.Text = "ENEMY2";
+                    break;
+
+                case "Enemy3":
+                    txtNewCode.Text = "ENEMY3";
+                    break;
+
+                case "Enemy4":
+                    txtNewCode.Text = "ENEMY4";
+                    break;
+
+                case "Enemy5":
+                    txtNewCode.Text = "ENEMY5";
+                    break;
+
+                case "Enemy6":
+                    txtNewCode.Text = "ENEMY6";
+                    break;
+
+                case "Enemy7":
+                    txtNewCode.Text = "ENEMY7";
+                    break;
+
+                case "MiddleBoss1":
+                    txtNewCode.Text = "MBOSS1";
+                    break;
+                case "MiddleBoss2":
+                    txtNewCode.Text = "MBOSS2";
+                    break;
+                case "Boss":
+                    txtNewCode.Text = "BOSS";
                     break;
 
                 case "Lethal":
-                    txtNewCode.Text = "DEAD";
+                    txtNewCode.Text = "DAMAGED";
                     break;
 
                 case "EnemyBlocking":
                     txtNewCode.Text = "BLOCK";
                     break;
 
-                case "Start":
-                    txtNewCode.Text = "START";
-                    break;
-                case "Clear":
-                    txtNewCode.Text = "";
+                case "RightStart":
+                    txtNewCode.Text = "RSTART";
                     break;
 
-                case "Custom":
-                    txtNewCode.Text = "";
-                    txtNewCode.Enabled = true;
+                case "LeftStart":
+                    txtNewCode.Text = "LSTART";
                     break;
+                
             }
         }
 

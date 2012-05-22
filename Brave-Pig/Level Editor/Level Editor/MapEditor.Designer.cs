@@ -33,6 +33,12 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadTileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tile1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tile2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tile3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tile4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tile5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +84,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadMapToolStripMenuItem,
             this.saveMapToolStripMenuItem,
+            this.loadTileToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -97,6 +104,48 @@
             this.saveMapToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.saveMapToolStripMenuItem.Text = "&Save Map";
             this.saveMapToolStripMenuItem.Click += new System.EventHandler(this.saveMapToolStripMenuItem_Click);
+            // 
+            // loadTileToolStripMenuItem
+            // 
+            this.loadTileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tile1ToolStripMenuItem,
+            this.tile2ToolStripMenuItem,
+            this.tile3ToolStripMenuItem,
+            this.tile4ToolStripMenuItem,
+            this.tile5ToolStripMenuItem});
+            this.loadTileToolStripMenuItem.Name = "loadTileToolStripMenuItem";
+            this.loadTileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadTileToolStripMenuItem.Text = "Load Tile";
+            // 
+            // tile1ToolStripMenuItem
+            // 
+            this.tile1ToolStripMenuItem.Name = "tile1ToolStripMenuItem";
+            this.tile1ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.tile1ToolStripMenuItem.Text = "Tile1";
+            // 
+            // tile2ToolStripMenuItem
+            // 
+            this.tile2ToolStripMenuItem.Name = "tile2ToolStripMenuItem";
+            this.tile2ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.tile2ToolStripMenuItem.Text = "Tile2";
+            // 
+            // tile3ToolStripMenuItem
+            // 
+            this.tile3ToolStripMenuItem.Name = "tile3ToolStripMenuItem";
+            this.tile3ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.tile3ToolStripMenuItem.Text = "Tile3";
+            // 
+            // tile4ToolStripMenuItem
+            // 
+            this.tile4ToolStripMenuItem.Name = "tile4ToolStripMenuItem";
+            this.tile4ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.tile4ToolStripMenuItem.Text = "Tile4";
+            // 
+            // tile5ToolStripMenuItem
+            // 
+            this.tile5ToolStripMenuItem.Name = "tile5ToolStripMenuItem";
+            this.tile5ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.tile5ToolStripMenuItem.Text = "Tile5";
             // 
             // toolStripMenuItem1
             // 
@@ -138,24 +187,37 @@
             // backgroundToolStripMenuItem
             // 
             this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.backgroundToolStripMenuItem.Text = "&Background";
             this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
             // 
             // interactiveToolStripMenuItem
             // 
             this.interactiveToolStripMenuItem.Name = "interactiveToolStripMenuItem";
-            this.interactiveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.interactiveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.interactiveToolStripMenuItem.Text = "&Interactive";
             this.interactiveToolStripMenuItem.Click += new System.EventHandler(this.interactiveToolStripMenuItem_Click);
             // 
             // foregroundToolStripMenuItem
             // 
             this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
-            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.foregroundToolStripMenuItem.Text = "&Foreground";
             this.foregroundToolStripMenuItem.Click += new System.EventHandler(this.foregroundToolStripMenuItem_Click);
             // 
+<<<<<<< .mine
+            // pctSurface
+            // 
+            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctSurface.Location = new System.Drawing.Point(23, 27);
+            this.pctSurface.Name = "pctSurface";
+            this.pctSurface.Size = new System.Drawing.Size(549, 344);
+            this.pctSurface.TabIndex = 1;
+            this.pctSurface.TabStop = false;
+            // 
+=======
             // pctSurface
             // 
             this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -167,6 +229,7 @@
             this.pctSurface.TabIndex = 1;
             this.pctSurface.TabStop = false;
             // 
+>>>>>>> .r40
             // imgListTiles
             // 
             this.imgListTiles.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -177,10 +240,18 @@
             // 
             this.listTiles.HideSelection = false;
             this.listTiles.LargeImageList = this.imgListTiles;
+<<<<<<< .mine
+            this.listTiles.Location = new System.Drawing.Point(12, 393);
+=======
             this.listTiles.Location = new System.Drawing.Point(12, 25);
+>>>>>>> .r40
             this.listTiles.MultiSelect = false;
             this.listTiles.Name = "listTiles";
+<<<<<<< .mine
+            this.listTiles.Size = new System.Drawing.Size(774, 178);
+=======
             this.listTiles.Size = new System.Drawing.Size(201, 291);
+>>>>>>> .r40
             this.listTiles.TabIndex = 2;
             this.listTiles.TileSize = new System.Drawing.Size(48, 48);
             this.listTiles.UseCompatibleStateImageBehavior = false;
@@ -189,20 +260,32 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar1.LargeChange = 48;
+<<<<<<< .mine
+            this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
+=======
             this.vScrollBar1.Location = new System.Drawing.Point(768, 25);
+>>>>>>> .r40
             this.vScrollBar1.Name = "vScrollBar1";
+<<<<<<< .mine
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 344);
+=======
             this.vScrollBar1.Size = new System.Drawing.Size(17, 532);
+>>>>>>> .r40
             this.vScrollBar1.TabIndex = 3;
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
+<<<<<<< .mine
+            this.hScrollBar1.Location = new System.Drawing.Point(20, 373);
+=======
             this.hScrollBar1.Location = new System.Drawing.Point(215, 559);
+>>>>>>> .r40
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(553, 17);
             this.hScrollBar1.TabIndex = 4;
@@ -214,12 +297,16 @@
             this.groupBoxRightClick.Controls.Add(this.txtNewCode);
             this.groupBoxRightClick.Controls.Add(this.radioCode);
             this.groupBoxRightClick.Controls.Add(this.radioPassable);
+<<<<<<< .mine
+            this.groupBoxRightClick.Location = new System.Drawing.Point(584, 27);
+=======
             this.groupBoxRightClick.Location = new System.Drawing.Point(12, 319);
+>>>>>>> .r40
             this.groupBoxRightClick.Name = "groupBoxRightClick";
             this.groupBoxRightClick.Size = new System.Drawing.Size(202, 95);
             this.groupBoxRightClick.TabIndex = 5;
             this.groupBoxRightClick.TabStop = false;
-            this.groupBoxRightClick.Text = "Right Click Mode";
+            this.groupBoxRightClick.Text = "Tile Engine";
             // 
             // cboCodeValues
             // 
@@ -251,9 +338,17 @@
             // radioCode
             // 
             this.radioCode.AutoSize = true;
+<<<<<<< .mine
+            this.radioCode.Location = new System.Drawing.Point(7, 35);
+=======
             this.radioCode.Location = new System.Drawing.Point(7, 32);
+>>>>>>> .r40
             this.radioCode.Name = "radioCode";
+<<<<<<< .mine
+            this.radioCode.Size = new System.Drawing.Size(53, 16);
+=======
             this.radioCode.Size = new System.Drawing.Size(62, 15);
+>>>>>>> .r40
             this.radioCode.TabIndex = 1;
             this.radioCode.TabStop = true;
             this.radioCode.Text = "Code";
@@ -262,6 +357,18 @@
             // 
             // radioPassable
             // 
+<<<<<<< .mine
+            this.radioPassable.AutoSize = true;
+            this.radioPassable.Checked = true;
+            this.radioPassable.Location = new System.Drawing.Point(7, 16);
+            this.radioPassable.Name = "radioPassable";
+            this.radioPassable.Size = new System.Drawing.Size(119, 16);
+            this.radioPassable.TabIndex = 0;
+            this.radioPassable.TabStop = true;
+            this.radioPassable.Text = "Toggle Passable";
+            this.radioPassable.UseVisualStyleBackColor = true;
+            this.radioPassable.CheckedChanged += new System.EventHandler(this.radioPassable_CheckedChanged);
+=======
             this.radioPassable.AutoSize = true;
             this.radioPassable.Checked = true;
             this.radioPassable.Location = new System.Drawing.Point(7, 16);
@@ -272,11 +379,16 @@
             this.radioPassable.Text = "Toggle Passable";
             this.radioPassable.UseVisualStyleBackColor = true;
             this.radioPassable.CheckedChanged += new System.EventHandler(this.radioPassable_CheckedChanged);
+>>>>>>> .r40
             // 
             // lblMapNumber
             // 
             this.lblMapNumber.AutoSize = true;
+<<<<<<< .mine
+            this.lblMapNumber.Location = new System.Drawing.Point(580, 219);
+=======
             this.lblMapNumber.Location = new System.Drawing.Point(14, 417);
+>>>>>>> .r40
             this.lblMapNumber.Name = "lblMapNumber";
             this.lblMapNumber.Size = new System.Drawing.Size(83, 12);
             this.lblMapNumber.TabIndex = 6;
@@ -286,7 +398,11 @@
             // 
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
+<<<<<<< .mine
+            this.cboMapNumber.Location = new System.Drawing.Point(669, 211);
+=======
             this.cboMapNumber.Location = new System.Drawing.Point(94, 417);
+>>>>>>> .r40
             this.cboMapNumber.Name = "cboMapNumber";
             this.cboMapNumber.Size = new System.Drawing.Size(109, 20);
             this.cboMapNumber.TabIndex = 7;
@@ -354,5 +470,11 @@
         private System.Windows.Forms.Label lblMapNumber;
         private System.Windows.Forms.ComboBox cboMapNumber;
         private System.Windows.Forms.Timer timerGameUpdate;
+        private System.Windows.Forms.ToolStripMenuItem loadTileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tile1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tile2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tile3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tile4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tile5ToolStripMenuItem;
     }
 }
