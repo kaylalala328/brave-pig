@@ -25,8 +25,6 @@ namespace Brave_Pig.UI
         int manaLevel;
         int maxHeal;
 
-        
-
         WeaponUI weapon;
 
         protected Dictionary<string, AnimationStrip> animations =

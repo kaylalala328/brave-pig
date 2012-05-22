@@ -122,6 +122,7 @@
     <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="UI\BottomUI.cs" />
     <Compile Include="UI\MainUI.cs" />
+    <Compile Include="UI\StatusUI.cs" />
     <Compile Include="UI\WeaponUI.cs" />
   </ItemGroup>
   <ItemGroup>

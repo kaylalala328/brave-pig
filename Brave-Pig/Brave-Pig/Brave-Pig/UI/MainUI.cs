@@ -17,14 +17,14 @@ namespace Brave_Pig.UI
         SpriteFont UIfont;
 
         BottomUI bottomUI;
-        Status status;
+        StatusUI status;
 
         public void Initialize(GraphicsDevice graphics)
         {
             bottomUI = new BottomUI();
             bottomUI.Initialize(graphics);
 
-            status = new Status();
+            status = new StatusUI();
             status.Initialize(graphics);
         }
         public void LoadContent(ContentManager content)
