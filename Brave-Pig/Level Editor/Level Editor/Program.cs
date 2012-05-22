@@ -16,6 +16,7 @@ namespace Level_Editor
                 form.pctSurface.Handle,
                 form,
                 form.pctSurface);
+            form.LoadImageList();
             form.game.Run();
         }
     }
