@@ -52,7 +52,7 @@ namespace Brave_Pig.UI
 
             weapon.LoadContent(content);
 
-            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("UI/MPanimation"), 44, "normal"));
+            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("UI/MP1"), 44, "normal"));
             animations["normal"].LoopAnimation = true;
             animations["normal"].FrameLength = 0.08f;
 

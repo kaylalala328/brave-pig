@@ -193,15 +193,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\MPanimation.png">
-      <Name>MPanimation</Name>
+    <Compile Include="UI\Bottom1.png">
+      <Name>Bottom</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Bottom1.png">
-      <Name>Bottom</Name>
+    <Compile Include="UI\MP1.png">
+      <Name>MP1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
