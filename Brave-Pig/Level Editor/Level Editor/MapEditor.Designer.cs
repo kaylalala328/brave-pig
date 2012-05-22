@@ -205,7 +205,7 @@
             this.foregroundToolStripMenuItem.Text = "&Foreground";
             this.foregroundToolStripMenuItem.Click += new System.EventHandler(this.foregroundToolStripMenuItem_Click);
             // 
-<<<<<<< .mine
+
             // pctSurface
             // 
             this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -216,20 +216,7 @@
             this.pctSurface.Size = new System.Drawing.Size(549, 344);
             this.pctSurface.TabIndex = 1;
             this.pctSurface.TabStop = false;
-            // 
-=======
-            // pctSurface
-            // 
-            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctSurface.Location = new System.Drawing.Point(215, 25);
-            this.pctSurface.Name = "pctSurface";
-            this.pctSurface.Size = new System.Drawing.Size(549, 532);
-            this.pctSurface.TabIndex = 1;
-            this.pctSurface.TabStop = false;
-            // 
->>>>>>> .r40
+
             // imgListTiles
             // 
             this.imgListTiles.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -240,18 +227,13 @@
             // 
             this.listTiles.HideSelection = false;
             this.listTiles.LargeImageList = this.imgListTiles;
-<<<<<<< .mine
             this.listTiles.Location = new System.Drawing.Point(12, 393);
-=======
-            this.listTiles.Location = new System.Drawing.Point(12, 25);
->>>>>>> .r40
+
             this.listTiles.MultiSelect = false;
             this.listTiles.Name = "listTiles";
-<<<<<<< .mine
+
             this.listTiles.Size = new System.Drawing.Size(774, 178);
-=======
-            this.listTiles.Size = new System.Drawing.Size(201, 291);
->>>>>>> .r40
+
             this.listTiles.TabIndex = 2;
             this.listTiles.TileSize = new System.Drawing.Size(48, 48);
             this.listTiles.UseCompatibleStateImageBehavior = false;
@@ -263,17 +245,13 @@
             this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar1.LargeChange = 48;
-<<<<<<< .mine
+
             this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
-=======
-            this.vScrollBar1.Location = new System.Drawing.Point(768, 25);
->>>>>>> .r40
+
             this.vScrollBar1.Name = "vScrollBar1";
-<<<<<<< .mine
+
             this.vScrollBar1.Size = new System.Drawing.Size(17, 344);
-=======
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 532);
->>>>>>> .r40
+
             this.vScrollBar1.TabIndex = 3;
             // 
             // hScrollBar1
@@ -281,11 +259,9 @@
             this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
-<<<<<<< .mine
+
             this.hScrollBar1.Location = new System.Drawing.Point(20, 373);
-=======
-            this.hScrollBar1.Location = new System.Drawing.Point(215, 559);
->>>>>>> .r40
+
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(553, 17);
             this.hScrollBar1.TabIndex = 4;
@@ -297,11 +273,9 @@
             this.groupBoxRightClick.Controls.Add(this.txtNewCode);
             this.groupBoxRightClick.Controls.Add(this.radioCode);
             this.groupBoxRightClick.Controls.Add(this.radioPassable);
-<<<<<<< .mine
+
             this.groupBoxRightClick.Location = new System.Drawing.Point(584, 27);
-=======
-            this.groupBoxRightClick.Location = new System.Drawing.Point(12, 319);
->>>>>>> .r40
+
             this.groupBoxRightClick.Name = "groupBoxRightClick";
             this.groupBoxRightClick.Size = new System.Drawing.Size(202, 95);
             this.groupBoxRightClick.TabIndex = 5;
@@ -338,17 +312,14 @@
             // radioCode
             // 
             this.radioCode.AutoSize = true;
-<<<<<<< .mine
+
             this.radioCode.Location = new System.Drawing.Point(7, 35);
-=======
-            this.radioCode.Location = new System.Drawing.Point(7, 32);
->>>>>>> .r40
+
+
             this.radioCode.Name = "radioCode";
-<<<<<<< .mine
+
             this.radioCode.Size = new System.Drawing.Size(53, 16);
-=======
-            this.radioCode.Size = new System.Drawing.Size(62, 15);
->>>>>>> .r40
+
             this.radioCode.TabIndex = 1;
             this.radioCode.TabStop = true;
             this.radioCode.Text = "Code";
@@ -357,7 +328,7 @@
             // 
             // radioPassable
             // 
-<<<<<<< .mine
+
             this.radioPassable.AutoSize = true;
             this.radioPassable.Checked = true;
             this.radioPassable.Location = new System.Drawing.Point(7, 16);
@@ -368,27 +339,14 @@
             this.radioPassable.Text = "Toggle Passable";
             this.radioPassable.UseVisualStyleBackColor = true;
             this.radioPassable.CheckedChanged += new System.EventHandler(this.radioPassable_CheckedChanged);
-=======
-            this.radioPassable.AutoSize = true;
-            this.radioPassable.Checked = true;
-            this.radioPassable.Location = new System.Drawing.Point(7, 16);
-            this.radioPassable.Name = "radioPassable";
-            this.radioPassable.Size = new System.Drawing.Size(139, 15);
-            this.radioPassable.TabIndex = 0;
-            this.radioPassable.TabStop = true;
-            this.radioPassable.Text = "Toggle Passable";
-            this.radioPassable.UseVisualStyleBackColor = true;
-            this.radioPassable.CheckedChanged += new System.EventHandler(this.radioPassable_CheckedChanged);
->>>>>>> .r40
+
             // 
             // lblMapNumber
             // 
             this.lblMapNumber.AutoSize = true;
-<<<<<<< .mine
+
             this.lblMapNumber.Location = new System.Drawing.Point(580, 219);
-=======
-            this.lblMapNumber.Location = new System.Drawing.Point(14, 417);
->>>>>>> .r40
+
             this.lblMapNumber.Name = "lblMapNumber";
             this.lblMapNumber.Size = new System.Drawing.Size(83, 12);
             this.lblMapNumber.TabIndex = 6;
@@ -398,11 +356,9 @@
             // 
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
-<<<<<<< .mine
+
             this.cboMapNumber.Location = new System.Drawing.Point(669, 211);
-=======
-            this.cboMapNumber.Location = new System.Drawing.Point(94, 417);
->>>>>>> .r40
+
             this.cboMapNumber.Name = "cboMapNumber";
             this.cboMapNumber.Size = new System.Drawing.Size(109, 20);
             this.cboMapNumber.TabIndex = 7;
