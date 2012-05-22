@@ -25,24 +25,24 @@ namespace Brave_Pig.UI
             bottomUI.Initialize(graphics);
 
             status = new StatusUI();
-            status.Initialize(graphics);
+           // status.Initialize(graphics);
         }
         public void LoadContent(ContentManager content)
         {
             bottomUI.LoadContent(content);
-            status.LoadContent(content);
+           // status.LoadContent(content);
 
             UIfont = content.Load<SpriteFont>("Font/UI font");
         }
         public void Update(GameTime gameTime, Player player)
         {
             bottomUI.Update(gameTime, player);
-            status.Update(gameTime, player);
+         //   status.Update(gameTime, player);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             bottomUI.Draw(spriteBatch, UIfont);
-            status.Draw(spriteBatch, UIfont);
+        //    status.Draw(spriteBatch, UIfont);
         }
     }
 }

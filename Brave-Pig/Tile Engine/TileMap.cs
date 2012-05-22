@@ -20,8 +20,8 @@ namespace Tile_Engine
         #region Declarations
         public const int TileWidth = 32;
         public const int TileHeight = 32;
-        public const int MapWidth = 32;
-        public const int MapHeight = 32;
+        public const int MapWidth = 160;
+        public const int MapHeight = 16;
         public const int MapLayers = 3;
         private const int skyTile = 2;
 

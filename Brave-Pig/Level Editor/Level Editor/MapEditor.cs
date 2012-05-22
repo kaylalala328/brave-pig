@@ -19,7 +19,6 @@ namespace Level_Editor
         public MapEditor()
         {
             InitializeComponent();
-            
         }
 
         public void LoadImageList()
@@ -134,6 +133,7 @@ namespace Level_Editor
             TileMap.EditorMode = true;
 
             backgroundToolStripMenuItem.Checked = true;
+            game.DrawLayer = 0;
         }
 
         private void MapEditor_Resize(object sender, EventArgs e)
