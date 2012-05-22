@@ -16,7 +16,9 @@ namespace Brave_Pig.Character
     {
         //케릭터에 사용될 status
         public int healPoint;
+        public int maxHeal = 50;
         public float manaPoint;
+        public float maxMana = 3;
         public int damage;
         public int defense;
         public int useSword;
@@ -50,9 +52,14 @@ namespace Brave_Pig.Character
         {
             get { return useSword; }
         }
+
+        public int getMaxHeal()
+        {
+            return maxHeal;
+        }
         public Status()
         {
-            this.healPoint = 0;
+            this.healPoint = 20;
             this.manaPoint = 0;
             this.damage = 0;
             this.defense = 0;

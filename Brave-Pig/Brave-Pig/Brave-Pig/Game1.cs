@@ -127,7 +127,7 @@ namespace Brave_Pig
             {
                 currentKeyState = Keyboard.GetState();
                 player.Update(gameTime);
-                mainUI.Update(gameTime);
+                mainUI.Update(gameTime, player);
                 previousKeyState = currentKeyState;
             }
 

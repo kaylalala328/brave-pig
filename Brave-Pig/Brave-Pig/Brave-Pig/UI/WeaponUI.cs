@@ -54,9 +54,9 @@ namespace Brave_Pig.UI
                 {
                     rotate += 0.1f;
                     spriteBatch.Draw(weapon,
-                    new Rectangle(width / 8 * 7, height / 7 * 6, 120, 104),
+                    new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
                     null,
-                    Color.White, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
+                    Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
                 }
                 else
                 {
@@ -72,9 +72,9 @@ namespace Brave_Pig.UI
             else
             {
                 spriteBatch.Draw(weapon,
-                    new Rectangle(width / 8 * 7, height / 7 * 6, 120, 104),
+                    new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
                     null,
-                    Color.White, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
+                    Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
                 saveRotate = rotate;
             }
         }

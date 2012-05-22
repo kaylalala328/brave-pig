@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Brave_Pig.Character;
 
 namespace Brave_Pig.UI
 {
@@ -29,9 +30,9 @@ namespace Brave_Pig.UI
             bottomUI.LoadContent(content);
             status.LoadContent(content);
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Player player)
         {
-            bottomUI.Update(gameTime);
+            bottomUI.Update(gameTime, player);
             status.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)

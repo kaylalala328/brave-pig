@@ -160,6 +160,19 @@ namespace Brave_Pig.Character
             velocity.Y = -500;
         }
 
+        public float getMana()
+        {
+            return stat.manaPoint;
+        }
+        public float getHeal()
+        {
+            return stat.healPoint;
+        }
+        public int getMaxHeal()
+        {
+            return stat.getMaxHeal();
+        }
+
         /*private void repositionCamera()
         {
             int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
