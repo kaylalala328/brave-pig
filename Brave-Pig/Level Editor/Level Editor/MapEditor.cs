@@ -124,7 +124,6 @@ namespace Level_Editor
             cboMapNumber.SelectedIndex = 0;
 
             TileMap.EditorMode = true;
-            game.DrawLayer = 0;
         }
 
         private void MapEditor_Resize(object sender, EventArgs e)
