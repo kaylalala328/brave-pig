@@ -152,7 +152,7 @@ namespace Level_Editor
                 );
 
             TileMap.Initialize(
-                Content.Load<Texture2D>(@"Textures\TileA5"));
+                Content.Load<Texture2D>(@"Textures\TileA"));
 
             TileMap.spriteFont =
                 Content.Load<SpriteFont>(@"Fonts\Pericles8");
@@ -198,8 +198,7 @@ namespace Level_Editor
                         TileMap.SetTileAtCell(
                           TileMap.GetCellByPixelX((int)mouseLoc.X),
                           TileMap.GetCellByPixelY((int)mouseLoc.Y),
-                          DrawLayer,
-                          DrawTile);
+                          4);
                     }
                     
                     if ((ms.RightButton == ButtonState.Pressed) &&

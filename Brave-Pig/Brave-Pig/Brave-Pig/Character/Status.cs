@@ -73,6 +73,5 @@ namespace Brave_Pig.Character
             this.defense = defense;
             this.useSword = use;
         }
-
     }
 }

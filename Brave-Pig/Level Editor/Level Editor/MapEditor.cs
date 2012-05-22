@@ -18,16 +18,17 @@ namespace Level_Editor
 
         public MapEditor()
         {
-            InitializeComponent();
-        }
 
+            InitializeComponent();             
+        }
+        
         public void LoadImageList()
         {
             string filepath = game.Content.RootDirectory;
-            filepath += @"\Textures\TileA5.png";
+            filepath += @"\Textures\TileA.png";
             
             Bitmap tileSheet = new Bitmap(filepath);
-            int tilecount = 0;
+            //int tilecount = 0;
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
             {
                 for (int x = 0; x < tileSheet.Width / TileMap.TileWidth; x++)
@@ -39,7 +40,7 @@ namespace Level_Editor
                             TileMap.TileWidth,
                             TileMap.TileHeight),
                             System.Drawing.Imaging.PixelFormat.DontCare);
-
+                    /*
                     imgListTiles.Images.Add(newBitmap);
                     string itemName = "";
                     if (tilecount == 0)
@@ -52,33 +53,27 @@ namespace Level_Editor
                     }
                     listTiles.Items.Add(new
                         ListViewItem(itemName, tilecount++));
+                    */
                 }
             }
-
             FixScrollBarScales();
         }
+        
 
         private void FixScrollBarScales()
         {
             Camera.ViewPortWidth = pctSurface.Width;
             Camera.ViewPortHeight = pctSurface.Height;
-
             Camera.Move(Vector2.Zero);
 
             vScrollBar1.Minimum = 0;
-            vScrollBar1.Maximum =
-                Camera.WorldRectangle.Height -
-                Camera.ViewPortHeight;
+            vScrollBar1.Maximum = Camera.WorldRectangle.Height - Camera.ViewPortHeight;
 
             hScrollBar1.Minimum = 0;
-            hScrollBar1.Maximum =
-                Camera.WorldRectangle.Width -
-                Camera.ViewPortWidth;
+            hScrollBar1.Maximum = Camera.WorldRectangle.Width - Camera.ViewPortWidth;
         }
 
-        private void loadMapToolStripMenuItem_Click(
-            object sender,
-            EventArgs e)
+        private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -101,10 +96,6 @@ namespace Level_Editor
 
         private void MapEditor_Load(object sender, EventArgs e)
         {
-
-            //LoadImageList();
-
-
             cboCodeValues.Items.Clear();
             cboCodeValues.Items.Add("Enemy1");
             cboCodeValues.Items.Add("Enemy2");
@@ -123,6 +114,8 @@ namespace Level_Editor
             cboCodeValues.Items.Add("RightStart");
             cboCodeValues.Items.Add("LeftStart");
 
+            cboCodeValues.Items.Add("Port");
+
             for (int x = 0; x < 100; x++)
             {
                 cboMapNumber.Items.Add(x.ToString().PadLeft(3, '0'));
@@ -131,8 +124,6 @@ namespace Level_Editor
             cboMapNumber.SelectedIndex = 0;
 
             TileMap.EditorMode = true;
-
-            backgroundToolStripMenuItem.Checked = true;
             game.DrawLayer = 0;
         }
 
@@ -199,10 +190,13 @@ namespace Level_Editor
                 case "LeftStart":
                     txtNewCode.Text = "LSTART";
                     break;
-                
+
+                case "Port":
+                    txtNewCode.Text = "PORT";
+                    break;
             }
         }
-
+        /*
         private void listTiles_SelectedIndexChanged(
             object sender, EventArgs e)
         {
@@ -212,7 +206,7 @@ namespace Level_Editor
                     listTiles.SelectedIndices[0];
             }
         }
-
+        */
         private void radioPassable_CheckedChanged(object sender, EventArgs e)
         {
             if (radioPassable.Checked)
@@ -240,33 +234,6 @@ namespace Level_Editor
         private void txtNewCode_TextChanged(object sender, EventArgs e)
         {
             game.CurrentCodeValue = txtNewCode.Text;
-        }
-
-        private void backgroundToolStripMenuItem_Click(
-            object sender, EventArgs e)
-        {
-            game.DrawLayer = 0;
-            backgroundToolStripMenuItem.Checked = true;
-            interactiveToolStripMenuItem.Checked = false;
-            foregroundToolStripMenuItem.Checked = false;
-        }
-
-        private void interactiveToolStripMenuItem_Click(
-            object sender, EventArgs e)
-        {
-            game.DrawLayer = 1;
-            backgroundToolStripMenuItem.Checked = false;
-            interactiveToolStripMenuItem.Checked = true;
-            foregroundToolStripMenuItem.Checked = false;
-        }
-
-        private void foregroundToolStripMenuItem_Click(
-            object sender, EventArgs e)
-        {
-            game.DrawLayer = 2;
-            backgroundToolStripMenuItem.Checked = false;
-            interactiveToolStripMenuItem.Checked = false;
-            foregroundToolStripMenuItem.Checked = true;
         }
 
         private void timerGameUpdate_Tick(object sender, EventArgs e)
@@ -299,9 +266,7 @@ namespace Level_Editor
             TileMap.ClearMap();
         }
 
-        private void MapEditor_FormClosed(
-            object sender,
-            FormClosedEventArgs e)
+        private void MapEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
             game.Exit();
             Application.Exit();

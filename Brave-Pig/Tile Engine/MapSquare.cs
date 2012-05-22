@@ -11,22 +11,19 @@ namespace Tile_Engine
     public class MapSquare
     {
         #region Declarations
-        public int[] LayerTiles = new int[3];
+        public int LayerTiles;
         public string CodeValue = "";
         public bool Passable = true;
         #endregion
 
         #region Constructor
         public MapSquare(
-            int background,
             int interactive,
             int foreground,
             string code,
             bool passable)
         {
-            LayerTiles[0] = background;
-            LayerTiles[1] = interactive;
-            LayerTiles[2] = foreground;
+            LayerTiles = foreground;
             CodeValue = code;
             Passable = passable;
         }

@@ -18,12 +18,21 @@ namespace Tile_Engine
     public static class TileMap
     {
         #region Declarations
+        /// <summary>
+        /// 타일 하나의 width * height
+        /// </summary>
         public const int TileWidth = 32;
         public const int TileHeight = 32;
+
+        /// <summary>
+        /// width * height 개수
+        /// </summary>
         public const int MapWidth = 160;
-        public const int MapHeight = 16;
-        public const int MapLayers = 3;
-        private const int skyTile = 2;
+        public const int MapHeight = 40;
+        /// <summary>
+        /// Layer 개수
+        /// </summary>
+        //private const int skyTile = 12;
 
         static private MapSquare[,] mapCells = new MapSquare[MapWidth, MapHeight];
 
@@ -42,10 +51,7 @@ namespace Tile_Engine
             {
                 for (int y = 0; y < MapHeight; y++)
                 {
-                    for (int z = 0; z < MapLayers; z++)
-                    {
-                        mapCells[x, y] = new MapSquare(skyTile, 0, 0, "", true);
-                    }
+                    mapCells[x, y] = new MapSquare(0, 0, "", true);
                 }
             }
         }
@@ -192,13 +198,12 @@ namespace Tile_Engine
         static public void SetTileAtCell(
             int tileX,
             int tileY,
-            int layer,
             int tileIndex)
         {
             if ((tileX >= 0) && (tileX < MapWidth) &&
                 (tileY >= 0) && (tileY < MapHeight))
             {
-                mapCells[tileX, tileY].LayerTiles[layer] = tileIndex;
+                mapCells[tileX, tileY].LayerTiles = tileIndex;
             }
         }
 
@@ -244,10 +249,7 @@ namespace Tile_Engine
         {
             for (int x = 0; x < MapWidth; x++)
                 for (int y = 0; y < MapHeight; y++)
-                    for (int z = 0; z < MapLayers; z++)
-                    {
-                        mapCells[x, y] = new MapSquare(2, 0, 0, "", true);
-                    }
+                    mapCells[x, y] = new MapSquare(0, 0, "", true);
         }
         #endregion
 
@@ -260,31 +262,31 @@ namespace Tile_Engine
             int startY = GetCellByPixelY((int)Camera.Position.Y);
             int endY = GetCellByPixelY((int)Camera.Position.Y + Camera.ViewPortHeight);
 
+            
             for (int x = startX; x <= endX; x++)
                 for (int y = startY; y <= endY; y++)
                 {
-                    for (int z = 0; z < MapLayers; z++)
+                    if ((x >= 0) && (y >= 0) && (x < MapWidth) && (y < MapHeight))
                     {
-                        if ((x >= 0) && (y >= 0) && (x < MapWidth) && (y < MapHeight))
-                        {
-                            //배경을 하얀색으로
-                            spriteBatch.Draw(
-                              tileSheet,
-                              CellScreenRectangle(x, y),
-                              TileSourceRectangle(mapCells[x, y].LayerTiles[z]),
-                              Color.White,
-                              0.0f,
-                              Vector2.Zero,
-                              SpriteEffects.None,
-                              1f - ((float)z * 0.1f));
-                        }
+                        //배경을 하얀색으로
+                        spriteBatch.Draw(
+                          tileSheet,
+                          CellScreenRectangle(x, y),
+                          TileSourceRectangle(mapCells[x, y].LayerTiles),
+                          Color.Aquamarine,
+                          0.0f,
+                          Vector2.Zero,
+                          SpriteEffects.None,
+                          1f - ((float)1 * 0.1f));
                     }
+
 
                     if (EditorMode)
                     {
                         DrawEditModeItems(spriteBatch, x, y);
                     }
                 }
+            
         }
 
         public static void DrawEditModeItems(SpriteBatch spriteBatch, int x, int y)
@@ -322,6 +324,8 @@ namespace Tile_Engine
             }
         }
         #endregion
-
     }
 }
+
+
+

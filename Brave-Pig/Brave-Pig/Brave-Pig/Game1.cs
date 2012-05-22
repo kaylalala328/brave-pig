@@ -12,7 +12,7 @@ using Brave_Pig.Sound;
 using Brave_Pig.UI;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Character;
-using Brave_Pig.UI;
+//using Brave_Pig.UI;
 
 namespace Brave_Pig
 {

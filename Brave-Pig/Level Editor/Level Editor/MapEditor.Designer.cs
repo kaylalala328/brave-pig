@@ -43,13 +43,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.layerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.interactiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.foregroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pctSurface = new System.Windows.Forms.PictureBox();
             this.imgListTiles = new System.Windows.Forms.ImageList(this.components);
-            this.listTiles = new System.Windows.Forms.ListView();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.groupBoxRightClick = new System.Windows.Forms.GroupBox();
@@ -70,12 +65,11 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.layerToolStripMenuItem});
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(798, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,7 +108,7 @@
             this.tile4ToolStripMenuItem,
             this.tile5ToolStripMenuItem});
             this.loadTileToolStripMenuItem.Name = "loadTileToolStripMenuItem";
-            this.loadTileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadTileToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.loadTileToolStripMenuItem.Text = "Load Tile";
             // 
             // tile1ToolStripMenuItem
@@ -174,45 +168,14 @@
             this.clearMapToolStripMenuItem.Text = "&Clear Map";
             this.clearMapToolStripMenuItem.Click += new System.EventHandler(this.clearMapToolStripMenuItem_Click);
             // 
-            // layerToolStripMenuItem
-            // 
-            this.layerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backgroundToolStripMenuItem,
-            this.interactiveToolStripMenuItem,
-            this.foregroundToolStripMenuItem});
-            this.layerToolStripMenuItem.Name = "layerToolStripMenuItem";
-            this.layerToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.layerToolStripMenuItem.Text = "&Layer";
-            // 
-            // backgroundToolStripMenuItem
-            // 
-            this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.backgroundToolStripMenuItem.Text = "&Background";
-            this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
-            // 
-            // interactiveToolStripMenuItem
-            // 
-            this.interactiveToolStripMenuItem.Name = "interactiveToolStripMenuItem";
-            this.interactiveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.interactiveToolStripMenuItem.Text = "&Interactive";
-            this.interactiveToolStripMenuItem.Click += new System.EventHandler(this.interactiveToolStripMenuItem_Click);
-            // 
-            // foregroundToolStripMenuItem
-            // 
-            this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
-            this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.foregroundToolStripMenuItem.Text = "&Foreground";
-            this.foregroundToolStripMenuItem.Click += new System.EventHandler(this.foregroundToolStripMenuItem_Click);
-            // 
             // pctSurface
             // 
-            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSurface.Location = new System.Drawing.Point(23, 27);
             this.pctSurface.Name = "pctSurface";
-            this.pctSurface.Size = new System.Drawing.Size(549, 344);
+            this.pctSurface.Size = new System.Drawing.Size(802, 532);
             this.pctSurface.TabIndex = 1;
             this.pctSurface.TabStop = false;
             // 
@@ -222,40 +185,24 @@
             this.imgListTiles.ImageSize = new System.Drawing.Size(48, 48);
             this.imgListTiles.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // listTiles
-            // 
-            this.listTiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listTiles.HideSelection = false;
-            this.listTiles.LargeImageList = this.imgListTiles;
-            this.listTiles.Location = new System.Drawing.Point(12, 393);
-            this.listTiles.MultiSelect = false;
-            this.listTiles.Name = "listTiles";
-            this.listTiles.Size = new System.Drawing.Size(774, 178);
-            this.listTiles.TabIndex = 2;
-            this.listTiles.TileSize = new System.Drawing.Size(48, 48);
-            this.listTiles.UseCompatibleStateImageBehavior = false;
-            this.listTiles.View = System.Windows.Forms.View.Tile;
-            this.listTiles.SelectedIndexChanged += new System.EventHandler(this.listTiles_SelectedIndexChanged);
-            // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar1.LargeChange = 48;
             this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 344);
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 532);
             this.vScrollBar1.TabIndex = 3;
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
-            this.hScrollBar1.Location = new System.Drawing.Point(20, 373);
+            this.hScrollBar1.Location = new System.Drawing.Point(23, 562);
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(553, 17);
+            this.hScrollBar1.Size = new System.Drawing.Size(806, 17);
             this.hScrollBar1.TabIndex = 4;
             // 
             // groupBoxRightClick
@@ -267,7 +214,7 @@
             this.groupBoxRightClick.Controls.Add(this.txtNewCode);
             this.groupBoxRightClick.Controls.Add(this.radioCode);
             this.groupBoxRightClick.Controls.Add(this.radioPassable);
-            this.groupBoxRightClick.Location = new System.Drawing.Point(584, 27);
+            this.groupBoxRightClick.Location = new System.Drawing.Point(837, 27);
             this.groupBoxRightClick.Name = "groupBoxRightClick";
             this.groupBoxRightClick.Size = new System.Drawing.Size(202, 95);
             this.groupBoxRightClick.TabIndex = 5;
@@ -331,7 +278,7 @@
             this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMapNumber.AutoSize = true;
-            this.lblMapNumber.Location = new System.Drawing.Point(580, 219);
+            this.lblMapNumber.Location = new System.Drawing.Point(835, 135);
             this.lblMapNumber.Name = "lblMapNumber";
             this.lblMapNumber.Size = new System.Drawing.Size(83, 12);
             this.lblMapNumber.TabIndex = 6;
@@ -343,7 +290,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
-            this.cboMapNumber.Location = new System.Drawing.Point(669, 211);
+            this.cboMapNumber.Location = new System.Drawing.Point(919, 130);
             this.cboMapNumber.Name = "cboMapNumber";
             this.cboMapNumber.Size = new System.Drawing.Size(109, 20);
             this.cboMapNumber.TabIndex = 7;
@@ -358,13 +305,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 583);
+            this.ClientSize = new System.Drawing.Size(1051, 583);
             this.Controls.Add(this.cboMapNumber);
             this.Controls.Add(this.lblMapNumber);
             this.Controls.Add(this.groupBoxRightClick);
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.vScrollBar1);
-            this.Controls.Add(this.listTiles);
             this.Controls.Add(this.pctSurface);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -394,12 +340,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearMapToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem layerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backgroundToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem interactiveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem foregroundToolStripMenuItem;
         private System.Windows.Forms.ImageList imgListTiles;
-        private System.Windows.Forms.ListView listTiles;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.GroupBox groupBoxRightClick;
