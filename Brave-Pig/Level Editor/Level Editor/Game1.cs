@@ -63,14 +63,18 @@ namespace Level_Editor
 
         }
 
-        void graphics_PreparingDeviceSettings(object sender,
-            PreparingDeviceSettingsEventArgs e)
+        void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
 
             e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = drawSurface;
 
         }
 
+        /// <summary>
+        /// XNA의 기본 윈도우를 강제로 숨긴다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gameForm_VisibleChanged(object sender, EventArgs e)
         {
             if (gameForm.Visible == true)
@@ -79,8 +83,7 @@ namespace Level_Editor
 
         void pictureBox_SizeChanged(object sender, EventArgs e)
         {
-            if (parentForm.WindowState !=
-                System.Windows.Forms.FormWindowState.Minimized)
+            if (parentForm.WindowState != System.Windows.Forms.FormWindowState.Minimized)
             {
                 graphics.PreferredBackBufferWidth = pictureBox.Width;
                 graphics.PreferredBackBufferHeight = pictureBox.Height;
@@ -153,6 +156,7 @@ namespace Level_Editor
 
             MouseState ms = Mouse.GetState();
 
+            //
             if ((ms.X > 0) && (ms.Y > 0) &&
                 (ms.X < Camera.ViewPortWidth) &&
                 (ms.Y < Camera.ViewPortHeight))
@@ -171,7 +175,7 @@ namespace Level_Editor
                           DrawLayer,
                           DrawTile);
                     }
-
+                    
                     if ((ms.RightButton == ButtonState.Pressed) &&
                         (lastMouseState.RightButton == ButtonState.Released))
                     {

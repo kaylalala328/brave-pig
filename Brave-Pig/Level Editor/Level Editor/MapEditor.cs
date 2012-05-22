@@ -23,15 +23,8 @@ namespace Level_Editor
 
         public void LoadImageList()
         {
-            //string filepath = Application.StartupPath +
             string filepath = game.Content.RootDirectory;
             filepath += @"\Textures\TileA5.png";
-                //Application.StartupPath;
-            //char[] filepath = new char[100];
-            //path.CopyTo(0, filepath, 0, path.LastIndexOf("Level EditorContent"));
-            //path = filepath.ToString() + @"\Textures\TileA5.png";
-            //string path = path.CopyTo(0, filepath, 0, filepath.LastIndexOf("Level EditorContent"));
-            //string filepath = @"C:\Users\MINI\Documents\Visual Studio 2010\Projects\Brave-Pig\Brave-Pig\Level Editor\Level EditorContent\Textures\TileA5.png";
             Bitmap tileSheet = new Bitmap(filepath);
             int tilecount = 0;
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
@@ -107,7 +100,7 @@ namespace Level_Editor
 
         private void MapEditor_Load(object sender, EventArgs e)
         {
-            LoadImageList();
+            //LoadImageList();    //null
 
             cboCodeValues.Items.Clear();
             cboCodeValues.Items.Add("Gemstone");
@@ -273,6 +266,5 @@ namespace Level_Editor
             game.Exit();
             Application.Exit();
         }
-
     }
 }

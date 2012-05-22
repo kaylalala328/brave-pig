@@ -20,13 +20,12 @@ namespace Tile_Engine
         #region Declarations
         public const int TileWidth = 32;
         public const int TileHeight = 32;
-        public const int MapWidth = 160;
-        public const int MapHeight = 12;
+        public const int MapWidth = 32;
+        public const int MapHeight = 32;
         public const int MapLayers = 3;
         private const int skyTile = 2;
 
-        static private MapSquare[,] mapCells =
-            new MapSquare[MapWidth, MapHeight];
+        static private MapSquare[,] mapCells = new MapSquare[MapWidth, MapHeight];
 
         public static bool EditorMode = false;
 
@@ -256,21 +255,19 @@ namespace Tile_Engine
         static public void Draw(SpriteBatch spriteBatch)
         {
             int startX = GetCellByPixelX((int)Camera.Position.X);
-            int endX = GetCellByPixelX((int)Camera.Position.X +
-                  Camera.ViewPortWidth);
+            int endX = GetCellByPixelX((int)Camera.Position.X + Camera.ViewPortWidth);
 
             int startY = GetCellByPixelY((int)Camera.Position.Y);
-            int endY = GetCellByPixelY((int)Camera.Position.Y +
-                      Camera.ViewPortHeight);
+            int endY = GetCellByPixelY((int)Camera.Position.Y + Camera.ViewPortHeight);
 
             for (int x = startX; x <= endX; x++)
                 for (int y = startY; y <= endY; y++)
                 {
                     for (int z = 0; z < MapLayers; z++)
                     {
-                        if ((x >= 0) && (y >= 0) &&
-                            (x < MapWidth) && (y < MapHeight))
+                        if ((x >= 0) && (y >= 0) && (x < MapWidth) && (y < MapHeight))
                         {
+                            //배경을 하얀색으로
                             spriteBatch.Draw(
                               tileSheet,
                               CellScreenRectangle(x, y),
@@ -287,17 +284,12 @@ namespace Tile_Engine
                     {
                         DrawEditModeItems(spriteBatch, x, y);
                     }
-
                 }
         }
 
-        public static void DrawEditModeItems(
-            SpriteBatch spriteBatch,
-            int x,
-            int y)
+        public static void DrawEditModeItems(SpriteBatch spriteBatch, int x, int y)
         {
-            if ((x < 0) || (x >= MapWidth) ||
-                (y < 0) || (y >= MapHeight))
+            if ((x < 0) || (x >= MapWidth) || (y < 0) || (y >= MapHeight))
                 return;
 
             if (!CellIsPassable(x, y))
