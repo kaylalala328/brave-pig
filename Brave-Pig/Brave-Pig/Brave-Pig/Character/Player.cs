@@ -85,7 +85,7 @@ namespace Brave_Pig.Character
                     newAnimation = "attack2";
                     velocity = new Vector2(0, velocity.Y);
                 }
-            }
+            } //공격 애니메이션
 
             if (keyState.IsKeyDown(Keys.Left))
             {
@@ -117,7 +117,7 @@ namespace Brave_Pig.Character
                         velocity = new Vector2(0, velocity.Y);
                     }
                 }
-            }
+            } // 좌측이동 애니메이션 + 이동중 공격
 
             if (keyState.IsKeyDown(Keys.Right))
             {
@@ -149,7 +149,7 @@ namespace Brave_Pig.Character
                         velocity = new Vector2(0, velocity.Y);
                     }
                 }
-            }
+            } //우측이동 애니메이션 + 이동중 공격
 
             if (keyState.IsKeyDown(Keys.Z))
             {
@@ -160,7 +160,7 @@ namespace Brave_Pig.Character
                 else
                 {
                     stat.manaPoint = stat.manaPoint + 0.0f;
-                }
+                } // 게이지 값 연산
 
                 if (direct == 0)
                 {
@@ -173,7 +173,8 @@ namespace Brave_Pig.Character
 
                 newAnimation = "charge";
                 velocity = new Vector2(0, velocity.Y);
-            }
+            } // 게이지 모으기 애니메이션
+
             /*if (keyState.IsKeyDown(Keys.Z))
             {
                 newAnimation = "jump";
@@ -189,12 +190,12 @@ namespace Brave_Pig.Character
             {
                 if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true)
                     PlayAnimation(newAnimation);
-            }
+            } //다른 입력값이 들어왔을때 처리방법
             else
             {
                 if (animations[currentAnimation].FinishedPlaying == true)
                     PlayAnimation(newAnimation);
-            }
+            } //지속 입력값이 들어왔을때 처리방법
             
 
             velocity += fallSpeed;
@@ -208,6 +209,7 @@ namespace Brave_Pig.Character
             velocity.Y = -500;
         }
 
+        #region UIstatus
         public float getMana()
         {
             return stat.manaPoint;
@@ -228,6 +230,7 @@ namespace Brave_Pig.Character
         {
             return stat.defense;
         }
+        #endregion //UI쪽으로 넘기는 status값
 
         /*private void repositionCamera()
         {

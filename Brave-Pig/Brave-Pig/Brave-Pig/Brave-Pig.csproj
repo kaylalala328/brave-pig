@@ -109,7 +109,6 @@
   <ItemGroup>
     <Compile Include="BasicObject\AnimationStrip.cs" />
     <Compile Include="Character\Player.cs" />
-    <Compile Include="Character\skill.cs" />
     <Compile Include="Character\Status.cs" />
     <Compile Include="BasicObject\GameObject.cs" />
     <Compile Include="LevelManager.cs" />
