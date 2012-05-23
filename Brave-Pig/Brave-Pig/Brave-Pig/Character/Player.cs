@@ -26,11 +26,20 @@ namespace Brave_Pig.Character
             animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("Player/normal"), 179, "normal"));
             animations["normal"].LoopAnimation = true;
 
+            animations.Add("normal2", new AnimationStrip(content.Load<Texture2D>("Player/normal2"), 179, "normal2"));
+            animations["normal2"].LoopAnimation = true;
+
             animations.Add("attack1", new AnimationStrip(content.Load<Texture2D>("Player/attack1"), 179, "attack1"));
             animations["attack1"].LoopAnimation = false;
 
             animations.Add("attack2", new AnimationStrip(content.Load<Texture2D>("Player/attack2"), 179, "attack2"));
             animations["attack2"].LoopAnimation = false;
+
+            animations.Add("attack21", new AnimationStrip(content.Load<Texture2D>("Player/attack21"), 179, "attack21"));
+            animations["attack21"].LoopAnimation = false;
+
+            animations.Add("attack31", new AnimationStrip(content.Load<Texture2D>("Player/attack31"), 179, "attack31"));
+            animations["attack31"].LoopAnimation = false;
 
             animations.Add("move", new AnimationStrip(content.Load<Texture2D>("Player/move"), 179, "move"));
             animations["move"].LoopAnimation = true;
@@ -38,8 +47,14 @@ namespace Brave_Pig.Character
             animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
             animations["charge"].LoopAnimation = false;
 
+            animations.Add("charge21", new AnimationStrip(content.Load<Texture2D>("Player/charge21"), 179, "charge21"));
+            animations["charge21"].LoopAnimation = false;
+
             animations.Add("skill1", new AnimationStrip(content.Load<Texture2D>("Player/skill1"), 179, "skill1"));
             animations["skill1"].LoopAnimation = false;
+
+            animations.Add("skill2", new AnimationStrip(content.Load<Texture2D>("Player/skill2"), 179, "skill2"));
+            animations["skill2"].LoopAnimation = false;
 
             /*animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
@@ -62,49 +77,38 @@ namespace Brave_Pig.Character
 
         public override void Update(GameTime gameTime)
         {
-            if (animations["skill1"].FinishedPlaying)
+            if (animations["skill1"].FinishedPlaying || animations["skill2"].FinishedPlaying)
             {
                 finish = false;
             } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
-            string newAnimation = "normal";
+            string newAnimation = "";
+            
+            if (stat.useSword == 0)
+            {
+                newAnimation = "normal";
+            }
+            else if (stat.useSword == 1)
+            {
+                newAnimation = "normal2";
+            }
             velocity = new Vector2(0, velocity.Y);
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
             KeyboardState keyState = Keyboard.GetState(); //키보드 입력값
 
+            if (keyState.IsKeyDown(Keys.D2))
+            {
+                stat.useSword = 1;
+            }
+
+            if (keyState.IsKeyDown(Keys.D1))
+            {
+                stat.useSword = 0;
+            }
+
+            #region attack
             if (keyState.IsKeyDown(Keys.Space))
             {
-                int attack_num = num.Next(0,10);
-                if (direct == 0)
-                {
-                    flipped = false;
-                }
-                else
-                {
-                    flipped = true;
-                }
-                
-                if(attack_num < 5)
-                {
-                    newAnimation = "attack1";
-                    velocity = new Vector2(0, velocity.Y);
-                }
-                else
-                {
-                    newAnimation = "attack2";
-                    velocity = new Vector2(0, velocity.Y);
-                }
-
-
-            } //공격 애니메이션
-
-            if (keyState.IsKeyDown(Keys.Left))
-            {
-                direct = 0;
-                flipped = false;
-                newAnimation = "move";
-                velocity = new Vector2(0, velocity.Y);
-
-                if (keyState.IsKeyDown(Keys.Space))
+                if (stat.useSword == 0)
                 {
                     int attack_num = num.Next(0, 10);
                     if (direct == 0)
@@ -126,19 +130,180 @@ namespace Brave_Pig.Character
                         newAnimation = "attack2";
                         velocity = new Vector2(0, velocity.Y);
                     }
+                }// 기본 무기 공격 애니메이션
+                else if (stat.useSword == 1)
+                {
+                    int attack_num = num.Next(0, 10);
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    if (attack_num < 5)
+                    {
+                        newAnimation = "attack21";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        newAnimation = "attack31";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                }// 1번째 무기 공격 애니메이션
+            } //공격 애니메이션
+            #endregion
+
+            #region move
+            if (keyState.IsKeyDown(Keys.Left))
+            {
+                if (stat.useSword == 0)
+                {
+                    direct = 0;
+                    flipped = false;
+                    newAnimation = "move";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (keyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack1";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack2";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }
+                } // 기본 무기 좌측 이동 + 공격
+                else if (stat.useSword == 1)
+                {
+                    direct = 0;
+                    flipped = false;
+                    newAnimation = "move";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (keyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack21";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack31";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }// 1번째 무기 좌측 이동 + 공격
                 }
             } // 좌측이동 애니메이션 + 이동중 공격
 
             if (keyState.IsKeyDown(Keys.Right))
             {
-                direct = 1;
-                flipped = true;
-                newAnimation = "move";
-                velocity = new Vector2(0, velocity.Y);
-
-                if (keyState.IsKeyDown(Keys.Space))
+                if (stat.useSword == 0)
                 {
-                    int attack_num = num.Next(0, 10);
+                    direct = 1;
+                    flipped = true;
+                    newAnimation = "move";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (keyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack1";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack2";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }
+                } // 기본 무기 우측 이동 + 공격
+                else if (stat.useSword == 1)
+                {
+                    direct = 1;
+                    flipped = true;
+                    newAnimation = "move";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (keyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack21";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack31";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }// 1번째 무기 우측 이동 + 공격               
+                }
+            } //우측이동 애니메이션 + 이동중 공격
+            #endregion
+
+            if (keyState.IsKeyDown(Keys.Z))
+            {
+                if (stat.useSword == 0)
+                {
+                    if (stat.manaPoint < 3)
+                    {
+                        stat.manaPoint = stat.manaPoint + 0.005f;
+                    }
+                    else
+                    {
+                        stat.manaPoint = stat.manaPoint + 0.0f;
+                    } // 게이지 값 연산
+
                     if (direct == 0)
                     {
                         flipped = false;
@@ -148,41 +313,32 @@ namespace Brave_Pig.Character
                         flipped = true;
                     }
 
-                    if (attack_num < 5)
+                    newAnimation = "charge";
+                    velocity = new Vector2(0, velocity.Y);
+                }
+                else if (stat.useSword == 1)
+                {
+                    if (stat.manaPoint < 3)
                     {
-                        newAnimation = "attack1";
-                        velocity = new Vector2(0, velocity.Y);
+                        stat.manaPoint = stat.manaPoint + 0.005f;
                     }
                     else
                     {
-                        newAnimation = "attack2";
-                        velocity = new Vector2(0, velocity.Y);
+                        stat.manaPoint = stat.manaPoint + 0.0f;
+                    } // 게이지 값 연산
+
+                    if (direct == 0)
+                    {
+                        flipped = false;
                     }
-                }
-            } //우측이동 애니메이션 + 이동중 공격
+                    else
+                    {
+                        flipped = true;
+                    }
 
-            if (keyState.IsKeyDown(Keys.Z))
-            {
-                if (stat.manaPoint < 3)
-                {
-                    stat.manaPoint = stat.manaPoint + 0.005f;
+                    newAnimation = "charge21";
+                    velocity = new Vector2(0, velocity.Y);
                 }
-                else
-                {
-                    stat.manaPoint = stat.manaPoint + 0.0f;
-                } // 게이지 값 연산
-
-                if (direct == 0)
-                {
-                    flipped = false;
-                }
-                else
-                {
-                    flipped = true;
-                }
-
-                newAnimation = "charge";
-                velocity = new Vector2(0, velocity.Y);
             } // 게이지 모으기 애니메이션
 
             if (keyState.IsKeyDown(Keys.S))
@@ -207,14 +363,29 @@ namespace Brave_Pig.Character
 
                         newAnimation = "skill1";
                         velocity = new Vector2(0, velocity.Y);
-                    }
-                    else
+                    } // 기본무기 스킬(1개 중 1번)
+                    else if(stat.useSword == 1)
                     {
-                        //다른 무기일 경우 추가
-                    }
+                        if (!finish)
+                        {
+                            finish = true;
+                            stat.manaPoint = stat.manaPoint - 1.0f;
+                        } // 스킬 사용시 마나 포인트 변경
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        newAnimation = "skill2";
+                        velocity = new Vector2(0, velocity.Y);
+                    } // 1번째 무기 스킬(1개 중 1번)
                 }
                 
-            } // 기본무기 스킬(1개 중 1번)
+            } // 스킬 계열 애니메이션
 
             /*if (keyState.IsKeyDown(Keys.Z))
             {
@@ -229,7 +400,7 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1")
+                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2")
                     PlayAnimation(newAnimation);
             } //다른 입력값이 들어왔을때 처리방법
             else
