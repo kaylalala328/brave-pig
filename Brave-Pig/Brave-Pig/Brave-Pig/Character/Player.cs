@@ -44,6 +44,9 @@ namespace Brave_Pig.Character
             animations.Add("move", new AnimationStrip(content.Load<Texture2D>("Player/move"), 179, "move"));
             animations["move"].LoopAnimation = true;
 
+            animations.Add("move32", new AnimationStrip(content.Load<Texture2D>("Player/move32"), 179, "move32"));
+            animations["move32"].LoopAnimation = true;
+
             animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
             animations["charge"].LoopAnimation = false;
 
@@ -195,7 +198,7 @@ namespace Brave_Pig.Character
                 {
                     direct = 0;
                     flipped = false;
-                    newAnimation = "move";
+                    newAnimation = "move32";
                     velocity = new Vector2(0, velocity.Y);
 
                     if (keyState.IsKeyDown(Keys.Space))
@@ -261,7 +264,7 @@ namespace Brave_Pig.Character
                 {
                     direct = 1;
                     flipped = true;
-                    newAnimation = "move";
+                    newAnimation = "move32";
                     velocity = new Vector2(0, velocity.Y);
 
                     if (keyState.IsKeyDown(Keys.Space))
