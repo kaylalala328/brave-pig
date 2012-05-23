@@ -18,6 +18,7 @@ namespace Brave_Pig.Character
         Random num = new Random();
         private int direct = 0;
         Status stat = new Status();
+        private bool finish = false;
         
         public Player(ContentManager content)
         {
@@ -61,6 +62,10 @@ namespace Brave_Pig.Character
 
         public override void Update(GameTime gameTime)
         {
+            if (animations["skill1"].FinishedPlaying)
+            {
+                finish = false;
+            } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
             string newAnimation = "normal";
             velocity = new Vector2(0, velocity.Y);
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
@@ -184,7 +189,11 @@ namespace Brave_Pig.Character
                 {
                     if (stat.useSword == 0)
                     {
-                        stat.manaPoint = stat.manaPoint - 1.0f;
+                        if (!finish)
+                        {
+                            finish = true;
+                            stat.manaPoint = stat.manaPoint - 1.0f;
+                        } // 스킬 사용시 마나 포인트 변경
                         if (direct == 0)
                         {
                             flipped = false;
