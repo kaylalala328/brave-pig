@@ -160,13 +160,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player\charge1.png">
-      <Name>charge</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="UI\HP.png">
       <Name>HP</Name>
       <Importer>TextureImporter</Importer>
@@ -263,6 +256,13 @@
   <ItemGroup>
     <Compile Include="Player\skill1.png">
       <Name>skill1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\charge2.png">
+      <Name>charge</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
