@@ -263,6 +263,9 @@ namespace Tile_Engine
             int endY = GetCellByPixelY((int)Camera.Position.Y + Camera.ViewPortHeight);
 
             
+            /**************************************************************
+             * 민희야 여기 수정 해야함.
+             */
             for (int x = startX; x <= endX; x++)
                 for (int y = startY; y <= endY; y++)
                 {
@@ -270,7 +273,7 @@ namespace Tile_Engine
                     {
                         if (mapCells[x, y].LayerTiles != 0)
                         {
-                            //배경을 하얀색으로
+                            
                             spriteBatch.Draw(
                               tileSheet,
                               CellScreenRectangle(x, y),
@@ -311,6 +314,10 @@ namespace Tile_Engine
             if ((x < 0) || (x >= MapWidth) || (y < 0) || (y >= MapHeight))
                 return;
 
+            /**********************************************
+             * 여기가 코드 선택시 들어오는 곳 여기를 좀 더 다양하게 하는것도 방법인듯
+             * 
+             */
             if (!CellIsPassable(x, y))
             {
                 spriteBatch.Draw(
@@ -323,7 +330,9 @@ namespace Tile_Engine
                                 SpriteEffects.None,
                                 0.0f);
             }
-
+            /************************
+             *코드를 선택했다면 CodeValue가 여기서 바뀌겠지? Swtich 문써서 바꾸면 좀 더 잘 될듯!!
+             */
             if (mapCells[x, y].CodeValue != "")
             {
                 Rectangle screenRect = CellScreenRectangle(x, y);

@@ -272,22 +272,6 @@ namespace Level_Editor
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                BackGroundFileLocation.Text = openFileDialog1.SafeFileName.Remove(openFileDialog1.SafeFileName.Length-4);
-                
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ForeGroundFileLocation.Text = openFileDialog1.SafeFileName.Remove(openFileDialog1.SafeFileName.Length - 4);
-            }
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
