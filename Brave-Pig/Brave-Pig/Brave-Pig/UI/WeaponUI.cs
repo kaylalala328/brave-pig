@@ -17,8 +17,10 @@ namespace Brave_Pig.UI
         Texture2D weapon;
 
         int width, height, count;
+        int time = -5;
         float rotate, saveRotate;
         bool changeWeapon, protectChange;
+        bool drawWeapon;
         #endregion
 
         #region Initailize
@@ -26,7 +28,7 @@ namespace Brave_Pig.UI
         {
             width = graphics.Viewport.Width;
             height = graphics.Viewport.Height;
-
+            drawWeapon = false;
             changeWeapon = false;
             protectChange = false;
             rotate = 0.0f;
@@ -48,8 +50,15 @@ namespace Brave_Pig.UI
                 {
                     changeWeapon = true;
                     protectChange = true;
+                    time = (int)gameTime.TotalGameTime.TotalSeconds;
                     count++;
                 }
+                if ( time + 5 > gameTime.TotalGameTime.TotalSeconds )
+                {
+                    drawWeapon = true;
+                }
+                else
+                    drawWeapon = false;
             }
         }
         #endregion
@@ -65,7 +74,7 @@ namespace Brave_Pig.UI
                     spriteBatch.Draw(weapon,
                     new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
                     null,
-                    Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
+                    Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f); 
                 }
                 else
                 {
@@ -78,14 +87,18 @@ namespace Brave_Pig.UI
                     }
                 }
             }
-            else
+            if(!changeWeapon)
             {
-                spriteBatch.Draw(weapon,
-                    new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
-                    null,
-                    Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
+                if ( drawWeapon )
+                {
+                    spriteBatch.Draw(weapon,
+                        new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
+                        null,
+                        Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
+                }
                 saveRotate = rotate;
             }
+            
         }
         #endregion
     }
