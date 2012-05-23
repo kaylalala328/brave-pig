@@ -16,18 +16,19 @@ namespace Brave_Pig.UI
         #region Declaration
         Texture2D weapon;
 
-        int width, height, count;
+        int count;
         int time = -5;
         float rotate, saveRotate;
+
+        //changeWeapon = 키 입력시 true
+        //protectChange 회전 중에는 입력을 받지 못하도록 보호
         bool changeWeapon, protectChange;
         bool drawWeapon;
         #endregion
 
         #region Initailize
-        public void Initialize(GraphicsDevice graphics)
+        public void Initialize()
         {
-            width = graphics.Viewport.Width;
-            height = graphics.Viewport.Height;
             drawWeapon = false;
             changeWeapon = false;
             protectChange = false;
@@ -46,13 +47,14 @@ namespace Brave_Pig.UI
         {
             if ( !protectChange )
             {
-                if ( Game1.previousKeyState.IsKeyDown(Keys.A) && Game1.currentKeyState.IsKeyUp(Keys.A) )
+                if ( Game1.previousKeyState.IsKeyUp(Keys.A) && Game1.currentKeyState.IsKeyDown(Keys.A) )
                 {
                     changeWeapon = true;
                     protectChange = true;
                     time = (int)gameTime.TotalGameTime.TotalSeconds;
                     count++;
                 }
+                //회전 시간 포함 5초 동안만 보여지도록
                 if ( time + 5 > gameTime.TotalGameTime.TotalSeconds )
                 {
                     drawWeapon = true;
@@ -72,7 +74,7 @@ namespace Brave_Pig.UI
                 {
                     rotate += 0.1f;
                     spriteBatch.Draw(weapon,
-                    new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
+                    new Rectangle(MainUI.width / 20 * 19, MainUI.height / 7 * 5, 120, 104),
                     null,
                     Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f); 
                 }
@@ -80,6 +82,7 @@ namespace Brave_Pig.UI
                 {
                     changeWeapon = false;
                     protectChange = false;
+
                     if ( count % 3 == 0 )
                     {
                         count = 0;
@@ -92,7 +95,7 @@ namespace Brave_Pig.UI
                 if ( drawWeapon )
                 {
                     spriteBatch.Draw(weapon,
-                        new Rectangle(width / 20 * 19, height / 7 * 5, 120, 104),
+                        new Rectangle(MainUI.width / 20 * 19, MainUI.height / 7 * 5, 120, 104),
                         null,
                         Color.White * 0.7f, rotate, new Vector2(60, 65), SpriteEffects.None, 0f);
                 }

@@ -15,20 +15,25 @@ namespace Brave_Pig.UI
     class MainUI
     {
         #region Declaration
-        SpriteFont UIfont;
+        public static SpriteFont UIfont;
 
         BottomUI bottomUI;
         StatusUI status;
+
+        //모든 UI클래스에서 같이 사용하기 위해...
+        public static int width, height;
         #endregion
 
         #region Initialize
         public void Initialize ( GraphicsDevice graphics )
         {
+            width = graphics.Viewport.Width;
+            height = graphics.Viewport.Height;
+
             bottomUI = new BottomUI();
-            bottomUI.Initialize(graphics);
+            bottomUI.Initialize();
 
             status = new StatusUI();
-            status.Initialize(graphics);
         }
         #endregion
 
@@ -53,6 +58,7 @@ namespace Brave_Pig.UI
             bottomUI.Draw(spriteBatch, UIfont);
             status.Draw(spriteBatch, UIfont);
         }
+
         #endregion
     }
 }

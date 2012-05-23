@@ -18,16 +18,12 @@ namespace Brave_Pig.UI
     {
         #region Declaration
         Texture2D status;
-        int width, height;
         int attack, defense;
         #endregion
 
         #region Initailize
-        public void Initialize(GraphicsDevice graphics)
-        {
-            width = graphics.Viewport.Width;
-            height = graphics.Viewport.Height;
-        }
+        public void Initialize()
+        {   }
         #endregion
 
         #region Load & Update
@@ -46,7 +42,7 @@ namespace Brave_Pig.UI
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Draw(status,
-                new Rectangle(0, 0, width / 8, height / 8),
+                new Rectangle(0, 0, MainUI.width / 8, MainUI.height / 8),
                 Color.White * 0.7f);
 
             spriteBatch.DrawString(font, "ATT " + attack.ToString(), new Vector2(90, 30), Color.Black);
