@@ -93,6 +93,8 @@ namespace Brave_Pig.Character
                     newAnimation = "attack2";
                     velocity = new Vector2(0, velocity.Y);
                 }
+
+
             } //공격 애니메이션
 
             if (keyState.IsKeyDown(Keys.Left))
@@ -227,7 +229,7 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true)
+                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1")
                     PlayAnimation(newAnimation);
             } //다른 입력값이 들어왔을때 처리방법
             else
@@ -285,6 +287,7 @@ namespace Brave_Pig.Character
                 Camera.Move(new Vector2(screenLocX - 200, 0));
             }
         }*/
+
 
     }
 }
