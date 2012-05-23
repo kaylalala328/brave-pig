@@ -14,31 +14,45 @@ namespace Brave_Pig.UI
 {
     class MainUI
     {
+        #region Declaration
         SpriteFont UIfont;
 
         BottomUI bottomUI;
         StatusUI status;
+        #endregion
 
-        public void Initialize(GraphicsDevice graphics)
+        #region Initialize
+        public void Initialize ( GraphicsDevice graphics )
         {
             bottomUI = new BottomUI();
             bottomUI.Initialize(graphics);
 
             status = new StatusUI();
+            status.Initialize(graphics);
         }
-        public void LoadContent(ContentManager content)
+        #endregion
+
+        #region Load & Update
+        public void LoadContent ( ContentManager content )
         {
             bottomUI.LoadContent(content);
+            status.LoadContent(content);
 
             UIfont = content.Load<SpriteFont>("Font/UI font");
         }
-        public void Update(GameTime gameTime, Player player)
+        public void Update ( GameTime gameTime, Player player )
         {
             bottomUI.Update(gameTime, player);
+            status.Update(gameTime, player);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        #endregion
+
+        #region Draw
+        public void Draw ( SpriteBatch spriteBatch )
         {
             bottomUI.Draw(spriteBatch, UIfont);
+            status.Draw(spriteBatch, UIfont);
         }
+        #endregion
     }
 }

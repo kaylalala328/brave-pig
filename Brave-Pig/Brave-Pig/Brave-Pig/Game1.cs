@@ -37,7 +37,8 @@ namespace Brave_Pig
             GAMEOVER,
             LOAD,
             WIN,
-            EXIT
+            EXIT,
+            PAUSE
         };
         public static GameStates gameState = GameStates.START;
 
@@ -126,8 +127,22 @@ namespace Brave_Pig
             else
             {
                 currentKeyState = Keyboard.GetState();
-                player.Update(gameTime);
-                mainUI.Update(gameTime, player);
+
+                if ( previousKeyState.IsKeyDown(Keys.Escape) && currentKeyState.IsKeyUp(Keys.Escape) )
+                {
+                    gameState = GameStates.PAUSE;
+                }
+
+                if ( gameState == GameStates.PAUSE )
+                {
+                    screen.UpdatePause(gameTime);
+                }
+                else
+                {
+                    player.Update(gameTime);
+                    mainUI.Update(gameTime, player);
+                }
+
                 previousKeyState = currentKeyState;
             }
 
@@ -135,8 +150,6 @@ namespace Brave_Pig
             {
                 this.Exit();
             }
-
-
             
             base.Update(gameTime);
         }
@@ -152,7 +165,7 @@ namespace Brave_Pig
             spriteBatch.Begin();
             if ( gameState == GameStates.START )
                 screen.Draw(spriteBatch);
-            if(gameState == GameStates.PLAY)
+            if(gameState == GameStates.PLAY || gameState == GameStates.PAUSE)
             {
                 // 테스트코드 배경화면
                 spriteBatch.Draw(background,
@@ -163,7 +176,13 @@ namespace Brave_Pig
                 
                 player.Draw(spriteBatch);
                 mainUI.Draw(spriteBatch);
+
+                if ( gameState == GameStates.PAUSE )
+                {
+                    screen.DrawPause(spriteBatch);
+                }
             }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -16,15 +16,21 @@ namespace Brave_Pig.UI
 {
     class StatusUI
     {
+        #region Declaration
         Texture2D status;
         int width, height;
         int attack, defense;
+        #endregion
 
+        #region Initailize
         public void Initialize(GraphicsDevice graphics)
         {
             width = graphics.Viewport.Width;
             height = graphics.Viewport.Height;
         }
+        #endregion
+
+        #region Load & Update
         public void LoadContent(ContentManager content)
         {
             status = content.Load<Texture2D>("UI/status");
@@ -34,6 +40,9 @@ namespace Brave_Pig.UI
             attack = player.getAttack();
             defense = player.getDefense();
         }
+        #endregion
+
+        #region Draw
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Draw(status,
@@ -43,5 +52,6 @@ namespace Brave_Pig.UI
             spriteBatch.DrawString(font, "ATT " + attack.ToString(), new Vector2(90, 30), Color.Black);
             spriteBatch.DrawString(font, "DEF " + defense.ToString(), new Vector2(90, 60), Color.Black);
         }
+        #endregion
     }
 }

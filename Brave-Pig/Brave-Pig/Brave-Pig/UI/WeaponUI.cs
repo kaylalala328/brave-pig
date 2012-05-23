@@ -13,12 +13,15 @@ namespace Brave_Pig.UI
 {
     class WeaponUI
     {
+        #region Declaration
         Texture2D weapon;
 
         int width, height, count;
         float rotate, saveRotate;
         bool changeWeapon, protectChange;
+        #endregion
 
+        #region Initailize
         public void Initialize(GraphicsDevice graphics)
         {
             width = graphics.Viewport.Width;
@@ -30,6 +33,9 @@ namespace Brave_Pig.UI
             saveRotate = 0.0f;
             count = 0;
         }
+        #endregion
+
+        #region Load & Update
         public void LoadContent(ContentManager content)
         {
             weapon = content.Load<Texture2D>("UI/weapon");
@@ -46,6 +52,9 @@ namespace Brave_Pig.UI
                 }
             }
         }
+        #endregion
+
+        #region Draw
         public void Draw(SpriteBatch spriteBatch)
         {
             if ( changeWeapon )
@@ -78,5 +87,6 @@ namespace Brave_Pig.UI
                 saveRotate = rotate;
             }
         }
+        #endregion
     }
 }
