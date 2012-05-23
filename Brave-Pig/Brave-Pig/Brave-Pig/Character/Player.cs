@@ -37,6 +37,9 @@ namespace Brave_Pig.Character
             animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
             animations["charge"].LoopAnimation = false;
 
+            animations.Add("skill1", new AnimationStrip(content.Load<Texture2D>("Player/skill1"), 179, "skill1"));
+            animations["skill1"].LoopAnimation = false;
+
             /*animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
             animations["jump"].FrameLength = 0.08f;
@@ -174,6 +177,33 @@ namespace Brave_Pig.Character
                 newAnimation = "charge";
                 velocity = new Vector2(0, velocity.Y);
             } // 게이지 모으기 애니메이션
+
+            if (keyState.IsKeyDown(Keys.S))
+            {
+                if (stat.manaPoint >= 1)
+                {
+                    if (stat.useSword == 0)
+                    {
+                        stat.manaPoint = stat.manaPoint - 1.0f;
+                        if (direct == 0)
+                        {
+                            flipped = false;
+                        }
+                        else
+                        {
+                            flipped = true;
+                        }
+
+                        newAnimation = "skill1";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        //다른 무기일 경우 추가
+                    }
+                }
+                
+            } // 기본무기 스킬(1개 중 1번)
 
             /*if (keyState.IsKeyDown(Keys.Z))
             {
