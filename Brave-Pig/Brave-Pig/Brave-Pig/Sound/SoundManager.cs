@@ -11,17 +11,17 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Brave_Pig.Sound
 {
-    class SoundManager
+    public static class SoundManager
     {
-        private Dictionary<string, SoundEffect> Sound;
-        private SoundEffect background;
-        private SoundEffectInstance backgroundInstance;
+        private static Dictionary<string, SoundEffect> Sound;
+        private static SoundEffect background;
+        private static SoundEffectInstance backgroundInstance;
 
-        public void Initialize()
+        public static void Initialize()
         {
             Sound = new Dictionary<string, SoundEffect>();
         }
-        public void LoadContent ( ContentManager content )
+        public static void LoadContent ( ContentManager content )
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Brave_Pig.Sound
             catch
             {   }
         }
-        public void SoundPlay ( string name )
+        public static void SoundPlay ( string name )
         {
             try
             {
@@ -45,12 +45,12 @@ namespace Brave_Pig.Sound
             {
             }
         }
-        public void PlayBackground ( )
+        public static void PlayBackground ( )
         {
             backgroundInstance.Play();
         }
 
-        public void PauseBackground ( )
+        public static void PauseBackground ( )
         {
             backgroundInstance.Stop();
         }

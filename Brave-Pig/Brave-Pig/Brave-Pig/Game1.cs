@@ -48,7 +48,6 @@ namespace Brave_Pig
 
         //객체
         Screen screen;
-        SoundManager sound;
         MainUI mainUI;
 
         public Game1()
@@ -57,7 +56,6 @@ namespace Brave_Pig
             Content.RootDirectory = "Content";
 
             screen = new Screen();
-            sound = new SoundManager();
             mainUI = new MainUI();
         }
 
@@ -74,9 +72,8 @@ namespace Brave_Pig
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
 
+            SoundManager.Initialize();
             screen.Initialize(GraphicsDevice);
-            sound.Initialize();
-            sound.LoadContent(Content);
             mainUI.Initialize(GraphicsDevice);
             
             base.Initialize();
@@ -91,6 +88,7 @@ namespace Brave_Pig
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
+            SoundManager.LoadContent(Content);
             screen.LoadContent(Content);
             mainUI.LoadContent(Content);
             //테스트용
@@ -118,7 +116,7 @@ namespace Brave_Pig
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            sound.PlayBackground();
+            SoundManager.PlayBackground();
 
             if ( gameState == GameStates.START )
             {

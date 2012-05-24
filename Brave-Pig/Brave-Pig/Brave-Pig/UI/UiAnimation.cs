@@ -22,7 +22,7 @@ namespace Brave_Pig.UI
 
         public void AddAnimation(ContentManager content)
         {
-            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("UI/MP1"), 44, "normal"));
+            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("UI/MP"), 44, "normal"));
             animations["normal"].LoopAnimation = true;
             animations["normal"].FrameLength = 0.08f;
             animations.Add("event", new AnimationStrip(content.Load<Texture2D>("UI/MPanimation3"), 44, "event"));
