@@ -219,11 +219,12 @@ namespace Level_Editor
                     (int)mouseLoc.X, (int)mouseLoc.Y))
                 {
                     if (ms.LeftButton == ButtonState.Pressed)
-                    {
+                    {/*
                         TileMap.SetTileAtCell(
                           TileMap.GetCellByPixelX((int)mouseLoc.X),
                           TileMap.GetCellByPixelY((int)mouseLoc.Y),
-                          3);
+                          1,
+                          3);*/
                     }
                     
                     if ((ms.RightButton == ButtonState.Pressed) &&
