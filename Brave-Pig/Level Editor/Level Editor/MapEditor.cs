@@ -97,6 +97,7 @@ namespace Level_Editor
             cboCodeValues.Items.Add("Boss");
 
             cboCodeValues.Items.Add("EnemyBlocking");
+            cboCodeValues.Items.Add("CharacterBlocking");
             
             cboCodeValues.Items.Add("RightStart");
             cboCodeValues.Items.Add("LeftStart");
@@ -125,60 +126,82 @@ namespace Level_Editor
             {
                 case "Enemy1":
                     txtNewCode.Text = "ENEMY1";
+                    game.DrawTile = 3;
                     break;
 
                 case "Enemy2":
                     txtNewCode.Text = "ENEMY2";
+                    game.DrawTile = 4;
                     break;
 
                 case "Enemy3":
                     txtNewCode.Text = "ENEMY3";
+                    game.DrawTile = 5;
                     break;
 
                 case "Enemy4":
                     txtNewCode.Text = "ENEMY4";
+                    game.DrawTile = 6;
                     break;
 
                 case "Enemy5":
                     txtNewCode.Text = "ENEMY5";
+                    game.DrawTile = 7;
                     break;
 
                 case "Enemy6":
                     txtNewCode.Text = "ENEMY6";
+                    game.DrawTile = 8;
                     break;
 
                 case "Enemy7":
                     txtNewCode.Text = "ENEMY7";
+                    game.DrawTile = 9;
                     break;
 
                 case "MiddleBoss1":
                     txtNewCode.Text = "MBOSS1";
+                    game.DrawTile = 10;
                     break;
+
                 case "MiddleBoss2":
                     txtNewCode.Text = "MBOSS2";
+                    game.DrawTile = 11;
                     break;
+
                 case "Boss":
                     txtNewCode.Text = "BOSS";
+                    game.DrawTile = 12;
                     break;
 
                 case "Lethal":
                     txtNewCode.Text = "DAMAGED";
+                    game.DrawTile = 13;
                     break;
 
                 case "EnemyBlocking":
-                    txtNewCode.Text = "BLOCK";
+                    txtNewCode.Text = "EBLOCK";
+                    game.DrawTile = 14;
+                    break;
+
+                case "CharacterBocking":
+                    txtNewCode.Text = "CBLOCK";
+                    game.DrawTile = 15;
                     break;
 
                 case "RightStart":
                     txtNewCode.Text = "RSTART";
+                    game.DrawTile = 16;
                     break;
 
                 case "LeftStart":
                     txtNewCode.Text = "LSTART";
+                    game.DrawTile = 17;
                     break;
 
                 case "Port":
                     txtNewCode.Text = "PORT";
+                    game.DrawTile = 18;
                     break;
             }
         }

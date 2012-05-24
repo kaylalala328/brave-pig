@@ -27,12 +27,12 @@ namespace Tile_Engine
         /// <summary>
         /// width * height 개수
         /// </summary>
-        public const int MapWidth = 32;
-        public const int MapHeight = 10;
+        public const int MapWidth = 80;
+        public const int MapHeight = 30;
         /// <summary>
-        /// Layer 개수
+        /// Layer 번호
         /// </summary>
-        //private const int skyTile = 12;
+        //public int TileNum = 0;
 
         static private MapSquare[,] mapCells = new MapSquare[MapWidth, MapHeight];
 
@@ -153,6 +153,8 @@ namespace Tile_Engine
         {
             return CellCodeValue((int)cell.X, (int)cell.Y);
         }
+
+        
         #endregion
 
         #region Information about MapSquare objects

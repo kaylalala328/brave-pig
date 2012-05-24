@@ -208,7 +208,7 @@ namespace Level_Editor
                     //마우스 왼쪽 버튼 클릭
                     if (ms.LeftButton == ButtonState.Pressed)
                     {
-                        TileMap.SetTileAtCell(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y), 5);
+                        TileMap.SetTileAtCell(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y), DrawTile);
                     }
                     
                     if ((ms.RightButton == ButtonState.Pressed) &&
@@ -261,16 +261,13 @@ namespace Level_Editor
                 spriteBatch.Draw(BackgroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.9f);
             }
             catch
-            { 
-            }
+            { }
             try
             {
                 spriteBatch.Draw(ForegroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White,0.0f,Vector2.Zero, SpriteEffects.None,0.3f);
             }
             catch
-            {
-
-            }
+            { }
 
             TileMap.Draw(spriteBatch);
             spriteBatch.End();

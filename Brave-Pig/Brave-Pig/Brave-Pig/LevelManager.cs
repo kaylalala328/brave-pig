@@ -73,18 +73,63 @@ namespace Brave_Pig
             {
                 for (int y = 0; y < TileMap.MapHeight; y++)
                 {
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY1")
+                    {
+                        //enemies.Add(new Enemy(Content, x, y));
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY2")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY3")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY4")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY5")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY6")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "ENEMY7")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "MBOSS1")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "MBOSS2")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "BOSS")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "DAMAGED")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "EBLOCK")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "CBLOCK")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "RSTART")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "LSTART")
+                    { }
+
+                    if (TileMap.CellCodeValue(x, y) == "PORT")
+                    { }
+                    /*
                     if (TileMap.CellCodeValue(x, y) == "START")
                     {
                         player.WorldLocation = new Vector2(
                             x * TileMap.TileWidth,
                             y * TileMap.TileHeight);
                     }
-
-
-                    if (TileMap.CellCodeValue(x, y) == "ENEMY")
-                    {
-                        //enemies.Add(new Enemy(Content, x, y));
-                    }
+                     */
                 }
             }
 
@@ -131,7 +176,7 @@ namespace Brave_Pig
                 }
                 
             }
-             */
+           */
         }
 
         public static void Draw(SpriteBatch spriteBatch)
