@@ -21,6 +21,7 @@ namespace Brave_Pig.UI
 
         HP hp;
         MP mp;
+        ItemWindow itemWindow;
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace Brave_Pig.UI
         {
             hp = new HP();
             mp = new MP();
+            itemWindow = new ItemWindow();
         }
         public void LoadContent ( ContentManager content )
         {
@@ -57,6 +59,8 @@ namespace Brave_Pig.UI
 
             hp.Draw(spriteBatch, UIfont, BottomUIWidth, BottomUIHeight, BottomY);
             mp.Draw(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
+            itemWindow.DrawSword(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
+            itemWindow.DrawArmor(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
         }
         #endregion
     }

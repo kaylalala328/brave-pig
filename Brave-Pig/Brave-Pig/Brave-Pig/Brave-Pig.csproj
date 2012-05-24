@@ -124,6 +124,7 @@
     <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="UI\BottomUI.cs" />
     <Compile Include="UI\HP.cs" />
+    <Compile Include="UI\ItemWindow.cs" />
     <Compile Include="UI\MainUI.cs" />
     <Compile Include="UI\MP.cs" />
     <Compile Include="UI\StatusUI.cs" />

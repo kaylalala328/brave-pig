@@ -21,6 +21,7 @@ namespace Brave_Pig.Items
         int skill1;
         int skill2;
         int skill3;
+        Texture2D swordImage;
 
         public Sword ( int num, int att, int skillDam1, int skillDam2, int skillDam3 )
         {
@@ -29,6 +30,15 @@ namespace Brave_Pig.Items
             skill1 = skillDam1;
             skill2 = skillDam2;
             skill3 = skillDam3;
+        }
+        public Sword ( int num, int att, int skillDam1, int skillDam2, int skillDam3, Texture2D image )
+        {
+            itemNum = num;
+            attack = att;
+            skill1 = skillDam1;
+            skill2 = skillDam2;
+            skill3 = skillDam3;
+            swordImage = image;
         }
 
         public int getSword ( )
@@ -46,6 +56,10 @@ namespace Brave_Pig.Items
         public int getSkill3 ( )
         {
             return skill3;
+        }
+        public Texture2D getImage()
+        {
+            return swordImage;
         }
     }
 }

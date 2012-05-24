@@ -95,24 +95,28 @@ namespace Brave_Pig.Character
             {
                 newAnimation = "normal2";
             }
+
             velocity = new Vector2(0, velocity.Y);
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
             KeyboardState keyState = Keyboard.GetState(); //키보드 입력값
 
-            if (keyState.IsKeyDown(Keys.D2))
+            if ( keyState.IsKeyDown(Keys.D1) && ItemManager.haveSwords.Contains("Blue"))
             {
-                stat.useSword = 1;
+                ItemManager.setCurrentSword("Blue");
             }
-
-            if (keyState.IsKeyDown(Keys.D1))
+            if ( keyState.IsKeyDown(Keys.D2) && ItemManager.haveSwords.Contains("Red"))
             {
-                stat.useSword = 0;
+                ItemManager.setCurrentSword("Red");
             }
+            if ( keyState.IsKeyDown(Keys.D3) && ItemManager.haveSwords.Contains("Yellow"))
+            {
+                ItemManager.setCurrentSword("Yellow");
+            }            
 
             #region attack
             if (keyState.IsKeyDown(Keys.Space))
             {
-                if (stat.useSword == 0)
+                if (ItemManager.getCurrentSword() == "Basic")
                 {
                     int attack_num = num.Next(0, 10);
                     if (direct == 0)
@@ -135,7 +139,7 @@ namespace Brave_Pig.Character
                         velocity = new Vector2(0, velocity.Y);
                     }
                 }// 기본 무기 공격 애니메이션
-                else if (stat.useSword == 1)
+                else if (ItemManager.getCurrentSword() == "Blue")
                 {
                     int attack_num = num.Next(0, 10);
                     if (direct == 0)

@@ -258,17 +258,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\armor.png">
+    <Compile Include="Item\armor.png">
       <Name>armor</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="UI\boots.png">
+    <Compile Include="Item\boots.png">
       <Name>boots</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="UI\shield.png">
+    <Compile Include="Item\shield.png">
       <Name>shield</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -293,17 +293,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="UI\sword1.png">
+    <Compile Include="Item\sword1.png">
       <Name>sword1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="UI\sword2.png">
+    <Compile Include="Item\sword2.png">
       <Name>sword2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="UI\sword3.png">
+    <Compile Include="Item\sword3.png">
       <Name>sword3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

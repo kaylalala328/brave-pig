@@ -73,7 +73,7 @@ namespace Brave_Pig
             graphics.ApplyChanges();
 
             SoundManager.Initialize();
-            ItemManager.Initialize();
+            ItemManager.Initialize(Content);
             screen.Initialize(GraphicsDevice);
             mainUI.Initialize(GraphicsDevice);
             

@@ -18,16 +18,23 @@ namespace Brave_Pig.Items
     {
         int itemNum;
         int defense;
+        Texture2D ArmorImage;
 
-        public Armor(int num, int def)
+        public Armor(int num, int def, Texture2D image)
         {
             itemNum = num;
             defense = def;
+
+            ArmorImage = image;
         }
 
         public int getArmor()
         {
             return defense;
+        }
+        public Texture2D getImage()
+        {
+            return ArmorImage;
         }
     }
 }
