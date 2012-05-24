@@ -30,6 +30,12 @@ namespace Brave_Pig.Character
             animations.Add("normal2", new AnimationStrip(content.Load<Texture2D>("Player/normal2"), 179, "normal2"));
             animations["normal2"].LoopAnimation = true;
 
+            animations.Add("normal3", new AnimationStrip(content.Load<Texture2D>("Player/normal3"), 179, "normal3"));
+            animations["normal3"].LoopAnimation = true;
+
+            animations.Add("normal4", new AnimationStrip(content.Load<Texture2D>("Player/normal4"), 179, "normal4"));
+            animations["normal4"].LoopAnimation = true;
+
             animations.Add("attack1", new AnimationStrip(content.Load<Texture2D>("Player/attack1"), 179, "attack1"));
             animations["attack1"].LoopAnimation = false;
 
@@ -42,11 +48,29 @@ namespace Brave_Pig.Character
             animations.Add("attack31", new AnimationStrip(content.Load<Texture2D>("Player/attack31"), 179, "attack31"));
             animations["attack31"].LoopAnimation = false;
 
+            animations.Add("attack22", new AnimationStrip(content.Load<Texture2D>("Player/attack22"), 179, "attack22"));
+            animations["attack22"].LoopAnimation = false;
+
+            animations.Add("attack32", new AnimationStrip(content.Load<Texture2D>("Player/attack32"), 179, "attack32"));
+            animations["attack32"].LoopAnimation = false;
+
+            animations.Add("attack23", new AnimationStrip(content.Load<Texture2D>("Player/attack23"), 179, "attack23"));
+            animations["attack23"].LoopAnimation = false;
+
+            animations.Add("attack33", new AnimationStrip(content.Load<Texture2D>("Player/attack33"), 179, "attack33"));
+            animations["attack33"].LoopAnimation = false;
+
             animations.Add("move", new AnimationStrip(content.Load<Texture2D>("Player/move"), 179, "move"));
             animations["move"].LoopAnimation = true;
 
             animations.Add("move32", new AnimationStrip(content.Load<Texture2D>("Player/move32"), 179, "move32"));
             animations["move32"].LoopAnimation = true;
+
+            animations.Add("move33", new AnimationStrip(content.Load<Texture2D>("Player/move33"), 179, "move33"));
+            animations["move33"].LoopAnimation = true;
+
+            animations.Add("move34", new AnimationStrip(content.Load<Texture2D>("Player/move34"), 179, "move34"));
+            animations["move34"].LoopAnimation = true;
 
             animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
             animations["charge"].LoopAnimation = false;
@@ -54,11 +78,32 @@ namespace Brave_Pig.Character
             animations.Add("charge21", new AnimationStrip(content.Load<Texture2D>("Player/charge21"), 179, "charge21"));
             animations["charge21"].LoopAnimation = false;
 
+            animations.Add("charge22", new AnimationStrip(content.Load<Texture2D>("Player/charge22"), 179, "charge22"));
+            animations["charge21"].LoopAnimation = false;
+
+            animations.Add("charge23", new AnimationStrip(content.Load<Texture2D>("Player/charge23"), 179, "charge23"));
+            animations["charge23"].LoopAnimation = false;
+
             animations.Add("skill1", new AnimationStrip(content.Load<Texture2D>("Player/skill1"), 179, "skill1"));
             animations["skill1"].LoopAnimation = false;
 
             animations.Add("skill2", new AnimationStrip(content.Load<Texture2D>("Player/skill2"), 179, "skill2"));
             animations["skill2"].LoopAnimation = false;
+
+            animations.Add("skill3", new AnimationStrip(content.Load<Texture2D>("Player/skill3"), 179, "skill3"));
+            animations["skill3"].LoopAnimation = false;
+
+            animations.Add("skill4", new AnimationStrip(content.Load<Texture2D>("Player/skill4"), 179, "skill4"));
+            animations["skill4"].LoopAnimation = false;
+
+            animations.Add("skill22", new AnimationStrip(content.Load<Texture2D>("Player/skill22"), 179, "skill22"));
+            animations["skill22"].LoopAnimation = false;
+
+            animations.Add("skill32", new AnimationStrip(content.Load<Texture2D>("Player/skill32"), 179, "skill32"));
+            animations["skill32"].LoopAnimation = false;
+
+            animations.Add("skill33", new AnimationStrip(content.Load<Texture2D>("Player/skill33"), 179, "skill33"));
+            animations["skill33"].LoopAnimation = false;
 
             /*animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
@@ -95,11 +140,25 @@ namespace Brave_Pig.Character
             {
                 newAnimation = "normal2";
             }
+            else if (ItemManager.getCurrentSword() == "Red")
+            {
+                newAnimation = "normal3";
+            }
+            else if (ItemManager.getCurrentSword() == "Yellow")
+            {
+                newAnimation = "normal4";
+            }
 
             velocity = new Vector2(0, velocity.Y);
             //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
             KeyboardState keyState = Keyboard.GetState(); //키보드 입력값
 
+
+            #region swordselect
+            if (keyState.IsKeyDown(Keys.D0) && ItemManager.haveSwords.Contains("Basic"))
+            {
+                ItemManager.setCurrentSword("Basic");
+            }
             if ( keyState.IsKeyDown(Keys.D1) && ItemManager.haveSwords.Contains("Blue"))
             {
                 ItemManager.setCurrentSword("Blue");
@@ -112,6 +171,7 @@ namespace Brave_Pig.Character
             {
                 ItemManager.setCurrentSword("Yellow");
             }            
+            #endregion
 
             #region attack
             if (keyState.IsKeyDown(Keys.Space))
@@ -162,13 +222,59 @@ namespace Brave_Pig.Character
                         velocity = new Vector2(0, velocity.Y);
                     }
                 }// 1번째 무기 공격 애니메이션
+                else if (ItemManager.getCurrentSword() == "Red")
+                {
+                    int attack_num = num.Next(0, 10);
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    if (attack_num < 5)
+                    {
+                        newAnimation = "attack22";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        newAnimation = "attack32";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                }// 2번째 무기 공격 애니메이션
+                else if (ItemManager.getCurrentSword() == "Yellow")
+                {
+                    int attack_num = num.Next(0, 10);
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    if (attack_num < 5)
+                    {
+                        newAnimation = "attack23";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                    else
+                    {
+                        newAnimation = "attack33";
+                        velocity = new Vector2(0, velocity.Y);
+                    }
+                }// 3번째 무기 공격 애니메이션
             } //공격 애니메이션
             #endregion
 
             #region move
             if (keyState.IsKeyDown(Keys.Left))
             {
-                if (stat.useSword == 0)
+                if (ItemManager.getCurrentSword() == "Basic")
                 {
                     direct = 0;
                     flipped = false;
@@ -199,7 +305,7 @@ namespace Brave_Pig.Character
                         }
                     }
                 } // 기본 무기 좌측 이동 + 공격
-                else if (stat.useSword == 1)
+                else if (ItemManager.getCurrentSword() == "Blue")
                 {
                     direct = 0;
                     flipped = false;
@@ -234,7 +340,7 @@ namespace Brave_Pig.Character
 
             if (keyState.IsKeyDown(Keys.Right))
             {
-                if (stat.useSword == 0)
+                if (ItemManager.getCurrentSword() == "Basic")
                 {
                     direct = 1;
                     flipped = true;
@@ -265,7 +371,7 @@ namespace Brave_Pig.Character
                         }
                     }
                 } // 기본 무기 우측 이동 + 공격
-                else if (stat.useSword == 1)
+                else if (ItemManager.getCurrentSword() == "Blue")
                 {
                     direct = 1;
                     flipped = true;
@@ -301,7 +407,7 @@ namespace Brave_Pig.Character
 
             if (keyState.IsKeyDown(Keys.Z))
             {
-                if (stat.useSword == 0)
+                if (ItemManager.getCurrentSword() == "Basic")
                 {
                     if (stat.manaPoint < 3)
                     {
@@ -324,7 +430,7 @@ namespace Brave_Pig.Character
                     newAnimation = "charge";
                     velocity = new Vector2(0, velocity.Y);
                 }
-                else if (stat.useSword == 1)
+                else if (ItemManager.getCurrentSword() == "Blue")
                 {
                     if (stat.manaPoint < 3)
                     {
