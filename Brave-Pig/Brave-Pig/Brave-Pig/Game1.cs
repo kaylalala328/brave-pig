@@ -12,7 +12,7 @@ using Brave_Pig.Sound;
 using Brave_Pig.UI;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Character;
-//using Brave_Pig.UI;
+using Brave_Pig.Items;
 
 namespace Brave_Pig
 {
@@ -73,6 +73,7 @@ namespace Brave_Pig
             graphics.ApplyChanges();
 
             SoundManager.Initialize();
+            ItemManager.Initialize();
             screen.Initialize(GraphicsDevice);
             mainUI.Initialize(GraphicsDevice);
             

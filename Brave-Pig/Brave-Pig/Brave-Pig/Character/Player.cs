@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
+using Brave_Pig.Items;
 
 namespace Brave_Pig.Character
 {
@@ -85,12 +86,12 @@ namespace Brave_Pig.Character
                 finish = false;
             } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
             string newAnimation = "";
-            
-            if (stat.useSword == 0)
+
+            if ( ItemManager.getCurrentSword() == "Basic" )
             {
                 newAnimation = "normal";
             }
-            else if (stat.useSword == 1)
+            else if ( ItemManager.getCurrentSword() == "Blue" )
             {
                 newAnimation = "normal2";
             }
@@ -348,7 +349,7 @@ namespace Brave_Pig.Character
             {
                 if (stat.manaPoint >= 1)
                 {
-                    if (stat.useSword == 0)
+                    if (ItemManager.getCurrentSword() == "Basic")
                     {
                         if (!finish)
                         {
@@ -367,7 +368,7 @@ namespace Brave_Pig.Character
                         newAnimation = "skill1";
                         velocity = new Vector2(0, velocity.Y);
                     } // 기본무기 스킬(1개 중 1번)
-                    else if(stat.useSword == 1)
+                    else if ( ItemManager.getCurrentSword() == "Blue" )
                     {
                         if (!finish)
                         {

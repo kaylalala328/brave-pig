@@ -19,7 +19,6 @@ namespace Brave_Pig.UI
         #region Declaration
         Texture2D bottomUI;
 
-        WeaponUI weapon;
         HP hp;
         MP mp;
 
@@ -28,9 +27,6 @@ namespace Brave_Pig.UI
         #region Initialize & Update
         public void Initialize ()
         {
-            weapon = new WeaponUI();
-            weapon.Initialize();
-
             hp = new HP();
             mp = new MP();
         }
@@ -38,13 +34,11 @@ namespace Brave_Pig.UI
         {
             bottomUI = content.Load<Texture2D>("UI/Bottom");
 
-            weapon.LoadContent(content);
             hp.LoadContent(content);
             mp.LoadContent(content);
         }
         public void Update ( GameTime gameTime, Player player)
         {
-            weapon.Update(gameTime);
             hp.Update(gameTime, player);
             mp.Update(gameTime, player);
         }
@@ -63,7 +57,6 @@ namespace Brave_Pig.UI
 
             hp.Draw(spriteBatch, UIfont, BottomUIWidth, BottomUIHeight, BottomY);
             mp.Draw(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
-            weapon.Draw(spriteBatch);
         }
         #endregion
     }

@@ -111,6 +111,9 @@
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\Status.cs" />
     <Compile Include="BasicObject\GameObject.cs" />
+    <Compile Include="Items\Armor.cs" />
+    <Compile Include="Items\ItemManager.cs" />
+    <Compile Include="Items\Sword.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="Monsters\Boss.cs" />
     <Compile Include="Monsters\Enemy.cs" />
@@ -125,7 +128,6 @@
     <Compile Include="UI\MP.cs" />
     <Compile Include="UI\StatusUI.cs" />
     <Compile Include="UI\UiAnimation.cs" />
-    <Compile Include="UI\WeaponUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
