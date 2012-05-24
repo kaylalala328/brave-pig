@@ -42,12 +42,12 @@ namespace Brave_Pig.Items
             currentSword = "Basic";
             // UI test 중
             haveSwords.Add("Blue");
-            //haveSwords.Add("Red");
-            //haveSwords.Add("Yellow");
+            haveSwords.Add("Red");
+            haveSwords.Add("Yellow");
 
-            //haveArmors.Add("Armor");
-            //haveArmors.Add("Boots");
-            //haveArmors.Add("Shield");
+            haveArmors.Add("Armor");
+            haveArmors.Add("Boots");
+            haveArmors.Add("Shield");
         }
 
         public static string getCurrentSword()

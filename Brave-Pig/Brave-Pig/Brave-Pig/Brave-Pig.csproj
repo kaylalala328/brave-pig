@@ -113,6 +113,7 @@
     <Compile Include="BasicObject\GameObject.cs" />
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\ItemManager.cs" />
+    <Compile Include="Items\Potion.cs" />
     <Compile Include="Items\Sword.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="Monsters\Boss.cs" />
