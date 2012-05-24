@@ -27,12 +27,9 @@ namespace Tile_Engine
         /// <summary>
         /// width * height 개수
         /// </summary>
+
         public const int MapWidth = 128;
         public const int MapHeight = 60;
-        /// <summary>
-        /// Layer 번호
-        /// </summary>
-        //public int TileNum = 0;
 
         static private MapSquare[,] mapCells = new MapSquare[MapWidth, MapHeight];
 

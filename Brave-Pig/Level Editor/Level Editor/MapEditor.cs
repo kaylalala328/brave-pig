@@ -97,12 +97,10 @@ namespace Level_Editor
             cboCodeValues.Items.Add("Boss");
 
             cboCodeValues.Items.Add("EnemyBlocking");
-            cboCodeValues.Items.Add("CharacterBlocking");
+            cboCodeValues.Items.Add("Blocking");
             
             cboCodeValues.Items.Add("RightStart");
             cboCodeValues.Items.Add("LeftStart");
-
-            cboCodeValues.Items.Add("Port");
 
             for (int x = 0; x < 100; x++)
             {
@@ -184,8 +182,8 @@ namespace Level_Editor
                     game.DrawTile = 14;
                     break;
 
-                case "CharacterBocking":
-                    txtNewCode.Text = "CBLOCK";
+                case "Bocking":
+                    txtNewCode.Text = "BLOCK";
                     game.DrawTile = 15;
                     break;
 
@@ -197,11 +195,6 @@ namespace Level_Editor
                 case "LeftStart":
                     txtNewCode.Text = "LSTART";
                     game.DrawTile = 17;
-                    break;
-
-                case "Port":
-                    txtNewCode.Text = "PORT";
-                    game.DrawTile = 18;
                     break;
             }
         }

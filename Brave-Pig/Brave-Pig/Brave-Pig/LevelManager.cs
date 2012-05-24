@@ -73,10 +73,10 @@ namespace Brave_Pig
             {
                 for (int y = 0; y < TileMap.MapHeight; y++)
                 {
+                    //맵에 enemy 추가.
+                    //enemy마다 움직이는 방향은 랜덤으로
                     if (TileMap.CellCodeValue(x, y) == "ENEMY1")
-                    {
-                        //enemies.Add(new Enemy(Content, x, y));
-                    }
+                    { }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     { }
@@ -95,23 +95,30 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY7")
                     { }
+                    ////////////////////////////////////////////////////
 
+                    //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
                     { }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS2")
                     { }
+                    ////////////////////////////////////////////////////
 
+                    //보스맵에 들어가면 있음
                     if (TileMap.CellCodeValue(x, y) == "BOSS")
                     { }
 
+                    //닿으면 캐릭터가 공격당했을때 모션을 하면서 HP 감소
                     if (TileMap.CellCodeValue(x, y) == "DAMAGED")
                     { }
 
+                    //enemy가 움직이는 범위 설정
+                    //이 타일을 찍는 
                     if (TileMap.CellCodeValue(x, y) == "EBLOCK")
                     { }
 
-                    if (TileMap.CellCodeValue(x, y) == "CBLOCK")
+                    if (TileMap.CellCodeValue(x, y) == "BLOCK")
                     { }
 
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
@@ -120,8 +127,6 @@ namespace Brave_Pig
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
                     { }
 
-                    if (TileMap.CellCodeValue(x, y) == "PORT")
-                    { }
                     /*
                     if (TileMap.CellCodeValue(x, y) == "START")
                     {
