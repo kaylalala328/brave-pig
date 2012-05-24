@@ -58,6 +58,10 @@ namespace Tile_Engine
         #endregion
 
         #region Tile and Tile Sheet Handling
+        /// <summary>
+        /// tile sheet를 TileWidth로 나눔.
+        /// tile sheet를 자르기 위해서
+        /// </summary>
         public static int TilesPerRow
         {
             get { return tileSheet.Width / TileWidth; }
@@ -65,11 +69,7 @@ namespace Tile_Engine
 
         public static Rectangle TileSourceRectangle(int tileIndex)
         {
-            return new Rectangle(
-                (tileIndex % TilesPerRow) * TileWidth,
-                (tileIndex / TilesPerRow) * TileHeight,
-                TileWidth,
-                TileHeight);
+            return new Rectangle((tileIndex % TilesPerRow) * TileWidth, (tileIndex / TilesPerRow) * TileHeight, TileWidth, TileHeight);
         }
         #endregion
 
@@ -86,39 +86,27 @@ namespace Tile_Engine
 
         static public Vector2 GetCellByPixel(Vector2 pixelLocation)
         {
-            return new Vector2(
-                GetCellByPixelX((int)pixelLocation.X),
-                GetCellByPixelY((int)pixelLocation.Y));
+            return new Vector2(GetCellByPixelX((int)pixelLocation.X), GetCellByPixelY((int)pixelLocation.Y));
         }
 
         static public Vector2 GetCellCenter(int cellX, int cellY)
         {
-            return new Vector2(
-                (cellX * TileWidth) + (TileWidth / 2),
-                (cellY * TileHeight) + (TileHeight / 2));
+            return new Vector2((cellX * TileWidth) + (TileWidth / 2), (cellY * TileHeight) + (TileHeight / 2));
         }
 
         static public Vector2 GetCellCenter(Vector2 cell)
         {
-            return GetCellCenter(
-                (int)cell.X,
-                (int)cell.Y);
+            return GetCellCenter((int)cell.X, (int)cell.Y);
         }
 
         static public Rectangle CellWorldRectangle(int cellX, int cellY)
         {
-            return new Rectangle(
-                cellX * TileWidth,
-                cellY * TileHeight,
-                TileWidth,
-                TileHeight);
+            return new Rectangle(cellX * TileWidth, cellY * TileHeight, TileWidth, TileHeight);
         }
 
         static public Rectangle CellWorldRectangle(Vector2 cell)
         {
-            return CellWorldRectangle(
-                (int)cell.X,
-                (int)cell.Y);
+            return CellWorldRectangle((int)cell.X, (int)cell.Y);
         }
 
         static public Rectangle CellScreenRectangle(int cellX, int cellY)
@@ -148,9 +136,7 @@ namespace Tile_Engine
 
         static public bool CellIsPassableByPixel(Vector2 pixelLocation)
         {
-            return CellIsPassable(
-                GetCellByPixelX((int)pixelLocation.X),
-                GetCellByPixelY((int)pixelLocation.Y));
+            return CellIsPassable(GetCellByPixelX((int)pixelLocation.X), GetCellByPixelY((int)pixelLocation.Y));
         }
 
         static public string CellCodeValue(int cellX, int cellY)
@@ -172,8 +158,7 @@ namespace Tile_Engine
         #region Information about MapSquare objects
         static public MapSquare GetMapSquareAtCell(int tileX, int tileY)
         {
-            if ((tileX >= 0) && (tileX < MapWidth) &&
-                (tileY >= 0) && (tileY < MapHeight))
+            if ((tileX >= 0) && (tileX < MapWidth) && (tileY >= 0) && (tileY < MapHeight))
             {
                 return mapCells[tileX, tileY];
             }
@@ -183,25 +168,17 @@ namespace Tile_Engine
             }
         }
 
-        static public void SetMapSquareAtCell(
-            int tileX,
-            int tileY,
-            MapSquare tile)
+        static public void SetMapSquareAtCell(int tileX, int tileY, MapSquare tile)
         {
-            if ((tileX >= 0) && (tileX < MapWidth) &&
-                (tileY >= 0) && (tileY < MapHeight))
+            if ((tileX >= 0) && (tileX < MapWidth) && (tileY >= 0) && (tileY < MapHeight))
             {
                 mapCells[tileX, tileY] = tile;
             }
         }
 
-        static public void SetTileAtCell(
-            int tileX,
-            int tileY,
-            int tileIndex)
+        static public void SetTileAtCell(int tileX, int tileY, int tileIndex)
         {
-            if ((tileX >= 0) && (tileX < MapWidth) &&
-                (tileY >= 0) && (tileY < MapHeight))
+            if ((tileX >= 0) && (tileX < MapWidth) && (tileY >= 0) && (tileY < MapHeight))
             {
                 mapCells[tileX, tileY].LayerTiles = tileIndex;
             }
@@ -209,16 +186,12 @@ namespace Tile_Engine
 
         static public MapSquare GetMapSquareAtPixel(int pixelX, int pixelY)
         {
-            return GetMapSquareAtCell(
-                GetCellByPixelX(pixelX),
-                GetCellByPixelY(pixelY));
+            return GetMapSquareAtCell(GetCellByPixelX(pixelX), GetCellByPixelY(pixelY));
         }
 
         static public MapSquare GetMapSquareAtPixel(Vector2 pixelLocation)
         {
-            return GetMapSquareAtPixel(
-                (int)pixelLocation.X,
-                (int)pixelLocation.Y);
+            return GetMapSquareAtPixel((int)pixelLocation.X, (int)pixelLocation.Y);
         }
 
         #endregion
@@ -273,40 +246,25 @@ namespace Tile_Engine
                     {
                         if (mapCells[x, y].LayerTiles != 0)
                         {
-                            
-                            spriteBatch.Draw(
-                              tileSheet,
-                              CellScreenRectangle(x, y),
-                              TileSourceRectangle(mapCells[x, y].LayerTiles),
-                              Color.White,
-                              0.0f,
-                              Vector2.Zero,
-                              SpriteEffects.None,
-                              0.1f);
+                            spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(mapCells[x, y].LayerTiles),
+                                             Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.1f);
                         }
+                            /*
                         else
                         {
                             //배경을 하얀색으로
-                            spriteBatch.Draw(
-                              tileSheet,
-                              CellScreenRectangle(x, y),
-                              TileSourceRectangle(mapCells[x, y].LayerTiles),
-                              Color.Transparent,
-                              0.0f,
-                              Vector2.Zero,
-                              SpriteEffects.None,
-                              0.1f);
+                            spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(mapCells[x, y].LayerTiles),
+                                             Color.Transparent, 0.0f, Vector2.Zero, SpriteEffects.None, 0.1f);
                         }
+                             */
                         
                     }
-
 
                     if (EditorMode)
                     {
                         DrawEditModeItems(spriteBatch, x, y);
                     }
                 }
-            
         }
 
         public static void DrawEditModeItems(SpriteBatch spriteBatch, int x, int y)

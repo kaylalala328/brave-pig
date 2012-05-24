@@ -20,13 +20,8 @@ namespace Tile_Engine
             get { return position; }
             set
             {
-                position = new Vector2(
-                    MathHelper.Clamp(value.X,
-                        worldRectangle.X, worldRectangle.Width -
-                        ViewPortWidth),
-                    MathHelper.Clamp(value.Y,
-                        worldRectangle.Y, worldRectangle.Height -
-                        ViewPortHeight));
+                position = new Vector2(MathHelper.Clamp(value.X, worldRectangle.X, worldRectangle.Width - ViewPortWidth),
+                                       MathHelper.Clamp(value.Y, worldRectangle.Y, worldRectangle.Height - ViewPortHeight));
             }
         }
 

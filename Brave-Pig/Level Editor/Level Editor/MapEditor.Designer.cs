@@ -41,10 +41,7 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.groupBoxRightClick = new System.Windows.Forms.GroupBox();
             this.cboCodeValues = new System.Windows.Forms.ComboBox();
-            this.lblCurrentCode = new System.Windows.Forms.Label();
             this.txtNewCode = new System.Windows.Forms.TextBox();
-            this.radioCode = new System.Windows.Forms.RadioButton();
-            this.radioPassable = new System.Windows.Forms.RadioButton();
             this.lblMapNumber = new System.Windows.Forms.Label();
             this.cboMapNumber = new System.Windows.Forms.ComboBox();
             this.timerGameUpdate = new System.Windows.Forms.Timer(this.components);
@@ -111,9 +108,9 @@
             // 
             // pctSurface
             // 
-            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSurface.Location = new System.Drawing.Point(23, 27);
             this.pctSurface.Name = "pctSurface";
             this.pctSurface.Size = new System.Drawing.Size(802, 532);
@@ -128,8 +125,8 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.vScrollBar1.LargeChange = 48;
             this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
             this.vScrollBar1.Name = "vScrollBar1";
@@ -138,8 +135,8 @@
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
             this.hScrollBar1.Location = new System.Drawing.Point(23, 562);
             this.hScrollBar1.Name = "hScrollBar1";
@@ -150,13 +147,10 @@
             // 
             this.groupBoxRightClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxRightClick.Controls.Add(this.cboCodeValues);
-            this.groupBoxRightClick.Controls.Add(this.lblCurrentCode);
             this.groupBoxRightClick.Controls.Add(this.txtNewCode);
-            this.groupBoxRightClick.Controls.Add(this.radioCode);
-            this.groupBoxRightClick.Controls.Add(this.radioPassable);
             this.groupBoxRightClick.Location = new System.Drawing.Point(837, 27);
             this.groupBoxRightClick.Name = "groupBoxRightClick";
-            this.groupBoxRightClick.Size = new System.Drawing.Size(202, 95);
+            this.groupBoxRightClick.Size = new System.Drawing.Size(202, 77);
             this.groupBoxRightClick.TabIndex = 5;
             this.groupBoxRightClick.TabStop = false;
             this.groupBoxRightClick.Text = "Tile Engine";
@@ -165,60 +159,26 @@
             // 
             this.cboCodeValues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCodeValues.FormattingEnabled = true;
-            this.cboCodeValues.Location = new System.Drawing.Point(6, 69);
+            this.cboCodeValues.Location = new System.Drawing.Point(6, 47);
             this.cboCodeValues.Name = "cboCodeValues";
             this.cboCodeValues.Size = new System.Drawing.Size(186, 20);
             this.cboCodeValues.TabIndex = 4;
             this.cboCodeValues.SelectedIndexChanged += new System.EventHandler(this.cboCodeValues_SelectedIndexChanged);
             // 
-            // lblCurrentCode
-            // 
-            this.lblCurrentCode.AutoSize = true;
-            this.lblCurrentCode.Location = new System.Drawing.Point(70, 54);
-            this.lblCurrentCode.Name = "lblCurrentCode";
-            this.lblCurrentCode.Size = new System.Drawing.Size(23, 12);
-            this.lblCurrentCode.TabIndex = 3;
-            this.lblCurrentCode.Text = "---";
-            // 
             // txtNewCode
             // 
-            this.txtNewCode.Location = new System.Drawing.Point(72, 33);
+            this.txtNewCode.Location = new System.Drawing.Point(7, 20);
             this.txtNewCode.Name = "txtNewCode";
-            this.txtNewCode.Size = new System.Drawing.Size(119, 21);
+            this.txtNewCode.Size = new System.Drawing.Size(185, 21);
             this.txtNewCode.TabIndex = 2;
             this.txtNewCode.TextChanged += new System.EventHandler(this.txtNewCode_TextChanged);
             // 
-            // radioCode
-            // 
-            this.radioCode.AutoSize = true;
-            this.radioCode.Location = new System.Drawing.Point(7, 35);
-            this.radioCode.Name = "radioCode";
-            this.radioCode.Size = new System.Drawing.Size(53, 16);
-            this.radioCode.TabIndex = 1;
-            this.radioCode.TabStop = true;
-            this.radioCode.Text = "Code";
-            this.radioCode.UseVisualStyleBackColor = true;
-            this.radioCode.CheckedChanged += new System.EventHandler(this.radioCode_CheckedChanged);
-            // 
-            // radioPassable
-            // 
-            this.radioPassable.AutoSize = true;
-            this.radioPassable.Checked = true;
-            this.radioPassable.Location = new System.Drawing.Point(7, 16);
-            this.radioPassable.Name = "radioPassable";
-            this.radioPassable.Size = new System.Drawing.Size(119, 16);
-            this.radioPassable.TabIndex = 0;
-            this.radioPassable.TabStop = true;
-            this.radioPassable.Text = "Toggle Passable";
-            this.radioPassable.UseVisualStyleBackColor = true;
-            this.radioPassable.CheckedChanged += new System.EventHandler(this.radioPassable_CheckedChanged);
-            // 
             // lblMapNumber
             // 
-            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMapNumber.AutoSize = true;
-            this.lblMapNumber.Location = new System.Drawing.Point(835, 135);
+            this.lblMapNumber.Location = new System.Drawing.Point(836, 112);
             this.lblMapNumber.Name = "lblMapNumber";
             this.lblMapNumber.Size = new System.Drawing.Size(83, 12);
             this.lblMapNumber.TabIndex = 6;
@@ -226,11 +186,11 @@
             // 
             // cboMapNumber
             // 
-            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
-            this.cboMapNumber.Location = new System.Drawing.Point(919, 130);
+            this.cboMapNumber.Location = new System.Drawing.Point(920, 107);
             this.cboMapNumber.Name = "cboMapNumber";
             this.cboMapNumber.Size = new System.Drawing.Size(109, 20);
             this.cboMapNumber.TabIndex = 7;
@@ -250,7 +210,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(876, 190);
+            this.button1.Location = new System.Drawing.Point(876, 143);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 41);
             this.button1.TabIndex = 8;
@@ -312,11 +272,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 583);
+            this.Controls.Add(this.ForeGroundFileLocation);
+            this.Controls.Add(this.BackGroundFileLocation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.ForeGroundFileLocation);
-            this.Controls.Add(this.BackGroundFileLocation);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cboMapNumber);
             this.Controls.Add(this.lblMapNumber);
@@ -355,10 +315,7 @@
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.GroupBox groupBoxRightClick;
         private System.Windows.Forms.ComboBox cboCodeValues;
-        private System.Windows.Forms.Label lblCurrentCode;
         private System.Windows.Forms.TextBox txtNewCode;
-        private System.Windows.Forms.RadioButton radioCode;
-        private System.Windows.Forms.RadioButton radioPassable;
         private System.Windows.Forms.Label lblMapNumber;
         private System.Windows.Forms.ComboBox cboMapNumber;
         private System.Windows.Forms.Timer timerGameUpdate;

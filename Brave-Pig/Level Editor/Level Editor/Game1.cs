@@ -40,11 +40,6 @@ namespace Level_Editor
         System.Windows.Forms.Control gameForm;
 
         /// <summary>
-        /// Layer 변수
-        /// </summary>
-        public int DrawLayer = 0;
-        
-        /// <summary>
         /// Layer 타일
         /// </summary>
         public int DrawTile = 0;
@@ -65,13 +60,21 @@ namespace Level_Editor
         public string CurrentCodeValue = "";
         public string HoverCodeValue = "";
 
+        /// <summary>
+        /// 마우스의 상태
+        /// 스크롤바
+        /// </summary>
         public MouseState lastMouseState;
         System.Windows.Forms.VScrollBar vscroll;
         System.Windows.Forms.HScrollBar hscroll;
 
-        public Game1(IntPtr drawSurface,
-                    System.Windows.Forms.Form parentForm,
-                    System.Windows.Forms.PictureBox surfacePictureBox)
+        /// <summary>
+        /// 생성자
+        /// </summary>
+        /// <param name="drawSurface">int형 포인터()</param>
+        /// <param name="parentForm"></param>
+        /// <param name="surfacePictureBox"></param>
+        public Game1(IntPtr drawSurface, System.Windows.Forms.Form parentForm, System.Windows.Forms.PictureBox surfacePictureBox)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -80,31 +83,23 @@ namespace Level_Editor
             this.parentForm = parentForm;
             this.pictureBox = surfacePictureBox;
 
-            graphics.PreparingDeviceSettings +=
-                new EventHandler<PreparingDeviceSettingsEventArgs>(
-                graphics_PreparingDeviceSettings);
+            graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
 
             Mouse.WindowHandle = drawSurface;
 
-            gameForm =
-                System.Windows.Forms.Control.FromHandle(this.Window.Handle);
+            gameForm = System.Windows.Forms.Control.FromHandle(this.Window.Handle);
             gameForm.VisibleChanged += new EventHandler(gameForm_VisibleChanged);
             pictureBox.SizeChanged += new EventHandler(pictureBox_SizeChanged);
 
-            vscroll =
-                (System.Windows.Forms.VScrollBar)parentForm.Controls["vScrollBar1"];
-            hscroll =
-                (System.Windows.Forms.HScrollBar)parentForm.Controls["hScrollBar1"];
+            vscroll = (System.Windows.Forms.VScrollBar)parentForm.Controls["vScrollBar1"];
+            hscroll = (System.Windows.Forms.HScrollBar)parentForm.Controls["hScrollBar1"];
 
             MapEdit = parentForm as MapEditor;
-
         }
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
-
             e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = drawSurface;
-
         }
 
         /// <summary>
@@ -118,6 +113,12 @@ namespace Level_Editor
                 gameForm.Visible = false;
         }
 
+        /// <summary>
+        /// 윈도우 창의 크기를 바꿨을 때 pictureBox 처리
+        /// 최소화되지 않았을 때 처리
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void pictureBox_SizeChanged(object sender, EventArgs e)
         {
             if (parentForm.WindowState != System.Windows.Forms.FormWindowState.Minimized)
@@ -151,22 +152,18 @@ namespace Level_Editor
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //pictureBox와 width, height를 같게 해줘서 윈도우 크기가 바뀌었을 때 
+            //스크롤의 width, height도 변할 수 있게 해줌
             Camera.ViewPortWidth = pictureBox.Width;
             Camera.ViewPortHeight = pictureBox.Height;
 
-            Camera.WorldRectangle =
-                new Rectangle(
-                    0,
-                    0,
-                    TileMap.TileWidth * TileMap.MapWidth,
-                    TileMap.TileHeight * TileMap.MapHeight
-                );
+            //width = tile의 width * 개수
+            //height = tile의 height * 개수
+            Camera.WorldRectangle = new Rectangle(0, 0, TileMap.TileWidth * TileMap.MapWidth, TileMap.TileHeight * TileMap.MapHeight);
 
-            TileMap.Initialize(
-                Content.Load<Texture2D>(@"Textures\TileA"));
+            TileMap.Initialize(Content.Load<Texture2D>(@"Textures\TileA"));
 
-            TileMap.spriteFont =
-                Content.Load<SpriteFont>(@"Fonts\Pericles8");
+            TileMap.spriteFont =Content.Load<SpriteFont>(@"Fonts\Pericles8");
 
             lastMouseState = Mouse.GetState();
 
@@ -191,40 +188,27 @@ namespace Level_Editor
         {
             if (MapEdit.Click_Accept == true)
             {
-                try
-                {
+                try {
                     BackgroundImage = Content.Load<Texture2D>(@"Textures\" + MapEdit.BackgroundFile());
                     ForegroundImage = Content.Load<Texture2D>(@"Textures\" + MapEdit.ForegroundFile());
                 }
-                catch
-                {
-
-                }
-
+                catch { }
             }
+            //스크롤이 움직일 때 카메라도 같이 움직임
             Camera.Position = new Vector2(hscroll.Value, vscroll.Value);
-
-            
+            //마우스의 상태를 가져옴
             MouseState ms = Mouse.GetState();
 
-            
-            if ((ms.X > 0) && (ms.Y > 0) &&
-                (ms.X < Camera.ViewPortWidth) &&
-                (ms.Y < Camera.ViewPortHeight))
+            if ((ms.X > 0) && (ms.Y > 0) && (ms.X < Camera.ViewPortWidth) && (ms.Y < Camera.ViewPortHeight))
             {
-                Vector2 mouseLoc = Camera.ScreenToWorld(
-                    new Vector2(ms.X, ms.Y));
+                Vector2 mouseLoc = Camera.ScreenToWorld(new Vector2(ms.X, ms.Y));
 
-                if (Camera.WorldRectangle.Contains(
-                    (int)mouseLoc.X, (int)mouseLoc.Y))
+                if (Camera.WorldRectangle.Contains((int)mouseLoc.X, (int)mouseLoc.Y))
                 {
+                    //마우스 왼쪽 버튼 클릭
                     if (ms.LeftButton == ButtonState.Pressed)
-                    {/*
-                        TileMap.SetTileAtCell(
-                          TileMap.GetCellByPixelX((int)mouseLoc.X),
-                          TileMap.GetCellByPixelY((int)mouseLoc.Y),
-                          1,
-                          3);*/
+                    {
+                        TileMap.SetTileAtCell(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y), 5);
                     }
                     
                     if ((ms.RightButton == ButtonState.Pressed) &&
@@ -274,7 +258,6 @@ namespace Level_Editor
 
             try
             {
-
                 spriteBatch.Draw(BackgroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.9f);
             }
             catch

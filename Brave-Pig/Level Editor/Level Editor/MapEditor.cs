@@ -41,20 +41,6 @@ namespace Level_Editor
                             TileMap.TileWidth,
                             TileMap.TileHeight),
                             System.Drawing.Imaging.PixelFormat.DontCare);
-                    /*
-                    imgListTiles.Images.Add(newBitmap);
-                    string itemName = "";
-                    if (tilecount == 0)
-                    {
-                        itemName = "Empty";
-                    }
-                    if (tilecount == 1)
-                    {
-                        itemName = "White";
-                    }
-                    listTiles.Items.Add(new
-                        ListViewItem(itemName, tilecount++));
-                    */
                 }
             }
             FixScrollBarScales();
@@ -197,16 +183,6 @@ namespace Level_Editor
             }
         }
         /*
-        private void listTiles_SelectedIndexChanged(
-            object sender, EventArgs e)
-        {
-            if (listTiles.SelectedIndices.Count > 0)
-            {
-                game.DrawTile =
-                    listTiles.SelectedIndices[0];
-            }
-        }
-        */
         private void radioPassable_CheckedChanged(object sender, EventArgs e)
         {
             if (radioPassable.Checked)
@@ -230,7 +206,7 @@ namespace Level_Editor
                 game.EditingCode = true;
             }
         }
-
+        */
         private void txtNewCode_TextChanged(object sender, EventArgs e)
         {
             game.CurrentCodeValue = txtNewCode.Text;
@@ -244,9 +220,10 @@ namespace Level_Editor
             }
 
             game.Tick();
-
+            /*
             if (game.HoverCodeValue != lblCurrentCode.Text)
                 lblCurrentCode.Text = game.HoverCodeValue;
+            */
         }
 
         private void saveMapToolStripMenuItem_Click(
