@@ -108,9 +108,9 @@
             // 
             // pctSurface
             // 
-            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pctSurface.Location = new System.Drawing.Point(23, 27);
             this.pctSurface.Name = "pctSurface";
             this.pctSurface.Size = new System.Drawing.Size(802, 532);
@@ -125,8 +125,8 @@
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.vScrollBar1.LargeChange = 48;
             this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
             this.vScrollBar1.Name = "vScrollBar1";
@@ -135,8 +135,8 @@
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar1.LargeChange = 48;
             this.hScrollBar1.Location = new System.Drawing.Point(23, 562);
             this.hScrollBar1.Name = "hScrollBar1";
@@ -175,8 +175,8 @@
             // 
             // lblMapNumber
             // 
-            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMapNumber.AutoSize = true;
             this.lblMapNumber.Location = new System.Drawing.Point(836, 112);
             this.lblMapNumber.Name = "lblMapNumber";
@@ -186,8 +186,8 @@
             // 
             // cboMapNumber
             // 
-            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMapNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMapNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMapNumber.FormattingEnabled = true;
             this.cboMapNumber.Location = new System.Drawing.Point(920, 107);
@@ -225,7 +225,7 @@
             this.BackGroundFileLocation.Name = "BackGroundFileLocation";
             this.BackGroundFileLocation.Size = new System.Drawing.Size(208, 21);
             this.BackGroundFileLocation.TabIndex = 5;
-            this.BackGroundFileLocation.Text = "BackTest";
+            this.BackGroundFileLocation.Text = "IU";
             // 
             // ForeGroundFileLocation
             // 
@@ -234,7 +234,7 @@
             this.ForeGroundFileLocation.Name = "ForeGroundFileLocation";
             this.ForeGroundFileLocation.Size = new System.Drawing.Size(208, 21);
             this.ForeGroundFileLocation.TabIndex = 11;
-            this.ForeGroundFileLocation.Text = "TestMap";
+            this.ForeGroundFileLocation.Text = "BasicTiles";
             // 
             // button4
             // 
@@ -251,7 +251,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(847, 296);
+            this.label1.Location = new System.Drawing.Point(847, 292);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 12);
             this.label1.TabIndex = 13;
@@ -261,7 +261,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(847, 370);
+            this.label2.Location = new System.Drawing.Point(847, 367);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 12);
             this.label2.TabIndex = 14;
