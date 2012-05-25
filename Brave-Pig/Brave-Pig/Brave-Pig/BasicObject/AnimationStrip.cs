@@ -38,6 +38,10 @@ namespace Brave_Pig.BasicObject
         #endregion
 
         #region Properties
+        public float FrameTimer
+        {
+            get { return frameTimer; }
+        }
         public int FrameWidth
         {
             get { return frameWidth; }

@@ -62,7 +62,7 @@ namespace Brave_Pig.Monsters
             enabled = true;
 
             codeBasedBlocks = true;
-            PlayAnimation("run");
+            //PlayAnimation("run");
         }
 
         public override void Update(GameTime gameTime)

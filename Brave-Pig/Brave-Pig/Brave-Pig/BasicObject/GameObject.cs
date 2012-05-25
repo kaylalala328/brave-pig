@@ -43,9 +43,13 @@ namespace Brave_Pig.BasicObject
         //Animation Dictionary
         protected Dictionary<string, AnimationStrip> animations =
             new Dictionary<string, AnimationStrip>();
+
+        protected Dictionary<string, AnimationStrip> animations2 =
+            new Dictionary<string, AnimationStrip>();
         
         //현재 애니메이션 string
         protected string currentAnimation;
+        protected string currentAnimation2;
         #endregion
 
         #region Properties
@@ -111,12 +115,13 @@ namespace Brave_Pig.BasicObject
                 if (animations[currentAnimation].FinishedPlaying)
                 {
                     //애니메이션은 다음 애니메이션을 가르키게 한다.
-                    PlayAnimation(animations[currentAnimation].NextAnimation);
+                    PlayAnimation(animations[currentAnimation].NextAnimation, animations2[currentAnimation2].NextAnimation);
                 }
                 else
                 {
                     //애니메이션이 안끝낫다면
                     animations[currentAnimation].Update(gameTime);
+                    animations2[currentAnimation2].Update(gameTime);
                 }
             }
         }
@@ -228,12 +233,14 @@ namespace Brave_Pig.BasicObject
         /// Animation 입력이 들어오면 애니메이션을 Play
         /// </summary>
         /// <param name="name"></param>
-        public void PlayAnimation(string name)
+        public void PlayAnimation(string name, string name2)
         {
             if (!(name == null) && animations.ContainsKey(name))
             {
                 currentAnimation = name;
+                currentAnimation2 = name2;
                 animations[name].Play();
+                animations2[name2].Play();
             }
         }
 
@@ -308,6 +315,56 @@ namespace Brave_Pig.BasicObject
                     animations[currentAnimation].Texture,
                     Camera.WorldToScreen(WorldRectangle),
                     animations[currentAnimation].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(200, 300, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(1000, 250, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(600, 100, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(400, 400, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(800, 50, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(300, 70, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(700, 350, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(50, 130, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(1100, 100, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
+                    Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
+                spriteBatch.Draw(
+                    animations2[currentAnimation2].Texture,
+                    new Rectangle(450, 250, 140, 140),
+                    animations2[currentAnimation2].FrameRectangle,
                     Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
             }
         }

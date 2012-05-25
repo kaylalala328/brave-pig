@@ -105,6 +105,12 @@ namespace Brave_Pig.Character
             animations.Add("skill33", new AnimationStrip(content.Load<Texture2D>("Player/skill33"), 179, "skill33"));
             animations["skill33"].LoopAnimation = false;
 
+            animations2.Add("skillmap", new AnimationStrip(content.Load<Texture2D>("Player/skillmap"), 140, "skillmap"));
+            animations2["skillmap"].LoopAnimation = false;
+
+            animations2.Add("default", new AnimationStrip(content.Load<Texture2D>("Player/default"), 77, "default"));
+            animations2["default"].LoopAnimation = false;
+
             /*animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
             animations["jump"].FrameLength = 0.08f;
@@ -117,10 +123,11 @@ namespace Brave_Pig.Character
             drawDepth = 0f;
 
             currentAnimation = "normal";
+            currentAnimation2 = "default";
             enabled = true;
             codeBasedBlocks = false;
             
-            PlayAnimation("normal");
+            PlayAnimation("normal", "default");
             worldLocation = new Vector2(350,300);   //플레이어 위치
         }
 
@@ -131,6 +138,7 @@ namespace Brave_Pig.Character
                 finish = false;
             } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
             string newAnimation = "";
+            string newAnimation2 = "default";
 
             if ( ItemManager.getCurrentSword() == "Basic" )
             {
@@ -365,7 +373,7 @@ namespace Brave_Pig.Character
                             velocity = new Vector2(0, velocity.Y);
                         }
                     }
-                }// 3번째 무기 좌측 이동 + 공격
+                }// 2번째 무기 좌측 이동 + 공격
                 else if (ItemManager.getCurrentSword() == "Yellow")
                 {
                     direct = 0;
@@ -442,14 +450,7 @@ namespace Brave_Pig.Character
                     if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                        flipped = true;
 
                         if (attack_num < 5)
                         {
@@ -461,8 +462,56 @@ namespace Brave_Pig.Character
                             newAnimation = "attack31";
                             velocity = new Vector2(0, velocity.Y);
                         }
-                    }// 1번째 무기 우측 이동 + 공격               
-                }
+                    }
+                }// 1번째 무기 우측 이동 + 공격
+                else if (ItemManager.getCurrentSword() == "Red")
+                {
+                    direct = 1;
+                    flipped = true;
+                    newAnimation = "move33";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        flipped = true;
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack22";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack32";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }
+                }// 2번째 무기 우측 이동 + 공격
+                else if (ItemManager.getCurrentSword() == "Yellow")
+                {
+                    direct = 1;
+                    flipped = true;
+                    newAnimation = "move34";
+                    velocity = new Vector2(0, velocity.Y);
+
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space))
+                    {
+                        int attack_num = num.Next(0, 10);
+                        flipped = true;
+
+                        if (attack_num < 5)
+                        {
+                            newAnimation = "attack23";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        else
+                        {
+                            newAnimation = "attack33";
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                    }
+                }// 3번째 무기 우측 이동 + 공격
             } //우측이동 애니메이션 + 이동중 공격
             #endregion
 
@@ -474,7 +523,7 @@ namespace Brave_Pig.Character
                 {
                     if (stat.manaPoint < 3)
                     {
-                        stat.manaPoint = stat.manaPoint + 0.005f;
+                        stat.manaPoint = stat.manaPoint + 0.5f;
                     }
                     else
                     {
@@ -497,7 +546,7 @@ namespace Brave_Pig.Character
                 {
                     if (stat.manaPoint < 3)
                     {
-                        stat.manaPoint = stat.manaPoint + 0.005f;
+                        stat.manaPoint = stat.manaPoint + 0.5f;
                     }
                     else
                     {
@@ -520,7 +569,7 @@ namespace Brave_Pig.Character
                 {
                     if (stat.manaPoint < 3)
                     {
-                        stat.manaPoint = stat.manaPoint + 0.005f;
+                        stat.manaPoint = stat.manaPoint + 0.5f;
                     }
                     else
                     {
@@ -543,7 +592,7 @@ namespace Brave_Pig.Character
                 {
                     if (stat.manaPoint < 3)
                     {
-                        stat.manaPoint = stat.manaPoint + 0.005f;
+                        stat.manaPoint = stat.manaPoint + 0.5f;
                     }
                     else
                     {
@@ -719,6 +768,7 @@ namespace Brave_Pig.Character
                         }
 
                         newAnimation = "skill33";
+                        newAnimation2 = "skillmap";
                         velocity = new Vector2(0, velocity.Y);
                     } // 3번째 무기 스킬(3개 중 3번)
                 }
@@ -739,12 +789,12 @@ namespace Brave_Pig.Character
             if (newAnimation != currentAnimation)
             {
                 if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
-                    PlayAnimation(newAnimation);
+                    PlayAnimation(newAnimation, newAnimation2);
             } //다른 입력값이 들어왔을때 처리방법
             else
             {
                 if (animations[currentAnimation].FinishedPlaying == true)
-                    PlayAnimation(newAnimation);
+                    PlayAnimation(newAnimation, newAnimation2);
             } //지속 입력값이 들어왔을때 처리방법
             
 
