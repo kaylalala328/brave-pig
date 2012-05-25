@@ -38,6 +38,7 @@ namespace Brave_Pig.UI
 
             hp.LoadContent(content);
             mp.LoadContent(content);
+            itemWindow.LoadContent(content);
         }
         public void Update ( GameTime gameTime, Player player)
         {
@@ -61,6 +62,8 @@ namespace Brave_Pig.UI
             mp.Draw(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
             itemWindow.DrawSword(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
             itemWindow.DrawArmor(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
+            itemWindow.DrawSkill(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
+            itemWindow.DrawPotion(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
         }
         #endregion
     }

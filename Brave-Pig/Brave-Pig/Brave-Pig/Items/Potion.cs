@@ -19,9 +19,22 @@ namespace Brave_Pig.Items
         int heal;
         int count;
 
-        public Potion()
+        public Potion(int healing, int num)
         {
-
+            heal = healing;
+            count = num;
+        }
+        public int getHeal()
+        {
+            return heal;
+        }
+        public int getCount()
+        {
+            return count;
+        }
+        public void usePotion()
+        {
+            count--;
         }
     }
 }

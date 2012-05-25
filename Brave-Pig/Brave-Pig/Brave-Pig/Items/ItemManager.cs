@@ -26,6 +26,8 @@ namespace Brave_Pig.Items
         public static List<string> haveArmors =
             new List<string>();
 
+        private static Potion potion;
+
         private static string currentSword;
 
         public static void Initialize(ContentManager content)
@@ -38,6 +40,8 @@ namespace Brave_Pig.Items
             armors.Add("Armor", new Armor(0, 10, content.Load<Texture2D>("Item/armor")));
             armors.Add("Boots", new Armor(0, 10, content.Load<Texture2D>("Item/boots")));
             armors.Add("Shield", new Armor(0, 10,content.Load<Texture2D>("Item/shield")));
+
+            potion = new Potion(10, 50);
 
             currentSword = "Basic";
             // UI test 중
@@ -65,6 +69,10 @@ namespace Brave_Pig.Items
         public static void gainArmor ( string newArmor )
         {
             haveArmors.Add(newArmor);
+        }
+        public static Potion getPotion()
+        {
+            return potion;
         }
     }
 }
