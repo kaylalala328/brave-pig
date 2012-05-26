@@ -26,7 +26,7 @@ namespace Level_Editor
         public void LoadImageList()
         {
             string filepath = game.Content.RootDirectory;
-            filepath += @"\Textures\TileA.png";
+            filepath += @"\Textures\TileSheet.png";
             
             Bitmap tileSheet = new Bitmap(filepath);
             //int tilecount = 0;
@@ -124,77 +124,77 @@ namespace Level_Editor
             {
                 case "Enemy1":
                     txtNewCode.Text = "ENEMY1";
-                    game.DrawTile = 3;
+                    game.DrawTile = 2;
                     break;
 
                 case "Enemy2":
                     txtNewCode.Text = "ENEMY2";
-                    game.DrawTile = 4;
+                    game.DrawTile = 3;
                     break;
 
                 case "Enemy3":
                     txtNewCode.Text = "ENEMY3";
-                    game.DrawTile = 5;
+                    game.DrawTile = 4;
                     break;
 
                 case "Enemy4":
                     txtNewCode.Text = "ENEMY4";
-                    game.DrawTile = 6;
+                    game.DrawTile = 5;
                     break;
 
                 case "Enemy5":
                     txtNewCode.Text = "ENEMY5";
-                    game.DrawTile = 7;
+                    game.DrawTile = 6;
                     break;
 
                 case "Enemy6":
                     txtNewCode.Text = "ENEMY6";
-                    game.DrawTile = 8;
+                    game.DrawTile = 7;
                     break;
 
                 case "Enemy7":
                     txtNewCode.Text = "ENEMY7";
-                    game.DrawTile = 9;
+                    game.DrawTile = 8;
                     break;
 
                 case "MiddleBoss1":
                     txtNewCode.Text = "MBOSS1";
-                    game.DrawTile = 10;
+                    game.DrawTile = 1;
                     break;
 
                 case "MiddleBoss2":
                     txtNewCode.Text = "MBOSS2";
-                    game.DrawTile = 11;
+                    game.DrawTile = 2;
                     break;
 
                 case "Boss":
                     txtNewCode.Text = "BOSS";
-                    game.DrawTile = 12;
+                    game.DrawTile = 0;
                     break;
 
                 case "Lethal":
                     txtNewCode.Text = "DAMAGED";
-                    game.DrawTile = 13;
+                    game.DrawTile = 12;
                     break;
 
                 case "EnemyBlocking":
                     txtNewCode.Text = "EBLOCK";
-                    game.DrawTile = 14;
+                    game.DrawTile = 11;
                     break;
 
                 case "Bocking":
                     txtNewCode.Text = "BLOCK";
-                    game.DrawTile = 15;
+                    game.DrawTile = 10;
                     break;
 
                 case "RightStart":
                     txtNewCode.Text = "RSTART";
-                    game.DrawTile = 16;
+                    game.DrawTile = 13;
                     break;
 
                 case "LeftStart":
                     txtNewCode.Text = "LSTART";
-                    game.DrawTile = 17;
+                    game.DrawTile = 14;
                     break;
             }
         }

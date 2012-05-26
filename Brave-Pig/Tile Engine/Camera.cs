@@ -45,11 +45,9 @@ namespace Tile_Engine
 
         public static Rectangle ViewPort
         {
-            get
+            get 
             {
-                return new Rectangle(
-                    (int)Position.X, (int)Position.Y,
-                    ViewPortWidth, ViewPortHeight);
+                return new Rectangle((int)Position.X, (int)Position.Y, ViewPortWidth, ViewPortHeight);
             }
         }
         #endregion
@@ -72,11 +70,7 @@ namespace Tile_Engine
 
         public static Rectangle WorldToScreen(Rectangle worldRectangle)
         {
-            return new Rectangle(
-                worldRectangle.Left - (int)position.X,
-                worldRectangle.Top - (int)position.Y,
-                worldRectangle.Width,
-                worldRectangle.Height);
+            return new Rectangle(worldRectangle.Left - (int)position.X, worldRectangle.Top - (int)position.Y, worldRectangle.Width, worldRectangle.Height);
         }
 
         public static Vector2 ScreenToWorld(Vector2 screenLocation)
@@ -86,13 +80,8 @@ namespace Tile_Engine
 
         public static Rectangle ScreenToWorld(Rectangle screenRectangle)
         {
-            return new Rectangle(
-                screenRectangle.Left + (int)position.X,
-                screenRectangle.Top + (int)position.Y,
-                screenRectangle.Width,
-                screenRectangle.Height);
+            return new Rectangle(screenRectangle.Left + (int)position.X, screenRectangle.Top + (int)position.Y, screenRectangle.Width, screenRectangle.Height);
         }
         #endregion
-
     }
 }

@@ -119,7 +119,9 @@ namespace Brave_Pig
                     { }
 
                     if (TileMap.CellCodeValue(x, y) == "BLOCK")
-                    { }
+                    { 
+
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
                     { }
@@ -179,7 +181,6 @@ namespace Brave_Pig
                         }
                     }
                 }
-                
             }
            */
         }
