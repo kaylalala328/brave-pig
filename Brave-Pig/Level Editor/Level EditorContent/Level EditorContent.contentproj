@@ -61,8 +61,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\TileSheet.png">
-      <Name>TileSheet</Name>
+    <Compile Include="Textures\Tile.png">
+      <Name>Tile</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

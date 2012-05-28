@@ -10,9 +10,9 @@ using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Monsters;
 using Brave_Pig.Character;
-
 namespace Brave_Pig
 {
+
     public static class LevelManager
     {
         #region Declarations
@@ -38,9 +38,7 @@ namespace Brave_Pig
         #endregion
 
         #region Initialization
-        public static void Initialize(
-            ContentManager content,
-            Player gamePlayer)
+        public static void Initialize(ContentManager content, Player gamePlayer)
         {
             Content = content;
             player = gamePlayer;
@@ -50,8 +48,7 @@ namespace Brave_Pig
         #region Helper Methods
         private static void checkCurrentCellCode()
         {
-            string code = TileMap.CellCodeValue(
-                TileMap.GetCellByPixel(player.WorldCenter));
+            string code = TileMap.CellCodeValue(TileMap.GetCellByPixel(player.WorldCenter));
 
             if (code == "DEAD")
             {
@@ -63,9 +60,7 @@ namespace Brave_Pig
         #region Public Methods
         public static void LoadLevel(int levelNumber)
         {
-            TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream(
-                "Content/Maps/MAP" +
-                levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
+            TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream("Content/Maps/MAP" + levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
 
             enemies.Clear();
 

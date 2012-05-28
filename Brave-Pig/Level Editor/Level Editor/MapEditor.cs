@@ -26,21 +26,17 @@ namespace Level_Editor
         public void LoadImageList()
         {
             string filepath = game.Content.RootDirectory;
-            filepath += @"\Textures\TileSheet.png";
+            filepath += @"\Textures\Tile.png";
             
             Bitmap tileSheet = new Bitmap(filepath);
-            //int tilecount = 0;
+
             for (int y = 0; y < tileSheet.Height / TileMap.TileHeight; y++)
             {
                 for (int x = 0; x < tileSheet.Width / TileMap.TileWidth; x++)
                 {
                     Bitmap newBitmap = tileSheet.Clone(new
-                        System.Drawing.Rectangle(
-                            x * TileMap.TileWidth,
-                            y * TileMap.TileHeight,
-                            TileMap.TileWidth,
-                            TileMap.TileHeight),
-                            System.Drawing.Imaging.PixelFormat.DontCare);
+                        System.Drawing.Rectangle(x * TileMap.TileWidth, y * TileMap.TileHeight, TileMap.TileWidth, TileMap.TileHeight), 
+                                                 System.Drawing.Imaging.PixelFormat.DontCare);
                 }
             }
             FixScrollBarScales();
@@ -64,10 +60,7 @@ namespace Level_Editor
         {
             try
             {
-                TileMap.LoadMap(new FileStream(
-                    Application.StartupPath + @"\MAP" +
-                    cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP",
-                    FileMode.Open));
+                TileMap.LoadMap(new FileStream(Application.StartupPath + @"\MAP" + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Open));
             }
             catch
             {
@@ -124,105 +117,81 @@ namespace Level_Editor
             {
                 case "Enemy1":
                     txtNewCode.Text = "ENEMY1";
-                    game.DrawTile = 2;
+                    game.DrawTile = 6;
                     break;
 
                 case "Enemy2":
                     txtNewCode.Text = "ENEMY2";
-                    game.DrawTile = 3;
+                    game.DrawTile = 7;
                     break;
 
                 case "Enemy3":
                     txtNewCode.Text = "ENEMY3";
-                    game.DrawTile = 4;
+                    game.DrawTile = 8;
                     break;
 
                 case "Enemy4":
                     txtNewCode.Text = "ENEMY4";
-                    game.DrawTile = 5;
+                    game.DrawTile = 9;
                     break;
 
                 case "Enemy5":
                     txtNewCode.Text = "ENEMY5";
-                    game.DrawTile = 6;
+                    game.DrawTile = 10;
                     break;
 
                 case "Enemy6":
                     txtNewCode.Text = "ENEMY6";
-                    game.DrawTile = 7;
+                    game.DrawTile = 11;
                     break;
 
                 case "Enemy7":
                     txtNewCode.Text = "ENEMY7";
-                    game.DrawTile = 8;
+                    game.DrawTile = 12;
                     break;
 
                 case "MiddleBoss1":
                     txtNewCode.Text = "MBOSS1";
-                    game.DrawTile = 1;
+                    game.DrawTile = 4;
                     break;
 
                 case "MiddleBoss2":
                     txtNewCode.Text = "MBOSS2";
-                    game.DrawTile = 2;
+                    game.DrawTile = 5;
                     break;
 
                 case "Boss":
                     txtNewCode.Text = "BOSS";
-                    game.DrawTile = 0;
+                    game.DrawTile = 3;
                     break;
 
                 case "Lethal":
                     txtNewCode.Text = "DAMAGED";
-                    game.DrawTile = 12;
+                    game.DrawTile = 13;
                     break;
 
                 case "EnemyBlocking":
                     txtNewCode.Text = "EBLOCK";
-                    game.DrawTile = 11;
+                    game.DrawTile = 2;
                     break;
 
                 case "Bocking":
                     txtNewCode.Text = "BLOCK";
-                    game.DrawTile = 10;
+                    game.DrawTile = 1;
                     break;
 
                 case "RightStart":
                     txtNewCode.Text = "RSTART";
-                    game.DrawTile = 13;
+                    game.DrawTile = 14;
                     break;
 
                 case "LeftStart":
                     txtNewCode.Text = "LSTART";
-                    game.DrawTile = 14;
+                    game.DrawTile = 15;
                     break;
             }
         }
-        /*
-        private void radioPassable_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioPassable.Checked)
-            {
-                game.EditingCode = false;
-            }
-            else
-            {
-                game.EditingCode = true;
-            }
-        }
 
-        private void radioCode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioPassable.Checked)
-            {
-                game.EditingCode = false;
-            }
-            else
-            {
-                game.EditingCode = true;
-            }
-        }
-        */
         private void txtNewCode_TextChanged(object sender, EventArgs e)
         {
             game.CurrentCodeValue = txtNewCode.Text;
@@ -235,26 +204,17 @@ namespace Level_Editor
                 FixScrollBarScales();
             }
 
-            game.Tick();
-            /*
-            if (game.HoverCodeValue != lblCurrentCode.Text)
-                lblCurrentCode.Text = game.HoverCodeValue;
-            */
+            game.Tick();           
         }
 
         private void saveMapToolStripMenuItem_Click(
             object sender,
             EventArgs e)
         {
-            TileMap.SaveMap(new FileStream(
-                Application.StartupPath + @"\MAP" +
-                cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP",
-                FileMode.Create));
+            TileMap.SaveMap(new FileStream(Application.StartupPath + @"\MAP" + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Create));
         }
 
-        private void clearMapToolStripMenuItem_Click(
-            object sender,
-            EventArgs e)
+        private void clearMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TileMap.ClearMap();
         }

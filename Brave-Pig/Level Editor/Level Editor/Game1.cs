@@ -162,7 +162,7 @@ namespace Level_Editor
             //height = tileÀÇ height * °³¼ö
             Camera.WorldRectangle = new Rectangle(0, 0, TileMap.TileWidth * TileMap.MapWidth, TileMap.TileHeight * TileMap.MapHeight);
 
-            TileMap.Initialize(Content.Load<Texture2D>(@"Textures\TileSheet"));
+            TileMap.Initialize(Content.Load<Texture2D>(@"Textures\Tile"));
 
             TileMap.spriteFont =Content.Load<SpriteFont>(@"Fonts\Pericles8");
 

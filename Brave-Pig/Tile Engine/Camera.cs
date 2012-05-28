@@ -9,8 +9,15 @@ namespace Tile_Engine
     public static class Camera
     {
         #region Declarations
+        /// <summary>
+        /// 카메라가 나타내는 뷰 영역의 왼쪽 상단 코너
+        /// </summary>
         private static Vector2 position = Vector2.Zero;
+        /// <summary>
+        /// position에서 오른쪽, 아래쪽으로의 픽셀, 즉 뷰 영역에 해당하는 영역을 의미한다.
+        /// </summary>
         private static Vector2 viewPortSize = Vector2.Zero;
+
         private static Rectangle worldRectangle = new Rectangle(0, 0, 0, 0);
         #endregion
 
@@ -20,6 +27,7 @@ namespace Tile_Engine
             get { return position; }
             set
             {
+                ///한계를 지정하고 게임 월드가 항상 화면에 나타나게 지정한다.
                 position = new Vector2(MathHelper.Clamp(value.X, worldRectangle.X, worldRectangle.Width - ViewPortWidth),
                                        MathHelper.Clamp(value.Y, worldRectangle.Y, worldRectangle.Height - ViewPortHeight));
             }
@@ -62,12 +70,12 @@ namespace Tile_Engine
         {
             return (ViewPort.Intersects(bounds));
         }
-
+        
         public static Vector2 WorldToScreen(Vector2 worldLocation)
         {
             return worldLocation - position;
         }
-
+        
         public static Rectangle WorldToScreen(Rectangle worldRectangle)
         {
             return new Rectangle(worldRectangle.Left - (int)position.X, worldRectangle.Top - (int)position.Y, worldRectangle.Width, worldRectangle.Height);

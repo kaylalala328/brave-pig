@@ -25,9 +25,8 @@ namespace Tile_Engine
         public const int TileHeight = 16;
 
         /// <summary>
-        /// width * height 개수
+        /// width, height에 들어갈 타일 개수
         /// </summary>
-
         public const int MapWidth = 128;
         public const int MapHeight = 60;
 
@@ -48,7 +47,7 @@ namespace Tile_Engine
             {
                 for (int y = 0; y < MapHeight; y++)
                 {
-                    mapCells[x, y] = new MapSquare(0, 0, "", true);
+                    mapCells[x, y] = new MapSquare(0, "", true);
                 }
             }
         }
@@ -192,7 +191,6 @@ namespace Tile_Engine
         {
             return GetMapSquareAtPixel((int)pixelLocation.X, (int)pixelLocation.Y);
         }
-
         #endregion
 
         #region Loading and Saving Maps
@@ -221,7 +219,7 @@ namespace Tile_Engine
         {
             for (int x = 0; x < MapWidth; x++)
                 for (int y = 0; y < MapHeight; y++)
-                    mapCells[x, y] = new MapSquare(0, 0, "", true);
+                    mapCells[x, y] = new MapSquare(0, "", true);
         }
         #endregion
 
@@ -256,7 +254,6 @@ namespace Tile_Engine
                                              Color.Transparent, 0.0f, Vector2.Zero, SpriteEffects.None, 0.1f);
                         }
                              */
-                        
                     }
 
                     if (EditorMode)
@@ -277,15 +274,8 @@ namespace Tile_Engine
              */
             if (!CellIsPassable(x, y))
             {
-                spriteBatch.Draw(
-                                tileSheet,
-                                CellScreenRectangle(x, y),
-                                TileSourceRectangle(0),
-                                new Color(255, 0, 0, 80),
-                                0.0f,
-                                Vector2.Zero,
-                                SpriteEffects.None,
-                                0.0f);
+                spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(0), 
+                                 new Color(255, 0, 0, 80), 0.0f, Vector2.Zero, SpriteEffects.None, 0.0f);
             }
             /************************
              *코드를 선택했다면 CodeValue가 여기서 바뀌겠지? Swtich 문써서 바꾸면 좀 더 잘 될듯!!
@@ -294,21 +284,10 @@ namespace Tile_Engine
             {
                 Rectangle screenRect = CellScreenRectangle(x, y);
 
-                spriteBatch.DrawString(
-                    spriteFont,
-                    mapCells[x, y].CodeValue,
-                    new Vector2(screenRect.X, screenRect.Y),
-                    Color.White,
-                    0.0f,
-                    Vector2.Zero,
-                    1.0f,
-                    SpriteEffects.None,
-                    0.0f);
+                spriteBatch.DrawString(spriteFont, mapCells[x, y].CodeValue, new Vector2(screenRect.X, screenRect.Y), 
+                                       Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
         }
         #endregion
     }
 }
-
-
-
