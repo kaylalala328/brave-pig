@@ -68,6 +68,7 @@ namespace Level_Editor
         System.Windows.Forms.VScrollBar vscroll;
         System.Windows.Forms.HScrollBar hscroll;
 
+        Vector2 PreviousPosition;
         /// <summary>
         /// 생성자
         /// </summary>
@@ -195,11 +196,14 @@ namespace Level_Editor
                 catch { }
             }
             //스크롤이 움직일 때 카메라도 같이 움직임
+            
             Camera.Position = new Vector2(hscroll.Value, vscroll.Value);
+            
+
             //마우스의 상태를 가져옴
             MouseState ms = Mouse.GetState();
 
-            if ((ms.X > 0) && (ms.Y > 0) && (ms.X < Camera.ViewPortWidth) && (ms.Y < Camera.ViewPortHeight))
+            if ((MapEdit.scroll == false) &&(ms.X > 0) && (ms.Y > 0) && (ms.X < Camera.ViewPortWidth) && (ms.Y < Camera.ViewPortHeight))
             {
                 Vector2 mouseLoc = Camera.ScreenToWorld(new Vector2(ms.X, ms.Y));
 
@@ -258,13 +262,13 @@ namespace Level_Editor
 
             try
             {
-                spriteBatch.Draw(BackgroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.9f);
+                spriteBatch.Draw(BackgroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f,SpriteEffects.None, 0.9f);
             }
             catch
             { }
             try
             {
-                spriteBatch.Draw(ForegroundImage, Camera.WorldRectangle, Camera.ViewPort, Color.White,0.0f,Vector2.Zero, SpriteEffects.None,0.3f);
+                spriteBatch.Draw(ForegroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
             }
             catch
             { }

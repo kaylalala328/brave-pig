@@ -111,7 +111,7 @@
             this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctSurface.Location = new System.Drawing.Point(23, 27);
+            this.pctSurface.Location = new System.Drawing.Point(7, 27);
             this.pctSurface.Name = "pctSurface";
             this.pctSurface.Size = new System.Drawing.Size(802, 532);
             this.pctSurface.TabIndex = 1;
@@ -126,12 +126,14 @@
             // vScrollBar1
             // 
             this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBar1.LargeChange = 48;
-            this.vScrollBar1.Location = new System.Drawing.Point(3, 27);
+            this.vScrollBar1.Location = new System.Drawing.Point(812, 27);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 532);
             this.vScrollBar1.TabIndex = 3;
+            this.vScrollBar1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vScrollBar1_KeyPress);
+            this.vScrollBar1.Leave += new System.EventHandler(this.hScrollBar1_Leave);
             // 
             // hScrollBar1
             // 
@@ -142,6 +144,8 @@
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(806, 17);
             this.hScrollBar1.TabIndex = 4;
+            this.hScrollBar1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vScrollBar1_KeyPress);
+            this.hScrollBar1.Leave += new System.EventHandler(this.hScrollBar1_Leave);
             // 
             // groupBoxRightClick
             // 

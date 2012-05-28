@@ -16,7 +16,7 @@ namespace Level_Editor
     {
         public Game1 game;
         public bool Click_Accept = false;
-
+        public bool scroll = false;
         public MapEditor()
         {
 
@@ -286,6 +286,16 @@ namespace Level_Editor
         public string ForegroundFile()
         {
             return ForeGroundFileLocation.Text;
+        }
+
+        private void vScrollBar1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            scroll = true;
+        }
+
+        private void hScrollBar1_Leave(object sender, EventArgs e)
+        {
+            scroll = false;
         }
     }
 }
