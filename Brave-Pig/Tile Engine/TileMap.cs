@@ -21,14 +21,14 @@ namespace Tile_Engine
         /// <summary>
         /// 타일 하나의 width * height
         /// </summary>
-        public const int TileWidth = 16;
-        public const int TileHeight = 16;
+        public const int TileWidth = 32;
+        public const int TileHeight = 32;
 
         /// <summary>
         /// width, height에 들어갈 타일 개수
         /// </summary>
-        public const int MapWidth = 128;
-        public const int MapHeight = 60;
+        public const int MapWidth = 64;
+        public const int MapHeight = 30;
 
         static private MapSquare[,] mapCells = new MapSquare[MapWidth, MapHeight];
 

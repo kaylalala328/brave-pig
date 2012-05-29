@@ -119,7 +119,9 @@ namespace Brave_Pig
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
-                    { }
+                    {
+                        //player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
                     { }

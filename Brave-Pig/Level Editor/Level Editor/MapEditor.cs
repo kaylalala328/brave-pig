@@ -20,7 +20,7 @@ namespace Level_Editor
         public MapEditor()
         {
 
-            InitializeComponent();             
+            InitializeComponent();
         }
         
         public void LoadImageList()
@@ -117,52 +117,52 @@ namespace Level_Editor
             {
                 case "Enemy1":
                     txtNewCode.Text = "ENEMY1";
-                    game.DrawTile = 6;
+                    game.DrawTile = 3;
                     break;
 
                 case "Enemy2":
                     txtNewCode.Text = "ENEMY2";
-                    game.DrawTile = 7;
+                    game.DrawTile = 4;
                     break;
 
                 case "Enemy3":
                     txtNewCode.Text = "ENEMY3";
-                    game.DrawTile = 8;
+                    game.DrawTile = 5;
                     break;
 
                 case "Enemy4":
                     txtNewCode.Text = "ENEMY4";
-                    game.DrawTile = 9;
+                    game.DrawTile = 6;
                     break;
 
                 case "Enemy5":
                     txtNewCode.Text = "ENEMY5";
-                    game.DrawTile = 10;
+                    game.DrawTile = 7;
                     break;
 
                 case "Enemy6":
                     txtNewCode.Text = "ENEMY6";
-                    game.DrawTile = 11;
+                    game.DrawTile = 8;
                     break;
 
                 case "Enemy7":
                     txtNewCode.Text = "ENEMY7";
-                    game.DrawTile = 12;
+                    game.DrawTile = 9;
                     break;
 
                 case "MiddleBoss1":
                     txtNewCode.Text = "MBOSS1";
-                    game.DrawTile = 4;
+                    game.DrawTile = 10;
                     break;
 
                 case "MiddleBoss2":
                     txtNewCode.Text = "MBOSS2";
-                    game.DrawTile = 5;
+                    game.DrawTile = 11;
                     break;
 
                 case "Boss":
                     txtNewCode.Text = "BOSS";
-                    game.DrawTile = 3;
+                    game.DrawTile = 12;
                     break;
 
                 case "Lethal":
@@ -207,9 +207,7 @@ namespace Level_Editor
             game.Tick();           
         }
 
-        private void saveMapToolStripMenuItem_Click(
-            object sender,
-            EventArgs e)
+        private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TileMap.SaveMap(new FileStream(Application.StartupPath + @"\MAP" + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Create));
         }
