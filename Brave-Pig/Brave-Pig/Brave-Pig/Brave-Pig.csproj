@@ -136,17 +136,18 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Level Editor\Level Editor\Level Editor.csproj">
+    <ProjectReference Include="..\..\Level Editor\Level Editor\Tile Editor.csproj">
       <Project>{A112B6C5-7FBB-4BE6-AF66-49F839596703}</Project>
-      <Name>Level Editor</Name>
+      <Name>Tile Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tile Engine\Tile Engine.csproj">
+    <ProjectReference Include="..\..\Tile Engine\Tile Project.csproj">
       <Project>{2E47004F-2DEE-4861-8571-3C06090F002E}</Project>
-      <Name>Tile Engine</Name>
+      <Name>Tile Project</Name>
     </ProjectReference>
     <ProjectReference Include="..\Brave-PigContent\Brave-PigContent.contentproj">
-      <Name>Brave_PigContent</Name>
+      <Name>Brave-PigContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{04B456AD-6EBA-4232-BECC-253F561B82F3}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

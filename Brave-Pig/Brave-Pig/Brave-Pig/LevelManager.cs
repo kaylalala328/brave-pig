@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Level_Editor;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Monsters;
@@ -19,8 +20,7 @@ namespace Brave_Pig
         private static ContentManager Content;
         private static Player player;
         private static int currentLevel;
-        private static Vector2 respawnLocation;
-
+        private static bool Isleft = true;
         private static List<Enemy> enemies = new List<Enemy>();
         #endregion
 
@@ -30,11 +30,6 @@ namespace Brave_Pig
             get { return currentLevel; }
         }
 
-        public static Vector2 RespawnLocation
-        {
-            get { return respawnLocation; }
-            set { respawnLocation = value; }
-        }
         #endregion
 
         #region Initialization
@@ -120,11 +115,15 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
                     {
-                        //player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        if(Isleft == true)
+                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
-                    { }
+                    {
+                        if(Isleft == false)
+                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                    }
 
                     /*
                     if (TileMap.CellCodeValue(x, y) == "START")
@@ -138,56 +137,20 @@ namespace Brave_Pig
             }
 
             currentLevel = levelNumber;
-            respawnLocation = player.WorldLocation;
         }
 
         public static void Update(GameTime gameTime)
         {
-            /*
-            if (!player.Dead)
-            {
-                checkCurrentCellCode(); 
-
-                
-                for (int x = enemies.Count - 1; x >= 0; x--)
-                {
-                    enemies[x].Update(gameTime);
-                    if (!enemies[x].Dead)
-                    {
-                        if (player.CollisionRectangle.Intersects(
-                            enemies[x].CollisionRectangle))
-                        {
-                            if (player.WorldCenter.Y < enemies[x].WorldLocation.Y)
-                            {
-                                player.Jump();
-                                player.Score += 5;
-                                enemies[x].PlayAnimation("die");
-                                enemies[x].Dead = true; ;
-                            }
-                            else
-                            {
-                                player.Kill();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (!enemies[x].Enabled)
-                        {
-                            enemies.RemoveAt(x);
-                        }
-                    }
-                }
-            }
-           */
+            
+            //Monster update
+            //Character Update
         }
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            /*
-            foreach (Enemy enemy in enemies)
-                enemy.Draw(spriteBatch);
-            */
+
+            //Enermy Draw
+            
         }
 
         #endregion

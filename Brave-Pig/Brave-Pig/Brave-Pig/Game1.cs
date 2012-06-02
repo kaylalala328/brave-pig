@@ -166,6 +166,7 @@ namespace Brave_Pig
                 screen.Draw(spriteBatch);
             if(gameState == GameStates.PLAY || gameState == GameStates.PAUSE)
             {
+
                 // 테스트코드 배경화면
                 spriteBatch.Draw(background,
                     new Rectangle(0, 0, 

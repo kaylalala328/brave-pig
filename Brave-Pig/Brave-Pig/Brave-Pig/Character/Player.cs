@@ -832,6 +832,7 @@ namespace Brave_Pig.Character
         }
         #endregion //UI쪽으로 넘기는 status값
 
+
         /*private void repositionCamera()
         {
             int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
@@ -847,6 +848,26 @@ namespace Brave_Pig.Character
             }
         }*/
 
+        private void checkLevelTransition()
+        {
+            Vector2 centerCell = TileMap.GetCellByPixel(WorldCenter);
+            if (TileMap.CellCodeValue(centerCell).StartsWith("T_"))
+            {
+                string[] code = TileMap.CellCodeValue(centerCell).Split('_');
 
+                if (code.Length != 4)
+                    return;
+
+                LevelManager.LoadLevel(int.Parse(code[1]));
+
+                WorldLocation = new Vector2(
+                    int.Parse(code[2]) * TileMap.TileWidth,
+                    int.Parse(code[3]) * TileMap.TileHeight);
+
+                LevelManager.RespawnLocation = WorldLocation;
+
+                velocity = Vector2.Zero;
+            }
+        }
     }
 }
