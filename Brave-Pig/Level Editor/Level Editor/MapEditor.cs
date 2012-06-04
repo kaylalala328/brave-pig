@@ -91,6 +91,7 @@ namespace Level_Editor
 
             cboCodeValues.Items.Add("EnemyBlocking");
             cboCodeValues.Items.Add("Blocking");
+            cboCodeValues.Items.Add("UpperBlocking");
             
             cboCodeValues.Items.Add("RightStart");
             cboCodeValues.Items.Add("LeftStart");
@@ -175,8 +176,13 @@ namespace Level_Editor
                     game.DrawTile = 2;
                     break;
 
-                case "Bocking":
+                case "Blocking":
                     txtNewCode.Text = "BLOCK";
+                    game.DrawTile = 1;
+                    break;
+
+                case "UpperBlocking":
+                    txtNewCode.Text = "UBLOCK";
                     game.DrawTile = 1;
                     break;
 
