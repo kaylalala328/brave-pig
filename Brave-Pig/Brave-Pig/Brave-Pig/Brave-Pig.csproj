@@ -136,11 +136,11 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Level Editor\Level Editor\Tile Editor.csproj">
+    <ProjectReference Include="..\..\Level Editor\Level Editor\Level Editor.csproj">
       <Project>{A112B6C5-7FBB-4BE6-AF66-49F839596703}</Project>
       <Name>Tile Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tile Engine\Tile Project.csproj">
+    <ProjectReference Include="..\..\Tile Engine\Tile Engine.csproj">
       <Project>{2E47004F-2DEE-4861-8571-3C06090F002E}</Project>
       <Name>Tile Project</Name>
     </ProjectReference>
