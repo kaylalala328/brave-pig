@@ -406,8 +406,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Map\MAP001.MAP">
+    <None Include="Map\MAP001.MAP">
       <Name>MAP001</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player\damage.png">
+      <Name>damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\damage2.png">
+      <Name>damage2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\damage3.png">
+      <Name>damage3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Player\damage4.png">
+      <Name>damage4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

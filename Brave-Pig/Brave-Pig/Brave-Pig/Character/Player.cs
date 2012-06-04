@@ -105,6 +105,18 @@ namespace Brave_Pig.Character
             animations.Add("skill33", new AnimationStrip(content.Load<Texture2D>("Player/skill33"), 179, "skill33"));
             animations["skill33"].LoopAnimation = false;
 
+            animations.Add("damage", new AnimationStrip(content.Load<Texture2D>("Player/damage"), 179, "damage"));
+            animations["damage"].LoopAnimation = false;
+
+            animations.Add("damage2", new AnimationStrip(content.Load<Texture2D>("Player/damage2"), 179, "damage2"));
+            animations["damage2"].LoopAnimation = false;
+
+            animations.Add("damage3", new AnimationStrip(content.Load<Texture2D>("Player/damage3"), 179, "damage3"));
+            animations["damage3"].LoopAnimation = false;
+
+            animations.Add("damage4", new AnimationStrip(content.Load<Texture2D>("Player/damage4"), 179, "damage4"));
+            animations["damage4"].LoopAnimation = false;
+
             animations2.Add("skillmap", new AnimationStrip(content.Load<Texture2D>("Player/skillmap"), 140, "skillmap"));
             animations2["skillmap"].LoopAnimation = false;
 
@@ -775,6 +787,68 @@ namespace Brave_Pig.Character
             } // 3번스킬 계열 애니메이션
             #endregion
 
+            #region damage
+            if (Game1.currentKeyState.IsKeyDown(Keys.L))
+            {
+                if (ItemManager.getCurrentSword() == "Basic")
+                {                    
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    newAnimation = "damage";
+                    velocity = new Vector2(0, velocity.Y);
+                }
+                else if (ItemManager.getCurrentSword() == "Blue")
+                {
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    newAnimation = "damage2";
+                    velocity = new Vector2(0, velocity.Y);
+                }
+                else if (ItemManager.getCurrentSword() == "Red")
+                {
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    newAnimation = "damage3";
+                    velocity = new Vector2(0, velocity.Y);
+                }
+                else if (ItemManager.getCurrentSword() == "Yellow")
+                {
+                    if (direct == 0)
+                    {
+                        flipped = false;
+                    }
+                    else
+                    {
+                        flipped = true;
+                    }
+
+                    newAnimation = "damage4";
+                    velocity = new Vector2(0, velocity.Y);
+                }
+            }
+            #endregion
+
             /*if (keyState.IsKeyDown(Keys.Z))
             {
                 newAnimation = "jump";
@@ -864,7 +938,6 @@ namespace Brave_Pig.Character
                     int.Parse(code[2]) * TileMap.TileWidth,
                     int.Parse(code[3]) * TileMap.TileHeight);
 
-                LevelManager.RespawnLocation = WorldLocation;
 
                 velocity = Vector2.Zero;
             }
