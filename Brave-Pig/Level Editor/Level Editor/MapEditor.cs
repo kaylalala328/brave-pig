@@ -14,9 +14,9 @@ namespace Level_Editor
 {
     public partial class MapEditor : Form
     {
-        public Game1 game;
-        public bool Click_Accept = false;
-        public bool scroll = false;
+        public Game1 game;                  //타일을 로드하기 위한 경로(filepath)를 설정할 때 필요한 Game1 객체
+        public bool Click_Accept = false;   //background와 foreground 파일을 적용하는 버튼 클릭을 bool 변수로 나타낸 것
+        public bool scroll = false;         //이거 안하면 타일 안찍힘 ㅡㅡ
 
         string path;
         string NewPath;
@@ -24,7 +24,10 @@ namespace Level_Editor
         public MapEditor()
         {
             InitializeComponent();
+            //map 파일을 저장하는 경로
+            //Application.StartupPath는 프로젝트 실행 경로
             path = Application.StartupPath;
+            //Level Editor를 처음 발견한 부분의 index 반환받아서 그 이후를 지움
             NewPath = path.Remove(path.IndexOf("Level Editor"));
 
             NewPath += "Brave-Pig/Brave-PigContent/Maps/MAP";
