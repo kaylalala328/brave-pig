@@ -178,8 +178,10 @@ namespace Brave_Pig.Character
             currentAnimation = "normal";
             currentAnimation2 = "default";
             enabled = true;
-            codeBasedBlocks = true;
 
+            IsPlayer = true;
+            codeBasedBlocks = true;
+            
             PlayAnimation("normal", "default");
             worldLocation = new Vector2(20,500);   //플레이어 위치
         }
@@ -803,7 +805,7 @@ namespace Brave_Pig.Character
             #region skill3
             if ( Game1.previousKeyState.IsKeyUp(Keys.F) && Game1.currentKeyState.IsKeyDown(Keys.F) && (Game1.previousPad.IsButtonUp(Buttons.RightThumbstickRight) || Game1.currentPad.IsButtonDown(Buttons.RightThumbstickRight)))
             {
-                if (stat.manaPoint == 3)
+                if (stat.manaPoint >= 3)
                 {
                     if (ItemManager.getCurrentSword() == "Yellow")
                     {

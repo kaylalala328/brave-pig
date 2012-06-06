@@ -38,6 +38,9 @@ namespace Brave_Pig.BasicObject
         //enemy인지
         protected bool IsEnemy = false;
 
+        //Player 인지
+        protected bool IsPlayer = false;
+
         //그림 depth?? 위치 위에서 아래로
         protected float drawDepth = 0.85f;
 
@@ -125,7 +128,7 @@ namespace Brave_Pig.BasicObject
                 {
                     //애니메이션이 안끝낫다면
                     animations[currentAnimation].Update(gameTime);
-                    if(!IsEnemy)
+                    if(IsPlayer)
                         animations2[currentAnimation2].Update(gameTime);
                 }
             }
@@ -235,8 +238,9 @@ namespace Brave_Pig.BasicObject
                     velocity.Y = 0;
                 }
 
-                if (TileMap.CellCodeValue(mapCell1) == "UBLOCK" ||
-                   TileMap.CellCodeValue(mapCell2) == "UBLOCK")
+                if ((TileMap.CellCodeValue(mapCell1) == "UBLOCK" ||
+                   TileMap.CellCodeValue(mapCell2) == "UBLOCK") 
+                    && IsPlayer == true)
                 {
                     if (moveAmount.Y > 0)
                         onGround = false;
@@ -359,7 +363,7 @@ namespace Brave_Pig.BasicObject
                     Camera.WorldToScreen(WorldRectangle),
                     animations[currentAnimation].FrameRectangle,
                     Color.White, 0.0f, Vector2.Zero, effect, drawDepth);
-                if (!IsEnemy)
+                if (IsPlayer)
                 {
                     spriteBatch.Draw(
                         animations2[currentAnimation2].Texture,

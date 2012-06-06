@@ -37,7 +37,7 @@ namespace Tile_Engine
         public static SpriteFont spriteFont;
         static private Texture2D tileSheet;
         #endregion
-
+        
         #region Initialization
         static public void Initialize(Texture2D tileTexture)
         {
@@ -174,6 +174,7 @@ namespace Tile_Engine
         #endregion
 
         #region Loading and Saving Maps
+        
         public static void SaveMap(FileStream fileStream)
         {
             BinaryFormatter formatter = new BinaryFormatter();

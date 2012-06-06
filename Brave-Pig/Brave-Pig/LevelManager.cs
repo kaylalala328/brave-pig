@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Level_Editor;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Monsters;
@@ -22,7 +21,7 @@ namespace Brave_Pig
         private static ContentManager Content;
         private static Player player;
         private static int currentLevel;
-        private static bool Isleft = true;
+        private static bool IsRight = true;
         private static List<Enemy> enemies = new List<Enemy>();
 
         private static Texture2D BackGround;
@@ -124,16 +123,16 @@ namespace Brave_Pig
                     {
                         RightPortal = new Portal(Content, 100, 145, x, y);
                         IsPortal = true;
-                       // if(Isleft == true)
-                        //    player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        if(IsRight == false)
+                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
                     {
                         IsPortal = true;
                         LeftPortal = new Portal(Content, 100, 145, x, y);
-                        //if(Isleft == false)
-                          //  player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        if(IsRight == true)
+                          player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     /*
