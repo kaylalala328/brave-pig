@@ -41,7 +41,7 @@ namespace Brave_Pig.Items
             armors.Add("Boots", new Armor(0, 10, content.Load<Texture2D>("Item/boots")));
             armors.Add("Shield", new Armor(0, 10,content.Load<Texture2D>("Item/shield")));
 
-            potion = new Potion(10, 50);
+            potion = new Potion(25, 50);
 
             currentSword = "Basic";
             // UI test 중
