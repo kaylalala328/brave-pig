@@ -72,12 +72,12 @@ namespace Tile_Engine
         #region Information about Map Cells
         static public int GetCellByPixelX(int pixelX)
         {
-            return pixelX / TileWidth;
+            return (pixelX / TileWidth);
         }
 
         static public int GetCellByPixelY(int pixelY)
         {
-            return pixelY / TileHeight;
+            return (pixelY / TileHeight);
         }
 
         static public Vector2 GetCellByPixel(Vector2 pixelLocation)

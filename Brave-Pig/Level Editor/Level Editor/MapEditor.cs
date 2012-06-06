@@ -17,10 +17,17 @@ namespace Level_Editor
         public Game1 game;
         public bool Click_Accept = false;
         public bool scroll = false;
+
+        string path;
+        string NewPath;
+
         public MapEditor()
         {
-
             InitializeComponent();
+            path = Application.StartupPath;
+            NewPath = path.Remove(path.IndexOf("Level Editor"));
+
+            NewPath += "Brave-Pig/Brave-PigContent/Maps/MAP";
         }
         
         public void LoadImageList()
@@ -59,7 +66,8 @@ namespace Level_Editor
         {
             try
             {
-                TileMap.LoadMap(new FileStream(Application.StartupPath + @"\MAP" + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Open));
+                TileMap.LoadMap(new FileStream(NewPath + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Open));
+                
             }
             catch
             {
@@ -213,7 +221,7 @@ namespace Level_Editor
 
         private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TileMap.SaveMap(new FileStream(Application.StartupPath + @"\MAP" + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Create));
+            TileMap.SaveMap(new FileStream(NewPath + cboMapNumber.Items[cboMapNumber.SelectedIndex] + ".MAP", FileMode.Create));
         }
 
         private void clearMapToolStripMenuItem_Click(object sender, EventArgs e)

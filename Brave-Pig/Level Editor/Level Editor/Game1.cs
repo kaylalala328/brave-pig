@@ -216,6 +216,7 @@ namespace Level_Editor
                         TileMap.SetTileAtCell(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y), DrawTile);
                     }
                     
+                    //마우스 오른쪽 버튼 클릭
                     if ((ms.RightButton == ButtonState.Pressed) &&
                         (lastMouseState.RightButton == ButtonState.Released))
                     {
