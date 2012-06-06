@@ -71,7 +71,11 @@ namespace Brave_Pig
                     //맵에 enemy 추가.
                     //enemy마다 움직이는 방향은 랜덤으로
                     if (TileMap.CellCodeValue(x, y) == "ENEMY1")
-                    { }
+                    { 
+                        Enemy Bluemushroom = new Enemy(Content, "파랑버섯", "bluemushroom",64,x,y, 200);
+                        
+                        enemies.Add(Bluemushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     { }
@@ -144,7 +148,11 @@ namespace Brave_Pig
 
         public static void Update(GameTime gameTime)
         {
-            
+
+            foreach (Enemy e in enemies)
+            {
+                e.Update(gameTime);
+            }
             //Monster update
             //Character Update
         }
@@ -163,6 +171,10 @@ namespace Brave_Pig
             }
             catch
             { }
+            foreach (Enemy e in enemies)
+            {
+                e.Draw(spriteBatch);
+            }
             //Enermy Draw
             
         }

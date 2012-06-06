@@ -24,7 +24,7 @@ namespace Brave_Pig.Monsters
         public bool Dead = false;
         
         #region Constructor
-        public Enemy(ContentManager content, string MonsterName, string Contentname, int cellX, int cellY, int HP)
+        public Enemy(ContentManager content, string MonsterName, string Contentname, int width,int cellX, int cellY, int HP)
         {
             IsEnemy = true;
             
@@ -33,9 +33,9 @@ namespace Brave_Pig.Monsters
                 new AnimationStrip(
                     content.Load<Texture2D>(
                         "Monsters/"+Contentname+"_idle"),
-                    48,
+                    width,
                     "idle"));
-           
+            animations["idle"].FrameLength = 0.2f;
             animations["idle"].LoopAnimation = true;
 
             ///attack 애니메이션
@@ -43,9 +43,9 @@ namespace Brave_Pig.Monsters
                 new AnimationStrip(
                     content.Load<Texture2D>(
                         "Monsters/" + Contentname + "_attack"),
-                    48,
+                    width,
                     "attack"));
-            animations["attack"].FrameLength = 0.1f;
+            animations["attack"].FrameLength = 0.2f;
             animations["attack"].LoopAnimation = true;
 
             ///죽음 애니메이션
@@ -53,13 +53,16 @@ namespace Brave_Pig.Monsters
                 new AnimationStrip(
                     content.Load<Texture2D>(
                        "Monsters/" + Contentname + "_dead"),
-                    48,
+                    width,
                     "dead"));
+
+            animations["dead"].FrameLength = 0.3f;
             animations["dead"].LoopAnimation = false;
             
             HealthPoint = HP;
-            frameWidth = 48;
-            frameHeight = 48;
+
+            frameWidth = width;
+            frameHeight = 64;
             CollisionRectangle = new Rectangle(8, 2, frameWidth - 10, frameWidth-5);
 
             worldLocation = new Vector2(
@@ -69,7 +72,7 @@ namespace Brave_Pig.Monsters
             enabled = true;
 
             codeBasedBlocks = true;
-            //PlayAnimation("run");
+            PlayAnimation("idle");
         }
 
         public override void Update(GameTime gameTime)
