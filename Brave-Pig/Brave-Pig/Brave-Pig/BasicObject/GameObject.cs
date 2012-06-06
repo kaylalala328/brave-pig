@@ -128,26 +128,41 @@ namespace Brave_Pig.BasicObject
         #endregion
 
         #region Map-Based Collision Detection Methods
+        /// <summary>
+        /// 가로 충돌 처리 함수
+        /// </summary>
+        /// <param name="moveAmount">예측가능한 이동량</param>
+        /// <returns>변경된 이동량</returns>
         private Vector2 horizontalCollisionTest(Vector2 moveAmount)
         {
+            //이동량이 0면
             if (moveAmount.X == 0)
                 return moveAmount;
 
+            //이동 후 사각형
             Rectangle afterMoveRect = CollisionRectangle;
             afterMoveRect.Offset((int)moveAmount.X, 0);
+            
+            //코너 계산
             Vector2 corner1, corner2;
 
+            //마이너스로 이동하면,
             if (moveAmount.X < 0)
             {
+                //coner1 설정
                 corner1 = new Vector2(afterMoveRect.Left,
                                       afterMoveRect.Top + 1);
+                //coner2 설정
                 corner2 = new Vector2(afterMoveRect.Left,
                                       afterMoveRect.Bottom - 1);
             }
+                //양으로 이동하면
             else
             {
+                //coner1 설정
                 corner1 = new Vector2(afterMoveRect.Right,
                                       afterMoveRect.Top + 1);
+                //coner2 설정
                 corner2 = new Vector2(afterMoveRect.Right,
                                       afterMoveRect.Bottom - 1);
             }
@@ -155,13 +170,16 @@ namespace Brave_Pig.BasicObject
             Vector2 mapCell1 = TileMap.GetCellByPixel(corner1);
             Vector2 mapCell2 = TileMap.GetCellByPixel(corner2);
 
+            //TileMap이 Passable하다면,
             if (!TileMap.CellIsPassable(mapCell1) ||
                 !TileMap.CellIsPassable(mapCell2))
             {
+                //이동과 속도 0
                 moveAmount.X = 0;
                 velocity.X = 0;
             }
 
+            //CodeBaseBlocks에 관련해서, BLOCK이 있다며,
             if (codeBasedBlocks)
             {
                 if (TileMap.CellCodeValue(mapCell1) == "BLOCK" ||

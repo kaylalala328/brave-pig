@@ -20,7 +20,9 @@ namespace Brave_Pig.Monsters
         private float walkSpeed = 60.0f;
         private bool facingLeft = true;
         private float HealthPoint;
+        private int Damage;
         public bool Dead = false;
+        
         #region Constructor
         public Enemy(ContentManager content, string MonsterName, int cellX, int cellY, int HP)
         {
