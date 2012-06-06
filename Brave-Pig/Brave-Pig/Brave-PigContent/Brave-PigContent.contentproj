@@ -447,21 +447,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Monsters\bluemushroom_attack.png">
-      <Name>bluemushroom_attack</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\bluemushroom_dead.png">
-      <Name>bluemushroom_dead</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\bluemushroom_idle.png">
-      <Name>bluemushroom_idle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Monsters\Boss_attack.png">
       <Name>Boss_attack</Name>
       <Importer>TextureImporter</Importer>
@@ -624,6 +609,28 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Monsters\bluemushroom_attack.png">
+      <Name>bluemushroom_attack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Monsters\bluemushroom_dead.png">
+      <Name>bluemushroom_dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Monsters\bluemushroom_idle.png">
+      <Name>bluemushroom_idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="Player\jump.png">
       <Name>jump</Name>
@@ -648,6 +655,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
