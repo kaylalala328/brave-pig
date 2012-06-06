@@ -544,9 +544,13 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump")
                     {
-                        if (stat.manaPoint < 3)
+                        if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f;
+                        }
+                        else if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -569,9 +573,13 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump2")
                     {
-                        if (stat.manaPoint < 3)
+                        if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f;
+                        }
+                        else if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -593,9 +601,13 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump3")
                     {
-                        if (stat.manaPoint < 3)
+                        if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f;
+                        }
+                        else if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -617,9 +629,13 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump4")
                     {
-                        if (stat.manaPoint < 3)
+                        if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f;
+                        }
+                        else if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
