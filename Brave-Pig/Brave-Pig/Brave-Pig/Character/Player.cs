@@ -225,26 +225,26 @@ namespace Brave_Pig.Character
 
 
             #region swordselect
-            if (Game1.currentKeyState.IsKeyDown(Keys.D0) && ItemManager.haveSwords.Contains("Basic"))
+            if (Game1.currentKeyState.IsKeyDown(Keys.D0) && ItemManager.haveSwords.Contains("Basic") || Game1.currentPad.IsButtonDown(Buttons.LeftThumbstickLeft))
             {
                 ItemManager.setCurrentSword("Basic");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D1) && ItemManager.haveSwords.Contains("Blue") )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D1) && ItemManager.haveSwords.Contains("Blue") || Game1.currentPad.IsButtonDown(Buttons.LeftThumbstickDown))
             {
                 ItemManager.setCurrentSword("Blue");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D2) && ItemManager.haveSwords.Contains("Red") )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D2) && ItemManager.haveSwords.Contains("Red") || Game1.currentPad.IsButtonDown(Buttons.LeftThumbstickRight))
             {
                 ItemManager.setCurrentSword("Red");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D3) && ItemManager.haveSwords.Contains("Yellow") )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D3) && ItemManager.haveSwords.Contains("Yellow") || Game1.currentPad.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 ItemManager.setCurrentSword("Yellow");
             }            
             #endregion
 
             #region attack
-            if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
             {
                 if (ItemManager.getCurrentSword() == "Basic")
                 {
@@ -334,7 +334,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region move
-            if ( Game1.currentKeyState.IsKeyDown(Keys.Left) )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.Left) || Game1.currentPad.IsButtonDown(Buttons.DPadLeft))
             {
                 direct = 0;
                 flipped = false;
@@ -343,7 +343,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         if (direct == 0)
@@ -369,7 +369,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move32";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         if (direct == 0)
@@ -395,7 +395,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move33";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         if (direct == 0)
@@ -421,7 +421,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move34";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         if (direct == 0)
@@ -445,7 +445,7 @@ namespace Brave_Pig.Character
                 }// 3번째 무기 좌측 이동 + 공격
             } // 좌측이동 애니메이션 + 이동중 공격
 
-            if ( Game1.currentKeyState.IsKeyDown(Keys.Right) )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.Right) || Game1.currentPad.IsButtonDown(Buttons.DPadRight) )
             {
                 direct = 1;
                 flipped = true;
@@ -454,7 +454,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         if (direct == 0)
@@ -480,7 +480,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move32";
 
-                    if ( Game1.currentKeyState.IsKeyDown(Keys.Space) )
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
@@ -499,7 +499,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move33";
 
-                    if (Game1.currentKeyState.IsKeyDown(Keys.Space))
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
@@ -518,7 +518,7 @@ namespace Brave_Pig.Character
                 {
                     newAnimation = "move34";
 
-                    if (Game1.currentKeyState.IsKeyDown(Keys.Space))
+                    if (Game1.currentKeyState.IsKeyDown(Keys.Space) || Game1.currentPad.IsButtonDown(Buttons.A))
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
@@ -538,7 +538,7 @@ namespace Brave_Pig.Character
 
             #region charge
 
-            if ( Game1.currentKeyState.IsKeyDown(Keys.Z) )
+            if ( Game1.currentKeyState.IsKeyDown(Keys.Z) || Game1.currentPad.IsButtonDown(Buttons.X))
             {
                 if (ItemManager.getCurrentSword() == "Basic" && newAnimation != "move")
                 {
@@ -657,7 +657,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region skill1
-            if (Game1.previousKeyState.IsKeyUp(Keys.S) && Game1.currentKeyState.IsKeyDown(Keys.S))
+            if ((Game1.previousKeyState.IsKeyUp(Keys.S) && Game1.currentKeyState.IsKeyDown(Keys.S)) || (Game1.previousPad.IsButtonUp(Buttons.RightThumbstickLeft) && Game1.currentPad.IsButtonDown(Buttons.RightThumbstickLeft)))
             {
                 if (stat.manaPoint >= 1)
                 {
@@ -750,7 +750,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region skill2
-            if ( Game1.previousKeyState.IsKeyUp(Keys.D) && Game1.currentKeyState.IsKeyDown(Keys.D) )
+            if ( (Game1.previousKeyState.IsKeyUp(Keys.D) && Game1.currentKeyState.IsKeyDown(Keys.D)) || (Game1.previousPad.IsButtonUp(Buttons.RightThumbstickDown) || Game1.currentPad.IsButtonDown(Buttons.RightThumbstickDown)))
             {
                 if (stat.manaPoint >= 2)
                 {
@@ -801,7 +801,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region skill3
-            if ( Game1.previousKeyState.IsKeyUp(Keys.F) && Game1.currentKeyState.IsKeyDown(Keys.F) )
+            if ( Game1.previousKeyState.IsKeyUp(Keys.F) && Game1.currentKeyState.IsKeyDown(Keys.F) && (Game1.previousPad.IsButtonUp(Buttons.RightThumbstickRight) || Game1.currentPad.IsButtonDown(Buttons.RightThumbstickRight)))
             {
                 if (stat.manaPoint == 3)
                 {
@@ -974,7 +974,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region jump
-            if (Game1.currentKeyState.IsKeyDown(Keys.LeftAlt))
+            if (Game1.currentKeyState.IsKeyDown(Keys.LeftAlt) || Game1.currentPad.IsButtonDown(Buttons.B))
             {
                 if (ItemManager.getCurrentSword() == "Basic")
                 {
@@ -1016,7 +1016,7 @@ namespace Brave_Pig.Character
             #endregion
 
             #region potion
-            if (Game1.previousKeyState.IsKeyUp(Keys.D4) && Game1.currentKeyState.IsKeyDown(Keys.D4))
+            if ((Game1.previousKeyState.IsKeyUp(Keys.D4) && Game1.currentKeyState.IsKeyDown(Keys.D4)) && (Game1.previousPad.IsButtonUp(Buttons.Y) || Game1.currentPad.IsButtonUp(Buttons.Y)))
             {
                 if (stat.healPoint < stat.maxHeal)
                 {
