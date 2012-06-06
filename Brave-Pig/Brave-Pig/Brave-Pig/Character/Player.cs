@@ -131,7 +131,7 @@ namespace Brave_Pig.Character
 
             frameWidth = 179;
             frameHeight = 77;
-            CollisionRectangle = new Rectangle(9, 1, 161, 75);
+            CollisionRectangle = new Rectangle(12, 5, 155, 71);
 
             drawDepth = 0f;
 

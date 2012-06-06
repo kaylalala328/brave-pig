@@ -24,39 +24,43 @@ namespace Brave_Pig.Monsters
         public bool Dead = false;
         
         #region Constructor
-        public Enemy(ContentManager content, string MonsterName, int cellX, int cellY, int HP)
+        public Enemy(ContentManager content, string MonsterName, string Contentname, int cellX, int cellY, int HP)
         {
             IsEnemy = true;
-            /*
+            
+            ///idle 애니메이션
             animations.Add("idle",
                 new AnimationStrip(
                     content.Load<Texture2D>(
-                        @"Textures\Sprites\MonsterC\Idle"),
+                        "Monsters/"+Contentname+"_idle"),
                     48,
                     "idle"));
+           
             animations["idle"].LoopAnimation = true;
 
-            animations.Add("run",
+            ///attack 애니메이션
+            animations.Add("attack",
                 new AnimationStrip(
                     content.Load<Texture2D>(
-                        @"Textures\Sprites\MonsterC\Run"),
+                        "Monsters/" + Contentname + "_attack"),
                     48,
-                    "run"));
-            animations["run"].FrameLength = 0.1f;
-            animations["run"].LoopAnimation = true;
+                    "attack"));
+            animations["attack"].FrameLength = 0.1f;
+            animations["attack"].LoopAnimation = true;
 
-            animations.Add("die",
+            ///죽음 애니메이션
+            animations.Add("dead",
                 new AnimationStrip(
                     content.Load<Texture2D>(
-                        @"Textures\Sprites\MonsterC\Die"),
+                       "Monsters/" + Contentname + "_dead"),
                     48,
-                    "die"));
-            animations["die"].LoopAnimation = false;
-            */
+                    "dead"));
+            animations["dead"].LoopAnimation = false;
+            
             HealthPoint = HP;
             frameWidth = 48;
             frameHeight = 48;
-            CollisionRectangle = new Rectangle(9, 1, 30, 46);
+            CollisionRectangle = new Rectangle(8, 2, frameWidth - 10, frameWidth-5);
 
             worldLocation = new Vector2(
                 cellX * TileMap.TileWidth,
