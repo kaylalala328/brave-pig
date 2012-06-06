@@ -1020,11 +1020,14 @@ namespace Brave_Pig.Character
             {
                 if (stat.healPoint < stat.maxHeal)
                 {
-                    ItemManager.getPotion().usePotion();
-                    stat.healPoint = stat.healPoint + ItemManager.getPotion().getHeal();
-                    if (stat.healPoint > 50)
+                    if (ItemManager.getPotion().getCount() > 0)
                     {
-                        stat.healPoint = 50;
+                        ItemManager.getPotion().usePotion();
+                        stat.healPoint = stat.healPoint + ItemManager.getPotion().getHeal();
+                        if (stat.healPoint > 50)
+                        {
+                            stat.healPoint = 50;
+                        }
                     }
                 }
             }   
