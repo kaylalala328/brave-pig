@@ -208,7 +208,6 @@ namespace Level_Editor
             {
                 FixScrollBarScales();
             }
-
             game.Tick();           
         }
 
@@ -245,10 +244,12 @@ namespace Level_Editor
                 ForeGroundFileLocation.Text = "";
             }
         }
+
         public string BackgroundFile()
         {
             return BackGroundFileLocation.Text;
         }
+
         public string ForegroundFile()
         {
             return ForeGroundFileLocation.Text;

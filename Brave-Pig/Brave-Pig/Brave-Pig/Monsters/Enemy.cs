@@ -26,6 +26,7 @@ namespace Brave_Pig.Monsters
         #region Constructor
         public Enemy(ContentManager content, string MonsterName, int cellX, int cellY, int HP)
         {
+            IsEnemy = true;
             /*
             animations.Add("idle",
                 new AnimationStrip(

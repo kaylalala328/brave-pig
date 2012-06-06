@@ -36,6 +36,8 @@ namespace Brave_Pig.BasicObject
         protected int collideHeight;
         //code base? block??
         protected bool codeBasedBlocks = true;
+        //enemy인지
+        protected bool IsEnemy = false;
 
         //그림 depth?? 위치 위에서 아래로
         protected float drawDepth = 0.85f;
@@ -188,6 +190,14 @@ namespace Brave_Pig.BasicObject
                     moveAmount.X = 0;
                     velocity.X = 0;
                 }
+
+                if (TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
+                    TileMap.CellCodeValue(mapCell2) == "EBLOCK" ||
+                    IsEnemy == true)
+                {
+                    moveAmount.X = 0;
+                    velocity.X = 0;
+                }
             }
 
             return moveAmount;
@@ -233,6 +243,29 @@ namespace Brave_Pig.BasicObject
             {
                 if (TileMap.CellCodeValue(mapCell1) == "BLOCK" ||
                     TileMap.CellCodeValue(mapCell2) == "BLOCK")
+                {
+                    if (moveAmount.Y > 0)
+                        onGround = true;
+                    moveAmount.Y = 0;
+                    velocity.Y = 0;
+                }
+
+                if (TileMap.CellCodeValue(mapCell1) == "UBLOCK" ||
+                   TileMap.CellCodeValue(mapCell2) == "UBLOCK")
+                {
+                    if (moveAmount.Y > 0)
+                        onGround = false;
+                    else if (moveAmount.Y < 0)
+                    {
+                        onGround = true;
+                        moveAmount.Y = 0;
+                        velocity.Y = 0;
+                    }
+                }
+
+                if (TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
+                    TileMap.CellCodeValue(mapCell2) == "EBLOCK" ||
+                    IsEnemy == true)
                 {
                     if (moveAmount.Y > 0)
                         onGround = true;
