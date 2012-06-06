@@ -185,8 +185,8 @@ namespace Brave_Pig.BasicObject
                     velocity.X = 0;
                 }
 
-                if (TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
-                    TileMap.CellCodeValue(mapCell2) == "EBLOCK" ||
+                if ((TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
+                    TileMap.CellCodeValue(mapCell2) == "EBLOCK") &&
                     IsEnemy == true)
                 {
                     moveAmount.X = 0;
@@ -248,8 +248,8 @@ namespace Brave_Pig.BasicObject
                     }
                 }
 
-                if (TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
-                    TileMap.CellCodeValue(mapCell2) == "EBLOCK" ||
+                if ((TileMap.CellCodeValue(mapCell1) == "EBLOCK" ||
+                    TileMap.CellCodeValue(mapCell2) == "EBLOCK") &&
                     IsEnemy == true)
                 {
                     if (moveAmount.Y > 0)
