@@ -151,6 +151,22 @@ namespace Brave_Pig.Character
             animations["jump4"].LoopAnimation = false;
             animations["jump4"].FrameLength = 0.11f;
             animations["jump4"].NextAnimation = "normal";
+
+            animations.Add("dead", new AnimationStrip(content.Load<Texture2D>("Player/dead"), 179, "dead"));
+            animations["dead"].LoopAnimation = false;
+            animations["dead"].FrameLength = 0.5f;
+
+            animations.Add("dead2", new AnimationStrip(content.Load<Texture2D>("Player/dead2"), 179, "dead2"));
+            animations["dead2"].LoopAnimation = false;
+            animations["dead2"].FrameLength = 0.5f;
+
+            animations.Add("dead3", new AnimationStrip(content.Load<Texture2D>("Player/dead3"), 179, "dead3"));
+            animations["dead3"].LoopAnimation = false;
+            animations["dead3"].FrameLength = 0.5f;
+
+            animations.Add("dead4", new AnimationStrip(content.Load<Texture2D>("Player/dead4"), 179, "dead4"));
+            animations["dead4"].LoopAnimation = false;
+            animations["dead4"].FrameLength = 0.5f;
             #endregion
 
             frameWidth = 179;
@@ -808,19 +824,6 @@ namespace Brave_Pig.Character
             {
                 if (ItemManager.getCurrentSword() == "Basic")
                 {
-                    if(!heal)
-                    {
-                        heal = true;
-                        if (stat.healPoint > 0)
-                        {
-                            stat.healPoint = stat.healPoint - 5;
-                        }
-                        else
-                        {
-                            //죽음
-                        }
-                    }
-
                     if (direct == 0)
                     {
                         flipped = false;
@@ -839,10 +842,8 @@ namespace Brave_Pig.Character
                     {
                         velocity = new Vector2(-300, -150);
                     }
-                }
-                else if (ItemManager.getCurrentSword() == "Blue")
-                {
-                    if(!heal)
+
+                    if (!heal)
                     {
                         heal = true;
                         if (stat.healPoint > 0)
@@ -851,10 +852,12 @@ namespace Brave_Pig.Character
                         }
                         else
                         {
-                            //죽음
+                            newAnimation = "dead";
                         }
                     }
-
+                }
+                else if (ItemManager.getCurrentSword() == "Blue")
+                {
                     if (direct == 0)
                     {
                         flipped = false;
@@ -873,10 +876,8 @@ namespace Brave_Pig.Character
                     {
                         velocity = new Vector2(-300, -150);
                     }
-                }
-                else if (ItemManager.getCurrentSword() == "Red")
-                {
-                    if(!heal)
+
+                    if (!heal)
                     {
                         heal = true;
                         if (stat.healPoint > 0)
@@ -885,10 +886,12 @@ namespace Brave_Pig.Character
                         }
                         else
                         {
-                            //죽음
+                            newAnimation = "dead2";
                         }
                     }
-
+                }
+                else if (ItemManager.getCurrentSword() == "Red")
+                {
                     if (direct == 0)
                     {
                         flipped = false;
@@ -907,10 +910,8 @@ namespace Brave_Pig.Character
                     {
                         velocity = new Vector2(-300, -150);
                     }
-                }
-                else if (ItemManager.getCurrentSword() == "Yellow")
-                {
-                    if(!heal)
+
+                    if (!heal)
                     {
                         heal = true;
                         if (stat.healPoint > 0)
@@ -919,10 +920,12 @@ namespace Brave_Pig.Character
                         }
                         else
                         {
-                            //죽음
+                            newAnimation = "dead3";
                         }
                     }
-
+                }
+                else if (ItemManager.getCurrentSword() == "Yellow")
+                {
                     if (direct == 0)
                     {
                         flipped = false;
@@ -940,6 +943,19 @@ namespace Brave_Pig.Character
                     else
                     {
                         velocity = new Vector2(-300, -150);
+                    }
+
+                    if (!heal)
+                    {
+                        heal = true;
+                        if (stat.healPoint > 0)
+                        {
+                            stat.healPoint = stat.healPoint - 5;
+                        }
+                        else
+                        {
+                            newAnimation = "dead4";
+                        }
                     }
                 }
             }
