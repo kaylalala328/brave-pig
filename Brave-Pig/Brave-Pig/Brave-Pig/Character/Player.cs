@@ -137,10 +137,10 @@ namespace Brave_Pig.Character
             currentAnimation = "normal";
             currentAnimation2 = "default";
             enabled = true;
-            codeBasedBlocks = false;
+            codeBasedBlocks = true;
             
             PlayAnimation("normal", "default");
-            worldLocation = new Vector2(350,300);   //플레이어 위치
+            //worldLocation = new Vector2(350,300);   //플레이어 위치
         }
 
         public override void Update(GameTime gameTime)
@@ -874,7 +874,7 @@ namespace Brave_Pig.Character
 
             velocity += fallSpeed;
 
-            //repositionCamera();
+            repositionCamera();
             base.Update(gameTime);
         }
 
@@ -907,20 +907,32 @@ namespace Brave_Pig.Character
         #endregion //UI쪽으로 넘기는 status값
 
 
-        /*private void repositionCamera()
+        private void repositionCamera()
         {
             int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
 
-            if (screenLocX > 500)
+            if (screenLocX > 800)
             {
-                Camera.Move(new Vector2(screenLocX - 500, 0));
+                Camera.Move(new Vector2(screenLocX - 800, 0));
             }
 
-            if (screenLocX < 200)
+            if (screenLocX < 300)
             {
-                Camera.Move(new Vector2(screenLocX - 200, 0));
+                Camera.Move(new Vector2(screenLocX - 300, 0));
             }
-        }*/
+
+            int screenLocY = (int)Camera.WorldToScreen(worldLocation).Y;
+
+            if (screenLocY > 200)
+            {
+                Camera.Move(new Vector2(0, screenLocY - 200));
+            }
+
+            if (screenLocY < 100)
+            {
+                Camera.Move(new Vector2( 0, screenLocY - 100));
+            }
+        }
 
         private void checkLevelTransition()
         {

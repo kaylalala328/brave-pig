@@ -56,7 +56,7 @@ namespace Level_Editor
 
         MapEditor MapEdit;
 
-        public bool EditingCode = false;
+        public bool EditingCode = true;
         public string CurrentCodeValue = "";
         public string HoverCodeValue = "";
 

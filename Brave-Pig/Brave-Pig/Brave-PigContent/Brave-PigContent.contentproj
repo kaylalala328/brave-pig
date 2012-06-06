@@ -406,11 +406,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Map\MAP001.MAP">
-      <Name>MAP001</Name>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Player\damage.png">
       <Name>damage</Name>
       <Importer>TextureImporter</Importer>
@@ -428,6 +423,31 @@
     </Compile>
     <Compile Include="Player\damage4.png">
       <Name>damage4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Tile.png">
+      <Name>Tile</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Maps\MAP000.MAP">
+      <Name>MAP000</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\back000.png">
+      <Name>back000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\BasicTiles000.png">
+      <Name>BasicTiles000</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

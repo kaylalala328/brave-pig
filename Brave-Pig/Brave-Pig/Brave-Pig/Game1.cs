@@ -13,7 +13,8 @@ using Brave_Pig.UI;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Character;
 using Brave_Pig.Items;
-
+using Level_Editor;
+using Tile_Engine;
 namespace Brave_Pig
 {
     /// <summary>
@@ -24,7 +25,6 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
-
         Texture2D background;
 
         /*
@@ -76,7 +76,11 @@ namespace Brave_Pig
             ItemManager.Initialize(Content);
             screen.Initialize(GraphicsDevice);
             mainUI.Initialize(GraphicsDevice);
-            
+            Camera.WorldRectangle = new Rectangle(0, 0, 64 * 32, 30 * 32);
+            Camera.Position = Vector2.Zero;
+            Camera.ViewPortWidth = 1280;
+            Camera.ViewPortHeight = 720;
+
             base.Initialize();
         }
 
@@ -88,13 +92,18 @@ namespace Brave_Pig
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+            TileMap.Initialize(
+                Content.Load<Texture2D>(@"Textures\Tile"));
+            TileMap.spriteFont =
+                Content.Load<SpriteFont>(@"Font\UI font");
             SoundManager.LoadContent(Content);
             screen.LoadContent(Content);
             mainUI.LoadContent(Content);
             //테스트용
             background = Content.Load<Texture2D>("Backgrounds/Bg04");
             player = new Player(Content);
+            LevelManager.Initialize(Content, player);
+            LevelManager.LoadLevel(0);
         }
 
         /// <summary>
@@ -118,6 +127,7 @@ namespace Brave_Pig
                 this.Exit();
 
             SoundManager.PlayBackground();
+            
 
             if ( gameState == GameStates.START )
             {
@@ -138,6 +148,7 @@ namespace Brave_Pig
                 }
                 else
                 {
+                    LevelManager.Update(gameTime);
                     player.Update(gameTime);
                     mainUI.Update(gameTime, player);
                 }
@@ -168,12 +179,16 @@ namespace Brave_Pig
             {
 
                 // 테스트코드 배경화면
+                /*
                 spriteBatch.Draw(background,
                     new Rectangle(0, 0, 
                         GraphicsDevice.Viewport.Width, 
                         GraphicsDevice.Viewport.Height),
                     Color.White);
-                
+               */
+
+                TileMap.Draw(spriteBatch);
+                LevelManager.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 mainUI.Draw(spriteBatch);
 
@@ -181,6 +196,7 @@ namespace Brave_Pig
                 {
                     screen.DrawPause(spriteBatch);
                 }
+
             }
 
             spriteBatch.End();

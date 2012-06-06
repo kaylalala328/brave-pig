@@ -20,7 +20,6 @@ namespace Brave_Pig.BasicObject
         //각 Frame의 Height
         protected int frameHeight;
 
-        //?? 어떤 bool 변수?
         protected bool enabled;
         //flipped?? 어떤 flipped?
         protected bool flipped = false;
@@ -336,7 +335,7 @@ namespace Brave_Pig.BasicObject
                   Camera.WorldRectangle.Height - frameHeight));
 
             //newposition을 worldlocation에 저장함.
-            //worldLocation = newPosition;
+            worldLocation = newPosition;
         }
 
         /// <summary>

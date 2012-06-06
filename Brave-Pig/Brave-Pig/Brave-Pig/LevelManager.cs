@@ -22,6 +22,10 @@ namespace Brave_Pig
         private static int currentLevel;
         private static bool Isleft = true;
         private static List<Enemy> enemies = new List<Enemy>();
+
+        private static Texture2D background;
+        private static Texture2D Foreground;
+    
         #endregion
 
         #region Properties
@@ -56,7 +60,8 @@ namespace Brave_Pig
         public static void LoadLevel(int levelNumber)
         {
             TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream("Content/Maps/MAP" + levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
-
+            background = Content.Load<Texture2D>("Textures/back000");
+            Foreground = Content.Load<Texture2D>("Textures/BasicTiles000");
             enemies.Clear();
 
             for (int x = 0; x < TileMap.MapWidth; x++)
@@ -146,7 +151,18 @@ namespace Brave_Pig
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-
+            try
+            {
+                spriteBatch.Draw(background, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
+            }
+            catch
+            { }
+            try
+            {
+                spriteBatch.Draw(Foreground, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
+            }
+            catch
+            { }
             //Enermy Draw
             
         }
