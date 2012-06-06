@@ -336,7 +336,6 @@ namespace Brave_Pig.Character
             #region move
             if ( Game1.currentKeyState.IsKeyDown(Keys.Left) )
             {
-
                 direct = 0;
                 flipped = false;
                 velocity = new Vector2(-moveScale, velocity.Y);
@@ -541,13 +540,13 @@ namespace Brave_Pig.Character
 
             if ( Game1.currentKeyState.IsKeyDown(Keys.Z) )
             {
-                if (ItemManager.getCurrentSword() == "Basic" && currentAnimation != "move")
+                if (ItemManager.getCurrentSword() == "Basic" && newAnimation != "move")
                 {
                     if (currentAnimation != "jump")
                     {
                         if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else
                         {
@@ -566,13 +565,13 @@ namespace Brave_Pig.Character
 
                     newAnimation = "charge";
                 }//기본무기 게이지
-                else if (ItemManager.getCurrentSword() == "Blue" && currentAnimation != "move32")
+                else if (ItemManager.getCurrentSword() == "Blue" && newAnimation != "move32")
                 {
                     if (currentAnimation != "jump2")
                     {
                         if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else
                         {
@@ -588,16 +587,15 @@ namespace Brave_Pig.Character
                     {
                         flipped = true;
                     }
-
                     newAnimation = "charge21";
                 }//1번째무기 게이지
-                else if (ItemManager.getCurrentSword() == "Red" && currentAnimation != "move33")
+                else if (ItemManager.getCurrentSword() == "Red" && newAnimation != "move33")
                 {
                     if (currentAnimation != "jump3")
                     {
                         if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else
                         {
@@ -613,16 +611,15 @@ namespace Brave_Pig.Character
                     {
                         flipped = true;
                     }
-
                     newAnimation = "charge22";
                 }//2번째무기 게이지
-                else if (ItemManager.getCurrentSword() == "Yellow" && currentAnimation != "move34")
+                else if (ItemManager.getCurrentSword() == "Yellow" && newAnimation != "move34")
                 {
                     if (currentAnimation != "jump4")
                     {
                         if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else
                         {
@@ -638,7 +635,6 @@ namespace Brave_Pig.Character
                     {
                         flipped = true;
                     }
-
                     newAnimation = "charge23";
                 }//3번째무기 게이지
             } // 게이지 모으기 애니메이션
