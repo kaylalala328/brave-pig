@@ -11,6 +11,8 @@ using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Monsters;
 using Brave_Pig.Character;
+using Brave_Pig.Elements;
+
 namespace Brave_Pig
 {
 
@@ -27,6 +29,9 @@ namespace Brave_Pig
         private static Texture2D BasicTiles;
         private static Texture2D ForeGround;
 
+        private static Portal LeftPortal;
+        private static Portal RightPortal;
+        private static bool IsPortal =false;
     
         #endregion
 
@@ -65,6 +70,7 @@ namespace Brave_Pig
             BackGround = Content.Load<Texture2D>("Textures/back" + levelNumber.ToString().PadLeft(3, '0'));
             BasicTiles = Content.Load<Texture2D>("Textures/BasicTiles" + levelNumber.ToString().PadLeft(3, '0'));
             ForeGround = Content.Load<Texture2D>("Textures/ForeTiles" + levelNumber.ToString().PadLeft(3, '0'));
+            IsPortal = false;
             enemies.Clear();
 
             for (int x = 0; x < TileMap.MapWidth; x++)
@@ -116,14 +122,18 @@ namespace Brave_Pig
                     }
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
                     {
-                        if(Isleft == true)
-                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        RightPortal = new Portal(Content, 100, 145, x, y);
+                        IsPortal = true;
+                       // if(Isleft == true)
+                        //    player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
                     {
-                        if(Isleft == false)
-                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        IsPortal = true;
+                        LeftPortal = new Portal(Content, 100, 145, x, y);
+                        //if(Isleft == false)
+                          //  player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     /*
@@ -146,6 +156,11 @@ namespace Brave_Pig
             foreach (Enemy e in enemies)
             {
                 e.Update(gameTime);
+            }
+            if (IsPortal)
+            {
+                LeftPortal.Update(gameTime);
+                RightPortal.Update(gameTime);
             }
             //Monster update
             //Character Update
@@ -176,6 +191,12 @@ namespace Brave_Pig
                 e.Draw(spriteBatch);
             }
             //Enermy Draw
+
+            if (IsPortal)
+            {
+                LeftPortal.Draw(spriteBatch);
+                RightPortal.Draw(spriteBatch);
+            }
             
         }
 

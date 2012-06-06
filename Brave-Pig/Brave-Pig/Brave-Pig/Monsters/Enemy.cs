@@ -74,7 +74,9 @@ namespace Brave_Pig.Monsters
             codeBasedBlocks = true;
             PlayAnimation("idle");
         }
+        #endregion
 
+        #region Update
         public override void Update(GameTime gameTime)
         {
             Vector2 oldLocation = worldLocation;

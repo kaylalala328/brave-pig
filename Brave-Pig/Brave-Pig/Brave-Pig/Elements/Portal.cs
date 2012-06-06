@@ -12,9 +12,27 @@ using Brave_Pig.Items;
 
 namespace Brave_Pig.Elements
 {
-    public class Portal
+    public class Portal : GameObject
     {
-        
-        
+        #region Constructor
+        public Portal(ContentManager content, int width, int height, int cellX, int cellY)
+        {
+            IsEnemy = true;
+
+            animations.Add("portal", new AnimationStrip(content.Load<Texture2D>("Portal/portal"),width, "portal"));
+            animations["portal"].FrameLength = 0.5f;
+            animations["portal"].LoopAnimation = true;
+
+            frameWidth = width;
+            frameHeight = height;
+
+            worldLocation = new Vector2(cellX * TileMap.TileWidth, cellY * TileMap.TileHeight);
+
+            enabled = true;
+
+            codeBasedBlocks = true;
+            PlayAnimation("portal");
+        }
+        #endregion
     }
 }
