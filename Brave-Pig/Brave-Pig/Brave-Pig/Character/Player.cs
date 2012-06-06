@@ -20,6 +20,7 @@ namespace Brave_Pig.Character
         private int direct = 0;
         Status stat = new Status();
         private bool finish = false;
+        private bool heal = false;
         
         public Player(ContentManager content)
         {
@@ -123,11 +124,25 @@ namespace Brave_Pig.Character
             animations2.Add("default", new AnimationStrip(content.Load<Texture2D>("Player/default"), 77, "default"));
             animations2["default"].LoopAnimation = false;
 
-            /*
             animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
-            animations["jump"].FrameLength = 0.08f;
-            animations["jump"].NextAnimation = "normal";*/
+            animations["jump"].FrameLength = 0.11f;
+            animations["jump"].NextAnimation = "normal";
+
+            animations.Add("jump2", new AnimationStrip(content.Load<Texture2D>("Player/jump2"), 179, "jump2"));
+            animations["jump2"].LoopAnimation = false;
+            animations["jump2"].FrameLength = 0.11f;
+            animations["jump2"].NextAnimation = "normal";
+
+            animations.Add("jump3", new AnimationStrip(content.Load<Texture2D>("Player/jump3"), 179, "jump3"));
+            animations["jump3"].LoopAnimation = false;
+            animations["jump3"].FrameLength = 0.11f;
+            animations["jump3"].NextAnimation = "normal";
+
+            animations.Add("jump4", new AnimationStrip(content.Load<Texture2D>("Player/jump4"), 179, "jump4"));
+            animations["jump4"].LoopAnimation = false;
+            animations["jump4"].FrameLength = 0.11f;
+            animations["jump4"].NextAnimation = "normal";
 
             frameWidth = 179;
             frameHeight = 77;
@@ -150,6 +165,12 @@ namespace Brave_Pig.Character
             {
                 finish = false;
             } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
+
+            if(animations["damage"].FinishedPlaying || animations["damage2"].FinishedPlaying || animations["damage3"].FinishedPlaying || animations["damage4"].FinishedPlaying)
+            {
+                heal = false;
+            }
+
             string newAnimation = "";
             string newAnimation2 = "default";
 
@@ -750,7 +771,13 @@ namespace Brave_Pig.Character
             if (Game1.currentKeyState.IsKeyDown(Keys.L))
             {
                 if (ItemManager.getCurrentSword() == "Basic")
-                {                    
+                {
+                    if(!heal)
+                    {
+                        heal = true;
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+
                     if (direct == 0)
                     {
                         flipped = false;
@@ -764,6 +791,12 @@ namespace Brave_Pig.Character
                 }
                 else if (ItemManager.getCurrentSword() == "Blue")
                 {
+                    if(!heal)
+                    {
+                        heal = true;
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+
                     if (direct == 0)
                     {
                         flipped = false;
@@ -777,6 +810,12 @@ namespace Brave_Pig.Character
                 }
                 else if (ItemManager.getCurrentSword() == "Red")
                 {
+                    if(!heal)
+                    {
+                        heal = true;
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+
                     if (direct == 0)
                     {
                         flipped = false;
@@ -790,6 +829,12 @@ namespace Brave_Pig.Character
                 }
                 else if (ItemManager.getCurrentSword() == "Yellow")
                 {
+                    if(!heal)
+                    {
+                        heal = true;
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+
                     if (direct == 0)
                     {
                         flipped = false;
@@ -804,16 +849,47 @@ namespace Brave_Pig.Character
             }
             #endregion
 
-            /*if (keyState.IsKeyDown(Keys.Z))
+            #region jump
+            if (Game1.currentKeyState.IsKeyDown(Keys.LeftAlt))
             {
-                newAnimation = "jump";
-                velocity = new Vector2(0, velocity.Y);
-                if (onGround)
+                if (ItemManager.getCurrentSword() == "Basic")
                 {
-                    Jump();
                     newAnimation = "jump";
-                }             
-            }*/
+                    if (onGround)
+                    {
+                        Jump();
+                        newAnimation = "jump";
+                    }
+                }
+                else if (ItemManager.getCurrentSword() == "Blue")
+                {
+                    newAnimation = "jump2";
+                    if (onGround)
+                    {
+                        Jump();
+                        newAnimation = "jump2";
+                    }
+                }
+                else if (ItemManager.getCurrentSword() == "Red")
+                {
+                    newAnimation = "jump3";
+                    if (onGround)
+                    {
+                        Jump();
+                        newAnimation = "jump3";
+                    }
+                }
+                else if (ItemManager.getCurrentSword() == "Yellow")
+                {
+                    newAnimation = "jump4";
+                    if (onGround)
+                    {
+                        Jump();
+                        newAnimation = "jump4";
+                    }
+                }
+            }
+            #endregion
 
             if (newAnimation != currentAnimation)
             {
@@ -835,7 +911,7 @@ namespace Brave_Pig.Character
 
         public void Jump()
         {
-            velocity.Y = -500;
+            velocity.Y = -700;
         }
 
         #region UIstatus
