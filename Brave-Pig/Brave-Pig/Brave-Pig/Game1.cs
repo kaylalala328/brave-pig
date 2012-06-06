@@ -76,7 +76,7 @@ namespace Brave_Pig
             ItemManager.Initialize(Content);
             screen.Initialize(GraphicsDevice);
             mainUI.Initialize(GraphicsDevice);
-            Camera.WorldRectangle = new Rectangle(0, 0, 64 * 32, 30 * 32);
+            Camera.WorldRectangle = new Rectangle(0, 0, TileMap.TileWidth * TileMap.MapWidth, TileMap.TileHeight * TileMap.MapHeight);
             Camera.Position = Vector2.Zero;
             Camera.ViewPortWidth = 1280;
             Camera.ViewPortHeight = 720;
@@ -177,7 +177,7 @@ namespace Brave_Pig
                 screen.Draw(spriteBatch);
             if(gameState == GameStates.PLAY || gameState == GameStates.PAUSE)
             {
-
+                
                 // 테스트코드 배경화면
                 /*
                 spriteBatch.Draw(background,
@@ -191,7 +191,6 @@ namespace Brave_Pig
                 LevelManager.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 mainUI.Draw(spriteBatch);
-
                 if ( gameState == GameStates.PAUSE )
                 {
                     screen.DrawPause(spriteBatch);

@@ -89,6 +89,9 @@ namespace Brave_Pig.BasicObject
             }
         }
 
+        /// <summary>
+        /// Collision Rectangle
+        /// </summary>
         public Rectangle CollisionRectangle
         {
             //사각형 위치
@@ -96,7 +99,7 @@ namespace Brave_Pig.BasicObject
             {
                 return new Rectangle(
                     (int)worldLocation.X + collisionRectangle.X,
-                    (int)WorldRectangle.Y + collisionRectangle.Y,
+                    (int)worldLocation.Y + collisionRectangle.Y,
                     collisionRectangle.Width,
                     collisionRectangle.Height);
             }
