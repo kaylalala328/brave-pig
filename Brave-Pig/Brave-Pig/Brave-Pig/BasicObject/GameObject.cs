@@ -174,15 +174,6 @@ namespace Brave_Pig.BasicObject
             Vector2 mapCell1 = TileMap.GetCellByPixel(corner1);
             Vector2 mapCell2 = TileMap.GetCellByPixel(corner2);
 
-            //TileMap이 Passable하다면,
-            if (!TileMap.CellIsPassable(mapCell1) ||
-                !TileMap.CellIsPassable(mapCell2))
-            {
-                //이동과 속도 0
-                moveAmount.X = 0;
-                velocity.X = 0;
-            }
-
             //CodeBaseBlocks에 관련해서, BLOCK이 있다며,
             if (codeBasedBlocks)
             {
@@ -231,15 +222,6 @@ namespace Brave_Pig.BasicObject
 
             Vector2 mapCell1 = TileMap.GetCellByPixel(corner1);
             Vector2 mapCell2 = TileMap.GetCellByPixel(corner2);
-
-            if (!TileMap.CellIsPassable(mapCell1) ||
-                !TileMap.CellIsPassable(mapCell2))
-            {
-                if (moveAmount.Y > 0)
-                    onGround = true;
-                moveAmount.Y = 0;
-                velocity.Y = 0;
-            }
 
             if (codeBasedBlocks)
             {

@@ -47,7 +47,7 @@ namespace Tile_Engine
             {
                 for (int y = 0; y < MapHeight; y++)
                 {
-                    mapCells[x, y] = new MapSquare(0, "", true);
+                    mapCells[x, y] = new MapSquare(0, "");
                 }
             }
         }
@@ -115,26 +115,6 @@ namespace Tile_Engine
             return CellScreenRectangle((int)cell.X, (int)cell.Y);
         }
 
-        static public bool CellIsPassable(int cellX, int cellY)
-        {
-            MapSquare square = GetMapSquareAtCell(cellX, cellY);
-
-            if (square == null)
-                return false;
-            else
-                return square.Passable;
-        }
-
-        static public bool CellIsPassable(Vector2 cell)
-        {
-            return CellIsPassable((int)cell.X, (int)cell.Y);
-        }
-
-        static public bool CellIsPassableByPixel(Vector2 pixelLocation)
-        {
-            return CellIsPassable(GetCellByPixelX((int)pixelLocation.X), GetCellByPixelY((int)pixelLocation.Y));
-        }
-
         static public string CellCodeValue(int cellX, int cellY)
         {
             MapSquare square = GetMapSquareAtCell(cellX, cellY);
@@ -150,7 +130,7 @@ namespace Tile_Engine
             return CellCodeValue((int)cell.X, (int)cell.Y);
         }
 
-        
+
         #endregion
 
         #region Information about MapSquare objects
@@ -219,7 +199,7 @@ namespace Tile_Engine
         {
             for (int x = 0; x < MapWidth; x++)
                 for (int y = 0; y < MapHeight; y++)
-                    mapCells[x, y] = new MapSquare(0, "", true);
+                    mapCells[x, y] = new MapSquare(0, "");
         }
         #endregion
 
@@ -232,10 +212,6 @@ namespace Tile_Engine
             int startY = GetCellByPixelY((int)Camera.Position.Y);
             int endY = GetCellByPixelY((int)Camera.Position.Y + Camera.ViewPortHeight);
 
-            
-            /**************************************************************
-             * 민희야 여기 수정 해야함.
-             */
             for (int x = startX; x <= endX; x++)
                 for (int y = startY; y <= endY; y++)
                 {
@@ -246,20 +222,8 @@ namespace Tile_Engine
                             spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(mapCells[x, y].LayerTiles),
                                              Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.1f);
                         }
-                            /*
-                        else
-                        {
-                            //배경을 하얀색으로
-                            spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(mapCells[x, y].LayerTiles),
-                                             Color.Transparent, 0.0f, Vector2.Zero, SpriteEffects.None, 0.1f);
-                        }
-                             */
                     }
-
-                    if (EditorMode)
-                    {
-                        DrawEditModeItems(spriteBatch, x, y);
-                    }
+                    DrawEditModeItems(spriteBatch, x, y);
                 }
         }
 
@@ -267,23 +231,14 @@ namespace Tile_Engine
         {
             if ((x < 0) || (x >= MapWidth) || (y < 0) || (y >= MapHeight))
                 return;
-
-            /**********************************************
-             * 여기가 코드 선택시 들어오는 곳 여기를 좀 더 다양하게 하는것도 방법인듯
-             */
-            if (!CellIsPassable(x, y))
-            {
-                spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(0), 
+            spriteBatch.Draw(tileSheet, CellScreenRectangle(x, y), TileSourceRectangle(0),
                                  new Color(255, 0, 0, 80), 0.0f, Vector2.Zero, SpriteEffects.None, 0.0f);
-            }
-            /************************
-             *코드를 선택했다면 CodeValue가 여기서 바뀌겠지? Swtich 문써서 바꾸면 좀 더 잘 될듯!!
-             */
+
             if (mapCells[x, y].CodeValue != "")
             {
                 Rectangle screenRect = CellScreenRectangle(x, y);
 
-                spriteBatch.DrawString(spriteFont, mapCells[x, y].CodeValue, new Vector2(screenRect.X, screenRect.Y), 
+                spriteBatch.DrawString(spriteFont, mapCells[x, y].CodeValue, new Vector2(screenRect.X, screenRect.Y),
                                        Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
             }
         }

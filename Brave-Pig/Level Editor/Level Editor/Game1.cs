@@ -203,7 +203,7 @@ namespace Level_Editor
 
             //마우스의 상태를 가져옴
             MouseState ms = Mouse.GetState();
-
+            KeyboardState ks = Keyboard.GetState();
             if ((MapEdit.scroll == false) &&(ms.X > 0) && (ms.Y > 0) && (ms.X < Camera.ViewPortWidth) && (ms.Y < Camera.ViewPortHeight))
             {
                 Vector2 mouseLoc = Camera.ScreenToWorld(new Vector2(ms.X, ms.Y));
@@ -211,31 +211,15 @@ namespace Level_Editor
                 if (Camera.WorldRectangle.Contains((int)mouseLoc.X, (int)mouseLoc.Y))
                 {
                     //마우스 왼쪽 버튼 클릭
-                    if (ms.LeftButton == ButtonState.Pressed)
+                    if (ms.LeftButton == ButtonState.Pressed && ks.IsKeyDown(Keys.LeftControl))
                     {
                         TileMap.SetTileAtCell(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y), DrawTile);
-                    }
-                    
-                    //마우스 오른쪽 버튼 클릭
-                    if ((ms.RightButton == ButtonState.Pressed) &&
-                        (lastMouseState.RightButton == ButtonState.Released))
-                    {
-                        if (EditingCode)
-                        {
-                            TileMap.GetMapSquareAtCell(
+                        TileMap.GetMapSquareAtCell(
                               TileMap.GetCellByPixelX((int)mouseLoc.X),
                               TileMap.GetCellByPixelY((int)mouseLoc.Y)
                             ).CodeValue = CurrentCodeValue;
-                        }
-                        else
-                        {
-                            TileMap.GetMapSquareAtCell(
-                              TileMap.GetCellByPixelX((int)mouseLoc.X),
-                              TileMap.GetCellByPixelY((int)mouseLoc.Y)
-                            ).TogglePassable();
-                        }
                     }
-
+                    
                     HoverCodeValue =
                             TileMap.GetMapSquareAtCell(
                                 TileMap.GetCellByPixelX(

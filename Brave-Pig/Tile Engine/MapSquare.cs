@@ -25,27 +25,13 @@ namespace Tile_Engine
         /// 스테이지 이동, 트랩, 보이지 않는 장애물 등 여러 가지 속성이 될 수 있다.
         /// </summary>
         public string CodeValue = "";
-        /// <summary>
-        /// 플레이어가 이동할 수 있는 블록인지 아닌지를 나타내는 것으로,
-        /// false인 경우 플레이어는 해당 블록을 통과할 수 없다.
-        /// 기본값은 true
-        /// </summary>
-        public bool Passable = true;
         #endregion
 
         #region Constructor
-        public MapSquare(int foreground, string code, bool passable)
+        public MapSquare(int foreground, string code)
         {
             LayerTiles = foreground;
             CodeValue = code;
-            Passable = passable;
-        }
-        #endregion
-
-        #region Public Methods
-        public void TogglePassable()
-        {
-            Passable = !Passable;
         }
         #endregion
     }
