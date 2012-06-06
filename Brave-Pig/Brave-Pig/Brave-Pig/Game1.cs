@@ -40,15 +40,11 @@ namespace Brave_Pig
             EXIT,
             PAUSE
         };
-        public static GameStates gameState = GameStates.PLAY;
+        public static GameStates gameState = GameStates.START;
 
         // 키보드 입력
         public static KeyboardState previousKeyState;
         public static KeyboardState currentKeyState;
-
-        //패드 입력
-        public static GamePadState previousPad;
-        public static GamePadState currentPad;
 
         //객체
         Screen screen;
