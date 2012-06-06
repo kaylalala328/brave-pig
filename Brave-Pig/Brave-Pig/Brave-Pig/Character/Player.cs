@@ -173,7 +173,7 @@ namespace Brave_Pig.Character
             frameHeight = 77;
             CollisionRectangle = new Rectangle(12, 5, 155, 71);
 
-            drawDepth = 0f;
+            drawDepth = 0.1f;
 
             currentAnimation = "normal";
             currentAnimation2 = "default";

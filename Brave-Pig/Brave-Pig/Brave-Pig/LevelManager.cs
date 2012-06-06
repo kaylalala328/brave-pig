@@ -23,8 +23,10 @@ namespace Brave_Pig
         private static bool Isleft = true;
         private static List<Enemy> enemies = new List<Enemy>();
 
-        private static Texture2D background;
-        private static Texture2D Foreground;
+        private static Texture2D BackGround;
+        private static Texture2D BasicTiles;
+        private static Texture2D ForeGround;
+
     
         #endregion
 
@@ -60,8 +62,9 @@ namespace Brave_Pig
         public static void LoadLevel(int levelNumber)
         {
             TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream("Content/Maps/MAP" + levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
-            background = Content.Load<Texture2D>("Textures/back000");
-            Foreground = Content.Load<Texture2D>("Textures/BasicTiles000");
+            BackGround = Content.Load<Texture2D>("Textures/back" + levelNumber.ToString().PadLeft(3, '0'));
+            BasicTiles = Content.Load<Texture2D>("Textures/BasicTiles" + levelNumber.ToString().PadLeft(3, '0'));
+            ForeGround = Content.Load<Texture2D>("Textures/ForeTiles" + levelNumber.ToString().PadLeft(3, '0'));
             enemies.Clear();
 
             for (int x = 0; x < TileMap.MapWidth; x++)
@@ -73,7 +76,6 @@ namespace Brave_Pig
                     if (TileMap.CellCodeValue(x, y) == "ENEMY1")
                     { 
                         Enemy Bluemushroom = new Enemy(Content, "파랑버섯", "bluemushroom",64,x,y, 200);
-                        
                         enemies.Add(Bluemushroom);
                     }
 
@@ -110,16 +112,8 @@ namespace Brave_Pig
 
                     //닿으면 캐릭터가 공격당했을때 모션을 하면서 HP 감소
                     if (TileMap.CellCodeValue(x, y) == "DAMAGED")
-                    { }
-
-                    //enemy가 움직이는 범위 설정
-                    //이 타일을 찍는 
-                    if (TileMap.CellCodeValue(x, y) == "EBLOCK")
-                    { }
-
-                    if (TileMap.CellCodeValue(x, y) == "BLOCK")
-                    { }
-
+                    { 
+                    }
                     if (TileMap.CellCodeValue(x, y) == "RSTART")
                     {
                         if(Isleft == true)
@@ -161,13 +155,19 @@ namespace Brave_Pig
         {
             try
             {
-                spriteBatch.Draw(background, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
+                spriteBatch.Draw(BackGround, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
             }
             catch
             { }
             try
             {
-                spriteBatch.Draw(Foreground, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
+                spriteBatch.Draw(BasicTiles, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
+            }
+            catch
+            { }
+            try
+            {
+                spriteBatch.Draw(ForeGround, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.0f);
             }
             catch
             { }

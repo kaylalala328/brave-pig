@@ -111,6 +111,8 @@
     <Compile Include="Character\Player.cs" />
     <Compile Include="Character\Status.cs" />
     <Compile Include="BasicObject\GameObject.cs" />
+    <Compile Include="Elements\NPC.cs" />
+    <Compile Include="Elements\Portal.cs" />
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\ItemManager.cs" />
     <Compile Include="Items\Potion.cs" />
