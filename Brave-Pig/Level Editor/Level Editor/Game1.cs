@@ -195,6 +195,7 @@ namespace Level_Editor
                 }
                 catch { }
             }
+
             //스크롤이 움직일 때 카메라도 같이 움직임
             
             Camera.Position = new Vector2(hscroll.Value, vscroll.Value);
@@ -260,18 +261,21 @@ namespace Level_Editor
                 SpriteSortMode.BackToFront,
                 BlendState.AlphaBlend);
 
-            try
+            if (MapEdit.Click_Accept == true)
             {
-                spriteBatch.Draw(BackgroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f,SpriteEffects.None, 0.9f);
+                try
+                {
+                    spriteBatch.Draw(BackgroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
+                }
+                catch
+                { }
+                try
+                {
+                    spriteBatch.Draw(ForegroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
+                }
+                catch
+                { }
             }
-            catch
-            { }
-            try
-            {
-                spriteBatch.Draw(ForegroundImage, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.3f);
-            }
-            catch
-            { }
 
             TileMap.Draw(spriteBatch);
             spriteBatch.End();

@@ -41,7 +41,6 @@ namespace Level_Editor
             }
             FixScrollBarScales();
         }
-        
 
         private void FixScrollBarScales()
         {
@@ -229,18 +228,21 @@ namespace Level_Editor
             Application.Exit();
         }
 
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (Click_Accept == false)
             {
                 Click_Accept = true;
                 button4.Text = "적용 취소";
+                BackGroundFileLocation.Text = "back" + cboMapNumber.Text.ToString();
+                ForeGroundFileLocation.Text = "BasicTiles" + cboMapNumber.Text.ToString();
             }
             else
             {
                 button4.Text = "적용";
                 Click_Accept = false;
+                BackGroundFileLocation.Text = "";
+                ForeGroundFileLocation.Text = "";
             }
         }
         public string BackgroundFile()
