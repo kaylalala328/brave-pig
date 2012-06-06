@@ -24,7 +24,7 @@ namespace Brave_Pig.Character
         
         public Player(ContentManager content)
         {
-
+            #region addAnimation
             animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("Player/normal"), 179, "normal"));
             animations["normal"].LoopAnimation = true;
 
@@ -75,15 +75,23 @@ namespace Brave_Pig.Character
 
             animations.Add("charge", new AnimationStrip(content.Load<Texture2D>("Player/charge"), 179, "charge"));
             animations["charge"].LoopAnimation = false;
+            animations["charge"].FrameLength = 0.07f;
+            animations["charge"].NextAnimation = "normal";
 
             animations.Add("charge21", new AnimationStrip(content.Load<Texture2D>("Player/charge21"), 179, "charge21"));
             animations["charge21"].LoopAnimation = false;
+            animations["charge21"].FrameLength = 0.07f;
+            animations["charge21"].NextAnimation = "normal";
 
             animations.Add("charge22", new AnimationStrip(content.Load<Texture2D>("Player/charge22"), 179, "charge22"));
-            animations["charge21"].LoopAnimation = false;
+            animations["charge22"].LoopAnimation = false;
+            animations["charge22"].FrameLength = 0.07f;
+            animations["charge22"].NextAnimation = "normal";
 
             animations.Add("charge23", new AnimationStrip(content.Load<Texture2D>("Player/charge23"), 179, "charge23"));
             animations["charge23"].LoopAnimation = false;
+            animations["charge23"].FrameLength = 0.07f;
+            animations["charge23"].NextAnimation = "normal";
 
             animations.Add("skill1", new AnimationStrip(content.Load<Texture2D>("Player/skill1"), 179, "skill1"));
             animations["skill1"].LoopAnimation = false;
@@ -143,6 +151,7 @@ namespace Brave_Pig.Character
             animations["jump4"].LoopAnimation = false;
             animations["jump4"].FrameLength = 0.11f;
             animations["jump4"].NextAnimation = "normal";
+            #endregion
 
             frameWidth = 179;
             frameHeight = 77;
@@ -156,7 +165,7 @@ namespace Brave_Pig.Character
             codeBasedBlocks = true;
 
             PlayAnimation("normal", "default");
-            //worldLocation = new Vector2(350,300);   //플레이어 위치
+            worldLocation = new Vector2(20,500);   //플레이어 위치
         }
 
         public override void Update(GameTime gameTime)
@@ -177,18 +186,22 @@ namespace Brave_Pig.Character
             if ( ItemManager.getCurrentSword() == "Basic" )
             {
                 newAnimation = "normal";
+                newAnimation2 = "default";
             }
             else if ( ItemManager.getCurrentSword() == "Blue" )
             {
                 newAnimation = "normal2";
+                newAnimation2 = "default";
             }
             else if (ItemManager.getCurrentSword() == "Red")
             {
                 newAnimation = "normal3";
+                newAnimation2 = "default";
             }
             else if (ItemManager.getCurrentSword() == "Yellow")
             {
                 newAnimation = "normal4";
+                newAnimation2 = "default";
             }
 
             velocity = new Vector2(0, velocity.Y);
@@ -382,12 +395,10 @@ namespace Brave_Pig.Character
                         if (attack_num < 5)
                         {
                             newAnimation = "attack22";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                         else
                         {
                             newAnimation = "attack32";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                     }
                 }// 2번째 무기 좌측 이동 + 공격
@@ -410,12 +421,10 @@ namespace Brave_Pig.Character
                         if (attack_num < 5)
                         {
                             newAnimation = "attack23";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                         else
                         {
                             newAnimation = "attack33";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                     }
                 }// 3번째 무기 좌측 이동 + 공격
@@ -464,12 +473,10 @@ namespace Brave_Pig.Character
                         if (attack_num < 5)
                         {
                             newAnimation = "attack21";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                         else
                         {
                             newAnimation = "attack31";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                     }
                 }// 1번째 무기 우측 이동 + 공격
@@ -485,12 +492,10 @@ namespace Brave_Pig.Character
                         if (attack_num < 5)
                         {
                             newAnimation = "attack22";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                         else
                         {
                             newAnimation = "attack32";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                     }
                 }// 2번째 무기 우측 이동 + 공격
@@ -506,12 +511,10 @@ namespace Brave_Pig.Character
                         if (attack_num < 5)
                         {
                             newAnimation = "attack23";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                         else
                         {
                             newAnimation = "attack33";
-                            velocity = new Vector2(0, velocity.Y);
                         }
                     }
                 }// 3번째 무기 우측 이동 + 공격
@@ -522,16 +525,19 @@ namespace Brave_Pig.Character
 
             if ( Game1.currentKeyState.IsKeyDown(Keys.Z) )
             {
-                if (ItemManager.getCurrentSword() == "Basic")
+                if (ItemManager.getCurrentSword() == "Basic" && currentAnimation != "move")
                 {
-                    if (stat.manaPoint < 3)
+                    if (currentAnimation != "jump")
                     {
-                        stat.manaPoint = stat.manaPoint + 0.5f;
+                        if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.5f;
+                        }
+                        else
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.0f;
+                        } // 게이지 값 연산
                     }
-                    else
-                    {
-                        stat.manaPoint = stat.manaPoint + 0.0f;
-                    } // 게이지 값 연산
 
                     if (direct == 0)
                     {
@@ -544,16 +550,19 @@ namespace Brave_Pig.Character
 
                     newAnimation = "charge";
                 }//기본무기 게이지
-                else if (ItemManager.getCurrentSword() == "Blue")
+                else if (ItemManager.getCurrentSword() == "Blue" && currentAnimation != "move32")
                 {
-                    if (stat.manaPoint < 3)
+                    if (currentAnimation != "jump2")
                     {
-                        stat.manaPoint = stat.manaPoint + 0.5f;
+                        if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.5f;
+                        }
+                        else
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.0f;
+                        } // 게이지 값 연산
                     }
-                    else
-                    {
-                        stat.manaPoint = stat.manaPoint + 0.0f;
-                    } // 게이지 값 연산
 
                     if (direct == 0)
                     {
@@ -566,16 +575,19 @@ namespace Brave_Pig.Character
 
                     newAnimation = "charge21";
                 }//1번째무기 게이지
-                else if (ItemManager.getCurrentSword() == "Red")
+                else if (ItemManager.getCurrentSword() == "Red" && currentAnimation != "move33")
                 {
-                    if (stat.manaPoint < 3)
+                    if (currentAnimation != "jump3")
                     {
-                        stat.manaPoint = stat.manaPoint + 0.5f;
+                        if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.5f;
+                        }
+                        else
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.0f;
+                        } // 게이지 값 연산
                     }
-                    else
-                    {
-                        stat.manaPoint = stat.manaPoint + 0.0f;
-                    } // 게이지 값 연산
 
                     if (direct == 0)
                     {
@@ -588,16 +600,19 @@ namespace Brave_Pig.Character
 
                     newAnimation = "charge22";
                 }//2번째무기 게이지
-                else if (ItemManager.getCurrentSword() == "Yellow")
+                else if (ItemManager.getCurrentSword() == "Yellow" && currentAnimation != "move34")
                 {
-                    if (stat.manaPoint < 3)
+                    if (currentAnimation != "jump4")
                     {
-                        stat.manaPoint = stat.manaPoint + 0.5f;
+                        if (stat.manaPoint < 3)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.5f;
+                        }
+                        else
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.0f;
+                        } // 게이지 값 연산
                     }
-                    else
-                    {
-                        stat.manaPoint = stat.manaPoint + 0.0f;
-                    } // 게이지 값 연산
 
                     if (direct == 0)
                     {
@@ -620,75 +635,87 @@ namespace Brave_Pig.Character
                 {
                     if (ItemManager.getCurrentSword() == "Basic")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 1.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 1.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill1";
+                            newAnimation = "skill1";
+                        }
                     } // 기본무기 스킬(1개 중 1번)
                     else if ( ItemManager.getCurrentSword() == "Blue" )
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump2")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 1.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 1.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill2";
+                            newAnimation = "skill2";
+                        }
                     } // 1번째 무기 스킬(1개 중 1번)
                     else if (ItemManager.getCurrentSword() == "Red")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump3")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 1.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 1.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill3";
+                            newAnimation = "skill3";
+                        }
                     } // 2번째 무기 스킬(1개 중 1번)
                     else if (ItemManager.getCurrentSword() == "Yellow")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump4")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 1.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 1.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill4";
+                            newAnimation = "skill4";
+                        }
                     } // 3번째 무기 스킬(1개 중 1번)
                 }
             } // 1번스킬 계열 애니메이션
@@ -701,39 +728,45 @@ namespace Brave_Pig.Character
                 {
                     if (ItemManager.getCurrentSword() == "Red")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump3")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 2.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 2.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill22";
+                            newAnimation = "skill22";
+                        }
                     } // 2번째 무기 스킬(2개 중 2번)
                     else if (ItemManager.getCurrentSword() == "Yellow")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump4")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 2.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 2.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill32";
+                            newAnimation = "skill32";
+                        }
                     } // 3번째 무기 스킬(3개 중 2번)
                 }
             } // 2번스킬 계열 애니메이션
@@ -742,40 +775,50 @@ namespace Brave_Pig.Character
             #region skill3
             if ( Game1.previousKeyState.IsKeyUp(Keys.F) && Game1.currentKeyState.IsKeyDown(Keys.F) )
             {
-                if (stat.manaPoint >= 2)
+                if (stat.manaPoint == 3)
                 {
                     if (ItemManager.getCurrentSword() == "Yellow")
                     {
-                        if (!finish)
+                        if (currentAnimation != "jump4")
                         {
-                            finish = true;
-                            stat.manaPoint = stat.manaPoint - 3.0f;
-                        } // 스킬 사용시 마나 포인트 변경
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                            if (!finish)
+                            {
+                                finish = true;
+                                stat.manaPoint = stat.manaPoint - 3.0f;
+                            } // 스킬 사용시 마나 포인트 변경
+                            if (direct == 0)
+                            {
+                                flipped = false;
+                            }
+                            else
+                            {
+                                flipped = true;
+                            }
 
-                        newAnimation = "skill33";
-                        newAnimation2 = "skillmap";
+                            newAnimation = "skill33";
+                            newAnimation2 = "skillmap";
+                        }
                     } // 3번째 무기 스킬(3개 중 3번)
                 }
             } // 3번스킬 계열 애니메이션
             #endregion
 
             #region damage
-            if (Game1.currentKeyState.IsKeyDown(Keys.L))
+            if (Game1.previousKeyState.IsKeyUp(Keys.L) && Game1.currentKeyState.IsKeyDown(Keys.L))
             {
                 if (ItemManager.getCurrentSword() == "Basic")
                 {
                     if(!heal)
                     {
                         heal = true;
-                        stat.healPoint = stat.healPoint - 5;
+                        if (stat.healPoint > 0)
+                        {
+                            stat.healPoint = stat.healPoint - 5;
+                        }
+                        else
+                        {
+                            //죽음
+                        }
                     }
 
                     if (direct == 0)
@@ -788,13 +831,28 @@ namespace Brave_Pig.Character
                     }
 
                     newAnimation = "damage";
+                    if (!flipped)
+                    {
+                        velocity = new Vector2(300, -150);
+                    }
+                    else
+                    {
+                        velocity = new Vector2(-300, -150);
+                    }
                 }
                 else if (ItemManager.getCurrentSword() == "Blue")
                 {
                     if(!heal)
                     {
                         heal = true;
-                        stat.healPoint = stat.healPoint - 5;
+                        if (stat.healPoint > 0)
+                        {
+                            stat.healPoint = stat.healPoint - 5;
+                        }
+                        else
+                        {
+                            //죽음
+                        }
                     }
 
                     if (direct == 0)
@@ -807,13 +865,28 @@ namespace Brave_Pig.Character
                     }
 
                     newAnimation = "damage2";
+                    if (!flipped)
+                    {
+                        velocity = new Vector2(300, -150);
+                    }
+                    else
+                    {
+                        velocity = new Vector2(-300, -150);
+                    }
                 }
                 else if (ItemManager.getCurrentSword() == "Red")
                 {
                     if(!heal)
                     {
                         heal = true;
-                        stat.healPoint = stat.healPoint - 5;
+                        if (stat.healPoint > 0)
+                        {
+                            stat.healPoint = stat.healPoint - 5;
+                        }
+                        else
+                        {
+                            //죽음
+                        }
                     }
 
                     if (direct == 0)
@@ -826,13 +899,28 @@ namespace Brave_Pig.Character
                     }
 
                     newAnimation = "damage3";
+                    if (!flipped)
+                    {
+                        velocity = new Vector2(300, -150);
+                    }
+                    else
+                    {
+                        velocity = new Vector2(-300, -150);
+                    }
                 }
                 else if (ItemManager.getCurrentSword() == "Yellow")
                 {
                     if(!heal)
                     {
                         heal = true;
-                        stat.healPoint = stat.healPoint - 5;
+                        if (stat.healPoint > 0)
+                        {
+                            stat.healPoint = stat.healPoint - 5;
+                        }
+                        else
+                        {
+                            //죽음
+                        }
                     }
 
                     if (direct == 0)
@@ -845,6 +933,14 @@ namespace Brave_Pig.Character
                     }
 
                     newAnimation = "damage4";
+                    if (!flipped)
+                    {
+                        velocity = new Vector2(300, -150);
+                    }
+                    else
+                    {
+                        velocity = new Vector2(-300, -150);
+                    }
                 }
             }
             #endregion
@@ -893,8 +989,16 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
+                if (currentAnimation != "jump" && currentAnimation != "jump2" && currentAnimation != "jump3" && currentAnimation != "jump4")
+                {
+                    if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
+                        PlayAnimation(newAnimation, newAnimation2);
+                }
+                else
+                {
+                    if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "attack2" || newAnimation == "attack1" || newAnimation == "attack21" || newAnimation == "attack31" || newAnimation == "attack22" || newAnimation == "attack32" || newAnimation == "attack23" || newAnimation == "attack33")
                     PlayAnimation(newAnimation, newAnimation2);
+                }
             } //다른 입력값이 들어왔을때 처리방법
             else
             {

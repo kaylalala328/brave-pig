@@ -59,7 +59,7 @@ namespace Brave_Pig.Character
         }
         public Status()
         {
-            this.healPoint = 20;
+            this.healPoint = 50;
             this.manaPoint = 0;
             this.damage = 0;
             this.defense = 0;
