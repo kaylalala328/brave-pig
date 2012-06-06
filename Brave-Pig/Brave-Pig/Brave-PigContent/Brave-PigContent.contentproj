@@ -696,6 +696,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Textures\ForeTiles000.png">
       <Name>ForeTiles000</Name>
       <Importer>TextureImporter</Importer>

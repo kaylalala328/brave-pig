@@ -1062,14 +1062,14 @@ namespace Brave_Pig.Character
         {
             int screenLocX = (int)Camera.WorldToScreen(worldLocation).X;
 
-            if (screenLocX > 800)
+            if (screenLocX > 600)
             {
-                Camera.Move(new Vector2(screenLocX - 800, 0));
+                Camera.Move(new Vector2(screenLocX - 600, 0));
             }
 
-            if (screenLocX < 300)
+            if (screenLocX < 400)
             {
-                Camera.Move(new Vector2(screenLocX - 300, 0));
+                Camera.Move(new Vector2(screenLocX - 400, 0));
             }
 
             int screenLocY = (int)Camera.WorldToScreen(worldLocation).Y;
