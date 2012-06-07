@@ -110,7 +110,7 @@ namespace Brave_Pig.BasicObject
         #region Helper Methods
         
         //애니메이션 업데이트
-        private void updateAnimation(GameTime gameTime)
+        public void updateAnimation(GameTime gameTime)
         {
             //Key를 갖고 잇어야함. 즉 애니메이션이 존재하면,
             if (animations.ContainsKey(currentAnimation))

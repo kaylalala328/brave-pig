@@ -14,31 +14,38 @@ using Brave_Pig.Monsters;
 
 namespace Brave_Pig.UI
 {
-    class MP : UiAnimation
+    class MP : GameObject
     {
         int manaLevel = 0;
         float mana;
 
         Texture2D chargeBar;
 
-        public void Initialize ()
-        {   }
+        public void Initialize ( )
+        {
+        }
         public void LoadContent ( ContentManager content )
         {
             chargeBar = content.Load<Texture2D>("UI/chargeBar");
-            AddAnimation(content);
+            IsEnemy = true;
+            animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("UI/MP"), 44, "normal"));
+            animations["normal"].LoopAnimation = true;
+            animations["normal"].FrameLength = 0.08f;
+            animations.Add("event", new AnimationStrip(content.Load<Texture2D>("UI/MPanimation3"), 44, "event"));
+            animations["event"].LoopAnimation = false;
+            animations["event"].FrameLength = 0.1f;
 
             currentAnimation = "event";
             PlayAnimation("event");
         }
-        public void Update ( GameTime gameTime, Player player)
+        public void Update ( GameTime gameTime, Player player )
         {
             mana = player.getMana();
 
             //ChargeBar의 계산을 위해서 필요
-            if ( mana <= 1 )
+            if ( mana < 1 )
                 manaLevel = 0;
-            else if ( mana < 2 && manaLevel < 1 )
+            else if ( mana >= 1 && mana < 2 && manaLevel < 1 )
             {
                 manaLevel = 1;
                 PlayAnimation("event");

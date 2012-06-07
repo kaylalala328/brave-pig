@@ -25,7 +25,6 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
-        Texture2D background;
 
         /*
          * GameState를 나타냄
@@ -33,12 +32,14 @@ namespace Brave_Pig
         public enum GameStates
         {
             START,
-            PLAY,
-            GAMEOVER,
+            MENU,
+            MAKE,
             LOAD,
-            WIN,
             EXIT,
-            PAUSE
+            PLAY,
+            PAUSE,
+            WIN,
+            GAMEOVER,
         };
         public static GameStates gameState = GameStates.START;
 
@@ -50,7 +51,7 @@ namespace Brave_Pig
         Screen screen;
         MainUI mainUI;
 
-        public Game1()
+        public Game1 ( )
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -65,7 +66,7 @@ namespace Brave_Pig
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
+        protected override void Initialize ( )
         {
             //화면 크기 설정
             graphics.PreferredBackBufferWidth = 1280;
@@ -88,7 +89,7 @@ namespace Brave_Pig
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
+        protected override void LoadContent ( )
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -99,8 +100,6 @@ namespace Brave_Pig
             SoundManager.LoadContent(Content);
             screen.LoadContent(Content);
             mainUI.LoadContent(Content);
-            //테스트용
-            background = Content.Load<Texture2D>("Backgrounds/Bg04");
             player = new Player(Content);
             LevelManager.Initialize(Content, player);
             LevelManager.LoadLevel(0);
@@ -110,7 +109,7 @@ namespace Brave_Pig
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
-        protected override void UnloadContent()
+        protected override void UnloadContent ( )
         {
             // TODO: Unload any non ContentManager content here
         }
@@ -120,47 +119,57 @@ namespace Brave_Pig
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        protected override void Update ( GameTime gameTime )
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if ( GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed )
                 this.Exit();
 
             SoundManager.PlayBackground();
-            
 
-            if ( gameState == GameStates.START )
+            currentKeyState = Keyboard.GetState();
+
+            switch ( gameState )
             {
-                screen.Update(gameTime);
-            }
-            else
-            {
-                currentKeyState = Keyboard.GetState();
+                case GameStates.START:
+                    screen.Update(gameTime);
+                    break;
+                case GameStates.MENU:
+                    break;
+                case GameStates.MAKE:
+                    break;
+                case GameStates.LOAD:
+                    break;
+                case GameStates.EXIT:
+                    this.Exit();
+                    break;
+                case GameStates.PLAY:
+                    if ( previousKeyState.IsKeyDown(Keys.Escape) && currentKeyState.IsKeyUp(Keys.Escape) )
+                    {
+                        gameState = GameStates.PAUSE;
+                    }
 
-                if ( previousKeyState.IsKeyDown(Keys.Escape) && currentKeyState.IsKeyUp(Keys.Escape) )
-                {
-                    gameState = GameStates.PAUSE;
-                }
-
-                if ( gameState == GameStates.PAUSE )
-                {
-                    screen.UpdatePause(gameTime);
-                }
-                else
-                {
                     LevelManager.Update(gameTime);
                     player.Update(gameTime);
                     mainUI.Update(gameTime, player);
-                }
 
-                previousKeyState = currentKeyState;
+                    break;
+                case GameStates.PAUSE:
+                    if ( previousKeyState.IsKeyDown(Keys.Escape) && currentKeyState.IsKeyUp(Keys.Escape) )
+                    {
+                        gameState = GameStates.PLAY;
+                    }
+
+                    screen.UpdatePause(gameTime);
+                    break;
+                case GameStates.WIN:
+                    break;
+                case GameStates.GAMEOVER:
+                    break;
             }
 
-            if ( gameState == GameStates.EXIT )
-            {
-                this.Exit();
-            }
-            
+            previousKeyState = currentKeyState;
+
             base.Update(gameTime);
         }
 
@@ -168,34 +177,40 @@ namespace Brave_Pig
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw ( GameTime gameTime )
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-          
+
             spriteBatch.Begin();
-            if ( gameState == GameStates.START )
-                screen.Draw(spriteBatch);
-            if(gameState == GameStates.PLAY || gameState == GameStates.PAUSE)
+
+            switch ( gameState )
             {
-                
-                // 테스트코드 배경화면
-                /*
-                spriteBatch.Draw(background,
-                    new Rectangle(0, 0, 
-                        GraphicsDevice.Viewport.Width, 
-                        GraphicsDevice.Viewport.Height),
-                    Color.White);
-               */
-
-                TileMap.Draw(spriteBatch);
-                LevelManager.Draw(spriteBatch);
-                player.Draw(spriteBatch);
-                mainUI.Draw(spriteBatch);
-                if ( gameState == GameStates.PAUSE )
-                {
+                case GameStates.START:
+                    screen.Draw(spriteBatch);
+                    break;
+                case GameStates.MENU:
+                    break;
+                case GameStates.MAKE:
+                    break;
+                case GameStates.LOAD:
+                    break;
+                case GameStates.PLAY:
+                    TileMap.Draw(spriteBatch);
+                    LevelManager.Draw(spriteBatch);
+                    player.Draw(spriteBatch);
+                    mainUI.Draw(spriteBatch);
+                    break;
+                case GameStates.PAUSE:
+                    TileMap.Draw(spriteBatch);
+                    LevelManager.Draw(spriteBatch);
+                    player.Draw(spriteBatch);
+                    mainUI.Draw(spriteBatch);
                     screen.DrawPause(spriteBatch);
-                }
-
+                    break;
+                case GameStates.WIN:
+                    break;
+                case GameStates.GAMEOVER:
+                    break;
             }
 
             spriteBatch.End();

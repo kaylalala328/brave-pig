@@ -21,18 +21,19 @@ namespace Brave_Pig.UI
         int maxHeal;
         float heal;
 
-        public void Initialize ()
-        {   }
+        public void Initialize ( )
+        {
+        }
         public void LoadContent ( ContentManager content )
         {
             HPbar = content.Load<Texture2D>("UI/HP");
         }
-        public void Update ( GameTime gameTime, Player player)
+        public void Update ( GameTime gameTime, Player player )
         {
             heal = player.getHeal();
             maxHeal = player.getMaxHeal();
         }
-        public void Draw(SpriteBatch spriteBatch, SpriteFont UIfont, int BottomUIWidth, int BottomUIHeight, int BottomY)
+        public void Draw ( SpriteBatch spriteBatch, SpriteFont UIfont, int BottomUIWidth, int BottomUIHeight, int BottomY )
         {
             int HPbarWidth = ( BottomUIWidth * 151 ) / 1280;
             int HPbarHeight = ( BottomUIHeight * 148 ) / 180;
@@ -46,7 +47,7 @@ namespace Brave_Pig.UI
                     (int)( HPbarHeight - ( maxHeal - heal ) * HPbarHeight / maxHeal )),
                 new Rectangle(0,
                     (int)( ( maxHeal - heal ) * HPbarHeight / maxHeal ),
-                    151,
+                    HPbarWidth,
                     (int)( HPbarHeight - ( maxHeal - heal ) * HPbarHeight / maxHeal )),
                 Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0f);
 

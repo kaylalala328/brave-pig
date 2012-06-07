@@ -1018,16 +1018,13 @@ namespace Brave_Pig.Character
             #region potion
             if ((Game1.previousKeyState.IsKeyUp(Keys.D4) && Game1.currentKeyState.IsKeyDown(Keys.D4)))
             {
-                if (stat.healPoint < stat.maxHeal)
+                if (ItemManager.getPotion().getCount() > 0)
                 {
-                    if (ItemManager.getPotion().getCount() > 0)
+                    ItemManager.getPotion().usePotion();
+                    stat.healPoint = stat.healPoint + ItemManager.getPotion().getHeal();
+                    if ( stat.healPoint > stat.maxHeal )
                     {
-                        ItemManager.getPotion().usePotion();
-                        stat.healPoint = stat.healPoint + ItemManager.getPotion().getHeal();
-                        if (stat.healPoint > 50)
-                        {
-                            stat.healPoint = 50;
-                        }
+                        stat.healPoint = stat.maxHeal;
                     }
                 }
             }   
