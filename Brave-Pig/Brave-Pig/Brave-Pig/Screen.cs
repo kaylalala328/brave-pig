@@ -317,16 +317,16 @@ namespace Brave_Pig
         {
             for ( int i = 0 ; i < 5 ; i++ )
             {
-                screenX[i] -= 2;
+                screenX[i] -= 8;
                 if ( screenX[i] < 0 )
                 {
-                    screenX[i] = 1278;
+                    screenX[i] = 1272;
                     check[i] = true;
                 }
                 if ( check[i] )
                 {
                     spriteBatch.Draw(screens[i], new Rectangle(screenX[5], 576, 256, 144), Color.White);
-                    screenX[5] -= 2;
+                    screenX[5] -= 8;
                     if ( screenX[5] < -255 )
                     {
                         check[i] = false;
@@ -340,16 +340,16 @@ namespace Brave_Pig
         {
             for ( int i = 0 ; i < 5 ; i++ )
             {
-                screenX[i] += 2;
+                screenX[i] += 8;
                 if ( screenX[i] > 1024 )
                 {
-                    screenX[i] = -254;
+                    screenX[i] = -248;
                     check[i] = true;
                 }
                 if ( check[i] )
                 {
                     spriteBatch.Draw(screens[i], new Rectangle(screenX[6], 576, 256, 144), Color.White);
-                    screenX[6] += 2;
+                    screenX[6] += 8;
                     if ( screenX[6] > 1279 )
                     {
                         check[i] = false;
