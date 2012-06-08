@@ -20,7 +20,7 @@ namespace Brave_Pig.Elements
             IsEnemy = true;
 
             animations.Add("portal", new AnimationStrip(content.Load<Texture2D>("Portal/portal"),width, "portal"));
-            animations["portal"].FrameLength = 0.5f;
+            animations["portal"].FrameLength = 0.2f;
             animations["portal"].LoopAnimation = true;
 
             frameWidth = width;

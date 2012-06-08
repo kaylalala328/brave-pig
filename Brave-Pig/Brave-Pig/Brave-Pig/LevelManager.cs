@@ -180,23 +180,18 @@ namespace Brave_Pig
             }
             catch
             { }
-            try
+            if (IsPortal)
             {
-                spriteBatch.Draw(ForeGround, Vector2.Zero, Camera.ViewPort, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.0f);
+                LeftPortal.Draw(spriteBatch);
+                RightPortal.Draw(spriteBatch);
             }
-            catch
-            { }
             foreach (Enemy e in enemies)
             {
                 e.Draw(spriteBatch);
             }
             //Enermy Draw
 
-            if (IsPortal)
-            {
-                LeftPortal.Draw(spriteBatch);
-                RightPortal.Draw(spriteBatch);
-            }
+            
             
         }
 

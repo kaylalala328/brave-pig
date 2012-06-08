@@ -56,13 +56,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backgrounds\Bg04.png">
-      <Name>Bg04</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Screen\menu.png">
       <Name>menu</Name>
       <Importer>TextureImporter</Importer>
@@ -432,6 +425,7 @@
       <Name>back000</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Textures\BasicTiles000.png">
       <Name>BasicTiles000</Name>
@@ -713,6 +707,42 @@
     </Compile>
     <Compile Include="Textures\ForeTiles004.png">
       <Name>ForeTiles004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\BasicTiles005.png">
+      <Name>BasicTiles005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\ForeTiles005.png">
+      <Name>ForeTiles005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\back003.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>back003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\back001.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>back001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\back002.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>back002</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
