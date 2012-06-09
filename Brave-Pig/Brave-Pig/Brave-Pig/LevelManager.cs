@@ -81,32 +81,53 @@ namespace Brave_Pig
                     //enemy마다 움직이는 방향은 랜덤으로
                     if (TileMap.CellCodeValue(x, y) == "ENEMY1")
                     { 
-                        Enemy Bluemushroom = new Enemy(Content, "파랑버섯", "bluemushroom",64,x,y, 200);
+                        Enemy Bluemushroom = new Enemy(Content, "파랑버섯", "bluemushroom",64,64,x,y, 200);
                         enemies.Add(Bluemushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
-                    { }
+                    {
+                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 64, 64, x, y, 200);
+                        enemies.Add(BrownPig);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY3")
-                    { }
+                    {
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        enemies.Add(MossMushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY4")
-                    { }
+                    {
+                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 64, x, y, 200);
+                        enemies.Add(PoisonMushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY5")
-                    { }
+                    {
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        enemies.Add(MossMushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY6")
-                    { }
+                    {
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        enemies.Add(MossMushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY7")
-                    { }
+                    {
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        enemies.Add(MossMushroom);
+                    }
                     ////////////////////////////////////////////////////
 
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
-                    { }
+                    {
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        enemies.Add(MossMushroom);
+                    }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS2")
                     { }
@@ -146,7 +167,6 @@ namespace Brave_Pig
                      */
                 }
             }
-
             currentLevel = levelNumber;
         }
 

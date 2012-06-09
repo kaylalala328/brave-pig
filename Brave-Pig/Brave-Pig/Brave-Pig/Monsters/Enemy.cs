@@ -24,7 +24,7 @@ namespace Brave_Pig.Monsters
         public bool Dead = false;
         
         #region Constructor
-        public Enemy(ContentManager content, string MonsterName, string Contentname, int width,int cellX, int cellY, int HP)
+        public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP)
         {
             IsEnemy = true;
             
@@ -62,7 +62,7 @@ namespace Brave_Pig.Monsters
             HealthPoint = HP;
 
             frameWidth = width;
-            frameHeight = 64;
+            frameHeight = height;
             CollisionRectangle = new Rectangle(2, 2, frameWidth-4, frameWidth-4);
 
             worldLocation = new Vector2(
@@ -80,7 +80,7 @@ namespace Brave_Pig.Monsters
         public override void Update(GameTime gameTime)
         {
             Vector2 oldLocation = worldLocation;
-
+            /// Monster AI : 좌우로 움직임
             if (!Dead)
             {
                 velocity = new Vector2(0, velocity.Y);
@@ -98,6 +98,7 @@ namespace Brave_Pig.Monsters
                 velocity += direction;
                 velocity += fallSpeed;
             }
+            
 
             base.Update(gameTime);
 

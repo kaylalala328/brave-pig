@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Items;
+using Brave_Pig.Character;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Brave_Pig.Elements
     class NPC : GameObject
     {
         int NPCtype;
-
+        
         #region constructor
         public NPC(ContentManager content, string NPCName, string Contentname, int width, int height, int cellX, int cellY)
         { 
@@ -38,8 +39,23 @@ namespace Brave_Pig.Elements
         #endregion
 
         #region Update
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, Player p)
         {
+            if (Game1.currentKeyState.IsKeyDown(Keys.Up) && this.CollisionRectangle.Intersects(p.CollisionRectangle))
+            {
+                switch (NPCtype)
+                {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+            }
             base.Update(gameTime);
         }
         #endregion
