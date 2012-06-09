@@ -19,7 +19,6 @@ namespace Brave_Pig.Elements
         #region constructor
         public NPC(ContentManager content, string NPCName, string Contentname, int width, int height, int cellX, int cellY)
         { 
-            IsEnemy = true;
 
             //idle 애니메이션
             animations.Add("idle", new AnimationStrip(content.Load<Texture2D>("NPC/" + Contentname), width, "idle"));
@@ -30,7 +29,7 @@ namespace Brave_Pig.Elements
             frameHeight = height;
 
             worldLocation = new Vector2(cellX * TileMap.TileWidth, cellY * TileMap.TileHeight);
-
+            collisionRectangle = new Rectangle(0, 0, width, height);
             enabled = true;
 
             codeBasedBlocks = true;

@@ -17,7 +17,6 @@ namespace Brave_Pig.Elements
         #region Constructor
         public Portal(ContentManager content, int width, int height, int cellX, int cellY)
         {
-            IsEnemy = true;
 
             animations.Add("portal", new AnimationStrip(content.Load<Texture2D>("Portal/portal"),width, "portal"));
             animations["portal"].FrameLength = 0.2f;
@@ -27,7 +26,7 @@ namespace Brave_Pig.Elements
             frameHeight = height;
 
             worldLocation = new Vector2(cellX * TileMap.TileWidth, cellY * TileMap.TileHeight);
-
+            collisionRectangle = new Rectangle(0, 0, width, height);
             enabled = true;
 
             codeBasedBlocks = true;

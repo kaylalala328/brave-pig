@@ -180,6 +180,7 @@ namespace Brave_Pig.Character
             enabled = true;
             codeBasedBlocks = true;
 
+            IsPlayer = true;
             PlayAnimation("normal", "default");
             worldLocation = new Vector2(20,500);   //플레이어 위치
         }
