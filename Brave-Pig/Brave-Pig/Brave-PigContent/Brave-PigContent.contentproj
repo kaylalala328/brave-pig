@@ -591,8 +591,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Font\NPCfont.spritefont">
+      <Name>NPCfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Maps\MAP000.MAP">
       <Name>MAP000</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP001.MAP">
+      <Name>MAP001</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -801,6 +810,13 @@
   <ItemGroup>
     <Compile Include="Screen\Screen.png">
       <Name>Screen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NPC\dialog.png">
+      <Name>dialog</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

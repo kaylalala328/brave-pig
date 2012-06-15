@@ -137,8 +137,12 @@ namespace Brave_Pig
                     }
 
                     LevelManager.Update(gameTime);
-                    player.Update(gameTime);
-                    mainUI.Update(gameTime, player);
+
+                    if (LevelManager.IsDialog == false)
+                    {
+                        player.Update(gameTime);
+                        mainUI.Update(gameTime, player);
+                    }
 
                     break;
                 case GameStates.PAUSE:

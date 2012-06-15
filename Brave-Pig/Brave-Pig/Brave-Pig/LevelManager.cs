@@ -22,8 +22,9 @@ namespace Brave_Pig
         private static ContentManager Content;
         private static Player player;
         private static int currentLevel;
-        private static bool Isleft = true;
+        private static bool IsleftPortal = false;
         private static List<Enemy> enemies = new List<Enemy>();
+        private static List<NPC> npc = new List<NPC>();
 
         private static Texture2D BackGround;
         private static Texture2D BasicTiles;
@@ -32,6 +33,8 @@ namespace Brave_Pig
         private static Portal LeftPortal;
         private static Portal RightPortal;
         private static bool IsPortal =false;
+
+        public static bool IsDialog = false;
     
         #endregion
 
@@ -72,6 +75,7 @@ namespace Brave_Pig
             ForeGround = Content.Load<Texture2D>("Textures/ForeTiles" + levelNumber.ToString().PadLeft(3, '0'));
             IsPortal = false;
             enemies.Clear();
+            npc.Clear();
 
             for (int x = 0; x < TileMap.MapWidth; x++)
             {
@@ -121,6 +125,12 @@ namespace Brave_Pig
                         enemies.Add(MossMushroom);
                     }
                     ////////////////////////////////////////////////////
+                    if (TileMap.CellCodeValue(x, y) == "NPC1")
+                    {
+                        NPC NPC1 = new NPC(Content, 0, "gonggong", 100, 128, x, y);
+                        npc.Add(NPC1);
+                    }
+                    ////////////////////////////////////////////////////
 
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
@@ -145,16 +155,16 @@ namespace Brave_Pig
                     {
                         RightPortal = new Portal(Content, 100, 145, x, y);
                         IsPortal = true;
-                       // if(Isleft == true)
-                        //    player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        if(IsleftPortal == true)
+                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
                     {
                         IsPortal = true;
                         LeftPortal = new Portal(Content, 100, 145, x, y);
-                        //if(Isleft == false)
-                          //  player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                        if(IsleftPortal == false)
+                           player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
                     }
 
                     /*
@@ -173,15 +183,39 @@ namespace Brave_Pig
         public static void Update(GameTime gameTime)
         {
 
+            IsDialog = false;
+
+
+            foreach (NPC n in npc)
+            {
+                n.Update(gameTime, player);
+                IsDialog = IsDialog || n.IsDrawWindow;
+            }
+            
+            if (IsPortal)
+            {
+                LeftPortal.Update(gameTime,player);
+                RightPortal.Update(gameTime,player);
+            }
             foreach (Enemy e in enemies)
             {
                 e.Update(gameTime);
             }
-            if (IsPortal)
+
+            if (LeftPortal.IsWarp)
             {
-                LeftPortal.Update(gameTime);
-                RightPortal.Update(gameTime);
+                IsleftPortal = true;
+                currentLevel--;
+                LoadLevel(currentLevel);
+
             }
+            if (RightPortal.IsWarp)
+            {
+                IsleftPortal = false;
+                currentLevel++;
+                LoadLevel(currentLevel);
+            }
+            
             //Monster update
             //Character Update
         }
@@ -208,6 +242,10 @@ namespace Brave_Pig
             foreach (Enemy e in enemies)
             {
                 e.Draw(spriteBatch);
+            }
+            foreach (NPC n in npc)
+            {
+                n.Draw(spriteBatch);
             }
             //Enermy Draw
 

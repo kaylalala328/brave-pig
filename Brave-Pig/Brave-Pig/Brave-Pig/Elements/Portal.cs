@@ -9,14 +9,18 @@ using Microsoft.Xna.Framework.Input;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Items;
+using Brave_Pig.Character;
 
 namespace Brave_Pig.Elements
 {
     public class Portal : GameObject
     {
+        public bool IsWarp;
+
         #region Constructor
         public Portal(ContentManager content, int width, int height, int cellX, int cellY)
         {
+            IsWarp = false;
 
             animations.Add("portal", new AnimationStrip(content.Load<Texture2D>("Portal/portal"),width, "portal"));
             animations["portal"].FrameLength = 0.2f;
@@ -31,6 +35,19 @@ namespace Brave_Pig.Elements
 
             codeBasedBlocks = true;
             PlayAnimation("portal");
+        }
+        #endregion
+
+        #region Update
+        public void Update(GameTime gameTime, Player p)
+        {
+            if (Game1.currentKeyState.IsKeyDown(Keys.Up) && this.CollisionRectangle.Intersects(p.CollisionRectangle))
+            {
+                IsWarp = true;
+
+            }
+
+            base.Update(gameTime);
         }
         #endregion
     }

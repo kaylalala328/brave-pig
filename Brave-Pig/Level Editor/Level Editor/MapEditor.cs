@@ -94,10 +94,12 @@ namespace Level_Editor
             cboCodeValues.Items.Add("Enemy5");
             cboCodeValues.Items.Add("Enemy6");
             cboCodeValues.Items.Add("Enemy7");
-
             cboCodeValues.Items.Add("MiddleBoss1");
             cboCodeValues.Items.Add("MiddleBoss2");
             cboCodeValues.Items.Add("Boss");
+            cboCodeValues.Items.Add("NPC1");
+            cboCodeValues.Items.Add("NPC2");
+            cboCodeValues.Items.Add("NPC3");
 
             cboCodeValues.Items.Add("EnemyBlocking");
             cboCodeValues.Items.Add("Blocking");
@@ -175,12 +177,18 @@ namespace Level_Editor
                     txtNewCode.Text = "BOSS";
                     game.DrawTile = 12;
                     break;
-
-                case "Lethal":
-                    txtNewCode.Text = "DAMAGED";
-                    game.DrawTile = 13;
+                case "NPC1":
+                    txtNewCode.Text = "NPC1";
+                    game.DrawTile = 3;
                     break;
-
+                case "NPC2":
+                    txtNewCode.Text = "NPC2";
+                    game.DrawTile = 4;
+                    break;
+                case "NPC3":
+                    txtNewCode.Text = "NPC3";
+                    game.DrawTile = 5;
+                    break;
                 case "EnemyBlocking":
                     txtNewCode.Text = "EBLOCK";
                     game.DrawTile = 2;
