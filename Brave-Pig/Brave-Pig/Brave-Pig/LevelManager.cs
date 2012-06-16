@@ -41,6 +41,7 @@ namespace Brave_Pig
         public static int CurrentLevel
         {
             get { return currentLevel; }
+            set { currentLevel = value; }
         }
 
         #endregion
@@ -219,6 +220,7 @@ namespace Brave_Pig
             foreach (Enemy e in enemies)
             {
                 e.Update(gameTime);
+
                 if (!e.Dead)
                 {
                     if(player.CollisionRectangle.Intersects(e.CollisionRectangle))
@@ -239,10 +241,15 @@ namespace Brave_Pig
                         {
                             e.PlayAnimation("idle");
                             e.healthPoint = e.healthPoint - player.getAttack();
-                            if (e.healthPoint == 0)
+
+                            if (e.healthPoint <= 0)
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                            }
+                            else
+                            {
+                                e.Pushed();
                             }
                         }
                     }
@@ -252,10 +259,14 @@ namespace Brave_Pig
                         {
                             e.PlayAnimation("idle");
                             e.healthPoint = e.healthPoint - player.getAttack();
-                            if (e.healthPoint == 0)
+                            if (e.healthPoint <= 0)
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                            }
+                            else
+                            {
+                                e.Pushed();
                             }
                         }
                     }
@@ -270,6 +281,10 @@ namespace Brave_Pig
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                            }
+                            else
+                            {
+                                e.Pushed();
                             }
                         }
                     }

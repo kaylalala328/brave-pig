@@ -32,6 +32,10 @@ namespace Brave_Pig.Items
         {
             return count;
         }
+        public void setCount(int cnt)
+        {
+            count = cnt;
+        }
         public void usePotion()
         {
             count--;

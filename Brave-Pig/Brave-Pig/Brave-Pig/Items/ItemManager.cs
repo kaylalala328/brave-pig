@@ -44,14 +44,6 @@ namespace Brave_Pig.Items
             potion = new Potion(25, 10);
 
             currentSword = "Basic";
-            // UI test 중
-            haveSwords.Add("Blue");
-            haveSwords.Add("Red");
-            haveSwords.Add("Yellow");
-
-            haveArmors.Add("Armor");
-            haveArmors.Add("Boots");
-            haveArmors.Add("Shield");
         }
 
         public static string getCurrentSword()
@@ -64,10 +56,20 @@ namespace Brave_Pig.Items
         }
         public static void gainSword(string newSword)
         {
+            foreach (string sw in haveSwords)
+            {
+                if (sw == newSword)
+                    return;
+            }
             haveSwords.Add(newSword);
         }
         public static void gainArmor ( string newArmor )
         {
+            foreach (string am in haveArmors)
+            {
+                if (am == newArmor)
+                    return;
+            }
             haveArmors.Add(newArmor);
         }
         public static Potion getPotion()

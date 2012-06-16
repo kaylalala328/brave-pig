@@ -18,7 +18,7 @@ namespace Brave_Pig.Character
         private float moveScale = 180.0f;
         Random num = new Random();
         private int direct = 0;
-        Status stat = new Status();
+        public Status stat = new Status();
         private bool finish = false;
         private bool heal = false;
 
@@ -1114,6 +1114,10 @@ namespace Brave_Pig.Character
         public int getDefense()
         {
             return stat.defense;
+        }
+        public Vector2 getLocation()
+        {
+            return worldLocation;
         }
         #endregion //UI쪽으로 넘기는 status값
 

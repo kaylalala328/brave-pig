@@ -8,7 +8,12 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using Brave_Pig.BasicObject;
+using Brave_Pig.Items;
+using Brave_Pig.Character;
 /*
  * 게임 시작 화면
  * Start, Load, Exit 선택 화면
@@ -192,7 +197,7 @@ namespace Brave_Pig
 
             updateAnimation(gameTime);
         }
-        public void UpdatePause ( GameTime gameTime )
+        public void UpdatePause ( GameTime gameTime, Player player )
         {
             if ( Game1.previousKeyState.IsKeyDown(Keys.Down) &&
                 Game1.currentKeyState.IsKeyUp(Keys.Down) )
@@ -241,6 +246,21 @@ namespace Brave_Pig
                         Game1.gameState = Game1.GameStates.PLAY;
                         break;
                     case PauseMenu.SAVE:
+                        FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);                                                
+                        StreamWriter r =new StreamWriter(fs);
+                        r.WriteLine(LevelManager.CurrentLevel);
+                        r.WriteLine(player.stat.healPoint);
+                        r.WriteLine(player.stat.manaPoint);
+                        r.WriteLine(player.stat.damage);
+                        r.WriteLine(player.stat.defense);
+                        r.WriteLine(player.stat.useSword);
+                        r.WriteLine(player.getLocation().X);
+                        r.WriteLine(player.getLocation().Y);
+                        r.WriteLine(ItemManager.haveSwords.Count);
+                        r.WriteLine(ItemManager.haveArmors.Count);
+                        r.WriteLine(ItemManager.getPotion().getCount());
+                        r.Close();
+
                         break;
                     case PauseMenu.LOAD:
                         break;

@@ -20,9 +20,10 @@ namespace Brave_Pig.Monsters
         private float walkSpeed = 60.0f;
         private bool facingLeft = true;
         private int HealthPoint;
-        private int Damage;
+        private int Damage = 5;
         public bool Dead = false;
-        
+        private Vector2 PushedVector = Vector2.Zero;
+        bool IsDamaged = false;
         #region Constructor
         public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP)
         {
@@ -79,9 +80,12 @@ namespace Brave_Pig.Monsters
         public int healthPoint
         {
             get { return HealthPoint; }
-            set { HealthPoint = 0; }
+            set { HealthPoint = value; }
         }
-
+        public void Pushed()
+        {
+            velocity.Y = -300;
+        }
         #region Update
         public override void Update(GameTime gameTime)
         {
@@ -99,7 +103,6 @@ namespace Brave_Pig.Monsters
                     direction = new Vector2(-1, 0);
                     flipped = false;
                 }
-
                 direction *= walkSpeed;
                 velocity += direction;
                 velocity += fallSpeed;
@@ -122,7 +125,18 @@ namespace Brave_Pig.Monsters
                     enabled = false;
                 }
             }
+
         }
+        #region Draw
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            //HP Draw
+
+            base.Draw(spriteBatch);
+        }
+
+
+        #endregion
         #endregion
     }
 

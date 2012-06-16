@@ -59,6 +59,14 @@ namespace Brave_Pig.Elements
             {
                 IsDrawWindow = true;
 
+                if (NPCtype == 0)
+                {
+                    ItemManager.gainSword("Blue");
+                }
+                if (NPCtype == 2)
+                {
+                    ItemManager.gainArmor("Armor");
+                }
             }
 
             if (Game1.currentKeyState.IsKeyDown(Keys.Enter) && IsDrawWindow == true)
