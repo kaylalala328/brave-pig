@@ -89,6 +89,7 @@ namespace Brave_Pig.Monsters
         #region Update
         public override void Update(GameTime gameTime)
         {
+            
             Vector2 oldLocation = worldLocation;
             /// Monster AI : 좌우로 움직임
             if (!Dead)
@@ -108,7 +109,6 @@ namespace Brave_Pig.Monsters
                 velocity += fallSpeed;
             }
             
-
             base.Update(gameTime);
 
             if (!Dead)
