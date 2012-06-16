@@ -814,7 +814,7 @@ namespace Brave_Pig.Character
             #region skill3
             if ( Game1.previousKeyState.IsKeyUp(Keys.F) && Game1.currentKeyState.IsKeyDown(Keys.F))
             {
-                if (stat.manaPoint == 3)
+                if (stat.manaPoint >= 3)
                 {
                     if (ItemManager.getCurrentSword() == "Yellow")
                     {
