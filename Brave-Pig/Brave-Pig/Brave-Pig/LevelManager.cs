@@ -249,20 +249,27 @@ namespace Brave_Pig
                 {
                 }
             }
-
-            if (LeftPortal.IsWarp)
+            if (LeftPortal != null)
             {
-                IsleftPortal = true;
-                currentLevel--;
-                LoadLevel(currentLevel);
+                if (LeftPortal.IsWarp)
+                {
+                    IsleftPortal = true;
+                    currentLevel--;
+                    LoadLevel(currentLevel);
 
+                }
             }
-            if (RightPortal.IsWarp)
+
+            if (RightPortal != null)
             {
-                IsleftPortal = false;
-                currentLevel++;
-                LoadLevel(currentLevel);
+                if (RightPortal.IsWarp)
+                {
+                    IsleftPortal = false;
+                    currentLevel++;
+                    LoadLevel(currentLevel);
+                }
             }
+            
             
             //Monster update
             //Character Update
