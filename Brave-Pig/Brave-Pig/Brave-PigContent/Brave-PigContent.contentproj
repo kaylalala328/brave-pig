@@ -736,11 +736,13 @@
       <Name>gonggong</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="NPC\mos.png">
       <Name>mos</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -778,13 +780,6 @@
   <ItemGroup>
     <Compile Include="Screen\Screen.png">
       <Name>Screen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NPC\dialog.png">
-      <Name>dialog</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -846,6 +841,26 @@
       <Name>back004</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NPC\DH.png">
+      <Name>DH</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NPC\HK.png">
+      <Name>HK</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NPC\JK.png">
+      <Name>JK</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

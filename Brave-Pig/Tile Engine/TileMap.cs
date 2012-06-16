@@ -161,6 +161,13 @@ namespace Tile_Engine
                 mapCells[tileX, tileY].LayerTiles = tileIndex;
             }
         }
+        static public void SetTileAtClear(int tileX, int tileY)
+        {
+            if ((tileX >= 0) && (tileX < MapWidth) && (tileY >= 0) && (tileY < MapHeight))
+            {
+                mapCells[tileX, tileY] = new MapSquare(0, "");
+            }
+        }
 
         static public MapSquare GetMapSquareAtPixel(int pixelX, int pixelY)
         {

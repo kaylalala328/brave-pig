@@ -219,6 +219,14 @@ namespace Level_Editor
                               TileMap.GetCellByPixelY((int)mouseLoc.Y)
                             ).CodeValue = CurrentCodeValue;
                     }
+                    if (ms.LeftButton == ButtonState.Pressed && ks.IsKeyDown(Keys.LeftAlt))
+                    {
+                        TileMap.SetTileAtClear(TileMap.GetCellByPixelX((int)mouseLoc.X), TileMap.GetCellByPixelY((int)mouseLoc.Y));
+                        TileMap.GetMapSquareAtCell(
+                              TileMap.GetCellByPixelX((int)mouseLoc.X),
+                              TileMap.GetCellByPixelY((int)mouseLoc.Y)
+                            ).CodeValue = "";
+                    }
                     
                     HoverCodeValue =
                             TileMap.GetMapSquareAtCell(
