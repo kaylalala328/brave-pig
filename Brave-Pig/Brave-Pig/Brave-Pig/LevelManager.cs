@@ -69,11 +69,14 @@ namespace Brave_Pig
         public static void LoadLevel(int levelNumber)
         {
             TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream("Content/Maps/MAP" + levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
+
             BackGround = Content.Load<Texture2D>("Textures/back" + levelNumber.ToString().PadLeft(3, '0'));
             BasicTiles = Content.Load<Texture2D>("Textures/BasicTiles" + levelNumber.ToString().PadLeft(3, '0'));
+            
             IsPortal = false;
             LeftPortal = null;
             RightPortal = null;
+
             enemies.Clear();
             npc.Clear();
 
@@ -130,6 +133,18 @@ namespace Brave_Pig
                         NPC NPC1 = new NPC(Content, 0, "gonggong", 100, 128, x, y);
                         npc.Add(NPC1);
                     }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC2")
+                    {
+                        NPC NPC2 = new NPC(Content, 1, "sly", 60, 76, x, y);
+                        npc.Add(NPC2);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC3")
+                    {
+                        NPC NPC3 = new NPC(Content, 2, "mos", 80, 80, x, y);
+                        npc.Add(NPC3);
+                    }
                     ////////////////////////////////////////////////////
 
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
@@ -179,6 +194,7 @@ namespace Brave_Pig
             }
             currentLevel = levelNumber;
         }
+        
 
         public static void Update(GameTime gameTime)
         {

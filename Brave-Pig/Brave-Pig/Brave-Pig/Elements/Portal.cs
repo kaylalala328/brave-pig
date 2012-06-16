@@ -31,6 +31,7 @@ namespace Brave_Pig.Elements
 
             worldLocation = new Vector2(cellX * TileMap.TileWidth - width / 2, (cellY + 1) * TileMap.TileHeight - height);
             collisionRectangle = new Rectangle(0, 0, width, height);
+
             enabled = true;
 
             codeBasedBlocks = true;

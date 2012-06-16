@@ -282,13 +282,14 @@ namespace Brave_Pig.BasicObject
                     moveAmount.Y = 0;
                     velocity.Y = 0;
                 }
-
+                ///위로 올라갈 수 있는 블럭
                 if (TileMap.CellCodeValue(mapCell1) == "UBLOCK" ||
                    TileMap.CellCodeValue(mapCell2) == "UBLOCK")
                 {
-                    if (moveAmount.Y > 0)
+                    //y축은 위로 갈수록 작아지므로!!!
+                    if (moveAmount.Y < 0)
                         onGround = false;
-                    else if (moveAmount.Y < 0)
+                    else if (moveAmount.Y > 0)
                     {
                         onGround = true;
                         moveAmount.Y = 0;
