@@ -284,8 +284,10 @@ namespace Brave_Pig
             { }
             if (IsPortal)
             {
-                LeftPortal.Draw(spriteBatch);
-                RightPortal.Draw(spriteBatch);
+                if (LeftPortal != null)
+                    LeftPortal.Draw(spriteBatch);
+                if (RightPortal != null)
+                    RightPortal.Draw(spriteBatch);
             }
             foreach (Enemy e in enemies)
             {
