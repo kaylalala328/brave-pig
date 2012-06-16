@@ -209,7 +209,7 @@ namespace Brave_Pig
                     {
                         if(player.WorldCenter.Y < e.WorldLocation.Y)
                         {
-                            player.Jump();
+                            player.push();
                         }
                         else
                         {
@@ -230,8 +230,7 @@ namespace Brave_Pig
                             }
                         }
                     }
-
-                    if (player.CollisionRectangle3.Intersects(e.CollisionRectangle))
+                    else if (player.CollisionRectangle3.Intersects(e.CollisionRectangle))
                     {
                         if (player.attacking())
                         {
@@ -244,9 +243,20 @@ namespace Brave_Pig
                             }
                         }
                     }
-                }
-                else
-                {
+                   
+                    if (player.CollisionRectangle4.Intersects(e.CollisionRectangle))
+                    {
+                        if (player.skiil2ing())
+                        {
+                            e.PlayAnimation("idle");
+                            e.healthPoint = e.healthPoint - player.getAttack();
+                            if (e.healthPoint == 0)
+                            {
+                                e.PlayAnimation("dead");
+                                e.Dead = true;
+                            }
+                        }
+                    }
                 }
             }
             if (LeftPortal != null)

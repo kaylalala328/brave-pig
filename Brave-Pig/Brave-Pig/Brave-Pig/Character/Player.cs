@@ -27,6 +27,8 @@ namespace Brave_Pig.Character
         int returnValue;
         protected bool isAttack = false;
         protected bool isAttackflip = false;
+        protected bool isSkill2 = false;
+        protected bool isSkill3 = false;
 
         public Player(ContentManager content)
         {
@@ -182,7 +184,8 @@ namespace Brave_Pig.Character
 
             CollisionRectangle = new Rectangle(52, 5, 66, 71);
             CollisionRectangle2 = new Rectangle(118, 5, 59, 71);
-            CollisionRectangle3 = new Rectangle(0, 5, 51, 71);
+            CollisionRectangle3 = new Rectangle(1, 5, 51, 71);
+            CollisionRectangle4 = new Rectangle(1, 1, 176, 76);
 
             drawDepth = 0.1f;
 
@@ -207,6 +210,10 @@ namespace Brave_Pig.Character
             {
                 heal = false;
             }
+
+            isAttack = false;
+            isAttackflip = false;
+            isSkill2 = false;
 
             string newAnimation = "";
             string newAnimation2 = "default";
@@ -233,7 +240,6 @@ namespace Brave_Pig.Character
             }
 
             velocity = new Vector2(0, velocity.Y);
-            //GamePadState gamePad = GamePad.GetState(PlayerIndex.One); //xbox 패드 입력값
 
 
             #region swordselect
@@ -539,11 +545,11 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f;
+                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f;
+                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
                         }
                         else
                         {
@@ -568,11 +574,11 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f;
+                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f;
+                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
                         }
                         else
                         {
@@ -596,11 +602,11 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f;
+                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f;
+                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
                         }
                         else
                         {
@@ -624,11 +630,11 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f;
+                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f;
+                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
                         }
                         else
                         {
@@ -666,10 +672,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isAttack = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isAttackflip = true;
                             }
 
                             newAnimation = "skill1";
@@ -687,10 +695,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isAttack = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isAttackflip = true;
                             }
 
                             newAnimation = "skill2";
@@ -708,10 +718,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isAttack = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isAttackflip = true;
                             }
 
                             newAnimation = "skill3";
@@ -729,10 +741,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isAttack = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isAttackflip = true;
                             }
 
                             newAnimation = "skill4";
@@ -759,10 +773,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isSkill2 = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isSkill2 = true;
                             }
 
                             newAnimation = "skill22";
@@ -780,10 +796,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isSkill2 = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isSkill2 = true;
                             }
 
                             newAnimation = "skill32";
@@ -883,17 +901,17 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
-                isAttack = false;
-                isAttackflip = false;
                 if (currentAnimation != "jump" && currentAnimation != "jump2" && currentAnimation != "jump3" && currentAnimation != "jump4")
                 {
                     if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
+                    {
                         PlayAnimation(newAnimation, newAnimation2);
+                    }
                 }
                 else
                 {
                     if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "attack2" || newAnimation == "attack1" || newAnimation == "attack21" || newAnimation == "attack31" || newAnimation == "attack22" || newAnimation == "attack32" || newAnimation == "attack23" || newAnimation == "attack33")
-                    PlayAnimation(newAnimation, newAnimation2);
+                        PlayAnimation(newAnimation, newAnimation2);
                 }
             } //다른 입력값이 들어왔을때 처리방법
             else
@@ -914,6 +932,11 @@ namespace Brave_Pig.Character
             velocity.Y = -900;
         }
 
+        public void push()
+        {
+            velocity.Y = -450;
+        }
+
         public void damaged()
         {
             if (ItemManager.getCurrentSword() == "Basic")
@@ -932,14 +955,7 @@ namespace Brave_Pig.Character
                     PlayAnimation("damage");
                 }
 
-                if (!flipped)
-                {
-                    velocity = new Vector2(3000, velocity.Y);
-                }
-                else
-                {
-                    velocity = new Vector2(-3000, velocity.Y);
-                }
+                push();
 
                 if (!heal)
                 {
@@ -970,14 +986,7 @@ namespace Brave_Pig.Character
                     PlayAnimation("damage2");
                 }
 
-                if (!flipped)
-                {
-                    velocity = new Vector2(300, 0);
-                }
-                else
-                {
-                    velocity = new Vector2(-300, 0);
-                }
+                push();
 
                 if (!heal)
                 {
@@ -1008,14 +1017,7 @@ namespace Brave_Pig.Character
                     PlayAnimation("damage3");
                 }
 
-                if (!flipped)
-                {
-                    velocity = new Vector2(300, 0);
-                }
-                else
-                {
-                    velocity = new Vector2(-300, 0);
-                }
+                push();
 
                 if (!heal)
                 {
@@ -1046,14 +1048,7 @@ namespace Brave_Pig.Character
                     PlayAnimation("damage4");
                 }
 
-                if (!flipped)
-                {
-                    velocity = new Vector2(300, 0);
-                }
-                else
-                {
-                    velocity = new Vector2(-300, 0);
-                }
+                push();
 
                 if (!heal)
                 {
@@ -1077,6 +1072,10 @@ namespace Brave_Pig.Character
         public bool attackingfilp()
         {
             return isAttackflip;
+        }
+        public bool skiil2ing()
+        {
+            return isSkill2;
         }
 
         #region UIstatus

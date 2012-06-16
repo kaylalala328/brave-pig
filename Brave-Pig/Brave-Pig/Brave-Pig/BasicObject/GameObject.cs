@@ -31,6 +31,8 @@ namespace Brave_Pig.BasicObject
         protected Rectangle collisionRectangle;
         protected Rectangle collisionRectangle2;
         protected Rectangle collisionRectangle3;
+        protected Rectangle collisionRectangle4;
+
         //충돌 width
         protected int collideWidth;
         //충동 height
@@ -136,6 +138,20 @@ namespace Brave_Pig.BasicObject
                     collisionRectangle3.Height);
             }
             set { collisionRectangle3 = value; }
+        }
+
+        public Rectangle CollisionRectangle4
+        {
+            //사각형 위치
+            get
+            {
+                return new Rectangle(
+                    (int)worldLocation.X + collisionRectangle4.X,
+                    (int)worldLocation.Y + collisionRectangle4.Y,
+                    collisionRectangle4.Width,
+                    collisionRectangle4.Height);
+            }
+            set { collisionRectangle4 = value; }
         }
         #endregion 
 
