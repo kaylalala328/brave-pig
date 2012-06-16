@@ -16,30 +16,25 @@ namespace Brave_Pig.Elements
     class NPC : GameObject
     {
         private int NPCtype;
-        private string[] NPCname;
-        private string[] NPCdialog;
-        private Texture2D DialogWindow;
+        private Texture2D[] DialogWindow;
         public bool IsDrawWindow;
         private SpriteFont DialogFont;
+        private Vector2 fallSpeed;
 
         #region constructor
         public NPC(ContentManager content, int NPCtype, string Contentname, int width, int height, int cellX, int cellY)
         {
-            NPCname = new string[3];
-            NPCdialog = new string[3];
-            DialogWindow = content.Load<Texture2D>("NPC/dialog");
+            DialogWindow = new Texture2D[3];
             IsDrawWindow = false;
             DialogFont = content.Load<SpriteFont>("Font/NPCfont");
-
-            NPCname[0] = "JK";  //힐
-            NPCname[1] = "도행";  //무기
-            NPCname[2] = "한경";  //방어구
-
-            NPCdialog[0] = "hello...!";
-            NPCdialog[1] = "우리 가게 좋은 물건 많다네^0^";
-            NPCdialog[2] = "사장님이 미쳤어요~_~";
+            fallSpeed = new Vector2(0, 20);
 
             this.NPCtype = NPCtype;
+
+            DialogWindow[0] = content.Load<Texture2D>("NPC/JK");    //무기
+            DialogWindow[1] = content.Load<Texture2D>("NPC/DH");    //힐
+            DialogWindow[2] = content.Load<Texture2D>("NPC/HK");    //방어구
+
             //idle 애니메이션
             animations.Add("idle", new AnimationStrip(content.Load<Texture2D>("NPC/" + Contentname), width, "idle"));
             animations["idle"].FrameLength = 0.5f;
@@ -48,7 +43,7 @@ namespace Brave_Pig.Elements
             frameWidth = width;
             frameHeight = height;
 
-            worldLocation = new Vector2(cellX * TileMap.TileWidth, cellY * TileMap.TileHeight);
+            worldLocation = new Vector2((cellX * TileMap.TileWidth) - width / 2, (cellY * TileMap.TileHeight) - height);
             collisionRectangle = new Rectangle(0, 0, width, height);
             enabled = true;
 
@@ -71,6 +66,10 @@ namespace Brave_Pig.Elements
                 IsDrawWindow = false;
             }
 
+            velocity = new Vector2(0, velocity.Y);
+
+            velocity += fallSpeed;
+
             base.Update(gameTime);
         }
         #endregion
@@ -80,9 +79,7 @@ namespace Brave_Pig.Elements
         {
             if (IsDrawWindow == true)
             {
-                spriteBatch.Draw(DialogWindow, new Rectangle(640 - 150, 360 - 180, 300, 150), Color.White);
-                spriteBatch.DrawString(DialogFont, NPCdialog[NPCtype], new Vector2(640 - 150 + 20, 360 - 180 + 50), Color.Black);
-                spriteBatch.DrawString(DialogFont, "[" + NPCname[NPCtype] + "]", new Vector2(640 - 150 + 20, 360 - 180 + 10), Color.Blue);
+                spriteBatch.Draw(DialogWindow[NPCtype], new Rectangle(640 - 450, 50, 900, 224), Color.White);
             }
  	        base.Draw(spriteBatch);
         }

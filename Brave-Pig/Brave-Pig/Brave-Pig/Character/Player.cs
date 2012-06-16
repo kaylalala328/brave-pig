@@ -21,6 +21,9 @@ namespace Brave_Pig.Character
         Status stat = new Status();
         private bool finish = false;
         private bool heal = false;
+
+        public int height;
+        
         int returnValue;
         protected bool isAttack = false;
         protected bool isAttackflip = false;
@@ -174,6 +177,9 @@ namespace Brave_Pig.Character
 
             frameWidth = 179;
             frameHeight = 77;
+
+            height = frameHeight;
+
             CollisionRectangle = new Rectangle(52, 5, 66, 71);
             CollisionRectangle2 = new Rectangle(118, 5, 59, 71);
             CollisionRectangle3 = new Rectangle(0, 5, 51, 71);

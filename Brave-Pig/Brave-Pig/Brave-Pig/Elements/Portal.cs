@@ -29,7 +29,7 @@ namespace Brave_Pig.Elements
             frameWidth = width;
             frameHeight = height;
 
-            worldLocation = new Vector2(cellX * TileMap.TileWidth, cellY * TileMap.TileHeight);
+            worldLocation = new Vector2(cellX * TileMap.TileWidth - width / 2, (cellY + 1) * TileMap.TileHeight - height);
             collisionRectangle = new Rectangle(0, 0, width, height);
             enabled = true;
 
@@ -41,10 +41,9 @@ namespace Brave_Pig.Elements
         #region Update
         public void Update(GameTime gameTime, Player p)
         {
-            if (Game1.currentKeyState.IsKeyDown(Keys.Up) && this.CollisionRectangle.Intersects(p.CollisionRectangle))
+            if (Game1.currentKeyState.IsKeyUp(Keys.Up) && Game1.previousKeyState.IsKeyDown(Keys.Up) && this.CollisionRectangle.Intersects(p.CollisionRectangle))
             {
                 IsWarp = true;
-
             }
 
             base.Update(gameTime);

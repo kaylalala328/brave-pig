@@ -154,7 +154,7 @@ namespace Brave_Pig
                         RightPortal = new Portal(Content, 100, 145, x, y);
                         IsPortal = true;
                         if(IsleftPortal == true)
-                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                            player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight - player.height);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "LSTART")
@@ -162,7 +162,7 @@ namespace Brave_Pig
                         IsPortal = true;
                         LeftPortal = new Portal(Content, 100, 145, x, y);
                         if(IsleftPortal == false)
-                           player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight);
+                           player.WorldLocation = new Vector2(x * TileMap.TileWidth, y * TileMap.TileHeight - player.height);
                     }
 
                     /*
