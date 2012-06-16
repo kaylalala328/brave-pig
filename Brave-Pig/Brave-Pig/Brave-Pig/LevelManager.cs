@@ -28,7 +28,6 @@ namespace Brave_Pig
 
         private static Texture2D BackGround;
         private static Texture2D BasicTiles;
-        private static Texture2D ForeGround;
 
         private static Portal LeftPortal;
         private static Portal RightPortal;
@@ -72,7 +71,6 @@ namespace Brave_Pig
             TileMap.LoadMap((System.IO.FileStream)TitleContainer.OpenStream("Content/Maps/MAP" + levelNumber.ToString().PadLeft(3, '0') + ".MAP"));
             BackGround = Content.Load<Texture2D>("Textures/back" + levelNumber.ToString().PadLeft(3, '0'));
             BasicTiles = Content.Load<Texture2D>("Textures/BasicTiles" + levelNumber.ToString().PadLeft(3, '0'));
-            ForeGround = Content.Load<Texture2D>("Textures/ForeTiles" + levelNumber.ToString().PadLeft(3, '0'));
             IsPortal = false;
             enemies.Clear();
             npc.Clear();
