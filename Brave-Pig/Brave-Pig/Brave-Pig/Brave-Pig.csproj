@@ -118,6 +118,7 @@
     <Compile Include="Items\Potion.cs" />
     <Compile Include="Items\Sword.cs" />
     <Compile Include="LevelManager.cs" />
+    <Compile Include="menual.cs" />
     <Compile Include="Monsters\Boss.cs" />
     <Compile Include="Monsters\Enemy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

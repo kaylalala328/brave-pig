@@ -96,6 +96,7 @@ namespace Brave_Pig
             SoundManager.LoadContent(Content);
             screen.LoadContent(Content);
             mainUI.LoadContent(Content);
+            menual.LoadContent(Content);
             player = new Player(Content);
             LevelManager.Initialize(Content, player);
             LevelManager.LoadLevel(4);
@@ -122,6 +123,7 @@ namespace Brave_Pig
                     screen.Update(gameTime);
                     break;
                 case GameStates.MENU:
+                    menual.Update(gameTime);
                     break;
                 case GameStates.MAKE:
                     break;
@@ -176,6 +178,7 @@ namespace Brave_Pig
                     screen.Draw(spriteBatch);
                     break;
                 case GameStates.MENU:
+                    menual.Draw(spriteBatch);
                     break;
                 case GameStates.MAKE:
                     break;
