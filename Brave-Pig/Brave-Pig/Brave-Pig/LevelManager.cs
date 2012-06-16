@@ -31,7 +31,7 @@ namespace Brave_Pig
 
         private static Portal LeftPortal;
         private static Portal RightPortal;
-        private static bool IsPortal =false;
+        private static bool IsPortal = false;
 
         public static bool IsDialog = false;
     
@@ -72,6 +72,8 @@ namespace Brave_Pig
             BackGround = Content.Load<Texture2D>("Textures/back" + levelNumber.ToString().PadLeft(3, '0'));
             BasicTiles = Content.Load<Texture2D>("Textures/BasicTiles" + levelNumber.ToString().PadLeft(3, '0'));
             IsPortal = false;
+            LeftPortal = null;
+            RightPortal = null;
             enemies.Clear();
             npc.Clear();
 
@@ -192,8 +194,10 @@ namespace Brave_Pig
             
             if (IsPortal)
             {
-                LeftPortal.Update(gameTime,player);
-                RightPortal.Update(gameTime,player);
+                if(LeftPortal != null)
+                    LeftPortal.Update(gameTime,player);
+                if(RightPortal != null)
+                    RightPortal.Update(gameTime,player);
             }
 
             foreach (Enemy e in enemies)

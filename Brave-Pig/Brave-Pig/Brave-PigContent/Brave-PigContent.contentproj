@@ -604,6 +604,10 @@
       <Name>MAP001</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="Maps\MAP002.MAP">
+      <Name>MAP002</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Monsters\bluemushroom_attack.png">
