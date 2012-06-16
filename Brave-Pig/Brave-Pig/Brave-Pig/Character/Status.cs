@@ -45,7 +45,7 @@ namespace Brave_Pig.Character
         public int Defense
         {
             get { return defense; }
-            set { defense = 5; }
+            set { defense = 0; }
         }
 
         public int UseSword
@@ -61,7 +61,7 @@ namespace Brave_Pig.Character
         {
             this.healPoint = 50;
             this.manaPoint = 0;
-            this.damage = 0;
+            this.damage = 10;
             this.defense = 0;
             this.useSword = 0;
         }

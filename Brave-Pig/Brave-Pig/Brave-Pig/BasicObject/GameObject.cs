@@ -21,7 +21,7 @@ namespace Brave_Pig.BasicObject
         protected int frameHeight;
 
         protected bool enabled;
-        //flipped?? 어떤 flipped?
+        //오브젝트 방향 전환 확인 값
         protected bool flipped = false;
 
         //on ground? 땅에 있을때?
@@ -29,6 +29,8 @@ namespace Brave_Pig.BasicObject
 
         //충돌 사각형
         protected Rectangle collisionRectangle;
+        protected Rectangle collisionRectangle2;
+        protected Rectangle collisionRectangle3;
         //충돌 width
         protected int collideWidth;
         //충동 height
@@ -106,6 +108,34 @@ namespace Brave_Pig.BasicObject
                     collisionRectangle.Height);
             }
             set { collisionRectangle = value; }
+        }
+
+        public Rectangle CollisionRectangle2
+        {
+            //사각형 위치
+            get
+            {
+                return new Rectangle(
+                    (int)worldLocation.X + collisionRectangle2.X,
+                    (int)worldLocation.Y + collisionRectangle2.Y,
+                    collisionRectangle2.Width,
+                    collisionRectangle2.Height);
+            }
+            set { collisionRectangle2 = value; }
+        }
+
+        public Rectangle CollisionRectangle3
+        {
+            //사각형 위치
+            get
+            {
+                return new Rectangle(
+                    (int)worldLocation.X + collisionRectangle3.X,
+                    (int)worldLocation.Y + collisionRectangle3.Y,
+                    collisionRectangle3.Width,
+                    collisionRectangle3.Height);
+            }
+            set { collisionRectangle3 = value; }
         }
         #endregion 
 

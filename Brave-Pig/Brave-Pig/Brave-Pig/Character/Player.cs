@@ -21,7 +21,10 @@ namespace Brave_Pig.Character
         Status stat = new Status();
         private bool finish = false;
         private bool heal = false;
-        
+        int returnValue;
+        protected bool isAttack = false;
+        protected bool isAttackflip = false;
+
         public Player(ContentManager content)
         {
             #region addAnimation
@@ -134,22 +137,22 @@ namespace Brave_Pig.Character
 
             animations.Add("jump", new AnimationStrip(content.Load<Texture2D>("Player/jump"), 179, "jump"));
             animations["jump"].LoopAnimation = false;
-            animations["jump"].FrameLength = 0.11f;
+            animations["jump"].FrameLength = 0.07f;
             animations["jump"].NextAnimation = "normal";
 
             animations.Add("jump2", new AnimationStrip(content.Load<Texture2D>("Player/jump2"), 179, "jump2"));
             animations["jump2"].LoopAnimation = false;
-            animations["jump2"].FrameLength = 0.11f;
+            animations["jump2"].FrameLength = 0.07f;
             animations["jump2"].NextAnimation = "normal";
 
             animations.Add("jump3", new AnimationStrip(content.Load<Texture2D>("Player/jump3"), 179, "jump3"));
             animations["jump3"].LoopAnimation = false;
-            animations["jump3"].FrameLength = 0.11f;
+            animations["jump3"].FrameLength = 0.07f;
             animations["jump3"].NextAnimation = "normal";
 
             animations.Add("jump4", new AnimationStrip(content.Load<Texture2D>("Player/jump4"), 179, "jump4"));
             animations["jump4"].LoopAnimation = false;
-            animations["jump4"].FrameLength = 0.11f;
+            animations["jump4"].FrameLength = 0.07f;
             animations["jump4"].NextAnimation = "normal";
 
             animations.Add("dead", new AnimationStrip(content.Load<Texture2D>("Player/dead"), 179, "dead"));
@@ -171,7 +174,9 @@ namespace Brave_Pig.Character
 
             frameWidth = 179;
             frameHeight = 77;
-            CollisionRectangle = new Rectangle(12, 5, 155, 71);
+            CollisionRectangle = new Rectangle(52, 5, 66, 71);
+            CollisionRectangle2 = new Rectangle(118, 5, 59, 71);
+            CollisionRectangle3 = new Rectangle(0, 5, 51, 71);
 
             drawDepth = 0.1f;
 
@@ -253,10 +258,12 @@ namespace Brave_Pig.Character
                     if (direct == 0)
                     {
                         flipped = false;
+                        isAttack = true;
                     }
                     else
                     {
                         flipped = true;
+                        isAttackflip = true;
                     }
 
                     if (attack_num < 5)
@@ -274,10 +281,12 @@ namespace Brave_Pig.Character
                     if (direct == 0)
                     {
                         flipped = false;
+                        isAttack = true;
                     }
                     else
                     {
                         flipped = true;
+                        isAttackflip = true;
                     }
 
                     if (attack_num < 5)
@@ -295,10 +304,12 @@ namespace Brave_Pig.Character
                     if (direct == 0)
                     {
                         flipped = false;
+                        isAttack = true;
                     }
                     else
                     {
                         flipped = true;
+                        isAttackflip = true;
                     }
 
                     if (attack_num < 5)
@@ -316,10 +327,12 @@ namespace Brave_Pig.Character
                     if (direct == 0)
                     {
                         flipped = false;
+                        isAttack = true;
                     }
                     else
                     {
                         flipped = true;
+                        isAttackflip = true;
                     }
 
                     if (attack_num < 5)
@@ -347,14 +360,8 @@ namespace Brave_Pig.Character
                     if ( Game1.currentKeyState.IsKeyDown(Keys.Space))
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                        flipped = false;
+                        isAttack = true;
 
                         if (attack_num < 5)
                         {
@@ -373,16 +380,10 @@ namespace Brave_Pig.Character
                     if (Game1.currentKeyState.IsKeyDown(Keys.Space))
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                        flipped = false;
+                        isAttack = true;
 
-                        if (attack_num < 5)
+                            if (attack_num < 5)
                         {
                             newAnimation = "attack21";
                         }
@@ -399,14 +400,8 @@ namespace Brave_Pig.Character
                     if (Game1.currentKeyState.IsKeyDown(Keys.Space))
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                        flipped = false;
+                        isAttack = true;
 
                         if (attack_num < 5)
                         {
@@ -425,14 +420,8 @@ namespace Brave_Pig.Character
                     if (Game1.currentKeyState.IsKeyDown(Keys.Space))
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
+                        flipped = false;
+                        isAttack = true;
 
                         if (attack_num < 5)
                         {
@@ -458,15 +447,9 @@ namespace Brave_Pig.Character
                     if (Game1.currentKeyState.IsKeyDown(Keys.Space))
                     {
                         int attack_num = num.Next(0, 10);
-                        if (direct == 0)
-                        {
-                            flipped = false;
-                        }
-                        else
-                        {
-                            flipped = true;
-                        }
-
+                        flipped = true;
+                        isAttack = true;
+                        
                         if (attack_num < 5)
                         {
                             newAnimation = "attack1";
@@ -485,6 +468,7 @@ namespace Brave_Pig.Character
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
+                        isAttackflip = true;
 
                         if (attack_num < 5)
                         {
@@ -504,6 +488,7 @@ namespace Brave_Pig.Character
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
+                        isAttackflip = true;
 
                         if (attack_num < 5)
                         {
@@ -523,6 +508,7 @@ namespace Brave_Pig.Character
                     {
                         int attack_num = num.Next(0, 10);
                         flipped = true;
+                        isAttackflip = true;
 
                         if (attack_num < 5)
                         {
@@ -832,148 +818,6 @@ namespace Brave_Pig.Character
             } // 3번스킬 계열 애니메이션
             #endregion
 
-            #region damage
-            if (Game1.previousKeyState.IsKeyUp(Keys.L) && Game1.currentKeyState.IsKeyDown(Keys.L))
-            {
-                if (ItemManager.getCurrentSword() == "Basic")
-                {
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                    }
-                    else
-                    {
-                        flipped = true;
-                    }
-
-                    newAnimation = "damage";
-                    if (!flipped)
-                    {
-                        velocity = new Vector2(300, -150);
-                    }
-                    else
-                    {
-                        velocity = new Vector2(-300, -150);
-                    }
-
-                    if (!heal)
-                    {
-                        heal = true;
-                        if (stat.healPoint > 0)
-                        {
-                            stat.healPoint = stat.healPoint - 5;
-                        }
-                        else
-                        {
-                            newAnimation = "dead";
-                        }
-                    }
-                }
-                else if (ItemManager.getCurrentSword() == "Blue")
-                {
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                    }
-                    else
-                    {
-                        flipped = true;
-                    }
-
-                    newAnimation = "damage2";
-                    if (!flipped)
-                    {
-                        velocity = new Vector2(300, -150);
-                    }
-                    else
-                    {
-                        velocity = new Vector2(-300, -150);
-                    }
-
-                    if (!heal)
-                    {
-                        heal = true;
-                        if (stat.healPoint > 0)
-                        {
-                            stat.healPoint = stat.healPoint - 5;
-                        }
-                        else
-                        {
-                            newAnimation = "dead2";
-                        }
-                    }
-                }
-                else if (ItemManager.getCurrentSword() == "Red")
-                {
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                    }
-                    else
-                    {
-                        flipped = true;
-                    }
-
-                    newAnimation = "damage3";
-                    if (!flipped)
-                    {
-                        velocity = new Vector2(300, -150);
-                    }
-                    else
-                    {
-                        velocity = new Vector2(-300, -150);
-                    }
-
-                    if (!heal)
-                    {
-                        heal = true;
-                        if (stat.healPoint > 0)
-                        {
-                            stat.healPoint = stat.healPoint - 5;
-                        }
-                        else
-                        {
-                            newAnimation = "dead3";
-                        }
-                    }
-                }
-                else if (ItemManager.getCurrentSword() == "Yellow")
-                {
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                    }
-                    else
-                    {
-                        flipped = true;
-                    }
-
-                    newAnimation = "damage4";
-                    if (!flipped)
-                    {
-                        velocity = new Vector2(300, -150);
-                    }
-                    else
-                    {
-                        velocity = new Vector2(-300, -150);
-                    }
-
-                    if (!heal)
-                    {
-                        heal = true;
-                        if (stat.healPoint > 0)
-                        {
-                            stat.healPoint = stat.healPoint - 5;
-                        }
-                        else
-                        {
-                            newAnimation = "dead4";
-                        }
-                    }
-                }
-            }
-            #endregion
-
             #region jump
             if (Game1.currentKeyState.IsKeyDown(Keys.LeftAlt))
             {
@@ -1033,6 +877,8 @@ namespace Brave_Pig.Character
 
             if (newAnimation != currentAnimation)
             {
+                isAttack = false;
+                isAttackflip = false;
                 if (currentAnimation != "jump" && currentAnimation != "jump2" && currentAnimation != "jump3" && currentAnimation != "jump4")
                 {
                     if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
@@ -1062,6 +908,171 @@ namespace Brave_Pig.Character
             velocity.Y = -900;
         }
 
+        public void damaged()
+        {
+            if (ItemManager.getCurrentSword() == "Basic")
+            {
+                if (direct == 0)
+                {
+                    flipped = false;
+                }
+                else
+                {
+                    flipped = true;
+                }
+
+                if (currentAnimation != "damage")
+                {
+                    PlayAnimation("damage");
+                }
+
+                if (!flipped)
+                {
+                    velocity = new Vector2(3000, velocity.Y);
+                }
+                else
+                {
+                    velocity = new Vector2(-3000, velocity.Y);
+                }
+
+                if (!heal)
+                {
+                    heal = true;
+                    if (stat.healPoint > 0)
+                    {
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+                    else
+                    {
+                        PlayAnimation("dead");
+                    }
+                }
+            }
+            else if (ItemManager.getCurrentSword() == "Blue")
+            {
+                if (direct == 0)
+                {
+                    flipped = false;
+                }
+                else
+                {
+                    flipped = true;
+                }
+
+                if (currentAnimation != "damage2")
+                {
+                    PlayAnimation("damage2");
+                }
+
+                if (!flipped)
+                {
+                    velocity = new Vector2(300, 0);
+                }
+                else
+                {
+                    velocity = new Vector2(-300, 0);
+                }
+
+                if (!heal)
+                {
+                    heal = true;
+                    if (stat.healPoint > 0)
+                    {
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+                    else
+                    {
+                        PlayAnimation("dead2");
+                    }
+                }
+            }
+            else if (ItemManager.getCurrentSword() == "Red")
+            {
+                if (direct == 0)
+                {
+                    flipped = false;
+                }
+                else
+                {
+                    flipped = true;
+                }
+
+                if (currentAnimation != "damage3")
+                {
+                    PlayAnimation("damage3");
+                }
+
+                if (!flipped)
+                {
+                    velocity = new Vector2(300, 0);
+                }
+                else
+                {
+                    velocity = new Vector2(-300, 0);
+                }
+
+                if (!heal)
+                {
+                    heal = true;
+                    if (stat.healPoint > 0)
+                    {
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+                    else
+                    {
+                        PlayAnimation("dead3");
+                    }
+                }
+            }
+            else if (ItemManager.getCurrentSword() == "Yellow")
+            {
+                if (direct == 0)
+                {
+                    flipped = false;
+                }
+                else
+                {
+                    flipped = true;
+                }
+
+                if (currentAnimation != "damage4")
+                {
+                    PlayAnimation("damage4");
+                }
+
+                if (!flipped)
+                {
+                    velocity = new Vector2(300, 0);
+                }
+                else
+                {
+                    velocity = new Vector2(-300, 0);
+                }
+
+                if (!heal)
+                {
+                    heal = true;
+                    if (stat.healPoint > 0)
+                    {
+                        stat.healPoint = stat.healPoint - 5;
+                    }
+                    else
+                    {
+                        PlayAnimation("dead4");
+                    }
+                }
+            }
+        }
+
+        public bool attacking()
+        {
+            return isAttack;
+        }
+        public bool attackingfilp()
+        {
+            return isAttackflip;
+        }
+
         #region UIstatus
         public float getMana()
         {
@@ -1077,7 +1088,23 @@ namespace Brave_Pig.Character
         }
         public int getAttack()
         {
-            return stat.damage;
+            if (ItemManager.getCurrentSword() == "Basic")
+            {
+                returnValue = stat.damage;
+            }
+            else if (ItemManager.getCurrentSword() == "Blue")
+            {
+                returnValue = (stat.damage * 12) / 10;
+            }
+            else if (ItemManager.getCurrentSword() == "Red")
+            {
+                returnValue = (stat.damage * 15) / 10;
+            }
+            else if (ItemManager.getCurrentSword() == "Yellow")
+            {
+                returnValue = (stat.damage * 20) / 10;
+            }
+            return returnValue;
         }
         public int getDefense()
         {

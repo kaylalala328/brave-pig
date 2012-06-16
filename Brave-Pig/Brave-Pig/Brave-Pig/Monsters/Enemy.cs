@@ -19,7 +19,7 @@ namespace Brave_Pig.Monsters
         private Vector2 fallSpeed = new Vector2(0, 20);
         private float walkSpeed = 60.0f;
         private bool facingLeft = true;
-        private float HealthPoint;
+        private int HealthPoint;
         private int Damage;
         public bool Dead = false;
         
@@ -59,7 +59,7 @@ namespace Brave_Pig.Monsters
             animations["dead"].FrameLength = 0.3f;
             animations["dead"].LoopAnimation = false;
             
-            HealthPoint = HP;
+            this.HealthPoint = HP;
 
             frameWidth = width;
             frameHeight = height;
@@ -75,6 +75,12 @@ namespace Brave_Pig.Monsters
             PlayAnimation("idle");
         }
         #endregion
+
+        public int healthPoint
+        {
+            get { return HealthPoint; }
+            set { HealthPoint = 0; }
+        }
 
         #region Update
         public override void Update(GameTime gameTime)

@@ -82,14 +82,14 @@ namespace Brave_Pig
                     //맵에 enemy 추가.
                     //enemy마다 움직이는 방향은 랜덤으로
                     if (TileMap.CellCodeValue(x, y) == "ENEMY1")
-                    { 
+                    {
                         Enemy Bluemushroom = new Enemy(Content, "파랑버섯", "bluemushroom",64,64,x,y, 200);
                         enemies.Add(Bluemushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     {
-                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 64, 64, x, y, 200);
+                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 50, 68, x, y, 200);
                         enemies.Add(BrownPig);
                     }
 
@@ -195,9 +195,55 @@ namespace Brave_Pig
                 LeftPortal.Update(gameTime,player);
                 RightPortal.Update(gameTime,player);
             }
+
             foreach (Enemy e in enemies)
             {
                 e.Update(gameTime);
+                if (!e.Dead)
+                {
+                    if(player.CollisionRectangle.Intersects(e.CollisionRectangle))
+                    {
+                        if(player.WorldCenter.Y < e.WorldLocation.Y)
+                        {
+                            player.Jump();
+                        }
+                        else
+                        {
+                            player.damaged();
+                        }
+                    }
+                    
+                    if (player.CollisionRectangle2.Intersects(e.CollisionRectangle))
+                    {
+                        if (player.attackingfilp())
+                        {
+                            e.PlayAnimation("idle");
+                            e.healthPoint = e.healthPoint - player.getAttack();
+                            if (e.healthPoint == 0)
+                            {
+                                e.PlayAnimation("dead");
+                                e.Dead = true;
+                            }
+                        }
+                    }
+
+                    if (player.CollisionRectangle3.Intersects(e.CollisionRectangle))
+                    {
+                        if (player.attacking())
+                        {
+                            e.PlayAnimation("idle");
+                            e.healthPoint = e.healthPoint - player.getAttack();
+                            if (e.healthPoint == 0)
+                            {
+                                e.PlayAnimation("dead");
+                                e.Dead = true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                }
             }
 
             if (LeftPortal.IsWarp)
