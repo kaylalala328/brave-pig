@@ -35,7 +35,7 @@ namespace Brave_Pig.Monsters
                         "Monsters/"+Contentname+"_idle"),
                     width,
                     "idle"));
-            animations["idle"].FrameLength = 0.5f;
+            animations["idle"].FrameLength = 0.3f;
             animations["idle"].LoopAnimation = true;
 
             ///attack 애니메이션
@@ -45,7 +45,7 @@ namespace Brave_Pig.Monsters
                         "Monsters/" + Contentname + "_attack"),
                     width,
                     "attack"));
-            animations["attack"].FrameLength = 0.2f;
+            animations["attack"].FrameLength = 0.1f;
             animations["attack"].LoopAnimation = false;
 
             ///죽음 애니메이션
@@ -56,14 +56,14 @@ namespace Brave_Pig.Monsters
                     width,
                     "dead"));
 
-            animations["dead"].FrameLength = 0.3f;
+            animations["dead"].FrameLength = 0.2f;
             animations["dead"].LoopAnimation = false;
             
             this.HealthPoint = HP;
 
             frameWidth = width;
             frameHeight = height;
-            CollisionRectangle = new Rectangle(2, 2, frameWidth-4, frameWidth-4);
+            CollisionRectangle = new Rectangle(3, 3, frameWidth-6, frameHeight-6);
 
             worldLocation = new Vector2(
                 cellX * TileMap.TileWidth,

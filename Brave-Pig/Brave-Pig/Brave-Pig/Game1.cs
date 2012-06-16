@@ -98,7 +98,7 @@ namespace Brave_Pig
             mainUI.LoadContent(Content);
             player = new Player(Content);
             LevelManager.Initialize(Content, player);
-            LevelManager.LoadLevel(0);
+            LevelManager.LoadLevel(4);
         }
 
 

@@ -94,13 +94,13 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     {
-                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 50, 68, x, y, 200);
+                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 70, 52, x, y, 200);
                         enemies.Add(BrownPig);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY3")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 112, 110, x, y, 200);
                         enemies.Add(MossMushroom);
                     }
 
@@ -128,7 +128,7 @@ namespace Brave_Pig
                         enemies.Add(MossMushroom);
                     }
                     ////////////////////////////////////////////////////
-                    if (TileMap.CellCodeValue(x, y) == "NPC1")
+                    if (TileMap.CellCodeValue(x, y) == "NPC1") // 정기
                     {
                         NPC NPC1 = new NPC(Content, 0, "gonggong", 100, 128, x, y);
                         npc.Add(NPC1);
@@ -150,8 +150,8 @@ namespace Brave_Pig
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200);
-                        enemies.Add(MossMushroom);
+                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 68, 73, x, y, 200);
+                        enemies.Add(Middle);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS2")
