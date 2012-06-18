@@ -97,9 +97,15 @@ namespace Level_Editor
             cboCodeValues.Items.Add("MiddleBoss1");
             cboCodeValues.Items.Add("MiddleBoss2");
             cboCodeValues.Items.Add("Boss");
-            cboCodeValues.Items.Add("NPC1");
-            cboCodeValues.Items.Add("NPC2");
-            cboCodeValues.Items.Add("NPC3");
+            cboCodeValues.Items.Add("NPC11");
+            cboCodeValues.Items.Add("NPC12");
+            cboCodeValues.Items.Add("NPC13");
+            cboCodeValues.Items.Add("NPC21");
+            cboCodeValues.Items.Add("NPC22");
+            cboCodeValues.Items.Add("NPC23");
+            cboCodeValues.Items.Add("NPC31");
+            cboCodeValues.Items.Add("NPC32");
+            cboCodeValues.Items.Add("NPC33");
 
             cboCodeValues.Items.Add("EnemyBlocking");
             cboCodeValues.Items.Add("Blocking");
@@ -177,16 +183,40 @@ namespace Level_Editor
                     txtNewCode.Text = "BOSS";
                     game.DrawTile = 12;
                     break;
-                case "NPC1":
-                    txtNewCode.Text = "NPC1";
+                case "NPC11":
+                    txtNewCode.Text = "NPC11";
                     game.DrawTile = 3;
                     break;
-                case "NPC2":
-                    txtNewCode.Text = "NPC2";
+                case "NPC12":
+                    txtNewCode.Text = "NPC12";
                     game.DrawTile = 4;
                     break;
-                case "NPC3":
-                    txtNewCode.Text = "NPC3";
+                case "NPC13":
+                    txtNewCode.Text = "NPC13";
+                    game.DrawTile = 5;
+                    break;
+                case "NPC21":
+                    txtNewCode.Text = "NPC21";
+                    game.DrawTile = 3;
+                    break;
+                case "NPC22":
+                    txtNewCode.Text = "NPC22";
+                    game.DrawTile = 4;
+                    break;
+                case "NPC23":
+                    txtNewCode.Text = "NPC23";
+                    game.DrawTile = 5;
+                    break;
+                case "NPC31":
+                    txtNewCode.Text = "NPC31";
+                    game.DrawTile = 3;
+                    break;
+                case "NPC32":
+                    txtNewCode.Text = "NPC32";
+                    game.DrawTile = 4;
+                    break;
+                case "NPC33":
+                    txtNewCode.Text = "NPC33";
                     game.DrawTile = 5;
                     break;
                 case "EnemyBlocking":
