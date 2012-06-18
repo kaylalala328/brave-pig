@@ -12,6 +12,7 @@ using Brave_Pig.BasicObject;
 using Brave_Pig.Monsters;
 using Brave_Pig.Character;
 using Brave_Pig.Elements;
+using Brave_Pig.Sound;
 
 namespace Brave_Pig
 {

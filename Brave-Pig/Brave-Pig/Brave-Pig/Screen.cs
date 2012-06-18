@@ -432,22 +432,22 @@ namespace Brave_Pig
             {
                 case PauseMenu.RESUME:
                     spriteBatch.Draw(resume,
-                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                new Rectangle((int)( width * 440 ) / 1280, (int)( height * 180 ) / 720, (int)( width * 400 ) / 1280, (int)( height * 360 ) / 720),
                 Color.White);
                     break;
                 case PauseMenu.SAVE:
                     spriteBatch.Draw(save,
-                new Rectangle((int)(width * 540) / 1280, (int)(height * 270) / 720, (int)(width * 200) / 1280, (int)(height * 180) / 720),
+                new Rectangle((int)(width * 440) / 1280, (int)(height * 180) / 720, (int)(width * 400) / 1280, (int)(height * 360) / 720),
                 Color.White);
                     break;
                 case PauseMenu.LOAD:
                     spriteBatch.Draw(load,
-                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                new Rectangle((int)( width * 440 ) / 1280, (int)( height * 180 ) / 720, (int)( width * 400 ) / 1280, (int)( height * 360 ) / 720),
                 Color.White);
                     break;
                 case PauseMenu.EXIT:
                     spriteBatch.Draw(exit,
-                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                new Rectangle((int)( width * 440 ) / 1280, (int)( height * 180 ) / 720, (int)( width * 400 ) / 1280, (int)( height * 360 ) / 720),
                 Color.White);
                     break;
             }            

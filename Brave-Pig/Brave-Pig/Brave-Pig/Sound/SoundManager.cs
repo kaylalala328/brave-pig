@@ -14,26 +14,99 @@ namespace Brave_Pig.Sound
     public static class SoundManager
     {
         private static Dictionary<string, SoundEffect> Sound;
-        private static SoundEffect background;
-        private static SoundEffectInstance backgroundInstance;
+        private static Dictionary<string, SoundEffectInstance> backgroundSound;
+        private static SoundEffect citySound;
+        private static SoundEffect battleSound;
+        private static SoundEffect bossSound;
+        private static SoundEffectInstance cityInstance;
+        private static SoundEffectInstance battleInstance;
+        private static SoundEffectInstance bossInstance;
+        private static string currentSound;
 
         public static void Initialize()
         {
             Sound = new Dictionary<string, SoundEffect>();
+            backgroundSound = new Dictionary<string, SoundEffectInstance>();
         }
         public static void LoadContent ( ContentManager content )
         {
             try
             {
-                background = content.Load<SoundEffect>("Sound/일반전투");
+                citySound = content.Load<SoundEffect>("Sound/city");
+                battleSound = content.Load<SoundEffect>("Sound/field");
+                bossSound = content.Load<SoundEffect>("Sound/mainfinal");
 
-                backgroundInstance = background.CreateInstance();
-                backgroundInstance.IsLooped = true;
+                Sound.Add("city", citySound);
+                Sound.Add("battleSound", battleSound);
+                Sound.Add("bossSound", bossSound);
 
-                Sound.Add("background", background);
+                cityInstance = citySound.CreateInstance();
+                cityInstance.IsLooped = true;
+                battleInstance = battleSound.CreateInstance();
+                battleInstance.IsLooped = true;
+                bossInstance = bossSound.CreateInstance();
+                bossInstance.IsLooped = true;
+
+                backgroundSound.Add("citySound", cityInstance);
+                backgroundSound.Add("battleSound", battleInstance);
+                backgroundSound.Add("bossSound", bossInstance);
             }
             catch
             {   }
+        }
+        public static void UpdateSound ( )
+        {
+            switch ( LevelManager.CurrentLevel )
+            {
+                case 0:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 1:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 2:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 3:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 4:
+                    SoundManager.PlayBackground("citySound");
+                    break;
+                case 5:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 6:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 7:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 8:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 9:
+                    SoundManager.PlayBackground("citySound");
+                    break;
+                case 10:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 11:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 12:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 13:
+                    SoundManager.PlayBackground("battleSound");
+                    break;
+                case 14:
+                    SoundManager.PlayBackground("citySound");
+                    break;
+                case 15:
+                    SoundManager.PlayBackground("bossSound");
+                    break;
+            }
         }
         public static void SoundPlay ( string name )
         {
@@ -45,14 +118,19 @@ namespace Brave_Pig.Sound
             {
             }
         }
-        public static void PlayBackground ( )
+        public static void PlayBackground ( string name )
         {
-            backgroundInstance.Play();
-        }
+            try
+            {
+                if(currentSound != name)
+                    backgroundSound[currentSound].Stop();
+            }
+            catch ( Exception e )
+            {
+            }
 
-        public static void PauseBackground ( )
-        {
-            backgroundInstance.Stop();
+            backgroundSound[name].Play();
+            currentSound = name;
         }
     }
 }

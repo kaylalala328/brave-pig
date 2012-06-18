@@ -96,7 +96,10 @@ namespace Brave_Pig
                 Content.Load<Texture2D>(@"Textures\Tile"));
             TileMap.spriteFont =
                 Content.Load<SpriteFont>(@"Font\UI font");
+
             SoundManager.LoadContent(Content);
+            SoundManager.PlayBackground("bossSound");
+
             screen.LoadContent(Content);
             mainUI.LoadContent(Content);
             menual.LoadContent(Content);
@@ -116,9 +119,11 @@ namespace Brave_Pig
             if ( GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed )
                 this.Exit();
 
-            SoundManager.PlayBackground();
+            
 
             currentKeyState = Keyboard.GetState();
+            if(gameState != GameStates.START)
+                SoundManager.UpdateSound();
 
             switch (gameState)
             {
