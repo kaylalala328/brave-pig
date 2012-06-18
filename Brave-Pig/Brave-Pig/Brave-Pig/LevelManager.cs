@@ -109,7 +109,7 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY4")
                     {
-                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 64, x, y, 200, 20);
+                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 85, x, y, 200, 20);
                         enemies.Add(PoisonMushroom);
                     }
 

@@ -1140,19 +1140,16 @@ namespace Brave_Pig.Character
             {
                 returndefense = 10;
                 stat.setMaxHeal(100);
-                stat.healPoint = 100;
             }
             else if (ItemManager.getCurrentArmor() == "Boots")
             {
                 returndefense = 15;
                 stat.setMaxHeal(200);
-                stat.healPoint = 200;
             }
             else if (ItemManager.getCurrentArmor() == "Shield")
             {
                 returndefense = 25;
                 stat.setMaxHeal(500);
-                stat.healPoint = 500;
             }
             return returndefense;
         }
