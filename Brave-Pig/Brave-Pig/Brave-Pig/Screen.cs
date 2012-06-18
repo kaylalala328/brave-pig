@@ -24,8 +24,6 @@ namespace Brave_Pig
     {
         #region Declaration
         Texture2D screen;
-        Texture2D menu;
-        Texture2D pause;
         Texture2D resume;
         Texture2D save;
         Texture2D load;
@@ -81,8 +79,6 @@ namespace Brave_Pig
         public void LoadContent ( ContentManager content )
         {
             screen = content.Load<Texture2D>("Screen/Screen");
-            menu = content.Load<Texture2D>("Screen/menu");
-            pause = content.Load<Texture2D>("Screen/pause");
             resume = content.Load<Texture2D>("Screen/continue");
             save = content.Load<Texture2D>("Screen/save");
             load = content.Load<Texture2D>("Screen/load");

@@ -32,13 +32,26 @@ namespace Brave_Pig.UI
             int X = ( BottomUIWidth * 284 ) / 1280;
             int Y = BottomY + (BottomUIHeight * 81) / 180;
 
-            for ( int i = 0 ; i < ItemManager.haveSwords.Count ; i++ )
+            foreach ( string sw in ItemManager.haveSwords )
             {
-                spriteBatch.Draw(ItemManager.swords[ItemManager.haveSwords[i]].getImage(),
+                switch ( sw )
+                {
+                    case "Blue":
+                        spriteBatch.Draw(ItemManager.swords["Blue"].getImage(),
                     new Rectangle(X, Y, Width, Height),
                     Color.White);
-
-                X = X + ( BottomUIWidth * 67 ) / 1280;
+                        break;
+                    case "Red":
+                        spriteBatch.Draw(ItemManager.swords["Red"].getImage(),
+                    new Rectangle(X + ( BottomUIWidth * 67 ) / 1280, Y, Width, Height),
+                    Color.White);
+                        break;
+                    case "Yellow":
+                        spriteBatch.Draw(ItemManager.swords["Yellow"].getImage(),
+                    new Rectangle( X + ( BottomUIWidth * 67 ) / 1280  * 2, Y, Width, Height),
+                    Color.White);
+                        break;
+                }
             }
         }
         public void DrawArmor ( SpriteBatch spriteBatch, int BottomUIWidth, int BottomUIHeight, int BottomY )
@@ -48,13 +61,26 @@ namespace Brave_Pig.UI
             int X = ( BottomUIWidth * 485 ) / 1280;
             int Y = BottomY + ( BottomUIHeight * 81 ) / 180;
 
-            for ( int i = 0 ; i < ItemManager.haveArmors.Count ; i++ )
+            foreach ( string ar in ItemManager.haveArmors )
             {
-                spriteBatch.Draw(ItemManager.armors[ItemManager.haveArmors[i]].getImage(),
+                switch ( ar )
+                {
+                    case "Armor":
+                        spriteBatch.Draw(ItemManager.armors["Armor"].getImage(),
                     new Rectangle(X, Y, Width, Height),
                     Color.White);
-
-                X = X + ( BottomUIWidth * 67 ) / 1280;
+                        break;
+                    case "Boots":
+                        spriteBatch.Draw(ItemManager.armors["Boots"].getImage(),
+                    new Rectangle(X + ( BottomUIWidth * 67 ) / 1280, Y, Width, Height),
+                    Color.White);
+                        break;
+                    case "Shield":
+                        spriteBatch.Draw(ItemManager.armors["Shield"].getImage(),
+                    new Rectangle( X + ( BottomUIWidth * 67 ) / 1280 * 2, Y, Width, Height),
+                    Color.White);
+                        break;
+                }
             }
         }
         public void DrawSkill ( SpriteBatch spriteBatch, int BottomUIWidth, int BottomUIHeight, int BottomY )

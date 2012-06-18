@@ -122,67 +122,26 @@ namespace Brave_Pig
             
 
             currentKeyState = Keyboard.GetState();
-            if(gameState != GameStates.START)
+            if(gameState == GameStates.PLAY)
                 SoundManager.UpdateSound();
 
             switch (gameState)
             {
                 case GameStates.START:
+                    SoundManager.PlayBackground("bossSound");
                     screen.Update(gameTime);
                     break;
                 case GameStates.MENU:
+                    SoundManager.PlayBackground("bossSound");
                     menual.Update(gameTime);
                     break;
                 case GameStates.MAKE:
+                    SoundManager.PlayBackground("bossSound");
                     make.Update(gameTime);
                     break;
                 case GameStates.LOAD:
-                    FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
-                    StreamReader r = new StreamReader(fs);
-                    LevelManager.CurrentLevel = Convert.ToInt32(r.ReadLine());
-                    LevelManager.LoadLevel(LevelManager.CurrentLevel);
-                    player.stat.healPoint = Convert.ToInt32(r.ReadLine());
-                    player.stat.manaPoint = Convert.ToInt32(r.ReadLine());
-                    player.stat.damage = Convert.ToInt32(r.ReadLine());
-                    player.stat.defense = Convert.ToInt32(r.ReadLine());
-                    player.stat.useSword = Convert.ToInt32(r.ReadLine());
-                    int X = (int)Convert.ToDouble(r.ReadLine());
-                    int Y = (int)Convert.ToDouble(r.ReadLine());
-                    player.WorldLocation = new Vector2(X, Y);
-                    int swordCnt = Convert.ToInt32(r.ReadLine());
-                    switch (swordCnt)
-                    {
-                        case 1:
-                            ItemManager.gainSword("Blue");
-                            break;
-                        case 2:
-                            ItemManager.gainSword("Blue");
-                            ItemManager.gainSword("Red");
-                            break;
-                        case 3:
-                            ItemManager.gainSword("Blue");
-                            ItemManager.gainSword("Red");
-                            ItemManager.gainSword("Yellow");
-                            break;
-                    }
-                    int armorCnt = Convert.ToInt32(r.ReadLine());
-                    switch (armorCnt)
-                    {
-                        case 1:
-                            ItemManager.gainArmor("Armor");
-                            break;
-                        case 2:
-                            ItemManager.gainArmor("Armor");
-                            ItemManager.gainArmor("Boots");
-                            break;
-                        case 3:
-                            ItemManager.gainArmor("Armor");
-                            ItemManager.gainArmor("Boots");
-                            ItemManager.gainArmor("Shield");
-                            break;
-                    }
-                    ItemManager.getPotion().setCount(Convert.ToInt32(r.ReadLine()));
-                    r.Close();
+                    SoundManager.PlayBackground("bossSound");
+                    loadGame();
                     Game1.gameState = Game1.GameStates.PLAY;
                     break;
                 case GameStates.EXIT:
@@ -221,7 +180,7 @@ namespace Brave_Pig
 
             base.Update(gameTime);
         }
-
+        
         protected override void Draw ( GameTime gameTime )
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -263,6 +222,56 @@ namespace Brave_Pig
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void loadGame ( )
+        {
+            FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
+            StreamReader r = new StreamReader(fs);
+            LevelManager.CurrentLevel = Convert.ToInt32(r.ReadLine());
+            LevelManager.LoadLevel(LevelManager.CurrentLevel);
+            player.stat.healPoint = Convert.ToInt32(r.ReadLine());
+            player.stat.manaPoint = Convert.ToInt32(r.ReadLine());
+            player.stat.damage = Convert.ToInt32(r.ReadLine());
+            player.stat.defense = Convert.ToInt32(r.ReadLine());
+            player.stat.useSword = Convert.ToInt32(r.ReadLine());
+            int X = (int)Convert.ToDouble(r.ReadLine());
+            int Y = (int)Convert.ToDouble(r.ReadLine());
+            player.WorldLocation = new Vector2(X, Y);
+            int swordCnt = Convert.ToInt32(r.ReadLine());
+            switch ( swordCnt )
+            {
+                case 1:
+                    ItemManager.gainSword("Blue");
+                    break;
+                case 2:
+                    ItemManager.gainSword("Blue");
+                    ItemManager.gainSword("Red");
+                    break;
+                case 3:
+                    ItemManager.gainSword("Blue");
+                    ItemManager.gainSword("Red");
+                    ItemManager.gainSword("Yellow");
+                    break;
+            }
+            int armorCnt = Convert.ToInt32(r.ReadLine());
+            switch ( armorCnt )
+            {
+                case 1:
+                    ItemManager.gainArmor("Armor");
+                    break;
+                case 2:
+                    ItemManager.gainArmor("Armor");
+                    ItemManager.gainArmor("Boots");
+                    break;
+                case 3:
+                    ItemManager.gainArmor("Armor");
+                    ItemManager.gainArmor("Boots");
+                    ItemManager.gainArmor("Shield");
+                    break;
+            }
+            ItemManager.getPotion().setCount(Convert.ToInt32(r.ReadLine()));
+            r.Close();
         }
     }
 }

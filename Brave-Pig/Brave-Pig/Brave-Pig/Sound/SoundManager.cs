@@ -15,6 +15,7 @@ namespace Brave_Pig.Sound
     {
         private static Dictionary<string, SoundEffect> Sound;
         private static Dictionary<string, SoundEffectInstance> backgroundSound;
+        private static SoundEffect sword;
         private static SoundEffect citySound;
         private static SoundEffect battleSound;
         private static SoundEffect bossSound;
@@ -35,10 +36,7 @@ namespace Brave_Pig.Sound
                 citySound = content.Load<SoundEffect>("Sound/city");
                 battleSound = content.Load<SoundEffect>("Sound/field");
                 bossSound = content.Load<SoundEffect>("Sound/mainfinal");
-
-                Sound.Add("city", citySound);
-                Sound.Add("battleSound", battleSound);
-                Sound.Add("bossSound", bossSound);
+                sword = content.Load<SoundEffect>("Sound/changeSW");
 
                 cityInstance = citySound.CreateInstance();
                 cityInstance.IsLooped = true;
@@ -50,6 +48,8 @@ namespace Brave_Pig.Sound
                 backgroundSound.Add("citySound", cityInstance);
                 backgroundSound.Add("battleSound", battleInstance);
                 backgroundSound.Add("bossSound", bossInstance);
+
+                Sound.Add("sword", sword);
             }
             catch
             {   }
@@ -112,7 +112,7 @@ namespace Brave_Pig.Sound
         {
             try
             {
-                Sound[name].Play(1.0f, 0.5f, 1.0f);
+                Sound[name].Play(1.0f, 1.0f, 1.0f);
             }
             catch
             {

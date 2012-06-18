@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Tile_Engine;
 using Brave_Pig.BasicObject;
 using Brave_Pig.Items;
+using Brave_Pig.Sound;
 
 namespace Brave_Pig.Character
 {
@@ -247,20 +248,24 @@ namespace Brave_Pig.Character
 
 
             #region swordselect
-            if (Game1.currentKeyState.IsKeyDown(Keys.D0) && ItemManager.haveSwords.Contains("Basic"))
+            if (Game1.currentKeyState.IsKeyDown(Keys.D0) && Game1.previousKeyState.IsKeyUp(Keys.D0) && ItemManager.haveSwords.Contains("Basic"))
             {
+                SoundManager.SoundPlay("sword");
                 ItemManager.setCurrentSword("Basic");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D1) && ItemManager.haveSwords.Contains("Blue"))
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D1) && Game1.previousKeyState.IsKeyUp(Keys.D1) && ItemManager.haveSwords.Contains("Blue") )
             {
+                SoundManager.SoundPlay("sword");
                 ItemManager.setCurrentSword("Blue");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D2) && ItemManager.haveSwords.Contains("Red"))
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D2) && Game1.previousKeyState.IsKeyUp(Keys.D2) && ItemManager.haveSwords.Contains("Red") )
             {
+                SoundManager.SoundPlay("sword");
                 ItemManager.setCurrentSword("Red");
             }
-            if ( Game1.currentKeyState.IsKeyDown(Keys.D3) && ItemManager.haveSwords.Contains("Yellow"))
+            if ( Game1.currentKeyState.IsKeyDown(Keys.D3) && Game1.previousKeyState.IsKeyUp(Keys.D3) && ItemManager.haveSwords.Contains("Yellow") )
             {
+                SoundManager.SoundPlay("sword");
                 ItemManager.setCurrentSword("Yellow");
             }            
             #endregion
