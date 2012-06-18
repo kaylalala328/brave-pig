@@ -412,21 +412,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Monsters\middle1_attack.png">
-      <Name>middle1_attack</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\middle1_dead.png">
-      <Name>middle1_dead</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\middle1_idle.png">
-      <Name>middle1_idle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Monsters\mossmushroom_attack.png">
       <Name>mossmushroom_attack</Name>
       <Importer>TextureImporter</Importer>
@@ -439,21 +424,6 @@
     </Compile>
     <Compile Include="Monsters\mossmushroom_idle.png">
       <Name>mossmushroom_idle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\orangemushroom_attack.png">
-      <Name>orangemushroom_attack</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\orangemushroom_dead.png">
-      <Name>orangemushroom_dead</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\orangemushroom_idle.png">
-      <Name>orangemushroom_idle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -489,21 +459,6 @@
     </Compile>
     <Compile Include="Monsters\skel_idle.png">
       <Name>skel_idle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\slime_attack.png">
-      <Name>slime_attack</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\slime_dead.png">
-      <Name>slime_dead</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Monsters\slime_idle.png">
-      <Name>slime_idle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -731,72 +686,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Maps\MAP000.MAP">
-      <Name>MAP000</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP001.MAP">
-      <Name>MAP001</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP002.MAP">
-      <Name>MAP002</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP003.MAP">
-      <Name>MAP003</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP004.MAP">
-      <Name>MAP004</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP005.MAP">
-      <Name>MAP005</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP006.MAP">
-      <Name>MAP006</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP007.MAP">
-      <Name>MAP007</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP008.MAP">
-      <Name>MAP008</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP009.MAP">
-      <Name>MAP009</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP010.MAP">
-      <Name>MAP010</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP011.MAP">
-      <Name>MAP011</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP012.MAP">
-      <Name>MAP012</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP013.MAP">
-      <Name>MAP013</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP014.MAP">
-      <Name>MAP014</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\MAP015.MAP">
-      <Name>MAP015</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\back005.png">
       <Name>back005</Name>
       <Importer>TextureImporter</Importer>
@@ -994,6 +883,172 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\bluemushroom_damage.png">
+      <Name>bluemushroom_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\Boss_damage.png">
+      <Name>Boss_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\brownpig_damage.png">
+      <Name>brownpig_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\cynicalmushroom_damage.png">
+      <Name>cynicalmushroom_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle1_damage.png">
+      <Name>middle1_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle2_damage.png">
+      <Name>middle2_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle3_damage.png">
+      <Name>middle3_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\mossmushroom_damage.png">
+      <Name>mossmushroom_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\poisionmushroom_damage.png">
+      <Name>poisionmushroom_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\redpig_damage.png">
+      <Name>redpig_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\violetmushroom_damage.png">
+      <Name>violetmushroom_damage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\middle1_dead.png">
+      <Name>middle1_dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle1_idle.png">
+      <Name>middle1_idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\middle2_dead.png">
+      <Name>middle2_dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle2_idle.png">
+      <Name>middle2_idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\middle3_dead.png">
+      <Name>middle3_dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\middle3_idle.png">
+      <Name>middle3_idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\redpig_dead.png">
+      <Name>redpig_dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Maps\MAP000.MAP">
+      <Name>MAP000</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP001.MAP">
+      <Name>MAP001</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP002.MAP">
+      <Name>MAP002</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP003.MAP">
+      <Name>MAP003</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP004.MAP">
+      <Name>MAP004</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP005.MAP">
+      <Name>MAP005</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP006.MAP">
+      <Name>MAP006</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP007.MAP">
+      <Name>MAP007</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP008.MAP">
+      <Name>MAP008</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP009.MAP">
+      <Name>MAP009</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP010.MAP">
+      <Name>MAP010</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP011.MAP">
+      <Name>MAP011</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP012.MAP">
+      <Name>MAP012</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP013.MAP">
+      <Name>MAP013</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP014.MAP">
+      <Name>MAP014</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\MAP015.MAP">
+      <Name>MAP015</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
