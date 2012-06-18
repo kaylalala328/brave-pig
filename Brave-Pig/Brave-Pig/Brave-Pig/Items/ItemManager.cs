@@ -87,5 +87,18 @@ namespace Brave_Pig.Items
         {
             return potion;
         }
+        public static void remove ( )
+        {
+            for ( int i = 0 ; i < haveSwords.Count() ; i++ )
+            {
+                haveSwords.RemoveAt(i);
+            }
+            for ( int i = 0 ; i < haveArmors.Count() ; i++ )
+            {
+                haveArmors.RemoveAt(i);
+            }
+            setCurrentSword("Basic");
+            setCurrnetArmor("none");
+        }
     }
 }

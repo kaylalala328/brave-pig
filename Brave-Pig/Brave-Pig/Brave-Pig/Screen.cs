@@ -23,6 +23,8 @@ namespace Brave_Pig
     class Screen : GameObject
     {
         #region Declaration
+        Texture2D gameOver;
+        Texture2D win;
         Texture2D screen;
         Texture2D resume;
         Texture2D save;
@@ -78,6 +80,8 @@ namespace Brave_Pig
         }
         public void LoadContent ( ContentManager content )
         {
+            win = content.Load<Texture2D>("Screen/win");
+            gameOver = content.Load<Texture2D>("Screen/gameover");
             screen = content.Load<Texture2D>("Screen/Screen");
             resume = content.Load<Texture2D>("Screen/continue");
             save = content.Load<Texture2D>("Screen/save");
@@ -242,76 +246,97 @@ namespace Brave_Pig
                         Game1.gameState = Game1.GameStates.PLAY;
                         break;
                     case PauseMenu.SAVE:
-                        FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);                                                
-                        StreamWriter r =new StreamWriter(fs);
-                        r.WriteLine(LevelManager.CurrentLevel);
-                        r.WriteLine(player.stat.healPoint);
-                        r.WriteLine(player.stat.manaPoint);
-                        r.WriteLine(player.stat.damage);
-                        r.WriteLine(player.stat.defense);
-                        r.WriteLine(player.stat.useSword);
-                        r.WriteLine(player.getLocation().X);
-                        r.WriteLine(player.getLocation().Y);
-                        r.WriteLine(ItemManager.haveSwords.Count);
-                        r.WriteLine(ItemManager.haveArmors.Count);
-                        r.WriteLine(ItemManager.getPotion().getCount());
-                        r.Close();
+                        saveGame(player);
 
                         break;
                     case PauseMenu.LOAD:
-                        FileStream f = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
-                    StreamReader rd = new StreamReader(f);
-                    LevelManager.CurrentLevel = Convert.ToInt32(rd.ReadLine());
-                    LevelManager.LoadLevel(LevelManager.CurrentLevel);
-                    player.stat.healPoint = Convert.ToInt32(rd.ReadLine());
-                    player.stat.manaPoint = Convert.ToInt32(rd.ReadLine());
-                    player.stat.damage = Convert.ToInt32(rd.ReadLine());
-                    player.stat.defense = Convert.ToInt32(rd.ReadLine());
-                    player.stat.useSword = Convert.ToInt32(rd.ReadLine());
-                    int X = (int)Convert.ToDouble(rd.ReadLine());
-                    int Y = (int)Convert.ToDouble(rd.ReadLine());
-                    player.WorldLocation = new Vector2(X, Y);
-                    int swordCnt = Convert.ToInt32(rd.ReadLine());
-                    switch (swordCnt)
-                    {
-                        case 1:
-                            ItemManager.gainSword("Blue");
-                            break;
-                        case 2:
-                            ItemManager.gainSword("Blue");
-                            ItemManager.gainSword("Red");
-                            break;
-                        case 3:
-                            ItemManager.gainSword("Blue");
-                            ItemManager.gainSword("Red");
-                            ItemManager.gainSword("Yellow");
-                            break;
-                    }
-                    int armorCnt = Convert.ToInt32(rd.ReadLine());
-                    switch (armorCnt)
-                    {
-                        case 1:
-                            ItemManager.gainArmor("Armor");
-                            break;
-                        case 2:
-                            ItemManager.gainArmor("Armor");
-                            ItemManager.gainArmor("Boots");
-                            break;
-                        case 3:
-                            ItemManager.gainArmor("Armor");
-                            ItemManager.gainArmor("Boots");
-                            ItemManager.gainArmor("Shield");
-                            break;
-                    }
-                    ItemManager.getPotion().setCount(Convert.ToInt32(rd.ReadLine()));
-                    rd.Close();
-                    Game1.gameState = Game1.GameStates.PLAY;
+                        loadGame(player);
                         break;
                     case PauseMenu.EXIT:
                         Game1.gameState = Game1.GameStates.EXIT;
                         break;
                 }
             }
+        }
+        public void UpdateReset ( GameTime gameTime, Player player )
+        {
+            if ( Game1.previousKeyState.IsKeyDown(Keys.Enter) && Game1.currentKeyState.IsKeyUp(Keys.Enter) )
+            {
+                player.stat.healPoint = player.getMaxHeal();
+                player.stat.manaPoint = 0;
+                ItemManager.remove();
+                LevelManager.CurrentLevel = 0;
+                LevelManager.LoadLevel(LevelManager.CurrentLevel);
+                player.WorldLocation = new Vector2(20, 500);
+                Game1.gameState = Game1.GameStates.START;
+            }
+        }
+        public void saveGame ( Player player )
+        {
+            FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
+            StreamWriter r = new StreamWriter(fs);
+            r.WriteLine(LevelManager.CurrentLevel);
+            r.WriteLine(player.stat.healPoint);
+            r.WriteLine(player.stat.manaPoint);
+            r.WriteLine(player.stat.damage);
+            r.WriteLine(player.stat.defense);
+            r.WriteLine(player.stat.useSword);
+            r.WriteLine(player.getLocation().X);
+            r.WriteLine(player.getLocation().Y);
+            r.WriteLine(ItemManager.haveSwords.Count);
+            r.WriteLine(ItemManager.haveArmors.Count);
+            r.WriteLine(ItemManager.getPotion().getCount());
+            r.Close();
+        }
+        public void loadGame ( Player player )
+        {
+            FileStream f = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
+            StreamReader rd = new StreamReader(f);
+            LevelManager.CurrentLevel = Convert.ToInt32(rd.ReadLine());
+            LevelManager.LoadLevel(LevelManager.CurrentLevel);
+            player.stat.healPoint = Convert.ToInt32(rd.ReadLine());
+            player.stat.manaPoint = Convert.ToInt32(rd.ReadLine());
+            player.stat.damage = Convert.ToInt32(rd.ReadLine());
+            player.stat.defense = Convert.ToInt32(rd.ReadLine());
+            player.stat.useSword = Convert.ToInt32(rd.ReadLine());
+            int X = (int)Convert.ToDouble(rd.ReadLine());
+            int Y = (int)Convert.ToDouble(rd.ReadLine());
+            player.WorldLocation = new Vector2(X, Y);
+            int swordCnt = Convert.ToInt32(rd.ReadLine());
+            switch ( swordCnt )
+            {
+                case 1:
+                    ItemManager.gainSword("Blue");
+                    break;
+                case 2:
+                    ItemManager.gainSword("Blue");
+                    ItemManager.gainSword("Red");
+                    break;
+                case 3:
+                    ItemManager.gainSword("Blue");
+                    ItemManager.gainSword("Red");
+                    ItemManager.gainSword("Yellow");
+                    break;
+            }
+            int armorCnt = Convert.ToInt32(rd.ReadLine());
+            switch ( armorCnt )
+            {
+                case 1:
+                    ItemManager.gainArmor("Armor");
+                    break;
+                case 2:
+                    ItemManager.gainArmor("Armor");
+                    ItemManager.gainArmor("Boots");
+                    break;
+                case 3:
+                    ItemManager.gainArmor("Armor");
+                    ItemManager.gainArmor("Boots");
+                    ItemManager.gainArmor("Shield");
+                    break;
+            }
+            ItemManager.getPotion().setCount(Convert.ToInt32(rd.ReadLine()));
+            rd.Close();
+            Game1.gameState = Game1.GameStates.PLAY;
         }
         /*
          * 시작 화면 출력
@@ -447,6 +472,18 @@ namespace Brave_Pig
                 Color.White);
                     break;
             }            
+        }
+        public void DrawGameOver ( SpriteBatch spriteBatch )
+        {
+            spriteBatch.Draw(gameOver,
+                new Rectangle(0, 0, width, height),
+                Color.White);
+        }
+        public void DrawWin ( SpriteBatch spriteBatch )
+        {
+            spriteBatch.Draw(win,
+                new Rectangle(0, 0, width, height),
+                Color.White);
         }
     }
 }

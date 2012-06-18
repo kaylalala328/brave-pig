@@ -173,8 +173,10 @@ namespace Brave_Pig
                     screen.UpdatePause(gameTime, player);
                     break;
                 case GameStates.WIN:
+                    screen.UpdateReset(gameTime, player);
                     break;
                 case GameStates.GAMEOVER:
+                    screen.UpdateReset(gameTime, player);
                     break;
             }
 
@@ -216,8 +218,10 @@ namespace Brave_Pig
                     screen.DrawPause(spriteBatch);
                     break;
                 case GameStates.WIN:
+                    screen.DrawWin(spriteBatch);
                     break;
                 case GameStates.GAMEOVER:
+                    screen.DrawGameOver(spriteBatch);
                     break;
             }
 

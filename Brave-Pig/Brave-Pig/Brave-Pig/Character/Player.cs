@@ -205,6 +205,11 @@ namespace Brave_Pig.Character
 
         public override void Update(GameTime gameTime)
         {
+            if ( ( animations["dead"].FinishedPlaying || animations["dead2"].FinishedPlaying || animations["dead3"].FinishedPlaying || animations["dead4"].FinishedPlaying ) && getHeal() <= 0 )
+            {
+                Game1.gameState = Game1.GameStates.GAMEOVER;
+            }
+
             if (animations["skill1"].FinishedPlaying || animations["skill2"].FinishedPlaying || animations["skill3"].FinishedPlaying || animations["skill4"].FinishedPlaying || animations["skill22"].FinishedPlaying || animations["skill32"].FinishedPlaying || animations["skill33"].FinishedPlaying)
             {
                 finish = false;

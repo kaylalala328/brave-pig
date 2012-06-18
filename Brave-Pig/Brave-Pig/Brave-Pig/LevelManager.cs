@@ -310,6 +310,7 @@ namespace Brave_Pig
 
                             if (monsterDamage == false)
                             {
+                                SoundManager.SoundPlay("attack");
                                 e.healthPoint = e.healthPoint - player.getAttack();
                                 monsterDamage = true;
                             }
@@ -343,6 +344,7 @@ namespace Brave_Pig
 
                             if (monsterDamage == false)
                             {
+                                SoundManager.SoundPlay("attack");
                                 e.healthPoint = e.healthPoint - player.getAttack();
                                 monsterDamage = true;
                             }
