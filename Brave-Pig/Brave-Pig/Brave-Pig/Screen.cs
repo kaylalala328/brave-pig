@@ -295,7 +295,7 @@ namespace Brave_Pig
             LevelManager.CurrentLevel = Convert.ToInt32(rd.ReadLine());
             LevelManager.LoadLevel(LevelManager.CurrentLevel);
             player.stat.healPoint = Convert.ToInt32(rd.ReadLine());
-            player.stat.manaPoint = Convert.ToInt32(rd.ReadLine());
+            player.stat.manaPoint = (float)Convert.ToDouble(rd.ReadLine());
             player.stat.damage = Convert.ToInt32(rd.ReadLine());
             player.stat.defense = Convert.ToInt32(rd.ReadLine());
             player.stat.useSword = Convert.ToInt32(rd.ReadLine());

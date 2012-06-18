@@ -108,7 +108,7 @@ namespace Brave_Pig
             player = new Player(Content);
             potion = new Potion(25, 10);
             LevelManager.Initialize(Content, player);
-            LevelManager.LoadLevel(0);
+            LevelManager.LoadLevel(4);
         }
 
 
@@ -238,7 +238,7 @@ namespace Brave_Pig
             LevelManager.CurrentLevel = Convert.ToInt32(r.ReadLine());
             LevelManager.LoadLevel(LevelManager.CurrentLevel);
             player.stat.healPoint = Convert.ToInt32(r.ReadLine());
-            player.stat.manaPoint = Convert.ToInt32(r.ReadLine());
+            player.stat.manaPoint = (float)Convert.ToInt32(r.ReadLine());
             player.stat.damage = Convert.ToInt32(r.ReadLine());
             player.stat.defense = Convert.ToInt32(r.ReadLine());
             player.stat.useSword = Convert.ToInt32(r.ReadLine());
