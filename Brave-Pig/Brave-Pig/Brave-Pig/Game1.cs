@@ -108,7 +108,7 @@ namespace Brave_Pig
             player = new Player(Content);
             potion = new Potion(25, 10);
             LevelManager.Initialize(Content, player);
-            LevelManager.LoadLevel(4);
+            LevelManager.LoadLevel(0);
         }
 
 
