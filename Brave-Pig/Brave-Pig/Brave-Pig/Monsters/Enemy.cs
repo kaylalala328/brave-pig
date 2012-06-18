@@ -20,12 +20,12 @@ namespace Brave_Pig.Monsters
         private float walkSpeed = 60.0f;
         private bool facingLeft = true;
         private int HealthPoint;
-        private int Damage = 5;
+        private int Damage;
         public bool Dead = false;
         private Vector2 PushedVector = Vector2.Zero;
         bool IsDamaged = false;
         #region Constructor
-        public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP)
+        public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP, int damage)
         {
             IsEnemy = true;
             
@@ -61,6 +61,7 @@ namespace Brave_Pig.Monsters
             animations["dead"].LoopAnimation = false;
             
             this.HealthPoint = HP;
+            this.Damage = damage;
 
             frameWidth = width;
             frameHeight = height;
@@ -81,6 +82,11 @@ namespace Brave_Pig.Monsters
         {
             get { return HealthPoint; }
             set { HealthPoint = value; }
+        }
+        public int Damege
+        {
+            get { return Damage; }
+            set { Damage = value; }
         }
         public void Pushed()
         {

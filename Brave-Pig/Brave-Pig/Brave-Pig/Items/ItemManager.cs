@@ -29,6 +29,7 @@ namespace Brave_Pig.Items
         private static Potion potion;
 
         private static string currentSword;
+        private static string currentArmor;
 
         public static void Initialize(ContentManager content)
         {
@@ -44,15 +45,24 @@ namespace Brave_Pig.Items
             potion = new Potion(25, 10);
 
             currentSword = "Basic";
+            currentArmor = "none";
         }
 
         public static string getCurrentSword()
         {
             return currentSword;
         }
+        public static string getCurrentArmor()
+        {
+            return currentArmor;
+        }
         public static void setCurrentSword ( string newItem )
         {
             currentSword = newItem;
+        }
+        public static void setCurrnetArmor(string newitem)
+        {
+            currentArmor = newitem;
         }
         public static void gainSword(string newSword)
         {
@@ -71,6 +81,7 @@ namespace Brave_Pig.Items
                     return;
             }
             haveArmors.Add(newArmor);
+            setCurrnetArmor(newArmor);
         }
         public static Potion getPotion()
         {

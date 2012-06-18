@@ -25,10 +25,12 @@ namespace Brave_Pig.Character
         public int height;
         
         int returnValue;
+        int returndefense;
         protected bool isAttack = false;
         protected bool isAttackflip = false;
         protected bool isSkill2 = false;
         protected bool isSkill3 = false;
+        protected bool monster = false;
 
         public Player(ContentManager content)
         {
@@ -280,10 +282,12 @@ namespace Brave_Pig.Character
 
                     if (attack_num < 5)
                     {
+                        monster = true;
                         newAnimation = "attack1";
                     }
                     else
                     {
+                        monster = true;
                         newAnimation = "attack2";
                     }
                 }// 기본 무기 공격 애니메이션
@@ -905,6 +909,7 @@ namespace Brave_Pig.Character
                 {
                     if (animations[currentAnimation].FinishedPlaying == true || animations[currentAnimation].LoopAnimation == true || newAnimation == "skill1" || newAnimation == "skill2" || newAnimation == "skill3" || newAnimation == "skill4" || newAnimation == "skill32" || newAnimation == "skill22" || newAnimation == "skill33")
                     {
+                        monster = false;
                         PlayAnimation(newAnimation, newAnimation2);
                     }
                 }
@@ -937,8 +942,16 @@ namespace Brave_Pig.Character
             velocity.Y = -450;
         }
 
-        public void damaged()
+        public void damaged(int damage)
         {
+            int damaged;
+            damaged = damage - getDefense();
+
+            if (damaged <= 0)
+            {
+                damaged = 0;
+            }
+
             if (ItemManager.getCurrentSword() == "Basic")
             {
                 if (direct == 0)
@@ -962,7 +975,7 @@ namespace Brave_Pig.Character
                     heal = true;
                     if (stat.healPoint > 0)
                     {
-                        stat.healPoint = stat.healPoint - 5;
+                        stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
@@ -993,7 +1006,7 @@ namespace Brave_Pig.Character
                     heal = true;
                     if (stat.healPoint > 0)
                     {
-                        stat.healPoint = stat.healPoint - 5;
+                        stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
@@ -1024,7 +1037,7 @@ namespace Brave_Pig.Character
                     heal = true;
                     if (stat.healPoint > 0)
                     {
-                        stat.healPoint = stat.healPoint - 5;
+                        stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
@@ -1055,7 +1068,7 @@ namespace Brave_Pig.Character
                     heal = true;
                     if (stat.healPoint > 0)
                     {
-                        stat.healPoint = stat.healPoint - 5;
+                        stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
@@ -1077,6 +1090,11 @@ namespace Brave_Pig.Character
         {
             return isSkill2;
         }
+        public bool anima()
+        {
+            return monster;
+        }
+
 
         #region UIstatus
         public float getMana()
@@ -1099,21 +1117,44 @@ namespace Brave_Pig.Character
             }
             else if (ItemManager.getCurrentSword() == "Blue")
             {
-                returnValue = (stat.damage * 12) / 10;
+                returnValue = (stat.damage * 20) / 10;
             }
             else if (ItemManager.getCurrentSword() == "Red")
             {
-                returnValue = (stat.damage * 15) / 10;
+                returnValue = (stat.damage * 30) / 10;
             }
             else if (ItemManager.getCurrentSword() == "Yellow")
             {
-                returnValue = (stat.damage * 20) / 10;
+                returnValue = (stat.damage * 50) / 10;
             }
             return returnValue;
         }
         public int getDefense()
         {
-            return stat.defense;
+            if (ItemManager.getCurrentArmor() == "none")
+            {
+                returndefense = 0;
+                stat.setMaxHeal(50);
+            }
+            else if (ItemManager.getCurrentArmor() == "Armor")
+            {
+                returndefense = 10;
+                stat.setMaxHeal(100);
+                stat.healPoint = 100;
+            }
+            else if (ItemManager.getCurrentArmor() == "Boots")
+            {
+                returndefense = 15;
+                stat.setMaxHeal(200);
+                stat.healPoint = 200;
+            }
+            else if (ItemManager.getCurrentArmor() == "Shield")
+            {
+                returndefense = 25;
+                stat.setMaxHeal(500);
+                stat.healPoint = 500;
+            }
+            return returndefense;
         }
         public Vector2 getLocation()
         {
