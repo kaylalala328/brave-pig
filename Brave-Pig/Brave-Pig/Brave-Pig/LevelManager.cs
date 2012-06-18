@@ -13,6 +13,7 @@ using Brave_Pig.Monsters;
 using Brave_Pig.Character;
 using Brave_Pig.Elements;
 using Brave_Pig.Sound;
+using Brave_Pig.Items;
 
 namespace Brave_Pig
 {
@@ -37,7 +38,9 @@ namespace Brave_Pig
         public static bool IsDialog = false;
 
         public static bool monsterDamage = false;
-    
+
+        public static int potioning;
+        public static int potionRate;
         #endregion
 
         #region Properties
@@ -248,9 +251,9 @@ namespace Brave_Pig
 
         public static void Update(GameTime gameTime)
         {
-
+            Random nums = new Random();
             IsDialog = false;
-
+            potionRate = nums.Next(0, 10);
 
             foreach (NPC n in npc)
             {
@@ -305,6 +308,11 @@ namespace Brave_Pig
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                                if (potionRate >= 9)
+                                {
+                                    potioning = ItemManager.getPotion().getCount();
+                                    ItemManager.getPotion().setCount(potioning + 1);
+                                }
                             }
                             else
                             {
@@ -333,6 +341,11 @@ namespace Brave_Pig
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                                if (potionRate >= 9)
+                                {
+                                    potioning = ItemManager.getPotion().getCount();
+                                    ItemManager.getPotion().setCount(potioning + 1);
+                                }
                             }
                             else
                             {
@@ -351,6 +364,11 @@ namespace Brave_Pig
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                                if (potionRate >= 9)
+                                {
+                                    potioning = ItemManager.getPotion().getCount();
+                                    ItemManager.getPotion().setCount(potioning + 1);
+                                }
                             }
                             else
                             {
@@ -369,6 +387,11 @@ namespace Brave_Pig
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;
+                                if (potionRate >= 9)
+                                {
+                                    potioning = ItemManager.getPotion().getCount();
+                                    ItemManager.getPotion().setCount(potioning + 1);
+                                }
                             }
                             else
                             {

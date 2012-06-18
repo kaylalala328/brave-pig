@@ -29,6 +29,7 @@ namespace Brave_Pig
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
+        Potion potion;
 
         /*
          * GameState¸¦ ³ªÅ¸³¿
@@ -105,6 +106,7 @@ namespace Brave_Pig
             menual.LoadContent(Content);
             make.LoadContent(Content);
             player = new Player(Content);
+            potion = new Potion(25, 10);
             LevelManager.Initialize(Content, player);
             LevelManager.LoadLevel(4);
         }
