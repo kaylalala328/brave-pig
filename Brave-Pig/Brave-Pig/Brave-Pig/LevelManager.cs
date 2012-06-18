@@ -192,19 +192,19 @@ namespace Brave_Pig
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
                     {
-                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 82, 89, x, y, 500, 30);
+                        Enemy Middle = new Boss(Content, "Jang Skeleton", "middle1", 82, 89, x, y, 500, 30, 99, true);
                         enemies.Add(Middle);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS2")
                     {
-                        Enemy Middle2 = new Enemy(Content, "Slime", "middle2", 218, 218, x, y, 1500, 75);
+                        Enemy Middle2 = new Boss(Content, "Min Slime", "middle2", 218, 218, x, y, 1500, 75, 0, false);
                         enemies.Add(Middle2);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS3")
                     {
-                        Enemy Middle3 = new Enemy(Content, "orangemushroom", "middle3", 120, 140, x, y, 3000, 100);
+                        Enemy Middle3 = new Boss(Content, "Hyung Gu", "middle3", 120, 140, x, y, 3000, 100, 0, false);
                         enemies.Add(Middle3);
                     }
                     ////////////////////////////////////////////////////
@@ -212,7 +212,7 @@ namespace Brave_Pig
                     //보스맵에 들어가면 있음
                     if (TileMap.CellCodeValue(x, y) == "BOSS")
                     {
-                        Enemy Boss = new Enemy(Content, "Boss", "Boss", 190, 140, x, y, 5000, 150);
+                        Enemy Boss = new Boss(Content, "King Min Hee", "Boss", 190, 140, x, y, 5000, 150, 324, true);
                         enemies.Add(Boss);
                     }
 

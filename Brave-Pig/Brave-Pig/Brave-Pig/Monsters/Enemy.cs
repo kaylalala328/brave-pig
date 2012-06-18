@@ -16,15 +16,25 @@ namespace Brave_Pig.Monsters
 {
     class Enemy : GameObject
     {
-        private Vector2 fallSpeed = new Vector2(0, 20);
-        private float walkSpeed = 60.0f;
-        private bool facingLeft = true;
-        private int HealthPoint;
-        private int Damage;
+        protected Vector2 fallSpeed = new Vector2(0, 20);
+        protected float walkSpeed = 60.0f;
+        protected bool facingLeft;
+        protected int HealthPoint;
+        protected int MaxHP;
+        protected int Damage;
         public bool Dead = false;
-        private Vector2 PushedVector = Vector2.Zero;
-        bool IsDamaged = false;
+        protected Vector2 PushedVector = Vector2.Zero;
+        protected bool IsDamaged = false;
+        protected Texture2D backhp;
+        protected Texture2D forehp;
+        protected static Random rand = new Random();
+
         #region Constructor
+
+        public Enemy()
+        {
+            IsDamaged = false;
+        }
         public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP, int damage)
         {
             IsEnemy = true;
@@ -52,6 +62,15 @@ namespace Brave_Pig.Monsters
             animations["dead"].FrameLength = 0.2f;
             animations["dead"].LoopAnimation = false;
 
+            int r = rand.Next(-10, 10);
+            if (r <= 0)
+            {
+                facingLeft = true;
+            }
+            else
+            {
+                facingLeft = false;
+            }
             ///피격 애니메이션
             animations.Add("damage",
                 new AnimationStrip(
@@ -64,6 +83,7 @@ namespace Brave_Pig.Monsters
             animations["damage"].LoopAnimation = false;
 
             this.HealthPoint = HP;
+            this.MaxHP = HP;
             this.Damage = damage;
 
             frameWidth = width;
@@ -75,6 +95,8 @@ namespace Brave_Pig.Monsters
                 cellY * TileMap.TileHeight);
 
             enabled = true;
+            backhp = content.Load<Texture2D>("Monsters/backhp");
+            forehp = content.Load<Texture2D>("Monsters/monhp");
 
             codeBasedBlocks = true;
             PlayAnimation("idle");
@@ -144,7 +166,22 @@ namespace Brave_Pig.Monsters
         public override void Draw(SpriteBatch spriteBatch)
         {
             //HP Draw
+            Rectangle back = Camera.WorldToScreen(WorldRectangle);
+            Rectangle fore = Camera.WorldToScreen(WorldRectangle);
+            back.Y -= 10;
+            back.X += frameWidth/2 - 16;
+            back.Height = 7;
+            back.Width = 32;
 
+            fore.Y -= 9;
+            fore.X += frameWidth/2 - 15;
+            fore.Height = 5;
+            fore.Width = (int)(((float)HealthPoint / (float)MaxHP) * 30);
+            if (!Dead)
+            {
+                spriteBatch.Draw(backhp, back, Color.White);
+                spriteBatch.Draw(forehp, fore, Color.White);
+            }
             base.Draw(spriteBatch);
         }
 

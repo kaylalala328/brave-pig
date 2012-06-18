@@ -985,6 +985,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Font\BossName.spritefont">
+      <Name>BossName</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Maps\MAP000.MAP">
       <Name>MAP000</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1049,6 +1054,25 @@
       <Name>MAP015</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\backhp.png">
+      <Name>backhp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Monsters\monhp.png">
+      <Name>monhp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Monsters\middle1_attack.png">
+      <Name>middle1_attack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

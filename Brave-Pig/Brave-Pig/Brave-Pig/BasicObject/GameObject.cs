@@ -351,6 +351,7 @@ namespace Brave_Pig.BasicObject
                 animations[name].Play();
             }
         }
+ 
         /// <summary>
         /// 업데이트 함수
         /// </summary>
