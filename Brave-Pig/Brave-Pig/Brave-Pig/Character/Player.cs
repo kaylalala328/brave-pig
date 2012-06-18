@@ -210,11 +210,6 @@ namespace Brave_Pig.Character
                 finish = false;
             } //애니메이션 디폴트 값 입력 전에 스킬 사용여부 체크
 
-            if(animations["damage"].FinishedPlaying || animations["damage2"].FinishedPlaying || animations["damage3"].FinishedPlaying || animations["damage4"].FinishedPlaying)
-            {
-                heal = false;
-            }
-
             isAttack = false;
             isAttackflip = false;
             isSkill2 = false;
@@ -969,6 +964,11 @@ namespace Brave_Pig.Character
 
         public void damaged(int damage)
         {
+            if (animations["damage"].FinishedPlaying || animations["damage2"].FinishedPlaying || animations["damage3"].FinishedPlaying || animations["damage4"].FinishedPlaying)
+            {
+                heal = false;
+            }
+
             int damaged;
             damaged = damage - getDefense();
 
@@ -988,7 +988,7 @@ namespace Brave_Pig.Character
                     flipped = true;
                 }
 
-                if (currentAnimation != "damage")
+                if (currentAnimation != "dead")
                 {
                     PlayAnimation("damage");
                 }
@@ -998,12 +998,13 @@ namespace Brave_Pig.Character
                 if (!heal)
                 {
                     heal = true;
-                    if (stat.healPoint > 0)
+                    if (stat.healPoint - damaged > 0)
                     {
                         stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
+                        stat.healPoint = 0;
                         PlayAnimation("dead");
                     }
                 }
@@ -1019,7 +1020,7 @@ namespace Brave_Pig.Character
                     flipped = true;
                 }
 
-                if (currentAnimation != "damage2")
+                if (currentAnimation != "dead2")
                 {
                     PlayAnimation("damage2");
                 }
@@ -1029,12 +1030,13 @@ namespace Brave_Pig.Character
                 if (!heal)
                 {
                     heal = true;
-                    if (stat.healPoint > 0)
+                    if (stat.healPoint - damaged > 0)
                     {
                         stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
+                        stat.healPoint = 0;
                         PlayAnimation("dead2");
                     }
                 }
@@ -1050,7 +1052,7 @@ namespace Brave_Pig.Character
                     flipped = true;
                 }
 
-                if (currentAnimation != "damage3")
+                if (currentAnimation != "dead3")
                 {
                     PlayAnimation("damage3");
                 }
@@ -1060,12 +1062,13 @@ namespace Brave_Pig.Character
                 if (!heal)
                 {
                     heal = true;
-                    if (stat.healPoint > 0)
+                    if (stat.healPoint - damaged > 0)
                     {
                         stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
+                        stat.healPoint = 0;
                         PlayAnimation("dead3");
                     }
                 }
@@ -1081,7 +1084,7 @@ namespace Brave_Pig.Character
                     flipped = true;
                 }
 
-                if (currentAnimation != "damage4")
+                if (currentAnimation != "dead4")
                 {
                     PlayAnimation("damage4");
                 }
@@ -1091,12 +1094,13 @@ namespace Brave_Pig.Character
                 if (!heal)
                 {
                     heal = true;
-                    if (stat.healPoint > 0)
+                    if (stat.healPoint - damaged > 0)
                     {
                         stat.healPoint = stat.healPoint - damaged;
                     }
                     else
                     {
+                        stat.healPoint = 0;
                         PlayAnimation("dead4");
                     }
                 }
@@ -1166,22 +1170,22 @@ namespace Brave_Pig.Character
             {
                 if (currentAnimation != "skill3" && currentAnimation != "skill22")
                 {
-                    returnValue = stat.damage * 3;
+                    returnValue = stat.damage * 4;
                 }
                 else if (currentAnimation == "skill3")
                 {
-                    returnValue = stat.damage * 9;
+                    returnValue = stat.damage * 12;
                 }
                 else if (currentAnimation == "skill22")
                 {
-                    returnValue = stat.damage * 15;
+                    returnValue = stat.damage * 20;
                 }
             }
             else if (ItemManager.getCurrentSword() == "Yellow")
             {
                 if (currentAnimation != "skill4" && currentAnimation != "skill23" && currentAnimation != "skill33")
                 {
-                    returnValue = stat.damage * 5;
+                    returnValue = stat.damage * 7;
                 }
                 else if (currentAnimation == "skill4")
                 {

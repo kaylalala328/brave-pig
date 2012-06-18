@@ -98,7 +98,7 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     {
-                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 70, 52, x, y, 200, 15);
+                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 70, 52, x, y, 100, 15);
                         enemies.Add(BrownPig);
                     }
 
@@ -110,25 +110,25 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY4")
                     {
-                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 85, x, y, 200, 30);
+                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 78, 80, x, y, 300, 30);
                         enemies.Add(PoisonMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY5")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 40);
+                        Enemy MossMushroom = new Enemy(Content, "불량버섯", "cynicalmushroom", 63, 65, x, y, 400, 40);
                         enemies.Add(MossMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY6")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 50);
+                        Enemy MossMushroom = new Enemy(Content, "보라버섯", "violetmushroom", 63, 65, x, y, 500, 50);
                         enemies.Add(MossMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY7")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 70);
+                        Enemy MossMushroom = new Enemy(Content, "빨간돼지", "redpig", 68, 55, x, y, 600, 70);
                         enemies.Add(MossMushroom);
                     }
                     ////////////////////////////////////////////////////
@@ -188,17 +188,29 @@ namespace Brave_Pig
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
                     {
-                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 68, 73, x, y, 200, 30);
+                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 82, 89, x, y, 500, 30);
                         enemies.Add(Middle);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "MBOSS2")
-                    { }
+                    {
+                        Enemy Middle2 = new Enemy(Content, "Slime", "middle2", 218, 218, x, y, 1500, 75);
+                        enemies.Add(Middle2);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "MBOSS3")
+                    {
+                        Enemy Middle3 = new Enemy(Content, "orangemushroom", "middle3", 120, 140, x, y, 3000, 100);
+                        enemies.Add(Middle3);
+                    }
                     ////////////////////////////////////////////////////
 
                     //보스맵에 들어가면 있음
                     if (TileMap.CellCodeValue(x, y) == "BOSS")
-                    { }
+                    {
+                        Enemy Boss = new Enemy(Content, "Boss", "Boss", 190, 140, x, y, 5000, 150);
+                        enemies.Add(Boss);
+                    }
 
                     //닿으면 캐릭터가 공격당했을때 모션을 하면서 HP 감소
                     if (TileMap.CellCodeValue(x, y) == "DAMAGED")
@@ -276,7 +288,7 @@ namespace Brave_Pig
                     {
                         if (player.attackingfilp())
                         {
-                            e.PlayAnimation("idle");
+                            e.PlayAnimation("damage");
 
                             if (!player.anima())
                             {
@@ -288,6 +300,7 @@ namespace Brave_Pig
                                 e.healthPoint = e.healthPoint - player.getAttack();
                                 monsterDamage = true;
                             }
+
                             if (e.healthPoint <= 0)
                             {
                                 e.PlayAnimation("dead");
@@ -303,7 +316,7 @@ namespace Brave_Pig
                     {
                         if (player.attacking())
                         {
-                            e.PlayAnimation("idle");
+                            e.PlayAnimation("damage");
 
                             if (!player.anima())
                             {
@@ -332,7 +345,7 @@ namespace Brave_Pig
                     {
                         if (player.skill2ing())
                         {
-                            e.PlayAnimation("idle");
+                            e.PlayAnimation("damage");
                             e.healthPoint = e.healthPoint - player.getAttack();
                             if (e.healthPoint <= 0)
                             {
@@ -350,7 +363,7 @@ namespace Brave_Pig
                     {
                         if (player.skill3ing())
                         {
-                            e.PlayAnimation("idle");
+                            e.PlayAnimation("damage");
                             e.healthPoint = e.healthPoint - player.getAttack();
                             if (e.healthPoint <= 0)
                             {

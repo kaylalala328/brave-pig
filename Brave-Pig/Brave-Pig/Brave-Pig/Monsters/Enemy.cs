@@ -28,6 +28,8 @@ namespace Brave_Pig.Monsters
         public Enemy(ContentManager content, string MonsterName, string Contentname, int width, int height, int cellX, int cellY, int HP, int damage)
         {
             IsEnemy = true;
+            animations2.Add("default", new AnimationStrip(content.Load<Texture2D>("Player/default"), width, "damage"));
+            currentAnimation2 = "default";
             
             ///idle 애니메이션
             animations.Add("idle",
@@ -39,16 +41,6 @@ namespace Brave_Pig.Monsters
             animations["idle"].FrameLength = 0.3f;
             animations["idle"].LoopAnimation = true;
 
-            ///attack 애니메이션
-            animations.Add("attack",
-                new AnimationStrip(
-                    content.Load<Texture2D>(
-                        "Monsters/" + Contentname + "_attack"),
-                    width,
-                    "attack"));
-            animations["attack"].FrameLength = 0.1f;
-            animations["attack"].LoopAnimation = false;
-
             ///죽음 애니메이션
             animations.Add("dead",
                 new AnimationStrip(
@@ -59,7 +51,18 @@ namespace Brave_Pig.Monsters
 
             animations["dead"].FrameLength = 0.2f;
             animations["dead"].LoopAnimation = false;
-            
+
+            ///피격 애니메이션
+            animations.Add("damage",
+                new AnimationStrip(
+                    content.Load<Texture2D>(
+                       "Monsters/" + Contentname + "_damage"),
+                    width,
+                    "damage"));
+
+            animations["damage"].FrameLength = 0.3f;
+            animations["damage"].LoopAnimation = false;
+
             this.HealthPoint = HP;
             this.Damage = damage;
 
@@ -90,7 +93,7 @@ namespace Brave_Pig.Monsters
         }
         public void Pushed()
         {
-            velocity.Y = -300;
+            velocity.Y = -200;
         }
         #region Update
         public override void Update(GameTime gameTime)
@@ -113,6 +116,10 @@ namespace Brave_Pig.Monsters
                 direction *= walkSpeed;
                 velocity += direction;
                 velocity += fallSpeed;
+                if (animations["damage"].FinishedPlaying == true)
+                {
+                    PlayAnimation("idle");
+                }
             }
             
             base.Update(gameTime);
