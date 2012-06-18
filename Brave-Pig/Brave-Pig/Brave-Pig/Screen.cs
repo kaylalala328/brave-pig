@@ -28,8 +28,8 @@ namespace Brave_Pig
         Texture2D pause;
         Texture2D resume;
         Texture2D save;
-        Texture2D load2;
-        Texture2D exit2;
+        Texture2D load;
+        Texture2D exit;
         Texture2D screen1;
         Texture2D[] screens = new Texture2D[5];
 
@@ -83,15 +83,15 @@ namespace Brave_Pig
             screen = content.Load<Texture2D>("Screen/Screen");
             menu = content.Load<Texture2D>("Screen/menu");
             pause = content.Load<Texture2D>("Screen/pause");
-            resume = content.Load<Texture2D>("Screen/resume");
+            resume = content.Load<Texture2D>("Screen/continue");
             save = content.Load<Texture2D>("Screen/save");
-            load2 = content.Load<Texture2D>("Screen/load2");
-            exit2 = content.Load<Texture2D>("Screen/exit2");
+            load = content.Load<Texture2D>("Screen/load");
+            exit = content.Load<Texture2D>("Screen/exit");
             screen1 = content.Load<Texture2D>("Screen/screen1");
-            screens[0] = content.Load<Texture2D>("Screen/screen2");
-            screens[1] = content.Load<Texture2D>("Screen/screen3");
-            screens[2] = content.Load<Texture2D>("Screen/screen4");
-            screens[3] = content.Load<Texture2D>("Screen/screen5");
+            screens[0] = content.Load<Texture2D>("Screen/screen4");
+            screens[1] = content.Load<Texture2D>("Screen/screen5");
+            screens[2] = content.Load<Texture2D>("Screen/screen2");
+            screens[3] = content.Load<Texture2D>("Screen/screen3");
             screens[4] = content.Load<Texture2D>("Screen/screen6");
 
             animations.Add("normal", new AnimationStrip(content.Load<Texture2D>("Player/normal3"), 179, "normal3"));
@@ -135,16 +135,16 @@ namespace Brave_Pig
                     switch ( i )
                     {
                         case 0:
-                            select = SelectMode.START;
-                            break;
-                        case 1:
-                            select = SelectMode.LOAD;
-                            break;
-                        case 2:
                             select = SelectMode.MENU;
                             break;
-                        case 3:
+                        case 1:
                             select = SelectMode.MAKE;
+                            break;
+                        case 2:
+                            select = SelectMode.START;
+                            break;
+                        case 3:
+                            select = SelectMode.LOAD;
                             break;
                         case 4:
                             select = SelectMode.EXIT;
@@ -263,6 +263,53 @@ namespace Brave_Pig
 
                         break;
                     case PauseMenu.LOAD:
+                        FileStream f = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
+                    StreamReader rd = new StreamReader(f);
+                    LevelManager.CurrentLevel = Convert.ToInt32(rd.ReadLine());
+                    LevelManager.LoadLevel(LevelManager.CurrentLevel);
+                    player.stat.healPoint = Convert.ToInt32(rd.ReadLine());
+                    player.stat.manaPoint = Convert.ToInt32(rd.ReadLine());
+                    player.stat.damage = Convert.ToInt32(rd.ReadLine());
+                    player.stat.defense = Convert.ToInt32(rd.ReadLine());
+                    player.stat.useSword = Convert.ToInt32(rd.ReadLine());
+                    int X = (int)Convert.ToDouble(rd.ReadLine());
+                    int Y = (int)Convert.ToDouble(rd.ReadLine());
+                    player.WorldLocation = new Vector2(X, Y);
+                    int swordCnt = Convert.ToInt32(rd.ReadLine());
+                    switch (swordCnt)
+                    {
+                        case 1:
+                            ItemManager.gainSword("Blue");
+                            break;
+                        case 2:
+                            ItemManager.gainSword("Blue");
+                            ItemManager.gainSword("Red");
+                            break;
+                        case 3:
+                            ItemManager.gainSword("Blue");
+                            ItemManager.gainSword("Red");
+                            ItemManager.gainSword("Yellow");
+                            break;
+                    }
+                    int armorCnt = Convert.ToInt32(rd.ReadLine());
+                    switch (armorCnt)
+                    {
+                        case 1:
+                            ItemManager.gainArmor("Armor");
+                            break;
+                        case 2:
+                            ItemManager.gainArmor("Armor");
+                            ItemManager.gainArmor("Boots");
+                            break;
+                        case 3:
+                            ItemManager.gainArmor("Armor");
+                            ItemManager.gainArmor("Boots");
+                            ItemManager.gainArmor("Shield");
+                            break;
+                    }
+                    ItemManager.getPotion().setCount(Convert.ToInt32(rd.ReadLine()));
+                    rd.Close();
+                    Game1.gameState = Game1.GameStates.PLAY;
                         break;
                     case PauseMenu.EXIT:
                         Game1.gameState = Game1.GameStates.EXIT;
@@ -381,38 +428,29 @@ namespace Brave_Pig
         }
         public void DrawPause ( SpriteBatch spriteBatch )
         {
-            int[] num = new int[4] { 0, 0, 0, 0 };
             switch ( pauseMenu )
             {
                 case PauseMenu.RESUME:
-                    num[0] = 20;
+                    spriteBatch.Draw(resume,
+                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                Color.White);
                     break;
                 case PauseMenu.SAVE:
-                    num[1] = 20;
+                    spriteBatch.Draw(save,
+                new Rectangle((int)(width * 540) / 1280, (int)(height * 270) / 720, (int)(width * 200) / 1280, (int)(height * 180) / 720),
+                Color.White);
                     break;
                 case PauseMenu.LOAD:
-                    num[2] = 20;
+                    spriteBatch.Draw(load,
+                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                Color.White);
                     break;
                 case PauseMenu.EXIT:
-                    num[3] = 20;
+                    spriteBatch.Draw(exit,
+                new Rectangle((int)( width * 540 ) / 1280, (int)( height * 270 ) / 720, (int)( width * 200 ) / 1280, (int)( height * 180 ) / 720),
+                Color.White);
                     break;
-            }
-
-            spriteBatch.Draw(pause,
-                new Rectangle((int)( width / 8 ) * 3, height / 4, width / 4, height / 2),
-                Color.White);
-            spriteBatch.Draw(resume,
-                new Rectangle((int)( width / 8 ) * 3 - num[0] / 2, (int)( height / 3 ) - num[0] / 2, 320 + num[0], 70 + num[0]),
-                Color.White);
-            spriteBatch.Draw(save,
-                new Rectangle((int)( width / 8 ) * 3 - num[1] / 2, (int)( height / 3 ) + 70 - num[1] / 2, 320 + num[1], 70 + num[1]),
-                Color.White);
-            spriteBatch.Draw(load2,
-                new Rectangle((int)( width / 8 ) * 3 - num[2] / 2, (int)( height / 3 ) + 140 - num[2] / 2, 320 + num[2], 70 + num[2]),
-                Color.White);
-            spriteBatch.Draw(exit2,
-                new Rectangle((int)( width / 8 ) * 3 - num[3] / 2, (int)( height / 3 ) + 210 - num[3] / 2, 320 + num[3], 70 + num[3]),
-                Color.White);
+            }            
         }
     }
 }
