@@ -273,7 +273,7 @@ namespace Brave_Pig.Character
             #region attack
             if ( Game1.currentKeyState.IsKeyDown(Keys.Space))
             {
-                if (ItemManager.getCurrentSword() == "Basic")
+                if (ItemManager.getCurrentSword() == "Basic" || ItemManager.getCurrentSword() == "Blue" || ItemManager.getCurrentSword() == "Red" || ItemManager.getCurrentSword() == "Yellow")
                 {
                     int attack_num = num.Next(0, 10);
                     if (direct == 0)
@@ -290,84 +290,45 @@ namespace Brave_Pig.Character
                     if (attack_num < 5)
                     {
                         monster = true;
-                        newAnimation = "attack1";
+                        if (ItemManager.getCurrentSword() == "Basic")
+                        {
+                            newAnimation = "attack1";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Blue")
+                        {
+                            newAnimation = "attack21";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Red")
+                        {
+                            newAnimation = "attack22";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Yellow")
+                        {
+                            newAnimation = "attack23";
+                        }   
                     }
                     else
                     {
                         monster = true;
-                        newAnimation = "attack2";
+                        if (ItemManager.getCurrentSword() == "Basic")
+                        {
+                            newAnimation = "attack2";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Blue")
+                        {
+                            newAnimation = "attack31";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Red")
+                        {
+                            newAnimation = "attack32";
+                        }
+                        else if (ItemManager.getCurrentSword() == "Yellow")
+                        {
+                            newAnimation = "attack33";
+                        }   
                     }
                 }// 기본 무기 공격 애니메이션
-                else if (ItemManager.getCurrentSword() == "Blue")
-                {
-                    int attack_num = num.Next(0, 10);
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                        isAttack = true;
-                    }
-                    else
-                    {
-                        flipped = true;
-                        isAttackflip = true;
-                    }
-
-                    if (attack_num < 5)
-                    {
-                        newAnimation = "attack21";
-                    }
-                    else
-                    {
-                        newAnimation = "attack31";
-                    }
-                }// 1번째 무기 공격 애니메이션
-                else if (ItemManager.getCurrentSword() == "Red")
-                {
-                    int attack_num = num.Next(0, 10);
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                        isAttack = true;
-                    }
-                    else
-                    {
-                        flipped = true;
-                        isAttackflip = true;
-                    }
-
-                    if (attack_num < 5)
-                    {
-                        newAnimation = "attack22";
-                    }
-                    else
-                    {
-                        newAnimation = "attack32";
-                    }
-                }// 2번째 무기 공격 애니메이션
-                else if (ItemManager.getCurrentSword() == "Yellow")
-                {
-                    int attack_num = num.Next(0, 10);
-                    if (direct == 0)
-                    {
-                        flipped = false;
-                        isAttack = true;
-                    }
-                    else
-                    {
-                        flipped = true;
-                        isAttackflip = true;
-                    }
-
-                    if (attack_num < 5)
-                    {
-                        newAnimation = "attack23";
-                    }
-                    else
-                    {
-                        newAnimation = "attack33";
-                    }
-                }// 3번째 무기 공격 애니메이션
-            } //공격 애니메이션
+            } //공격 애니메이션*/
             #endregion
 
             #region move
@@ -982,7 +943,7 @@ namespace Brave_Pig.Character
                 damaged = 1;
             }
 
-            if (ItemManager.getCurrentSword() == "Basic")
+            if (ItemManager.getCurrentSword() == "Basic" || ItemManager.getCurrentSword() == "Blue" || ItemManager.getCurrentSword() == "Red" || ItemManager.getCurrentSword() == "Yellow")
             {
                 if (direct == 0)
                 {
@@ -1011,102 +972,6 @@ namespace Brave_Pig.Character
                     {
                         stat.healPoint = 0;
                         PlayAnimation("dead");
-                    }
-                }
-            }
-            else if (ItemManager.getCurrentSword() == "Blue")
-            {
-                if (direct == 0)
-                {
-                    flipped = false;
-                }
-                else
-                {
-                    flipped = true;
-                }
-
-                if (currentAnimation != "dead2")
-                {
-                    PlayAnimation("damage2");
-                }
-
-                push();
-
-                if (!heal)
-                {
-                    heal = true;
-                    if (stat.healPoint - damaged > 0)
-                    {
-                        stat.healPoint = stat.healPoint - damaged;
-                    }
-                    else
-                    {
-                        stat.healPoint = 0;
-                        PlayAnimation("dead2");
-                    }
-                }
-            }
-            else if (ItemManager.getCurrentSword() == "Red")
-            {
-                if (direct == 0)
-                {
-                    flipped = false;
-                }
-                else
-                {
-                    flipped = true;
-                }
-
-                if (currentAnimation != "dead3")
-                {
-                    PlayAnimation("damage3");
-                }
-
-                push();
-
-                if (!heal)
-                {
-                    heal = true;
-                    if (stat.healPoint - damaged > 0)
-                    {
-                        stat.healPoint = stat.healPoint - damaged;
-                    }
-                    else
-                    {
-                        stat.healPoint = 0;
-                        PlayAnimation("dead3");
-                    }
-                }
-            }
-            else if (ItemManager.getCurrentSword() == "Yellow")
-            {
-                if (direct == 0)
-                {
-                    flipped = false;
-                }
-                else
-                {
-                    flipped = true;
-                }
-
-                if (currentAnimation != "dead4")
-                {
-                    PlayAnimation("damage4");
-                }
-
-                push();
-
-                if (!heal)
-                {
-                    heal = true;
-                    if (stat.healPoint - damaged > 0)
-                    {
-                        stat.healPoint = stat.healPoint - damaged;
-                    }
-                    else
-                    {
-                        stat.healPoint = 0;
-                        PlayAnimation("dead4");
                     }
                 }
             }
