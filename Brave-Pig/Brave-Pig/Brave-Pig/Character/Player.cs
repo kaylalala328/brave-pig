@@ -648,7 +648,7 @@ namespace Brave_Pig.Character
             {
                 if (stat.manaPoint >= 1)
                 {
-                    if (ItemManager.getCurrentSword() == "Basic")
+                    if (ItemManager.getCurrentSword() == "Basic" || ItemManager.getCurrentSword() == "Blue" || ItemManager.getCurrentSword() == "Red" || ItemManager.getCurrentSword() == "Yellow")
                     {
                         if (currentAnimation != "jump")
                         {
@@ -668,78 +668,24 @@ namespace Brave_Pig.Character
                                 isAttackflip = true;
                             }
 
-                            newAnimation = "skill1";
+                            if (ItemManager.getCurrentSword() == "Basic")
+                            {
+                                newAnimation = "skill1";
+                            }
+                            else if (ItemManager.getCurrentSword() == "Blue")
+                            {
+                                newAnimation = "skill2";
+                            }
+                            else if (ItemManager.getCurrentSword() == "Red")
+                            {
+                                newAnimation = "skill3";
+                            }
+                            else if (ItemManager.getCurrentSword() == "Yellow")
+                            {
+                                newAnimation = "skill4";
+                            }
                         }
                     } // 기본무기 스킬(1개 중 1번)
-                    else if ( ItemManager.getCurrentSword() == "Blue" )
-                    {
-                        if (currentAnimation != "jump2")
-                        {
-                            if (!finish)
-                            {
-                                finish = true;
-                                stat.manaPoint = stat.manaPoint - 1.0f;
-                            } // 스킬 사용시 마나 포인트 변경
-                            if (direct == 0)
-                            {
-                                flipped = false;
-                                isAttack = true;
-                            }
-                            else
-                            {
-                                flipped = true;
-                                isAttackflip = true;
-                            }
-
-                            newAnimation = "skill2";
-                        }
-                    } // 1번째 무기 스킬(1개 중 1번)
-                    else if (ItemManager.getCurrentSword() == "Red")
-                    {
-                        if (currentAnimation != "jump3")
-                        {
-                            if (!finish)
-                            {
-                                finish = true;
-                                stat.manaPoint = stat.manaPoint - 1.0f;
-                            } // 스킬 사용시 마나 포인트 변경
-                            if (direct == 0)
-                            {
-                                flipped = false;
-                                isAttack = true;
-                            }
-                            else
-                            {
-                                flipped = true;
-                                isAttackflip = true;
-                            }
-
-                            newAnimation = "skill3";
-                        }
-                    } // 2번째 무기 스킬(1개 중 1번)
-                    else if (ItemManager.getCurrentSword() == "Yellow")
-                    {
-                        if (currentAnimation != "jump4")
-                        {
-                            if (!finish)
-                            {
-                                finish = true;
-                                stat.manaPoint = stat.manaPoint - 1.0f;
-                            } // 스킬 사용시 마나 포인트 변경
-                            if (direct == 0)
-                            {
-                                flipped = false;
-                                isAttack = true;
-                            }
-                            else
-                            {
-                                flipped = true;
-                                isAttackflip = true;
-                            }
-
-                            newAnimation = "skill4";
-                        }
-                    } // 3번째 무기 스킬(1개 중 1번)
                 }
             } // 1번스킬 계열 애니메이션
             #endregion
@@ -749,7 +695,7 @@ namespace Brave_Pig.Character
             {
                 if (stat.manaPoint >= 2)
                 {
-                    if (ItemManager.getCurrentSword() == "Red")
+                    if (ItemManager.getCurrentSword() == "Red" || ItemManager.getCurrentSword() == "Yellow")
                     {
                         if (currentAnimation != "jump3")
                         {
@@ -769,32 +715,16 @@ namespace Brave_Pig.Character
                                 isSkill2 = true;
                             }
 
-                            newAnimation = "skill22";
-                        }
-                    } // 2번째 무기 스킬(2개 중 2번)
-                    else if (ItemManager.getCurrentSword() == "Yellow")
-                    {
-                        if (currentAnimation != "jump4")
-                        {
-                            if (!finish)
+                            if (ItemManager.getCurrentSword() == "Red")
                             {
-                                finish = true;
-                                stat.manaPoint = stat.manaPoint - 2.0f;
-                            } // 스킬 사용시 마나 포인트 변경
-                            if (direct == 0)
-                            {
-                                flipped = false;
-                                isSkill2 = true;
+                                newAnimation = "skill22";
                             }
-                            else
+                            else if (ItemManager.getCurrentSword() == "Yellow")
                             {
-                                flipped = true;
-                                isSkill2 = true;
+                                newAnimation = "skill32";
                             }
-
-                            newAnimation = "skill32";
                         }
-                    } // 3번째 무기 스킬(3개 중 2번)
+                    } 
                 }
             } // 2번스킬 계열 애니메이션
             #endregion
