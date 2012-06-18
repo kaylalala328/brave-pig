@@ -25,7 +25,7 @@ namespace Brave_Pig.Sound
         {
             try
             {
-                background = content.Load<SoundEffect>("Sound/backgroundSound");
+                background = content.Load<SoundEffect>("Sound/일반전투");
 
                 backgroundInstance = background.CreateInstance();
                 backgroundInstance.IsLooped = true;

@@ -97,63 +97,97 @@ namespace Brave_Pig
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY2")
                     {
-                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 70, 52, x, y, 200, 10);
+                        Enemy BrownPig = new Enemy(Content, "갈색돼지", "brownpig", 70, 52, x, y, 200, 15);
                         enemies.Add(BrownPig);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY3")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 112, 110, x, y, 200, 15);
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 112, 110, x, y, 200, 25);
                         enemies.Add(MossMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY4")
                     {
-                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 85, x, y, 200, 20);
+                        Enemy PoisonMushroom = new Enemy(Content, "독버섯", "poisionmushroom", 64, 85, x, y, 200, 30);
                         enemies.Add(PoisonMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY5")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 25);
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 40);
                         enemies.Add(MossMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY6")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 30);
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 50);
                         enemies.Add(MossMushroom);
                     }
 
                     if (TileMap.CellCodeValue(x, y) == "ENEMY7")
                     {
-                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 35);
+                        Enemy MossMushroom = new Enemy(Content, "이끼버섯", "mossmushroom", 64, 64, x, y, 200, 70);
                         enemies.Add(MossMushroom);
                     }
                     ////////////////////////////////////////////////////
-                    if (TileMap.CellCodeValue(x, y) == "NPC1") // 정기
+                    if (TileMap.CellCodeValue(x, y) == "NPC11") // 정기
                     {
                         NPC NPC1 = new NPC(Content, 0, "gonggong", 100, 128, x, y);
                         npc.Add(NPC1);
                     }
 
-                    if (TileMap.CellCodeValue(x, y) == "NPC2")
+                    if (TileMap.CellCodeValue(x, y) == "NPC12")
                     {
                         NPC NPC2 = new NPC(Content, 1, "sly", 60, 76, x, y);
                         npc.Add(NPC2);
                     }
 
-                    if (TileMap.CellCodeValue(x, y) == "NPC3")
+                    if (TileMap.CellCodeValue(x, y) == "NPC13")
                     {
                         NPC NPC3 = new NPC(Content, 2, "mos", 80, 80, x, y);
                         npc.Add(NPC3);
+                    }
+                    if (TileMap.CellCodeValue(x, y) == "NPC21") // 정기
+                    {
+                        NPC NPC4 = new NPC(Content, 3, "gonggong", 100, 128, x, y);
+                        npc.Add(NPC4);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC22")
+                    {
+                        NPC NPC5 = new NPC(Content, 4, "sly", 60, 76, x, y);
+                        npc.Add(NPC5);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC23")
+                    {
+                        NPC NPC6 = new NPC(Content, 5, "mos", 80, 80, x, y);
+                        npc.Add(NPC6);
+                    }
+                    if (TileMap.CellCodeValue(x, y) == "NPC31") // 정기
+                    {
+                        NPC NPC7 = new NPC(Content, 6, "gonggong", 100, 128, x, y);
+                        npc.Add(NPC7);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC32")
+                    {
+                        NPC NPC8 = new NPC(Content, 7, "sly", 60, 76, x, y);
+                        npc.Add(NPC8);
+                    }
+
+                    if (TileMap.CellCodeValue(x, y) == "NPC33")
+                    {
+                        NPC NPC9 = new NPC(Content, 8, "mos", 80, 80, x, y);
+                        npc.Add(NPC9);
                     }
                     ////////////////////////////////////////////////////
 
                     //주인공이 어느 지점을 지나고 몇 초 후에 나타남
                     if (TileMap.CellCodeValue(x, y) == "MBOSS1")
                     {
-                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 68, 73, x, y, 200, 25);
+                        Enemy Middle = new Enemy(Content, "해골장나르크", "middle1", 68, 73, x, y, 200, 30);
                         enemies.Add(Middle);
                     }
 
@@ -295,11 +329,29 @@ namespace Brave_Pig
                    
                     if (player.CollisionRectangle4.Intersects(e.CollisionRectangle))
                     {
-                        if (player.skiil2ing())
+                        if (player.skill2ing())
                         {
                             e.PlayAnimation("idle");
                             e.healthPoint = e.healthPoint - player.getAttack();
-                            if (e.healthPoint == 0)
+                            if (e.healthPoint <= 0)
+                            {
+                                e.PlayAnimation("dead");
+                                e.Dead = true;
+                            }
+                            else
+                            {
+                                e.Pushed();
+                            }
+                        }
+                    }
+                    
+                    if (player.CollisionRectangle5.Intersects(e.CollisionRectangle))
+                    {
+                        if (player.skill3ing())
+                        {
+                            e.PlayAnimation("idle");
+                            e.healthPoint = e.healthPoint - player.getAttack();
+                            if (e.healthPoint <= 0)
                             {
                                 e.PlayAnimation("dead");
                                 e.Dead = true;

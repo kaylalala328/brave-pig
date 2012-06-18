@@ -188,6 +188,7 @@ namespace Brave_Pig.Character
             CollisionRectangle2 = new Rectangle(118, 5, 59, 71);
             CollisionRectangle3 = new Rectangle(1, 5, 51, 71);
             CollisionRectangle4 = new Rectangle(1, 1, 176, 76);
+            CollisionRectangle5 = new Rectangle(-640, -360, 1280, 720);
 
             drawDepth = 0.1f;
 
@@ -216,6 +217,7 @@ namespace Brave_Pig.Character
             isAttack = false;
             isAttackflip = false;
             isSkill2 = false;
+            isSkill3 = false;
 
             string newAnimation = "";
             string newAnimation2 = "default";
@@ -547,7 +549,11 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump")
                     {
-                        if (stat.manaPoint < 2)
+                        if (stat.manaPoint < 1)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                        }
+                        else if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
@@ -576,7 +582,11 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump2")
                     {
-                        if (stat.manaPoint < 2)
+                        if (stat.manaPoint < 1)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                        }
+                        else if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
@@ -604,7 +614,11 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump3")
                     {
-                        if (stat.manaPoint < 2)
+                        if (stat.manaPoint < 1)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                        }
+                        else if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
@@ -632,7 +646,11 @@ namespace Brave_Pig.Character
                 {
                     if (currentAnimation != "jump4")
                     {
-                        if (stat.manaPoint < 2)
+                        if (stat.manaPoint < 1)
+                        {
+                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                        }
+                        else if (stat.manaPoint < 2)
                         {
                             stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
                         }
@@ -832,10 +850,12 @@ namespace Brave_Pig.Character
                             if (direct == 0)
                             {
                                 flipped = false;
+                                isSkill3 = true;
                             }
                             else
                             {
                                 flipped = true;
+                                isSkill3 = true;
                             }
 
                             newAnimation = "skill33";
@@ -949,7 +969,7 @@ namespace Brave_Pig.Character
 
             if (damaged <= 0)
             {
-                damaged = 0;
+                damaged = 1;
             }
 
             if (ItemManager.getCurrentSword() == "Basic")
@@ -1086,9 +1106,13 @@ namespace Brave_Pig.Character
         {
             return isAttackflip;
         }
-        public bool skiil2ing()
+        public bool skill2ing()
         {
             return isSkill2;
+        }
+        public bool skill3ing()
+        {
+            return isSkill3;
         }
         public bool anima()
         {
@@ -1113,19 +1137,59 @@ namespace Brave_Pig.Character
         {
             if (ItemManager.getCurrentSword() == "Basic")
             {
-                returnValue = stat.damage;
+                if (currentAnimation != "skill1")
+                {
+                    returnValue = stat.damage;
+                }
+                else
+                {
+                    returnValue = stat.damage * 2;
+                }
             }
             else if (ItemManager.getCurrentSword() == "Blue")
             {
-                returnValue = (stat.damage * 20) / 10;
+                if (currentAnimation != "skill2")
+                {
+                    returnValue = stat.damage * 2;
+                }
+                else
+                {
+                    returnValue = stat.damage * 4; 
+                }
             }
             else if (ItemManager.getCurrentSword() == "Red")
             {
-                returnValue = (stat.damage * 30) / 10;
+                if (currentAnimation != "skill3" && currentAnimation != "skill22")
+                {
+                    returnValue = stat.damage * 3;
+                }
+                else if (currentAnimation == "skill3")
+                {
+                    returnValue = stat.damage * 9;
+                }
+                else if (currentAnimation == "skill22")
+                {
+                    returnValue = stat.damage * 15;
+                }
             }
             else if (ItemManager.getCurrentSword() == "Yellow")
             {
-                returnValue = (stat.damage * 50) / 10;
+                if (currentAnimation != "skill4" && currentAnimation != "skill23" && currentAnimation != "skill33")
+                {
+                    returnValue = stat.damage * 5;
+                }
+                else if (currentAnimation == "skill4")
+                {
+                    returnValue = stat.damage * 15;
+                }
+                else if (currentAnimation == "skill32")
+                {
+                    returnValue = stat.damage * 30;
+                }
+                else if (currentAnimation == "skill33")
+                {
+                    returnValue = stat.damage * 100;
+                }
             }
             return returnValue;
         }
