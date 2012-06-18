@@ -98,7 +98,7 @@ namespace Brave_Pig.UI
             DrawCharge(spriteBatch, BottomUIWidth, BottomUIHeight, BottomY);
 
             //Test용 마나량 출력
-            spriteBatch.DrawString(MainUI.UIfont, mana.ToString(), new Vector2(100, 100), Color.Black);
+            //spriteBatch.DrawString(MainUI.UIfont, mana.ToString(), new Vector2(100, 100), Color.Black);
         }
         public void DrawCharge ( SpriteBatch spriteBatch, int BottomUIWidth, int BottomUIHeight, int BottomY )
         {
