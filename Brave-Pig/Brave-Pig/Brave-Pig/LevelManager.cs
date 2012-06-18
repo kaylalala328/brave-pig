@@ -412,6 +412,10 @@ namespace Brave_Pig
                         }
                     }
                 }
+                if ( e.Dead && currentLevel == 15 )
+                {
+                    Game1.gameState = Game1.GameStates.WIN;
+                }
             }
             if (LeftPortal != null)
             {

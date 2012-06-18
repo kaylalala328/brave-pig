@@ -232,6 +232,7 @@ namespace Brave_Pig
 
         public void loadGame ( )
         {
+            ItemManager.remove();
             FileStream fs = new FileStream("file1_1.txt", FileMode.OpenOrCreate);
             StreamReader r = new StreamReader(fs);
             LevelManager.CurrentLevel = Convert.ToInt32(r.ReadLine());

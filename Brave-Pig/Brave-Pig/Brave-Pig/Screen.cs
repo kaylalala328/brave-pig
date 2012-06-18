@@ -303,6 +303,7 @@ namespace Brave_Pig
             int Y = (int)Convert.ToDouble(rd.ReadLine());
             player.WorldLocation = new Vector2(X, Y);
             int swordCnt = Convert.ToInt32(rd.ReadLine());
+            ItemManager.remove();
             switch ( swordCnt )
             {
                 case 1:
