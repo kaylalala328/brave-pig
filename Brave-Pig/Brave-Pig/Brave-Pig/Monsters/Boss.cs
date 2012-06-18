@@ -125,31 +125,32 @@ namespace Brave_Pig.Monsters
                 walkSpeed = 60f;
                 frameWidth = width;
                 Isattack = false;
-                if (i > 0)
+                
+                if (i > 80)
                 {
-                    if (IsBoss)
-                    {
-                        LimitSecond = gameTime.TotalGameTime.TotalSeconds + 6;
-                        walkSpeed = 150;
-                        frameWidth = width2;
-                        PlayAnimation("attack");
-                        Isattack = true;
-                    }
+                    LimitSecond = gameTime.TotalGameTime.TotalSeconds + 5;
+                    velocity.Y = -700;
                 }
                 else if (i > 60)
                 {
-                    LimitSecond = gameTime.TotalGameTime.TotalSeconds + 5;
                     
-                    velocity.Y = -700;
+                    LimitSecond = gameTime.TotalGameTime.TotalSeconds + 6;
+                        if (IsBoss)
+                        {
+                            walkSpeed = 150;
+                            frameWidth = width2;
+                            PlayAnimation("attack");
+                            Isattack = true;
+                        }
                 }
-                else if (i < 5)
+                else if (i < 10)
                 {
                     LimitSecond = gameTime.TotalGameTime.TotalSeconds + 3;
                     walkSpeed = 300f;
                 }
                 else
                 {
-                    LimitSecond = gameTime.TotalGameTime.TotalSeconds + 1;
+                    LimitSecond = gameTime.TotalGameTime.TotalSeconds + 2;
                 }
             }
             base.Update(gameTime);
