@@ -41,6 +41,7 @@ namespace Brave_Pig
 
         public static int potioning;
         public static int potionRate;
+        public static bool crash;
         #endregion
 
         #region Properties
@@ -275,6 +276,11 @@ namespace Brave_Pig
 
                 if (!e.Dead)
                 {
+                    if (!player.CollisionRectangle.Intersects(e.CollisionRectangle))
+                    {
+                        crash = false;
+                    }
+
                     if(player.CollisionRectangle.Intersects(e.CollisionRectangle))
                     {
                         if(player.WorldCenter.Y < e.WorldLocation.Y)
@@ -283,7 +289,11 @@ namespace Brave_Pig
                         }
                         else
                         {
-                            player.damaged(e.Damege);
+                            if (!crash)
+                            {
+                                player.damaged(e.Damege);
+                                crash = false;
+                            }
                         }
                     }
                     

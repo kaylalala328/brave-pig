@@ -551,15 +551,15 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 1)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.009f;
                         }
                         else if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -584,15 +584,15 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 1)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.009f;
                         }
                         else if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -616,15 +616,15 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 1)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.009f;
                         }
                         else if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -648,15 +648,15 @@ namespace Brave_Pig.Character
                     {
                         if (stat.manaPoint < 1)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.009f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.009f;
                         }
                         else if (stat.manaPoint < 2)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.005f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.005f;
                         }
                         else if (stat.manaPoint < 3)
                         {
-                            stat.manaPoint = stat.manaPoint + 0.002f + 0.5f;
+                            stat.manaPoint = stat.manaPoint + 0.002f;
                         }
                         else
                         {
@@ -1197,7 +1197,7 @@ namespace Brave_Pig.Character
                 }
                 else if (currentAnimation == "skill33")
                 {
-                    returnValue = stat.damage * 100;
+                    returnValue = stat.damage * 99;
                 }
             }
             return returnValue;
